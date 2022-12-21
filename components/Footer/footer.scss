@@ -1,0 +1,169 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/media.scss';
+
+.footer{
+    background-color: #2b363d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 51px;
+    &__left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a{
+            @include litleTextMobile;
+            color: white;
+
+        }
+        &__logo{
+            filter: invert(100%);
+            height: 22px;
+            width: 22px;
+            margin-right: 12px;
+            margin-left: 12px;
+        }  
+        &__AL{
+            border-left: solid;
+            border-width: 2px;
+            border-color: rgb(194, 194, 194);
+            padding-left: 5px;
+        }      
+        &__PP{
+            display: none;
+        }
+        &__PC{
+            display: none;
+        }
+    }
+    &__center{
+        a{
+            display: flex;
+            text-decoration: none;
+            color: white;        
+        }
+        p{
+            font-size: 10px;
+            margin-right: 5px;
+        }
+        img{
+            width: 50px;
+        }
+    }
+    &__right{
+        display: flex;
+        margin-right: 18px;
+        &__text{
+            display: none;
+            text-decoration: none;
+        }
+        img{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+}
+@include tablet {
+    .footer{
+        &__left{  
+
+            &__AL{
+                border: none;
+            }
+            &__PP{
+                margin-left: 5px;
+                display: block;
+                border-left: solid;
+                border-width: 2px;
+                border-color: rgb(194, 194, 194);
+                padding-left: 5px;
+            }
+            &__PC{
+                margin-left: 5px;
+                display: block;
+                border-left: solid;
+                border-width: 2px;
+                border-color: rgb(194, 194, 194);
+                padding-left: 5px;
+            }
+        }
+        &__right{
+            display: flex;
+            &__text{
+                display: block;
+                @include litleTextMobile;
+                color: white;
+            }
+        }
+    }
+}
+@include desktop {
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .footer{
+        width: 200%;
+        height: 77px;
+        &__left{    
+            @include litleText;
+            font-size: 15px!important;
+            color: white;
+            a{
+                @include litleText;
+                font-size: 15px!important;
+                color: white;
+            }  
+            &__logo{
+                margin-right: 28px;
+                margin-left: 27px;
+            }
+            &__AL{
+                border: none;
+            }
+            &__PP{
+                margin-left: 15px;
+                display: block;
+                border-left: solid;
+                border-width: 2px;
+                border-color: rgb(194, 194, 194);
+                padding-left: 15px;
+            }
+            &__PC{
+                margin-left: 15px;
+                display: block;
+                border-left: solid;
+                border-width: 2px;
+                border-color: rgb(194, 194, 194);
+                padding-left: 15px;
+            }
+        }
+        &__center{
+            justify-self: center;
+            display: flex;
+            justify-content: center;
+            a{
+                display: flex;
+                align-items: center;
+                img{
+            
+                    height: 15px;
+            
+                    right: 100%;
+                }
+            }
+        }
+        &__right{
+            display: flex;
+            margin-right: 30px;
+            &__text{
+                margin-right: 36px;
+                display: block;
+                @include litleText;
+                font-size: 15px!important;
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/media.scss';
+
+.contactIndex{
+    margin-top: 58px;
+    margin-bottom: 32px;
+    margin-left: 24px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 40px;
+    &__title{
+        @include subTitleMobile;
+        padding-bottom: 20px
+    }
+    &__location{
+        @include litleText;
+        display: flex;
+        p{
+            margin: 10px;
+            margin-left: 0;
+        }
+        a{
+            color: black!important;
+            text-decoration: none;
+            margin: 10px;
+        }
+        &__logo{
+            display: none;
+            height: 52px;
+            margin-right: 52px;
+        }
+        &__left{
+            border-right: solid;
+            border-color: rgb(209, 209, 209);
+            border-width: 2px;
+            margin-right: 20px;
+            padding-right: 20px;
+        }
+        &__right{
+            text-align: right;
+        }
+    }
+    &__button{
+        @include buttonMobile;
+        text-decoration: none!important;
+        margin-bottom: 0;
+        align-self: flex-start;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }        
+}
+@include desktop{
+    .contactIndex{
+        margin-top: 90px;
+        margin-bottom: 40px;
+        margin-left: 92px;
+        margin-right: 92px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-bottom: 40px;
+        &__title{
+            @include subTitle;
+        }
+        &__location{
+            @include contact;
+            font-size: 18px!important;
+            display: flex;
+            p{
+                margin: 10px;
+                margin-bottom: 20px;
+            }
+            &__logo{
+                display: block;
+                height: 50px;
+                margin-right: 48px;
+            }
+            &__right{
+                text-align: right;
+            }
+        }
+        &__button{
+            @include button;
+            font-size: 20px!important;
+            margin-bottom: 0;
+            text-decoration: none!important;
+            align-self: flex-end;
+            position: absolute;
+            bottom: 0px;
+        }        
+    }
+}

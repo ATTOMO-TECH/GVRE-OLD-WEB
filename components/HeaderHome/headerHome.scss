@@ -1,0 +1,215 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/media.scss';
+
+.headerHome{
+    position: absolute;
+    top: 15px;
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__logo{
+        height: 50px;
+        width: 50px;
+        margin-left: 25px;
+        img{
+            filter: brightness(500%) saturate(500%);
+        }
+    }
+    &__menu{
+        &__burguer{
+            display: block;
+            margin-right: 25px;
+        }
+        &__list{
+            position: absolute;
+            background-color: white;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            right: 0;
+            top: -30px;
+            padding: 0;
+            padding-top: 10px;
+            margin-top: 0;
+            width: 200px;
+            height: 100vh;
+            @include textMobile;
+            font-size: 24px!important;
+            &__close{
+                align-self: flex-end;
+                margin-right: 25px;
+            }
+            li{
+                margin-top: 0px;
+                border-bottom: solid;
+                border-width: 2px;
+                border-color: rgb(231, 231, 231);
+                padding-bottom: 20px;
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                @include textMobile;
+                a{
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+            &__GV{
+                &__name{
+                    position: relative;
+                    text-align: center;
+                    &__menu{
+                        margin-top: 20px;
+                        padding: 0;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        li{
+                            text-align: center;
+                            width: 100%;
+                            margin: 0;
+                            margin-right: 0;
+                            border: none;
+                            padding-bottom: 5px;
+                            a{
+                                color: rgb(151, 151, 151);
+                            }
+                        }
+                    }
+                }:hover ~ ul{
+                    display: flex;
+                }
+            }
+            &__social{
+                height: 25%;
+                border: none!important;
+                div{
+                    height: 100%;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    img{
+                        margin: 30px;
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+            }
+            &__home{
+                @include textBlackMobile;
+                padding-top: 0px;
+            }
+            &__contact{
+                border: none ;
+            }
+        }
+    }
+}
+.notVisibleMenu{
+    display: none ;
+}
+
+@include desktop {
+    .headerHome{
+        justify-content: flex-start;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
+        &__logo{
+            height: 45px;
+            width: 45px;
+            margin-top: -20px;
+        }
+        &__menu{
+            width: 100%;
+            &__burguer{
+                display: none;
+            }
+            &__list{
+                position: initial;
+                background-color: transparent;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                align-items: initial;
+                justify-content: space-around;
+                right: initial;
+                top: initial;
+                padding: 0;
+                padding-top: 0px;
+                width: 100%;
+                height: auto;
+                @include categoriesLink;
+                font-size: 18px!important;
+                color: white;
+                margin-top: 5px;
+                &__close{
+                    display: none;
+                }
+                li{
+                    border-bottom: none;
+                    padding-bottom: 20px;
+                    width: auto;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: initial;
+                    @include text;
+                    font-size: 18px!important;
+                    a{
+                        color: white;
+                    }
+                }
+                &__GV{
+                    &__name{
+                        position: relative;
+                        margin-top: 0;
+                        color: white!important;
+                        &__menu{
+                            display: none;
+                            position: absolute;
+                            top: 20px;
+                            left: 0;
+                            padding: 10px;
+                            flex-direction: column;
+                            background-color: white;
+                            width: 180%;
+                            align-items: baseline;
+                            li{
+                                width: auto;
+                                margin: 10px;
+                                border: none;
+                                padding-bottom: 5px;
+                                text-align: left;
+                                a{
+                                    color: black;
+                                }
+                            }
+                        }
+                    }
+                }:hover ul{
+                    display: flex;
+                }
+                &__social{
+                    display: none!important;
+                }
+                &__home{
+                    display: none!important;
+                }
+                &__contact{
+                    border: none;
+                }
+            }
+        }
+    }
+    .notVisibleMenu{
+        display: flex ;
+    }
+}

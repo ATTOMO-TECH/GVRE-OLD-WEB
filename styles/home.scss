@@ -1,0 +1,838 @@
+@import '../styles/fonts.scss';
+@import '../styles/media.scss';
+
+.home{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    &__top{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: url('../assets/home/cabecera1.jpg');
+        background-size: cover;
+        background-position-x: -250px;
+        height: 90vh;
+        &__text{
+            text-align: center;
+            margin-top: 100px;
+            &__title{
+                @include titleHomeMobile;
+                margin-bottom:0px;
+            }
+            &__content{
+                margin-top: 0px;
+                @include textHomeMobile
+            }
+        }
+        &__buttons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            a{
+                @include buttonHomeMobile;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                margin-left: 15px;
+            }
+        }
+        &__arrow{
+            position: absolute;
+            bottom: 15px;
+            left: 20%;
+            right: 20%;
+            animation-duration: 0.7s;
+            animation-name: bounce;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            span{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    &__categories{
+        margin-bottom: 135px;
+        &__title{
+            @include subTitleMobile;
+            margin-left: 10px;
+            padding: 30px 0px;
+        }
+        &__container{
+            display: flex;
+            overflow-x: scroll;
+            padding-bottom: 20px;
+            &__option{
+                margin: 10px;
+                border-bottom: solid;
+                border-width: 2px;
+                border-color: rgb(201, 201, 201);
+                padding-bottom: 30px;
+                text-decoration: none;
+                a{
+                    text-decoration: none;
+                    color: black;
+                }
+                &__residential{
+                    width: 200px;
+                    height: 300px;
+                    background-image: url('../assets/home/residencial.jpg');
+                    background-size: cover;
+                    background-position-x: right;
+                }
+                &__patrimonial{
+                    width: 200px;
+                    height: 300px;
+                    background-image: url('../assets/home/patrimonio.jpg');
+                    background-size: cover;
+                }
+                &__art{
+                    width: 200px;
+                    height: 300px;
+                    background-image: url('../assets/home/arte.jpg');
+                    background-size: cover;
+                }
+                &__catalog{
+                    width: 200px;
+                    height: 300px;
+                    background-image: url('../assets/home/catalogo.jpg');
+                    background-size: cover;
+                    background-position-x: center;
+                }
+                &__name{
+                    @include categoriesLinkMobile;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 12px 0px 0px;
+
+                }
+            }
+        }
+    }
+    &__more{
+        width: 78%;
+        height: 450px;
+        display: flex;
+        align-items: flex-end;
+        align-self: center;
+        justify-self: center;
+        position: relative;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-right: 8%;
+        border-style: solid;
+        border-width: 1px;
+        padding-bottom: 40px;
+        &__image{
+            width: 110%;
+            height: 250px;
+            position: absolute;
+            right: -19%;
+            top: -10%;
+            background-image: url('../assets/home/residencial.jpg');
+            background-size: cover;
+        }
+        &__image2{
+            width: 110%;
+            height: 250px;
+            position: absolute;
+            right: -19%;
+            top: -10%;
+            background-image: url('../assets/home/oficina.jpg');
+            background-size: cover;
+        }
+        &__text{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            margin-left: 25px;
+            margin-right: 20px;
+            right: -20%;
+            &__title{
+                @include subSubTitleMobile;
+                font-size: 22px!important;
+                margin: 22px 0px;
+            }
+            &__description{
+                @include textMobile
+            }
+            &__link{
+                @include textBlackMobile;
+                text-align: right;
+                margin-right: 20px;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: flex-end;                
+                span{
+                    position: relative;
+                    img{
+                        position: relative;
+                        bottom: -3px;
+                        width: 30px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+    &__moreB{
+        width: 78%;
+        height: 450px;
+        display: flex;
+        align-items: flex-end;
+        align-self: center;
+        justify-self: center;
+        position: relative;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 8%;
+        border-style: solid;
+        border-width: 1px;
+        padding-bottom: 40px;
+        &__image{
+            width: 110%;
+            height: 250px;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            background-image: url('../assets/home/venda.jpg');
+            background-size: cover;
+        }
+        &__image2{
+            width: 110%;
+            height: 250px;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            background-image: url('../assets/home/venda.jpg');
+            background-size: cover;
+        }
+        &__text{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            margin-left: 20px;
+            margin-right: 25px;
+            left: -20%;
+            &__title{
+                @include subSubTitleMobile;
+                font-size: 22px!important;
+                margin: 22px 0px;
+            }
+            &__description{
+                @include textMobile
+            }
+            &__link{
+                @include textBlackMobile;
+                text-align: right;
+                margin-right: 20px;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: flex-end;     
+                border: none;
+                background-color: transparent;
+                span{
+                    position: relative;
+                    img{
+                        position: relative;
+                        bottom: -3px;
+                        width: 30px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+    &__otherCategories{
+        margin-left: 24px;
+        margin-right: 24px;
+        &__title{
+            @include subTitleMobile;
+            padding: 30px 0px;
+
+        }
+        &__categories{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &__item{
+                border-bottom: solid;
+                border-width: 2px;
+                padding-bottom: 20px;
+                margin-bottom: 30px;
+                border-color: rgb(211, 211, 211);
+                text-decoration: none;
+                &__image{
+                    width: 100%;
+                    max-width: 300px;
+                    height: 300px;
+                }
+                &__link{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-decoration: none;
+                    margin-top: 0px;
+                    padding-top: 20px;
+                    p{
+                        @include textMobile;
+
+                    }
+                }
+            }
+        }
+    }
+    &__outstanding{
+        margin-top: 36px;
+        margin-left: 24px;
+        &__title{
+            @include subTitleMobile;
+            margin-bottom: 21px;
+        }
+        &__position{
+            display: flex;
+            flex-direction: row;
+            overflow-x: scroll;
+            padding-bottom: 50px;
+            &__images{
+                position: relative;
+                margin-left: 8px;
+                margin-right: 8px;
+                border-bottom: solid;
+                border-color: rgba(128, 128, 128, 0.432);
+                border-width: 2px;
+                padding-bottom: 0px;
+                text-decoration: none;
+                a{
+                    text-decoration: none;
+                }
+                &__destacado{
+                    position: absolute;
+                    background-color: white;
+                    width: 100px;
+                    height: 34px;
+                    top: 17px;
+                    left: 17px;
+                    @include textMobile;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                &__image{
+                    width: 294px;
+                    height: 199px;
+                }
+                &__text{
+                    text-align: center;
+                    position: relative;
+                    &__price{
+                        @include textHomeMobile;
+                        color: black!important;
+                        width: 100%;
+                        height: 32px;
+                        position: absolute;
+                        top: -55px;
+                        background-color: rgba(255, 255, 255, 0.418);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center
+                    }
+                    &__title{
+                        @include textBlackMobile;
+                        font-weight: 600!important;
+                        margin-top: 5px;
+                        margin-bottom: 0;
+                    }
+                    &__street{
+                        @include contact;
+                        font-size: 12px!important;
+                        margin-top: 7px;
+                        margin-bottom: 0;
+                    }
+                }
+                &__item{
+                    &__text{
+                        &__characteristics{
+                            list-style: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0;
+                            margin-top:0;
+                            margin-bottom: 0;
+                            sup{
+                                font-size: 8px;
+                                margin-bottom: 3px;
+                            }
+                            li{
+                                @include litleText;
+                                font-size: 11px!important;
+                                display: flex;
+                                align-items: center;
+                                margin-left: 5px;
+                                margin-right: 5px;
+                                span{
+                                    margin-right: 5px;
+                                }
+                            }
+                            &__car{
+                                span{
+                                    img{
+                                        width: 30px!important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &__buttons{
+            display: none;
+        }
+    }
+}
+.shortArrow{
+    display: none;
+}
+.longArrow{
+    display: block;
+}
+.notVisible{
+    display: flex;
+}
+
+//----------------------------desktop----------------------------------------------------------
+
+@include desktop {
+    .home{
+        &__top{
+            height: 100vh;
+            background-position-x: center;
+            &__text{
+                padding-top: 50px;
+                &__title{
+                    @include titleHome
+                }
+                &__content{
+                    @include textHome
+                }
+            }
+            &__buttons{
+                display: none;
+            }
+            &__arrow{
+                span{
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+        &__categories{
+            margin-bottom: 0px;
+            &__title{
+                @include subTitle;
+                margin-left: 92px;
+                margin-right: 86px;
+                margin-bottom: 40px;
+                margin-top: 80px;
+            }
+            &__container{
+                overflow-x: hidden;
+                margin-left: 86px;
+                margin-right: 86px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 224px;
+                &__option{
+                    width: 24%;
+                    padding-bottom: 40px;
+                    &__residential{
+                        width: 100%;
+                        height: 437px;
+                    }
+                    &__patrimonial{
+                        width: 100%;
+                        height: 437px;
+                    }
+                    &__art{
+                        width: 100%;
+                        height: 437px;
+                    }
+                    &__catalog{
+                        width: 100%;
+                        height: 437px;
+                    }
+                    &__name{
+                        @include categoriesLink
+                    }
+                }
+            }
+        }
+        &__more{
+            height: 500px ;
+            align-items: flex-start;
+            border-color: rgb(130, 130, 130);
+            margin-bottom: 100px;
+            &__image{
+                width: 80%;
+                height: 550px ;
+            }
+            &__image2{
+                width: 80%;
+                height: 550px ;
+            }
+            &__text{
+                width: 40%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 30px;
+                right: initial;
+                left:-3%;
+                &__title{
+                    @include subSubTitle;
+                    margin-bottom:31px;
+                }
+                &__description{
+                    margin-top: 0;
+                    margin-bottom: 12px;
+                    @include text
+                }
+                &__link{
+                    margin-top: 0px;
+                    @include more;
+                }
+            }
+        }
+        &__moreB{
+            height: 500px ;
+            align-items: flex-start;
+            border-color: rgb(130, 130, 130);
+            margin-bottom: 100px;
+            &__image{
+                width: 80%;
+                height: 550px;
+            }
+            &__image2{
+                width: 80%;
+                height: 550px;
+            }
+            &__text{
+                width: 40%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 30px;
+                left: initial;
+                right:-3%;
+                &__title{
+                    @include subSubTitle;
+                    margin-bottom:31px;
+                }
+                &__description{
+                    margin-top: 0;
+                    margin-bottom: 12px;
+                    @include text
+                }
+                &__link{
+                    margin-top: 0px;
+                    @include more;
+                }
+            }
+        }
+        &__otherCategories{
+            margin-left: 86px;
+            margin-right: 86px;
+            &__title{
+                @include subTitle;
+                margin-left: 4px;
+            }
+            &__categories{
+                flex-direction: row;
+                justify-content: space-between;
+                &__item{
+                    width: 33.333333%;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    padding-bottom: 30px;
+                    &__image{
+                        width: 100%;
+                        height: 405px;
+                        max-width: none;
+                    }
+                    &__link{
+                        margin-top: -15px;
+                        p{
+                            @include text;
+    
+                        }
+                    }
+                }
+            }
+        }
+        &__outstanding{
+            margin-top: 136px;
+            margin-left: 74px;
+            &__title{
+                @include subTitle;
+                margin-left: 20px;
+                margin-bottom: 40px;
+                margin-top: 0;
+            }
+            &__position{
+                display: flex;
+                flex-direction: row;
+                overflow-x: hidden;
+                padding-bottom: 72px;
+                &__images{
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    border-bottom: solid;
+                    border-color: rgba(128, 128, 128, 0.432);
+                    border-width: 2px;
+                    max-width: 664px;
+                    a{
+                        text-decoration: none;
+                    }
+                    &__image{
+                        width: 450px;
+                        height: 300px;
+                    }
+                    &__text{
+                        text-align: center;
+                        position: relative;
+                        &__price{
+                            @include textHome;
+                            color: black!important;
+                            width: 100%;
+                            height: 75px;
+                            position: absolute;
+                            top: -115px;
+                            background-color: rgba(255, 255, 255, 0.418);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center
+                        }
+                        &__title{
+                            @include more;
+                            font-weight: 600!important;
+                            margin-top: 13px;
+                            margin-bottom: 0;
+                        }
+                        &__street{
+                            @include contact;
+                            font-size: 18px!important;
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    &__item{
+                        &__text{
+                            &__characteristics{
+                                list-style: none;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 0;
+                                li{
+                                    @include litleText;
+                                    font-size: 11px!important;
+                                    display: flex;
+                                    align-items: center;
+                                    margin-left: 15px;
+                                    margin-right: 15px;
+                                    span{
+                                        margin-right: 5px;
+                                        height: 15px;
+                                        img{
+                                            height: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__buttons{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                &__prev{
+                    background-color: transparent;
+                    border: none;
+                    transform: rotate(180deg);
+                    margin-right: 29px;
+                    margin-left: 15px;
+                }
+                &__next{
+                    background-color: transparent;
+                    border: none;
+                    margin-right: 75px;
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+    .shortArrow{
+        display: block;
+    }
+    .longArrow{
+        display: none;
+    }
+    .notVisible{
+        display: none;
+    }
+}
+
+//-------------------------------tablet--------------------------
+
+@include tablet {
+    .home{
+        &__top{
+            height: 600px;
+            background-position-x: center;
+            &__text{
+                &__title{
+                    @include titleHome
+                }
+                &__content{
+                    @include textHome
+                }
+            }
+            &__buttons{
+                display: none;
+            }
+        }
+        &__categories{
+            margin: 50px 0px;
+            &__title{
+                margin-left: 100px;
+                margin-right: 100px;
+                padding-bottom: 20px;
+            }
+            &__container{
+                overflow-x: hidden;
+                margin-left: 90px;
+                margin-right: 100px;
+                &__option{
+                    width: 24%;
+                    &__residential{
+                        width: 100%;
+                        height: 200px;
+                    }
+                    &__patrimonial{
+                        width: 100%;
+                        height: 200px;
+                    }
+                    &__art{
+                        width: 100%;
+                        height: 200px;
+                    }
+                    &__catalog{
+                        width: 100%;
+                        height: 200px;
+                    }
+                }
+            }
+        }
+        &__more{
+            height: 300px;
+            align-items: flex-start;
+            border-color: rgb(130, 130, 130);
+            margin-bottom: 50px;
+            &__image{
+                width: 80%;
+                height: 350px;
+            }
+            &__image2{
+                width: 80%;
+                height: 350px;
+            }
+            &__text{
+                width: 40%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 30px;
+                right: initial;
+                left:-3%;
+                &__title{
+                    margin: 22px 0px
+                }
+            }
+        }
+        &__moreB{
+            height: 300px;
+            align-items: flex-start;
+            border-color: rgb(130, 130, 130);
+            margin-bottom: 100px;
+            &__image{
+                width: 80%;
+                height: 350px;
+            }
+            
+            &__image2{
+                width: 80%;
+                height: 350px;
+            }
+            &__text{
+                width: 40%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 30px;
+                left: initial;
+                right:-3%;
+                &__title{
+                    margin: 22px 0px
+                }
+            }
+        }
+        &__otherCategories{
+            &__categories{
+                flex-direction: row;
+                justify-content: space-around;
+                &__item{
+                    &__image{
+                        width: 225px;
+                        height: 225px;
+                    }
+                }
+            }
+        }
+        &__outstanding{
+            margin: 30px;
+            margin-bottom: 0;
+            &__carousel{
+                height: 300px;
+            }
+        }
+    }
+    .shortArrow{
+        display: block;
+    }
+    .longArrow{
+        display: none;
+    }
+    .notVisible{
+        display: flex ;
+    }
+}
+
+@keyframes bounce {
+    from {
+        bottom: 15px;
+    }
+    to {
+        bottom:30px;
+    }
+}
