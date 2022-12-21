@@ -3,9 +3,12 @@ import './../styles/home.scss'
 import '../components/HeaderHome/headerHome.scss'
 import '../components/ContactInfo/contactIndex.scss'
 import './../components/Footer/footer.scss'
+import './../styles/filterResidential.scss'
+import './../components/Header/header.scss';
 
 import '../styles/index.scss'
 import '../styles/globals.scss'
+import Provider from '../providers/generalProvider'
 // Componente que envuelve la app. 
 /**
  * NOTAS: Este componente envuelve toda la app. Todo lo que se muestra aquí se renderiza para cada página. Es por eso que aquí importaremos nuestros estilos globales.
@@ -15,6 +18,8 @@ import '../styles/globals.scss'
  */
 export default function App({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <Provider>
+      <Component {...pageProps} />
+    </Provider>
   )
 }
