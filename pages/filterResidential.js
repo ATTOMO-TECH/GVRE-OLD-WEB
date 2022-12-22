@@ -45,6 +45,7 @@ import Link, { LinkProps } from 'next/link';
 import routes from './../config/routes';
 import { getZoneId } from './../globalFunctions/MapZones/MapZones';
 import Image from 'next/image';
+import Router from 'next/router';
 
 export default function FilterResidential() {
 
@@ -166,13 +167,8 @@ export default function FilterResidential() {
 
     const filterResults = () => {
         let activeFilters = {}
-
-        if (selected.length > 0) {
-            const selectedIds = getZoneId(selected)
-            activeFilters = { ...activeFilters, zone: selectedIds }
-            /* console.log(selectedIds) */
-        }
-
+        const queryString = []
+        
         if (itemPage.length) {
             activeFilters = { ...activeFilters, showOnWeb: itemPage[0] }
             /* console.log(itemPage) */
@@ -181,33 +177,60 @@ export default function FilterResidential() {
         if (saleOrRent.length) {
             activeFilters = { ...activeFilters, adType: saleOrRent }
             /* console.log(saleOrRent) */
+            const queryAdType = saleOrRent.join('-')
+            const query = `tipo=${queryAdType}`
+            queryString.push(query)
         }
 
         if (typeHouse.length) {
             activeFilters = { ...activeFilters, adBuildingType: typeHouse }
+            const queryAdBuildingType = typeHouse.join('-')
+            const query = `tipodeinmueble=${queryAdBuildingType}`
+            queryString.push(query)
         }
 
         if (elementId) {
             activeFilters = { ...activeFilters, adReference: elementId }           
+            const query = `referencia=${elementId}`
+            queryString.push(query)
+        }
+        if (selected.length > 0) {
+            const selectedIds = getZoneId(selected)
+            activeFilters = { ...activeFilters, zone: selectedIds }
+            /* console.log(selectedIds) */
+            const querySelected = selectedIds.join('-')
+            const query = `zona=${querySelected}`
+            queryString.push(query)
         }
 
         if (extras.length) {
             if (extras.includes('garage')) {
                 activeFilters = { ...activeFilters, garage: true }
+                const query = `garaje=${true}`
+                queryString.push(query)
             }
 
             if (extras.includes('swimmingPool')) {
                 activeFilters = { ...activeFilters, swimmingPool: true }
+                const query = `piscina=${true}`
+                queryString.push(query)
             }
 
             if (extras.includes('terrace')) {
                 activeFilters = { ...activeFilters, terrace: true }
+                const query = `terraza=${true}`
+                queryString.push(query)
             }
         }
         /* console.log(activeFilters) */
         window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters))
-    }
+        const queryPage = `page=1`
+        queryString.push(queryPage)
+        const query = queryString.join('&')
+        console.log(query)
+        Router.push(`${routes.Residential}/${1}?${query}`)
 
+    }
     useEffect(() => {
         if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '') {
             setDisableButton(true)
@@ -393,8 +416,9 @@ export default function FilterResidential() {
                         </div>
                     </div>
                     <div className='selectors__buscar'>
+                        {/* href={`${routes.Residential}/${1}`} */}
                         {disableButton === false ?
-                            <Link onClick={filterResults} className='selectors__buscar__all' href={`${routes.Residential}/${1}`}>Ver todos</Link>
+                            <button onClick={filterResults} className='selectors__buscar__all' >Ver todos</button>
                             :
                             <button className='selectors__buscar__allDisabled'>Ver todos</button>
                         }
@@ -403,10 +427,11 @@ export default function FilterResidential() {
                             // </button>
                             /**  Comentado para probar a hacer la llamada sin que vaya a la vista de Residential
                             */
-                            <Link className='selectors__buscar__search'
+                            <button className='selectors__buscar__search'
                                 onClick={filterResults}
-                                href={`${routes.Residential}/${1}`}>Buscar
-                            </Link>
+                                //href={`${routes.Residential}/${1}?${queryURL}`}
+                                >Buscar
+                            </button>
                             :
                             <button className='selectors__buscar__searchDisabled' >Buscar</button>
                         }

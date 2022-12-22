@@ -70,7 +70,7 @@ let localFilters = "{}";
     }
 const filt = JSON.parse(localFilters);
 
-export default function Residential({orderedItems, elements}){
+export default function Residential({orderedItems, elements, pages}){
     const router = useRouter();
     const page = router.query.page;
 
@@ -140,7 +140,7 @@ export default function Residential({orderedItems, elements}){
             )
         }
     }
-    const pageCount = elements / perPage;
+    const pageCount = pages;
     // if (typeof window !== 'undefined'){
     //     window.localStorage.getItem('totalAds')
     //     pageCount = Math.ceil(parseInt(window?.localStorage.getItem('totalAds')) / perPage);
@@ -1332,43 +1332,33 @@ export default function Residential({orderedItems, elements}){
 }
 
 export async function getServerSideProps(context){
-    //if (typeof window !== 'undefined') {
-        console.log('query1',context.query)
-        const {page} = context.query
-        console.log('query2',context.query.filters)
-        const filters = context.query.filters !== undefined ? JSON.parse(context.query.filters) : {}
-        //console.log('pagina',page)
-    let activeFilters = filters ? filters : {};
-        const pageNum = parseInt(page);
-        activeFilters.page = pageNum !== NaN ? pageNum : 1
-        //let splitedLocation = window.location.href.split('/');
-        //activeFilters.page = parseInt(splitedLocation[4])
-        if(localFilters !== ''){
-            if(localFilters.includes('garage')){
-                activeFilters = {...activeFilters, garage:true}
-            }
-            if(localFilters.includes('swimmingPool')){
-                activeFilters = {...activeFilters, swimmingPool:true}
-            }
-            if(localFilters.includes('terrace')){
-                activeFilters = {...activeFilters, terrace:true}
-            }
-        }
-        /* console.log(activeFilters) */
-        console.log('filters',activeFilters)
-        const {ads, totalAds} = await getResidential(activeFilters)
+        let filters = {}
+        const query = context.query
+        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page} = context.query
+        console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
+        if(tipo !== undefined)              filters = { ...filters, adType: tipo.split('-') }
+        if(tipodeinmueble !== undefined)    filters = { ...filters, adBuildingType: tipodeinmueble.split('-') }
+        if(referencia !== undefined)        filters = { ...filters, adReference: referencia }
+        if(zona !== undefined)              filters = { ...filters, zone: zona.split('-') }
+        if(garaje !== undefined)            filters = { ...filters, garage: true }
+        if(piscina !== undefined)           filters = { ...filters, swimmingPool: true }
+        if(terraza !== undefined)           filters = { ...filters, terrace: true }
+        if(page !== undefined)              filters = { ...filters, page: page }
+        
+        const {ads, totalAds} = await getResidential(filters)
+        console.log('totales',totalAds)
         const orderedItems = ads
-        const elements = totalAds -1
-        if (typeof window !== 'undefined'){
-            window.localStorage.setItem('storedState', JSON.stringify(items.ads))
-            window.localStorage.setItem('totalAds', items.totalAds-1)
-        }
+        const elements = totalAds
+        const pages = Math.ceil(elements / 30)
+    
     //}
     console.log(orderedItems.length)
         return {
             props: {
                 orderedItems,
-                elements
+                elements,
+                pages, 
+                query
             }
   }
   }
