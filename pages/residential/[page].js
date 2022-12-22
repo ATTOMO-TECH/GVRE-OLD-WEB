@@ -65,7 +65,11 @@ import { PricesSliders } from '../../styles/sliders-style';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
+let localFilters = "{}";
+    if (typeof window !== 'undefined') {
+        localFilters = window.localStorage.getItem('residentialFilters');
+    }
+const filt = JSON.parse(localFilters);
 
 export default function Residential(){
     const router = useRouter();
@@ -76,10 +80,7 @@ export default function Residential(){
     const [perPage] = useState(30);
     const [pageNumber, setPageNumber] = useState(0);
     const [pagElements, setPagElements] = useState();
-    let localFilters = "{}";
-    if (typeof window !== 'undefined') {
-        localFilters = window.localStorage.getItem('residentialFilters');
-    }
+    
     const [selected, setSelected] = useState(localFilters.includes('zone') ? JSON.parse(localFilters).zone :[]);
     const [selectedActive, setSelectedActive] = useState(false);
     const [saleOrRent, setSaleOrRent] = useState(localFilters.includes('adType') ? JSON.parse(localFilters).adType :[]);
@@ -320,7 +321,6 @@ export default function Residential(){
         activeFilters.page = 1;
         console.log('activeFilters',activeFilters)
         let splitedLocation = window.location.href.split('/');
-        console.log(splitedLocation)
         activeFilters.page = parseInt(splitedLocation[4])
         if(localFilters !== ''){
             if(localFilters.includes('garage')){
@@ -344,7 +344,7 @@ export default function Residential(){
             /* console.log(items.ads)         
             items.ads.forEach(item => console.log(item.createdAt, item.title)) */
         })
-    }, [filters, localFilters, setState])
+    }, [filters, setState])
 
     useEffect(() => {
         if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '' /* ||  surface[0] !== 0.1 || surface[1] !== 99999999.9 */ ) {
@@ -867,8 +867,6 @@ export default function Residential(){
         )
     }*/
 
-    console.log(param)
-
 
     return (
         <div className='residential'>
@@ -886,15 +884,15 @@ export default function Residential(){
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
                                         
-                                        <input type='image' className='c1' src={carretera1} alt='componente mapa' />
-                                        <input type='image' className='c2' src={carretera2} alt='componente mapa' />
-                                        <input type='image' className='c3' src={carretera3} alt='componente mapa' />
-                                        <input type='image' className='c4' src={carretera4} alt='componente mapa' />
-                                        <input type='image' className='c5' src={carretera5} alt='componente mapa' />
-                                        <input type='image' className='c6' src={carretera6} alt='componente mapa' />
-                                        <input type='image' className='c62' src={carretera62} alt='componente mapa' />
-                                        <input type='image' className='c7' src={carretera7} alt='componente mapa' />
-                                        <input type='image' className='c8' src={carretera8} alt='componente mapa' />
+                                        <Image className='c1' src={carretera1} alt='componente mapa' />
+                                        <Image className='c2' src={carretera2} alt='componente mapa' />
+                                        <Image className='c3' src={carretera3} alt='componente mapa' />
+                                        <Image className='c4' src={carretera4} alt='componente mapa' />
+                                        <Image className='c5' src={carretera5} alt='componente mapa' />
+                                        <Image className='c6' src={carretera6} alt='componente mapa' />
+                                        <Image className='c62' src={carretera62} alt='componente mapa' />
+                                        <Image className='c7' src={carretera7} alt='componente mapa' />
+                                        <Image className='c8' src={carretera8} alt='componente mapa' />
                                         {
                                             getMaxPrices ? 
                                             <ClipLoader color="#000000" size={40} className='cliploader' />
@@ -907,7 +905,7 @@ export default function Residential(){
                                                     : ""
                                                 }`}
                                         >
-                                            <input type='image' src={mocl} alt='componente mapa' />
+                                            <Image src={mocl} alt='componente mapa' />
                                             <p>Monte <br /> Claro</p>
                                             <div></div>
                                         </button>
@@ -918,7 +916,7 @@ export default function Residential(){
                                                     : ""
                                                 }`}
                                         >
-                                            <input type='image' src={moal} alt='componente mapa' />
+                                            <Image src={moal} alt='componente mapa' />
                                             <p>Monte<br />Alina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Prado Largo' id='prla' 
@@ -928,7 +926,7 @@ export default function Residential(){
                                                     : ""
                                                 }`}
                                         >
-                                            <input type='image' src={prla} alt='componente mapa' />
+                                            <Image src={prla} alt='componente mapa' />
                                             <p>Prado<br />Largo</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Las Encinas' id='enci' 
@@ -937,7 +935,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={enci} alt='componente mapa' />
+                                            <Image src={enci} alt='componente mapa' />
                                             <p>Las Encinas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Alamo de Bulanas' id='alam' 
@@ -946,7 +944,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={alam} alt='componente mapa' />
+                                            <Image src={alam} alt='componente mapa' />
                                             <p>Álamos de<br />Bularas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Florida' id='flori' 
@@ -955,7 +953,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={flori} alt='componente mapa' />
+                                            <Image src={flori} alt='componente mapa' />
                                             <p>La Florida</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Finca' id='finc' 
@@ -964,7 +962,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={finc} alt='componente mapa' />
+                                            <Image src={finc} alt='componente mapa' />
                                             <p>La Finca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Somosaguas' id='somo' 
@@ -973,7 +971,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={somo} alt='componente mapa' />
+                                            <Image src={somo} alt='componente mapa' />
                                             <p>Somosaguas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Aravaca' id='arav' 
@@ -982,7 +980,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={arav} alt='componente mapa' />
+                                            <Image src={arav} alt='componente mapa' />
                                             <p>Aravaca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Valdemarin' id='vald1' 
@@ -991,8 +989,8 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={vald1} alt='componente mapa' />
-                                            <input type='image' className='vald2' src={vald2} alt='componente mapa' />
+                                            <Image src={vald1} alt='componente mapa' />
+                                            <Image className='vald2' src={vald2} alt='componente mapa' />
                                             <p>Valdemarín</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Colonia Fuentelarreyna' id='fuen1' 
@@ -1001,8 +999,8 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={fuen1} alt='componente mapa' />
-                                            <input type='image' className='fuen2' src={fuen2} alt='componente mapa' />
+                                            <Image src={fuen1} alt='componente mapa' />
+                                            <Image className='fuen2' src={fuen2} alt='componente mapa' />
                                             <p>Fuentelarreina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Puerta de Hierro' id='puer' 
@@ -1011,7 +1009,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <input type='image' src={puer} alt='componente mapa' />
+                                            <Image src={puer} alt='componente mapa' />
                                             <p>Puerta de <br />Hierro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Rosales' id='rosa' 
@@ -1020,7 +1018,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <input type='image' src={rosa} alt='componente mapa' />
+                                            <Image src={rosa} alt='componente mapa' />
                                             <p>Rosales</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Palacio' id='pala' 
@@ -1029,7 +1027,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <input type='image' src={pala} alt='componente mapa' />
+                                            <Image src={pala} alt='componente mapa' />
                                             <p>Palacio</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Mirasierra' id='mira' 
@@ -1038,7 +1036,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={mira} alt='componente mapa' />
+                                            <Image src={mira} alt='componente mapa' />
                                             <p>Mirasierra</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Almagro' id='alma' 
@@ -1047,7 +1045,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={alma} alt='componente mapa' />
+                                            <Image src={alma} alt='componente mapa' />
                                             <p>Almagro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Justicia' id='just' 
@@ -1056,7 +1054,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={just} alt='componente mapa' />
+                                            <Image src={just} alt='componente mapa' />
                                             <p>Justicia</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Cortes' id='cort' 
@@ -1065,7 +1063,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={cort} alt='componente mapa' />
+                                            <Image src={cort} alt='componente mapa' />
                                             <p>Cortes</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='nuev' 
@@ -1074,7 +1072,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={nuev} alt='componente mapa' />
+                                            <Image src={nuev} alt='componente mapa' />
                                             <p>Nueva España</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='hisp' 
@@ -1083,7 +1081,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={hisp} alt='componente mapa' />
+                                            <Image src={hisp} alt='componente mapa' />
                                             <p>Hispano <br /> América</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='El Viso' id='viso' 
@@ -1092,7 +1090,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={viso} alt='componente mapa' />
+                                            <Image src={viso} alt='componente mapa' />
                                             <p>El Viso</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Barrio Salamanca' id='sala' 
@@ -1101,7 +1099,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={sala} alt='componente mapa' />
+                                            <Image src={sala} alt='componente mapa' />
                                             <p>Salamanca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Jeronimos' id='jero' 
@@ -1110,7 +1108,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={jero} alt='componente mapa' />
+                                            <Image src={jero} alt='componente mapa' />
                                             <p>Jerónimos</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Moraleja' id='mora' 
@@ -1119,7 +1117,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={mora} alt='componente mapa' />
+                                            <Image src={mora} alt='componente mapa' />
                                             <p>Moraleja</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Conde de Orgaz' id='cond' 
@@ -1128,7 +1126,7 @@ export default function Residential(){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <input type='image' src={cond} alt='componente mapa' />
+                                            <Image src={cond} alt='componente mapa' />
                                             <p>Conde<br />Orgaz</p>
                                         </button>
                                     </div>
@@ -1319,3 +1317,41 @@ export default function Residential(){
     )
   
 }
+
+export async function getServerSideProps(){
+    let state = []
+    if (typeof window !== 'undefined') {
+    let activeFilters = filt ? filt : {};
+        activeFilters.page = 1;
+        let splitedLocation = window.location.href.split('/');
+        activeFilters.page = parseInt(splitedLocation[4])
+        if(localFilters !== ''){
+            if(localFilters.includes('garage')){
+                activeFilters = {...activeFilters, garage:true}
+            }
+            if(localFilters.includes('swimmingPool')){
+                activeFilters = {...activeFilters, swimmingPool:true}
+            }
+            if(localFilters.includes('terrace')){
+                activeFilters = {...activeFilters, terrace:true}
+            }
+        }
+        /* console.log(activeFilters) */
+        getResidential(activeFilters).then(items => {
+            //setState(items.ads)
+            state = items.ads
+            window.localStorage.setItem('storedState', JSON.stringify(items.ads))
+            window.localStorage.setItem('totalAds', items.totalAds-1)
+            setIsLoading(true)
+            setIsFound(true)
+            
+            /* console.log(items.ads)         
+            items.ads.forEach(item => console.log(item.createdAt, item.title)) */
+        })
+    }
+        return {
+            props: {
+                state
+            }
+  }
+  }
