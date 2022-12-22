@@ -5,6 +5,7 @@ import '../components/ContactInfo/contactIndex.scss'
 import './../components/Footer/footer.scss'
 import './../styles/filterResidential.scss'
 import './../components/Header/header.scss';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/residential.scss'
 
 import '../styles/index.scss'

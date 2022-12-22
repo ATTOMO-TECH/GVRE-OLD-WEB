@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import routes from '../../config/routes';
 //import { Link, generatePath, NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
@@ -71,16 +70,16 @@ let localFilters = "{}";
     }
 const filt = JSON.parse(localFilters);
 
-export default function Residential(){
+export default function Residential({orderedItems, elements}){
     const router = useRouter();
     const page = router.query.page;
 
-    const [orderedItems, setOrderedItems] = useState([])
+    const [, setOrderedItems] = useState([])
     const [/* refItem */, setRefItem] = useState([])
     const [perPage] = useState(30);
     const [pageNumber, setPageNumber] = useState(0);
     const [pagElements, setPagElements] = useState();
-    
+
     const [selected, setSelected] = useState(localFilters.includes('zone') ? JSON.parse(localFilters).zone :[]);
     const [selectedActive, setSelectedActive] = useState(false);
     const [saleOrRent, setSaleOrRent] = useState(localFilters.includes('adType') ? JSON.parse(localFilters).adType :[]);
@@ -113,7 +112,7 @@ export default function Residential(){
     //const navigate = useNavigate()
     const [maxZonePrice, setMaxZonePrice] = useState(0);
     const [getMaxPrices, setGetMaxPrices] = useState(false);
-  
+
     const getTypeHouse = () => {
         setParam('')
         setRedirect(false)
@@ -121,8 +120,16 @@ export default function Residential(){
         setFilters(searchFilters)
         setFilter(!filter)
         //router.push(`${routes.Residential}/1`)
-        //router.reload()
+        router.reload()
         //window.localStorage.setItem('residentialFilters')
+        // if (typeof window !== 'undefined'){
+        //     router.push({
+        //     pathname: `${routes.Residential}/1`,
+        //     query: {
+        //       filters: JSON.stringify(window.localStorage.getItem('residentialFilters'))
+        //     }
+        //   });
+        // }
     }
 
     const setPosition = () => {
@@ -133,13 +140,13 @@ export default function Residential(){
             )
         }
     }
-    let pageCount = 0;
-    if (typeof window !== 'undefined'){
-        window.localStorage.getItem('totalAds')
-        pageCount = Math.ceil(parseInt(window.localStorage.getItem('totalAds')) / perPage);
-    }
-    const getPostItems = orderedItems
-        .map(item => {
+    const pageCount = elements / perPage;
+    // if (typeof window !== 'undefined'){
+    //     window.localStorage.getItem('totalAds')
+    //     pageCount = Math.ceil(parseInt(window?.localStorage.getItem('totalAds')) / perPage);
+    //     console.log(pageCount)
+    // }
+    const getPostItems = orderedItems?.map(item => {
             return item.department === "Residencial" && item.showOnWeb === true ?
                 <div onClick={setPosition} className='residential__list__item' key={item._id} >
                     {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
@@ -206,7 +213,7 @@ export default function Residential(){
                         :
                         <div >
                             {/*{item.images.main > 0 && item.images.others > 0 ? OPCION 1*/}
-                            {isLoading ?
+                            {/* {isLoading ? */}
                                 <Carousel
                                     className='residential__list__item__images'
                                     showArrows={true}
@@ -219,10 +226,10 @@ export default function Residential(){
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
                             ))}*/}
                                 </Carousel>
-                                : <div className='spinnerBar'>
+                                {/* : <div className='spinnerBar'>
                                     <BarLoader color="#000000" width='80px' height='2px' className='barloader' />
                                 </div>
-                            }
+                            } */}
                             <Link onClick={() => { setState({ item: item })
                              }} href={`${routes.ItemResidential}/${item._id}`}>
                                 <div className='residential__list__item__text'>
@@ -278,7 +285,7 @@ export default function Residential(){
             state.map(item =>
                 item.department === 'Residencial' && item.showOnWeb === true ? reducedState.push(item) : null
             )
-            if (typeof window !== 'undefined') 
+            if (typeof window !== 'undefined')
             window.localStorage.setItem(
                 'storedState', JSON.stringify(reducedState)
             )
@@ -291,7 +298,7 @@ export default function Residential(){
         if(localFilters.includes('swimmingPool')) extrasLocal = [...extrasLocal, 'swimmingPool']
         if(localFilters.includes('terrace')) extrasLocal = [...extrasLocal, 'terrace']
         setExtras(extrasLocal)
-    },[localFilters])
+    },[])
 
     useEffect(() => {
         const localState = window.localStorage.getItem('storedState')
@@ -307,7 +314,7 @@ export default function Residential(){
         setPageNumber(parseInt(splitedLocation[4]) - 1)
         for (let i = 0; i < pageCount; i++) {
             elements.push(
-                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`${window.location.origin}/residential/${i + 1}`}>{i + 1}</a></li>
+                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
             )
         }
         setPagElements(elements)
@@ -316,35 +323,35 @@ export default function Residential(){
     /**
      * Este será el useEffect que tendremos que sacar al getStaticProps()
      */
-    useEffect(() => {
-        let activeFilters = filters ? filters : {};
-        activeFilters.page = 1;
-        console.log('activeFilters',activeFilters)
-        let splitedLocation = window.location.href.split('/');
-        activeFilters.page = parseInt(splitedLocation[4])
-        if(localFilters !== ''){
-            if(localFilters.includes('garage')){
-                activeFilters = {...activeFilters, garage:true}
-            }
-            if(localFilters.includes('swimmingPool')){
-                activeFilters = {...activeFilters, swimmingPool:true}
-            }
-            if(localFilters.includes('terrace')){
-                activeFilters = {...activeFilters, terrace:true}
-            }
-        }
-        /* console.log(activeFilters) */
-        getResidential(activeFilters).then(items => {
-                setState(items.ads)
-                window.localStorage.setItem('storedState', JSON.stringify(items.ads))
-                window.localStorage.setItem('totalAds', items.totalAds-1)
-                setIsLoading(true)
-                setIsFound(true)
-                
-            /* console.log(items.ads)         
-            items.ads.forEach(item => console.log(item.createdAt, item.title)) */
-        })
-    }, [filters, setState])
+    // useEffect(() => {
+    //     let activeFilters = filters ? filters : {};
+    //     activeFilters.page = 1;
+    //     // console.log('activeFilters',activeFilters)
+    //     let splitedLocation = window.location.href.split('/');
+    //     activeFilters.page = parseInt(splitedLocation[4])
+    //     if(localFilters !== ''){
+    //         if(localFilters.includes('garage')){
+    //             activeFilters = {...activeFilters, garage:true}
+    //         }
+    //         if(localFilters.includes('swimmingPool')){
+    //             activeFilters = {...activeFilters, swimmingPool:true}
+    //         }
+    //         if(localFilters.includes('terrace')){
+    //             activeFilters = {...activeFilters, terrace:true}
+    //         }
+    //     }
+    //     /* console.log(activeFilters) */
+    //     getResidential(activeFilters).then(items => {
+    //             setState(items.ads)
+    //             window.localStorage.setItem('storedState', JSON.stringify(items.ads))
+    //             window.localStorage.setItem('totalAds', items.totalAds-1)
+    //             setIsLoading(true)
+    //             setIsFound(true)
+
+    //         /* console.log(items.ads)
+    //         items.ads.forEach(item => console.log(item.createdAt, item.title)) */
+    //     })
+    // }, [filters, setState])
 
     useEffect(() => {
         if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '' /* ||  surface[0] !== 0.1 || surface[1] !== 99999999.9 */ ) {
@@ -387,6 +394,7 @@ export default function Residential(){
                 setDisableButton(true)
             }
             let label = document.getElementsByClassName('MuiSlider-valueLabelLabel')
+            console.log(label)
             if(saleOrRent.length === 1){
                 /* console.log('entro en el if cuando la longitud es 1') */
                 setMaxPrice(99999999.9)
@@ -395,21 +403,21 @@ export default function Residential(){
                 setSurface([0, 99999999.9])
                 if (saleOrRent[0] === 'Alquiler') {
                     setDisableSliders(true)
-                    if (label[0].innerHTML === '0 €/mes') {
-                        label[0].innerHTML = '0 €/mes'
-                    }
-                    if (label[1].innerHTML === '99.999.999,9 €/mes') {
-                        label[1].innerHTML = 'max'
-                    }
+                    // if (label[0].innerHTML === '0 €/mes') {
+                    //     label[0].innerHTML = '0 €/mes'
+                    // }
+                    // if (label[1].innerHTML === '99.999.999,9 €/mes') {
+                    //     label[1].innerHTML = 'max'
+                    // }
                 }
                 if (saleOrRent[0] === 'Venta') {
                     setDisableSliders(true)
-                    if (label[0].innerHTML === '0 €') {
-                        label[0].innerHTML = '0 €'
-                    }
-                    if (label[1].innerHTML === '99.999.999,9 €') {
-                        label[1].innerHTML = 'max'
-                    }
+                    // if (label[0].innerHTML === '0 €') {
+                    //     label[0].innerHTML = '0 €'
+                    // }
+                    // if (label[1].innerHTML === '99.999.999,9 €') {
+                    //     label[1].innerHTML = 'max'
+                    // }
                 }
             }
             if (saleOrRent.length === 0 || saleOrRent.length === 2){
@@ -419,18 +427,18 @@ export default function Residential(){
                 setSurface([0, 99999999.9])
                 setDisableSliders(false)
             }
-            if (label[0].innerHTML === '0 €/mes') {
-                label[0].innerHTML = '0 €/mes'
-            }
-            if (label[1].innerHTML === '99.999.999,9 €/mes') {
-                label[1].innerHTML = 'max'
-            }
-            if (label[3].innerHTML === '99.999.999,9 m2') {
-                label[3].innerHTML = 'max'
-            }
-            if (label[2].innerHTML === '0 m2') {
-                label[2].innerHTML = '0 m2'
-            }
+            // if (label[0].innerHTML === '0 €/mes') {
+            //     label[0].innerHTML = '0 €/mes'
+            // }
+            // if (label[1].innerHTML === '99.999.999,9 €/mes') {
+            //     label[1].innerHTML = 'max'
+            // }
+            // if (label[3].innerHTML === '99.999.999,9 m2') {
+            //     label[3].innerHTML = 'max'
+            // }
+            // if (label[2].innerHTML === '0 m2') {
+            //     label[2].innerHTML = '0 m2'
+            // }
         }
     }, [filters, saleOrRent, typeHouse, extras, selected, filter, disableSliders])
 
@@ -562,7 +570,7 @@ export default function Residential(){
                     selected.splice(0, selected.length, ...newSelected);
                 })
             }
-            
+
             if(saleOrRent.length === 1){
                 setGetMaxPrices(true);
                 /* console.log(selected) */
@@ -587,7 +595,7 @@ export default function Residential(){
             setSelectedActive(false)
         }
     }
-    
+
     const selectSaleOrRent = (e) => {
         if (e.currentTarget.className === e.currentTarget.id) {
             e.currentTarget.className = `${e.currentTarget.className} activeButton`
@@ -698,7 +706,7 @@ export default function Residential(){
                 console.log(elementId)
             }*/
             if (elementId) {
-                activeFilters = { ...activeFilters, adReference: elementId }           
+                activeFilters = { ...activeFilters, adReference: elementId }
             }
             if (selected.length > 0) {
                 /* const selectedIds = getZoneId(selected) */
@@ -709,27 +717,27 @@ export default function Residential(){
                 if (extras.includes('garage')) {
                     activeFilters = { ...activeFilters, garage: true }
                 }
-    
+
                 if (extras.includes('swimmingPool')) {
                     activeFilters = { ...activeFilters, swimmingPool: true }
                 }
-    
+
                 if (extras.includes('terrace')) {
                     activeFilters = { ...activeFilters, terrace: true }
                 }
             }
             if(saleOrRent.length === 1){
                 if(saleOrRent[0] === 'Venta'){
-                    activeFilters = { ...activeFilters, maxSalePrice: price[1] }           
-                    activeFilters = { ...activeFilters, minSalePrice: price[0] }           
+                    activeFilters = { ...activeFilters, maxSalePrice: price[1] }
+                    activeFilters = { ...activeFilters, minSalePrice: price[0] }
                 }else{
-                    activeFilters = { ...activeFilters, maxRentPrice: price[1] }           
-                    activeFilters = { ...activeFilters, minRentPrice: price[0] }           
+                    activeFilters = { ...activeFilters, maxRentPrice: price[1] }
+                    activeFilters = { ...activeFilters, minRentPrice: price[0] }
                 }
             }
             if(surface){
-                activeFilters = { ...activeFilters, minSurface: surface[0] }           
-                activeFilters = { ...activeFilters, maxSurface: surface[1] }           
+                activeFilters = { ...activeFilters, minSurface: surface[0] }
+                activeFilters = { ...activeFilters, maxSurface: surface[1] }
             }
             /* console.log(activeFilters) */
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters))
@@ -867,11 +875,16 @@ export default function Residential(){
         )
     }*/
 
+    const obj = {
+        zone: ["61dfdcde3e6cc4fe56c29817"], 
+        adType: ["Venta"]
+    }
+
 
     return (
         <div className='residential'>
             <Header />
-            {orderedItems.length > 0 ?
+            {orderedItems.length >0 ?
                 <div>
                     {filter === true ?
                         <div className='residential__filter'>
@@ -883,7 +896,7 @@ export default function Residential(){
                                 </div>
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
-                                        
+
                                         <Image className='c1' src={carretera1} alt='componente mapa' />
                                         <Image className='c2' src={carretera2} alt='componente mapa' />
                                         <Image className='c3' src={carretera3} alt='componente mapa' />
@@ -894,11 +907,11 @@ export default function Residential(){
                                         <Image className='c7' src={carretera7} alt='componente mapa' />
                                         <Image className='c8' src={carretera8} alt='componente mapa' />
                                         {
-                                            getMaxPrices ? 
+                                            getMaxPrices ?
                                             <ClipLoader color="#000000" size={40} className='cliploader' />
                                             : null
                                         }
-                                        <button name='Monteclaro' onClick={!getMaxPrices ? toggleActive : null} id='mocl' 
+                                        <button name='Monteclaro' onClick={!getMaxPrices ? toggleActive : null} id='mocl'
                                         className={`mocl${
                                                 localFilters.toString().includes("61dfdc8b3e6cc4fe56c29807")
                                                     ? " active"
@@ -909,7 +922,7 @@ export default function Residential(){
                                             <p>Monte <br /> Claro</p>
                                             <div></div>
                                         </button>
-                                        <button type='image' onClick={!getMaxPrices ? toggleActive : null} name='Montealina' id='moal' 
+                                        <button type='image' onClick={!getMaxPrices ? toggleActive : null} name='Montealina' id='moal'
                                         className={`moal${
                                                 localFilters.toString().includes("61dfdc843e6cc4fe56c29805")
                                                     ? " active"
@@ -919,7 +932,7 @@ export default function Residential(){
                                             <Image src={moal} alt='componente mapa' />
                                             <p>Monte<br />Alina</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Prado Largo' id='prla' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Prado Largo' id='prla'
                                         className={`prla${
                                                 localFilters.toString().includes("61dfdc953e6cc4fe56c29809")
                                                     ? " active"
@@ -929,7 +942,7 @@ export default function Residential(){
                                             <Image src={prla} alt='componente mapa' />
                                             <p>Prado<br />Largo</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Las Encinas' id='enci' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Las Encinas' id='enci'
                                         className={`enci${
                                                 localFilters.toString().includes("61dfdc9f3e6cc4fe56c2980b")
                                                     ? " active"
@@ -938,7 +951,7 @@ export default function Residential(){
                                             <Image src={enci} alt='componente mapa' />
                                             <p>Las Encinas</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Alamo de Bulanas' id='alam' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Alamo de Bulanas' id='alam'
                                         className={`alam${
                                                 localFilters.toString().includes("61dfdca93e6cc4fe56c2980d")
                                                     ? " active"
@@ -947,7 +960,7 @@ export default function Residential(){
                                             <Image src={alam} alt='componente mapa' />
                                             <p>Álamos de<br />Bularas</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Florida' id='flori' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Florida' id='flori'
                                         className={`flori${
                                                 localFilters.toString().includes("61dfdc5f3e6cc4fe56c297ff")
                                                     ? " active"
@@ -956,7 +969,7 @@ export default function Residential(){
                                             <Image src={flori} alt='componente mapa' />
                                             <p>La Florida</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Finca' id='finc' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Finca' id='finc'
                                         className={`finc${
                                                 localFilters.toString().includes("61dfdce53e6cc4fe56c29819")
                                                     ? " active"
@@ -965,7 +978,7 @@ export default function Residential(){
                                             <Image src={finc} alt='componente mapa' />
                                             <p>La Finca</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Somosaguas' id='somo' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Somosaguas' id='somo'
                                         className={`somo${
                                                 localFilters.toString().includes("61dfdd2e3e6cc4fe56c2982d")
                                                     ? " active"
@@ -974,7 +987,7 @@ export default function Residential(){
                                             <Image src={somo} alt='componente mapa' />
                                             <p>Somosaguas</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Aravaca' id='arav' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Aravaca' id='arav'
                                         className={`arav${
                                                 localFilters.toString().includes("61dfdc733e6cc4fe56c29801")
                                                     ? " active"
@@ -983,7 +996,7 @@ export default function Residential(){
                                             <Image src={arav} alt='componente mapa' />
                                             <p>Aravaca</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Valdemarin' id='vald1' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Valdemarin' id='vald1'
                                         className={`vald1${
                                                 localFilters.toString().includes("61dfdc7b3e6cc4fe56c29803")
                                                     ? " active"
@@ -993,7 +1006,7 @@ export default function Residential(){
                                             <Image className='vald2' src={vald2} alt='componente mapa' />
                                             <p>Valdemarín</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Colonia Fuentelarreyna' id='fuen1' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Colonia Fuentelarreyna' id='fuen1'
                                         className={`fuen1${
                                                 localFilters.toString().includes("61dfdd563e6cc4fe56c2983b")
                                                     ? " active"
@@ -1003,7 +1016,7 @@ export default function Residential(){
                                             <Image className='fuen2' src={fuen2} alt='componente mapa' />
                                             <p>Fuentelarreina</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Puerta de Hierro' id='puer' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Puerta de Hierro' id='puer'
                                         className={`puer${
                                                 localFilters.toString().includes("61dfdd4b3e6cc4fe56c29837")
                                                     ? " active"
@@ -1012,7 +1025,7 @@ export default function Residential(){
                                             <Image src={puer} alt='componente mapa' />
                                             <p>Puerta de <br />Hierro</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Rosales' id='rosa' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Rosales' id='rosa'
                                         className={`rosa${
                                                 localFilters.toString().includes("61dfdcf13e6cc4fe56c2981b")
                                                     ? " active"
@@ -1021,7 +1034,7 @@ export default function Residential(){
                                             <Image src={rosa} alt='componente mapa' />
                                             <p>Rosales</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Palacio' id='pala' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Palacio' id='pala'
                                         className={`pala${
                                                 localFilters.toString().includes("61dfdd0b3e6cc4fe56c29821")
                                                     ? " active"
@@ -1030,7 +1043,7 @@ export default function Residential(){
                                             <Image src={pala} alt='componente mapa' />
                                             <p>Palacio</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Mirasierra' id='mira' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Mirasierra' id='mira'
                                         className={`mira${
                                                 localFilters.toString().includes("61dfdcb13e6cc4fe56c2980f")
                                                     ? " active"
@@ -1039,7 +1052,7 @@ export default function Residential(){
                                             <Image src={mira} alt='componente mapa' />
                                             <p>Mirasierra</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Almagro' id='alma' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Almagro' id='alma'
                                         className={`alma${
                                                 localFilters.toString().includes("61dfdcd63e6cc4fe56c29815")
                                                     ? " active"
@@ -1048,7 +1061,7 @@ export default function Residential(){
                                             <Image src={alma} alt='componente mapa' />
                                             <p>Almagro</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Justicia' id='just' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Justicia' id='just'
                                         className={`just${
                                                 localFilters.toString().includes("61dfdcfc3e6cc4fe56c2981d")
                                                     ? " active"
@@ -1057,7 +1070,7 @@ export default function Residential(){
                                             <Image src={just} alt='componente mapa' />
                                             <p>Justicia</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Cortes' id='cort' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Cortes' id='cort'
                                         className={`cort${
                                                 localFilters.toString().includes("61dfdd043e6cc4fe56c2981f")
                                                     ? " active"
@@ -1066,7 +1079,7 @@ export default function Residential(){
                                             <Image src={cort} alt='componente mapa' />
                                             <p>Cortes</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='nuev' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='nuev'
                                         className={`nuev${
                                                 localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
                                                     ? " active"
@@ -1075,7 +1088,7 @@ export default function Residential(){
                                             <Image src={nuev} alt='componente mapa' />
                                             <p>Nueva España</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='hisp' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='hisp'
                                         className={`hisp${
                                                 localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
                                                     ? " active"
@@ -1084,7 +1097,7 @@ export default function Residential(){
                                             <Image src={hisp} alt='componente mapa' />
                                             <p>Hispano <br /> América</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='El Viso' id='viso' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='El Viso' id='viso'
                                         className={`viso${
                                                 localFilters.toString().includes("61dfdcc23e6cc4fe56c29811")
                                                     ? " active"
@@ -1093,7 +1106,7 @@ export default function Residential(){
                                             <Image src={viso} alt='componente mapa' />
                                             <p>El Viso</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Barrio Salamanca' id='sala' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Barrio Salamanca' id='sala'
                                         className={`sala${
                                                 localFilters.toString().includes("61dfdd113e6cc4fe56c29823")
                                                     ? " active"
@@ -1102,7 +1115,7 @@ export default function Residential(){
                                             <Image src={sala} alt='componente mapa' />
                                             <p>Salamanca</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Jeronimos' id='jero' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Jeronimos' id='jero'
                                         className={`jero${
                                                 localFilters.toString().includes("61dfdccd3e6cc4fe56c29813")
                                                     ? " active"
@@ -1111,7 +1124,7 @@ export default function Residential(){
                                             <Image src={jero} alt='componente mapa' />
                                             <p>Jerónimos</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Moraleja' id='mora' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='La Moraleja' id='mora'
                                         className={`mora${
                                                 localFilters.toString().includes("61dfdd1d3e6cc4fe56c29827")
                                                     ? " active"
@@ -1120,7 +1133,7 @@ export default function Residential(){
                                             <Image src={mora} alt='componente mapa' />
                                             <p>Moraleja</p>
                                         </button>
-                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Conde de Orgaz' id='cond' 
+                                        <button onClick={!getMaxPrices ? toggleActive : null} name='Conde de Orgaz' id='cond'
                                         className={`cond${
                                                 localFilters.toString().includes("61dfdcde3e6cc4fe56c29817")
                                                     ? " active"
@@ -1135,14 +1148,14 @@ export default function Residential(){
                                     <div className='residential__filter__selectors__estado'>
                                         <h3>Estado</h3>
                                         <div className='residential__filter__selectors__estado__buttons'>
-                                            <button onClick={selectSaleOrRent} name='Alquiler' id='alq' 
+                                            <button onClick={selectSaleOrRent} name='Alquiler' id='alq'
                                             className={`alq${
                                                 localFilters.toString().includes("Alquiler")
                                                     ? " activeButton"
                                                     : ""
                                                 }`}
                                             >Alquiler</button>
-                                            <button onClick={selectSaleOrRent} name='Venta' id='vent' 
+                                            <button onClick={selectSaleOrRent} name='Venta' id='vent'
                                             className={`vent${
                                                 localFilters.toString().includes("Venta")
                                                     ? " activeButton"
@@ -1153,21 +1166,21 @@ export default function Residential(){
                                     <div className='residential__filter__selectors__tipo'>
                                         <h3>Tipo</h3>
                                         <div className='residential__filter__selectors__tipo__buttons'>
-                                            <button onClick={addType} name='Casa' id='casa' 
+                                            <button onClick={addType} name='Casa' id='casa'
                                             className={`casa${
                                                 localFilters.toString().includes("Casa")
                                                     ? " activeButton"
                                                     : ""
                                                 }`}
                                             >Casa</button>
-                                            <button onClick={addType} name='Piso' id='piso' 
+                                            <button onClick={addType} name='Piso' id='piso'
                                             className={`piso${
                                                 localFilters.toString().includes("Piso")
                                                     ? " activeButton"
                                                     : ""
                                                 }`}
                                             >Piso</button>
-                                            <button onClick={addType} name='Parcela' id='parcela' 
+                                            <button onClick={addType} name='Parcela' id='parcela'
                                             className={`parcela${
                                                 localFilters.toString().includes("Parcela")
                                                     ? " activeButton"
@@ -1179,21 +1192,21 @@ export default function Residential(){
                                     <div className='residential__filter__selectors__extras'>
                                         <h3>Extras</h3>
                                         <div className='residential__filter__selectors__extras__buttons'>
-                                            <button onClick={addExtra} name='swimmingPool' id='piscina' 
+                                            <button onClick={addExtra} name='swimmingPool' id='piscina'
                                             className={`piscina${
                                                 localFilters.toString().includes("swimmingPool")
                                                     ? " activeButton"
                                                     : ""
                                                 }`}
                                             >Piscina</button>
-                                            <button onClick={addExtra} name='garage' id='garaje' 
+                                            <button onClick={addExtra} name='garage' id='garaje'
                                             className={`garaje${
                                                 localFilters.toString().includes("garage")
                                                     ? " activeButton"
                                                     : ""
                                                 }`}
                                             >Garaje</button>
-                                            <button onClick={addExtra} name='terrace' id='terraza' 
+                                            <button onClick={addExtra} name='terrace' id='terraza'
                                             className={`terraza${
                                                 localFilters.toString().includes("terrace")
                                                     ? " activeButton"
@@ -1204,7 +1217,7 @@ export default function Residential(){
                                     </div>
                                     <div className='residential__filter__selectors__sliders'>
                                         <p className={disableSliders === true ? 'residential__filter__selectors__sliders__price' : 'residential__filter__selectors__sliders__priceDisabled'}>Precio €</p>
-                                        {disableSliders ? 
+                                        {disableSliders ?
                                             <PricesSliders
                                             className={'residential__filter__selectors__sliders__price' }
                                             getAriaLabel={() => 'Minimum distance'}
@@ -1248,14 +1261,14 @@ export default function Residential(){
                                     </div>
                                     <div className='residential__filter__selectors__buscar'>
                                         {disableButton === false ?
-                                            <a onClick={getTypeHouse} href={`${window.location.origin}/${routes.Residential}/1`} className='residential__filter__selectors__buscar__all'>Ver todos</a>
+                                            <a onClick={getTypeHouse} href={`${routes.Residential}/1?filters=${JSON.stringify(obj)}`} className='residential__filter__selectors__buscar__all'>Ver todos</a>
                                             :
                                             <button className='residential__filter__selectors__buscar__allDisabled'>Ver todos</button>
                                         }
                                         {disableButton === true ?
                                             <a className='residential__filter__selectors__buscar__search'
                                                 onClick={getTypeHouse}
-                                                href={`${window.location.origin}/${routes.Residential}/1`}
+                                                href={`${routes.Residential}/1?filters=${JSON.stringify(obj)}`}
                                                 >Buscar
                                             </a>
                                             :
@@ -1288,9 +1301,9 @@ export default function Residential(){
                     </div>
                     <div onClick={deletePosition} className='residential__pagination'>
                         <ul className='residential__pagination__list'>
-                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' href={`${window.location.origin}/residential/${pageNumber}`}> <Image src={mayor} alt='simbolo mayor' /> </a></li>
+                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' href={`/residential/${pageNumber}?page=${pageNumber}`}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li>
                             {pagElements}
-                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__next' href={`${window.location.origin}/residential/${pageNumber + 2}`}> <Image src={mayor} alt='simbolo menor' /> </a></li>
+                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__next' href={`/residential/${pageNumber}?page=${pageNumber + 2}`}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </a></li>
                         </ul>
                     </div>
                     <div className='residential__zoneMap'>
@@ -1315,16 +1328,21 @@ export default function Residential(){
             }
         </div>
     )
-  
+
 }
 
-export async function getServerSideProps(){
-    let state = []
-    if (typeof window !== 'undefined') {
-    let activeFilters = filt ? filt : {};
-        activeFilters.page = 1;
-        let splitedLocation = window.location.href.split('/');
-        activeFilters.page = parseInt(splitedLocation[4])
+export async function getServerSideProps(context){
+    //if (typeof window !== 'undefined') {
+        console.log('query1',context.query)
+        const {page} = context.query
+        console.log('query2',context.query.filters)
+        const filters = context.query.filters !== undefined ? JSON.parse(context.query.filters) : {}
+        //console.log('pagina',page)
+    let activeFilters = filters ? filters : {};
+        const pageNum = parseInt(page);
+        activeFilters.page = pageNum !== NaN ? pageNum : 1
+        //let splitedLocation = window.location.href.split('/');
+        //activeFilters.page = parseInt(splitedLocation[4])
         if(localFilters !== ''){
             if(localFilters.includes('garage')){
                 activeFilters = {...activeFilters, garage:true}
@@ -1337,21 +1355,20 @@ export async function getServerSideProps(){
             }
         }
         /* console.log(activeFilters) */
-        getResidential(activeFilters).then(items => {
-            //setState(items.ads)
-            state = items.ads
+        console.log('filters',activeFilters)
+        const {ads, totalAds} = await getResidential(activeFilters)
+        const orderedItems = ads
+        const elements = totalAds -1
+        if (typeof window !== 'undefined'){
             window.localStorage.setItem('storedState', JSON.stringify(items.ads))
             window.localStorage.setItem('totalAds', items.totalAds-1)
-            setIsLoading(true)
-            setIsFound(true)
-            
-            /* console.log(items.ads)         
-            items.ads.forEach(item => console.log(item.createdAt, item.title)) */
-        })
-    }
+        }
+    //}
+    console.log(orderedItems.length)
         return {
             props: {
-                state
+                orderedItems,
+                elements
             }
   }
   }
