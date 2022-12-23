@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import routes from '../../config/routes';
 //import { Link, generatePath, NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import Header from './../../components/Header/Header';
 import banera from '../../assets/SVG/mobile/anuncios/anuncios_banos.svg';
 import habit from '../../assets/SVG/mobile/anuncios/anuncios_habitaciones.svg';
-import piscina from '../../assets/SVG/mobile/anuncios/anuncios_piscina.svg';
+import piscinaImg from '../../assets/SVG/mobile/anuncios/anuncios_piscina.svg';
 import refer from '../../assets/SVG/mobile/anuncios/anuncios_referencia.svg';
 import sup from '../../assets/SVG/mobile/anuncios/anuncios_spfcie.svg';
 import filterImg from '../../assets/SVG/mobile/comun/iconoFiltros.svg';
@@ -64,15 +64,24 @@ import { PricesSliders } from '../../styles/sliders-style';
 import Link from 'next/link';
 import Image from 'next/image';
 
-let localFilters = "{}";
-    if (typeof window !== 'undefined') {
-        localFilters = window.localStorage.getItem('residentialFilters');
-    }
-const filt = JSON.parse(localFilters);
 
-export default function Residential({orderedItems, elements, pages}){
+
+export default function Residential({orderedItems, pages, query, queryFilters}){
     const router = useRouter();
-    const page = router.query.page;
+    const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page} = query
+    const arrPages = new Array(pages).fill(null)
+    const [URLwithoutPage, setURLwithoutPage] = useState([])
+    if(tipo !== undefined)              URLwithoutPage.push(`tipo=${tipo}`)
+    if(tipodeinmueble !== undefined)    URLwithoutPage.push(`tipodeinmueble=${tipodeinmueble}`)
+    if(referencia !== undefined)        URLwithoutPage.push(`referencia=${referencia}`)
+    if(zona !== undefined)              URLwithoutPage.push(`zona=${zona}`)
+    if(garaje !== undefined)            URLwithoutPage.push(`garaje=${garaje}`)
+    if(piscina !== undefined)           URLwithoutPage.push(`piscina=${piscina}`)
+    if(terraza !== undefined)           URLwithoutPage.push(`terraza=${terraza}`)
+    if(terraza !== undefined)           URLwithoutPage.push(`terraza=${terraza}`)
+    if(porfecha !== undefined)          URLwithoutPage.push(`porfecha=${porfecha}`)
+
+
 
     const [, setOrderedItems] = useState([])
     const [/* refItem */, setRefItem] = useState([])
@@ -80,6 +89,10 @@ export default function Residential({orderedItems, elements, pages}){
     const [pageNumber, setPageNumber] = useState(0);
     const [pagElements, setPagElements] = useState();
 
+    let localFilters = "{}";
+    if (typeof window !== 'undefined') {
+        localFilters = window.localStorage.getItem('residentialFilters');
+    }
     const [selected, setSelected] = useState(localFilters.includes('zone') ? JSON.parse(localFilters).zone :[]);
     const [selectedActive, setSelectedActive] = useState(false);
     const [saleOrRent, setSaleOrRent] = useState(localFilters.includes('adType') ? JSON.parse(localFilters).adType :[]);
@@ -119,17 +132,6 @@ export default function Residential({orderedItems, elements, pages}){
         const searchFilters = filterResults()
         setFilters(searchFilters)
         setFilter(!filter)
-        //router.push(`${routes.Residential}/1`)
-        router.reload()
-        //window.localStorage.setItem('residentialFilters')
-        // if (typeof window !== 'undefined'){
-        //     router.push({
-        //     pathname: `${routes.Residential}/1`,
-        //     query: {
-        //       filters: JSON.stringify(window.localStorage.getItem('residentialFilters'))
-        //     }
-        //   });
-        // }
     }
 
     const setPosition = () => {
@@ -141,11 +143,7 @@ export default function Residential({orderedItems, elements, pages}){
         }
     }
     const pageCount = pages;
-    // if (typeof window !== 'undefined'){
-    //     window.localStorage.getItem('totalAds')
-    //     pageCount = Math.ceil(parseInt(window?.localStorage.getItem('totalAds')) / perPage);
-    //     console.log(pageCount)
-    // }
+   
     const getPostItems = orderedItems?.map(item => {
             return item.department === "Residencial" && item.showOnWeb === true ?
                 <div onClick={setPosition} className='residential__list__item' key={item._id} >
@@ -185,25 +183,25 @@ export default function Residential({orderedItems, elements, pages}){
                                     <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
                                     <ul className='residential__list__item__text__characteristics'>
                                         {item.buildSurface !== 0 ?
-                                            <li><span><Image src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
+                                            <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
                                             : null}
                                         {item.plotSurface !== 0 ?
-                                            <li><span><Image src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
+                                            <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
                                             : null}
                                         {item.quality.bedrooms !== 0 ?
-                                            <li><span><Image src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
+                                            <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
                                             : null}
                                         {item.quality.bathrooms !== 0 ?
-                                            <li><span><Image src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
+                                            <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
                                             : null}
                                         {item.quality.parking !== 0 ?
-                                            <li className='residential__list__item__text__characteristics__car'><span><Image src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
+                                            <li className='residential__list__item__text__characteristics__car'><span><Image width={21} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
                                             : null}
                                         {item.quality.outdoorPool !== 0 ?
-                                            <li><span><Image src={piscina} alt='piscina' /></span>{item.quality.outdoorPool}</li>
+                                            <li><span><Image width={30} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
                                             : null}
                                         {item.adReference !== 0 ?
-                                            <li><span><Image src={refer} alt='referencia' /></span><p>Ref {item.adReference}</p></li>
+                                            <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p>Ref {item.adReference}</p></li>
                                             : null}
                                     </ul>
                                     <div className='residential__list__item__text__blocker'></div>
@@ -250,25 +248,25 @@ export default function Residential({orderedItems, elements, pages}){
                                     <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
                                     <ul className='residential__list__item__text__characteristics'>
                                         {item.buildSurface !== 0 ?
-                                            <li><span><Image src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
+                                            <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
                                             : null}
                                         {item.plotSurface !== 0 ?
-                                            <li><span><Image src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
+                                            <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
                                             : null}
                                         {item.quality.bedrooms !== 0 ?
-                                            <li><span><Image src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
+                                            <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
                                             : null}
                                         {item.quality.bathrooms !== 0 ?
-                                            <li><span><Image src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
+                                            <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
                                             : null}
                                         {item.quality.outdoorPool !== 0 ?
-                                            <li><span><Image src={piscina} alt='piscina' /></span>{item.quality.outdoorPool}</li>
+                                            <li><span><Image width={21} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
                                             : null}
                                         {item.quality.parking !== 0 ?
-                                            <li className='residential__list__item__text__characteristics__car'><span><Image src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
+                                            <li className='residential__list__item__text__characteristics__car'><span><Image width={30} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
                                             : null}
                                         {item.adReference !== 0 ?
-                                            <li><span><Image src={refer} alt='referencia' /></span><p> Ref {item.adReference}</p></li>
+                                            <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p> Ref {item.adReference}</p></li>
                                             : null}
                                     </ul>
                                     <div className='residential__list__item__text__clickable'></div>
@@ -298,7 +296,7 @@ export default function Residential({orderedItems, elements, pages}){
         if(localFilters.includes('swimmingPool')) extrasLocal = [...extrasLocal, 'swimmingPool']
         if(localFilters.includes('terrace')) extrasLocal = [...extrasLocal, 'terrace']
         setExtras(extrasLocal)
-    },[])
+    },[localFilters])
 
     useEffect(() => {
         const localState = window.localStorage.getItem('storedState')
@@ -313,45 +311,20 @@ export default function Residential({orderedItems, elements, pages}){
         let elements = []
         setPageNumber(parseInt(splitedLocation[4]) - 1)
         for (let i = 0; i < pageCount; i++) {
-            elements.push(
-                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
-            )
+            if(URLwithoutPage.length !== 0) {
+                const URL = URLwithoutPage.join('&')
+                elements.push(
+                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?${URL}&page=${i+1}`}>{i + 1}</a></li>
+                )
+            }else{
+                elements.push(
+                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
+                    )
+            }
         }
         setPagElements(elements)
-    }, [pageCount])
+    }, [URLwithoutPage, pageCount])
 
-    /**
-     * Este será el useEffect que tendremos que sacar al getStaticProps()
-     */
-    // useEffect(() => {
-    //     let activeFilters = filters ? filters : {};
-    //     activeFilters.page = 1;
-    //     // console.log('activeFilters',activeFilters)
-    //     let splitedLocation = window.location.href.split('/');
-    //     activeFilters.page = parseInt(splitedLocation[4])
-    //     if(localFilters !== ''){
-    //         if(localFilters.includes('garage')){
-    //             activeFilters = {...activeFilters, garage:true}
-    //         }
-    //         if(localFilters.includes('swimmingPool')){
-    //             activeFilters = {...activeFilters, swimmingPool:true}
-    //         }
-    //         if(localFilters.includes('terrace')){
-    //             activeFilters = {...activeFilters, terrace:true}
-    //         }
-    //     }
-    //     /* console.log(activeFilters) */
-    //     getResidential(activeFilters).then(items => {
-    //             setState(items.ads)
-    //             window.localStorage.setItem('storedState', JSON.stringify(items.ads))
-    //             window.localStorage.setItem('totalAds', items.totalAds-1)
-    //             setIsLoading(true)
-    //             setIsFound(true)
-
-    //         /* console.log(items.ads)
-    //         items.ads.forEach(item => console.log(item.createdAt, item.title)) */
-    //     })
-    // }, [filters, setState])
 
     useEffect(() => {
         if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '' /* ||  surface[0] !== 0.1 || surface[1] !== 99999999.9 */ ) {
@@ -443,11 +416,8 @@ export default function Residential({orderedItems, elements, pages}){
     }, [filters, saleOrRent, typeHouse, extras, selected, filter, disableSliders])
 
     useEffect(() => {
-        setTimeout(function () {
             const localPosition = JSON.parse(window.localStorage.getItem('storedPosition2'))
-            /*console.log('posicion',localPosition);*/
             if (localPosition !== 0 && localPosition !== null) {
-              /*console.log('hago el scroll despues de 2 s')*/
                 window.scroll({
                   top:localPosition -500
                 })
@@ -456,7 +426,6 @@ export default function Residential({orderedItems, elements, pages}){
                     { top: 0 }
                 )
             }
-        }, 2000)
     }, [])
 
     const onPrice = () => {
@@ -465,27 +434,13 @@ export default function Residential({orderedItems, elements, pages}){
             let activeFilters = JSON.parse(window.localStorage.getItem('residentialFilters'));
             activeFilters = { ...activeFilters, orderByDate: false };
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters));
-            /* console.log(activeFilters) */
-            getResidential(activeFilters).then(items => {
-                /* console.log(items) */
-                setState(items.ads)
-                window.localStorage.setItem('storedState', JSON.stringify(items.ads))
-                window.localStorage.setItem('totalAds', items.totalAds-1)
-                setIsLoading(true)
-                setIsFound(true)
-                setOrderedItems(items.ads);
-                setOrderItems (!orderItems);
-                setPageNumber(1);
-                const currentPage = document.getElementsByClassName('residential__pagination__list__item currentPage');
-                currentPage[0].classList.remove('currentPage');
-                const pageNumbers = document.getElementsByClassName('residential__pagination__list__item');
-                pageNumbers[1].classList.add("currentPage");
-                router.push(`/residential/1`);
-            })
+            let newquery = query
+            newquery.porfecha = "false"
+            toggleOrderItems()
+            navigateToNewPath(1,newquery)
 
         }
     }
-
     const onDate = () => {
         if (typeof window !== 'undefined') {
             setIsLoading(false)
@@ -493,22 +448,12 @@ export default function Residential({orderedItems, elements, pages}){
             activeFilters = { ...activeFilters, orderByDate: true }
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters));
             /* console.log(activeFilters) */
-            getResidential(activeFilters).then(items => {
-                /* console.log(items) */
-                setState(items.ads)
-                window.localStorage.setItem('storedState', JSON.stringify(items.ads))
-                window.localStorage.setItem('totalAds', items.totalAds-1)
-                setIsLoading(true)
-                setIsFound(true)
-                setOrderedItems(items.ads);
-                setOrderItems (!orderItems);
-                setPageNumber(1);
-                const currentPage = document.getElementsByClassName('residential__pagination__list__item currentPage');
-                currentPage[0].classList.remove('currentPage');
-                const pageNumbers = document.getElementsByClassName('residential__pagination__list__item');
-                pageNumbers[1].classList.add("currentPage");
-                router.push(`/residential/1`);
-            })
+            console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
+            console.log(typeof tipo)
+            let newquery = query
+            newquery.porfecha = "true"
+            toggleOrderItems()
+            navigateToNewPath(1,newquery)
         }
     }
 
@@ -693,13 +638,16 @@ export default function Residential({orderedItems, elements, pages}){
     const filterResults = () => {
         if (typeof window !== 'undefined') {
             let activeFilters = {}
-            let splitedLocation = window.location.href.split('/');
-            activeFilters.page = parseInt(splitedLocation[4])
+            let queryFilter = {}
             if (saleOrRent.length) {
                 activeFilters = { ...activeFilters, adType: saleOrRent }
+                const queryAdType = saleOrRent.join('-')
+                queryFilters = { ...queryFilters, tipo: queryAdType }
             }
             if (typeHouse.length) {
                 activeFilters = { ...activeFilters, adBuildingType: typeHouse }
+                const queryAdBuildingType = typeHouse.join('-')
+                queryFilters = { ...queryFilters, tipodeinmueble: queryAdBuildingType }
             }
             /*if (elementId.length === itemRef) {
                 activeFilters = { ...activeFilters, adReference: elementId }
@@ -707,40 +655,55 @@ export default function Residential({orderedItems, elements, pages}){
             }*/
             if (elementId) {
                 activeFilters = { ...activeFilters, adReference: elementId }
+                queryFilters = { ...queryFilters, referencia: elementId }
             }
             if (selected.length > 0) {
                 /* const selectedIds = getZoneId(selected) */
                 activeFilters = { ...activeFilters, zone: selected }
                 /* console.log(selectedIds) */
+                const querySelected = selected.join('-')
+                queryFilters = { ...queryFilters, zona: querySelected }
             }
             if (extras.length) {
                 if (extras.includes('garage')) {
                     activeFilters = { ...activeFilters, garage: true }
+                    queryFilters = { ...queryFilters, garaje: true }
                 }
 
                 if (extras.includes('swimmingPool')) {
                     activeFilters = { ...activeFilters, swimmingPool: true }
+                    queryFilters = { ...queryFilters, piscina: true }
                 }
 
                 if (extras.includes('terrace')) {
                     activeFilters = { ...activeFilters, terrace: true }
+                    queryFilters = { ...queryFilters, terraza: true }
                 }
             }
             if(saleOrRent.length === 1){
                 if(saleOrRent[0] === 'Venta'){
                     activeFilters = { ...activeFilters, maxSalePrice: price[1] }
                     activeFilters = { ...activeFilters, minSalePrice: price[0] }
+                    queryFilters = { ...queryFilters, precioventamax: price[1] }
+                    queryFilters = { ...queryFilters, precioventamin: price[0] }
                 }else{
                     activeFilters = { ...activeFilters, maxRentPrice: price[1] }
                     activeFilters = { ...activeFilters, minRentPrice: price[0] }
+                    queryFilters = { ...queryFilters, precioalquilermax: price[1] }
+                    queryFilters = { ...queryFilters, precioalquilermin: price[0] }
                 }
             }
             if(surface){
                 activeFilters = { ...activeFilters, minSurface: surface[0] }
                 activeFilters = { ...activeFilters, maxSurface: surface[1] }
+                queryFilters = { ...queryFilters, superficiemin: surface[0] }
+                queryFilters = { ...queryFilters, superficiemax: surface[1] }
             }
             /* console.log(activeFilters) */
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters))
+
+            navigateToNewPath(1, queryFilters)
+            
         }
     }
 
@@ -851,48 +814,47 @@ export default function Residential({orderedItems, elements, pages}){
         }
     }
 
-    /*const seeAll = () => {
-        const storedSOR = window.localStorage.getItem('saleOrRentStored')
-        const SOR = JSON.parse(storedSOR)
-        const array = Object.values(state2)
-        const sortArray = (a, b) => {
-            if (SOR === 'Alquiler') {
-                if (a.rent.rentValue < b.rent.rentValue) { return 1; }
-                if (a.rent.rentValue > b.rent.rentValue) { return -1; }
-            } else {
-                if (a.sale.saleValue < b.sale.saleValue) { return 1; }
-                if (a.sale.saleValue > b.sale.saleValue) { return -1; }
-            }
-        }
-        let finalArray = []
-        array.sort(sortArray).map(item =>
-            item.department === 'Residencial' ? finalArray.push(item) : null
-        );
-        setOrderedItems(finalArray)
-        setFilter(!filter)
-        window.scroll(
-            { top: 0 }
-        )
-    }*/
-
-    const obj = {
-        zone: ["61dfdcde3e6cc4fe56c29817"], 
-        adType: ["Venta"]
+    function navigateToNewPath (page, query){
+        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = query
+        console.log( tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax)
+        let queryFilters ={}
+            if(tipo !== undefined)                                  queryFilters = { ...queryFilters, tipo: tipo }
+            if(tipodeinmueble !== undefined)                        queryFilters = { ...queryFilters, tipodeinmueble: tipodeinmueble }
+            if(referencia !== undefined)                            queryFilters = { ...queryFilters, referencia: referencia }
+            if(zona !== undefined)                                  queryFilters = { ...queryFilters, zona: zona }
+            if(garaje !== undefined)                                queryFilters = { ...queryFilters, garaje: true }
+            if(piscina !== undefined)                               queryFilters = { ...queryFilters, piscina: true }
+            if(terraza !== undefined)                               queryFilters = { ...queryFilters, terraza: true }
+            if(porfecha === undefined || porfecha === "true")       queryFilters = { ...queryFilters, porfecha: true }
+            if(porfecha === "false")                                queryFilters = { ...queryFilters, porfecha: false }
+            if(precioventamax !== undefined)                        queryFilters = { ...queryFilters, precioventamax: precioventamax }
+            if(precioventamin !== undefined)                        queryFilters = { ...queryFilters, precioventamin: precioventamin }
+            if(precioalquilermax !== undefined)                     queryFilters = { ...queryFilters, precioalquilermax: precioalquilermax }
+            if(precioalquilermin !== undefined)                     queryFilters = { ...queryFilters, precioalquilermin: precioalquilermin }
+            if(superficiemin !== undefined)                         queryFilters = { ...queryFilters, superficiemin: superficiemin }
+            if(superficiemax !== undefined)                         queryFilters = { ...queryFilters, superficiemax: superficiemax }
+            
+            queryFilters = { ...queryFilters, page: page.toString() }
+            const newRoute = {
+                pathname: `${routes.Residential}/${page}`,
+                query: queryFilters,
+              };
+              // Navega a la nueva ruta 
+              router.push(newRoute);
     }
-
 
     return (
         <div className='residential'>
             <Header />
-            {orderedItems.length >0 ?
+            {orderedItems.length > 0 ?
                 <div>
                     {filter === true ?
                         <div className='residential__filter'>
                             <div className='residential__filter__position'>
-                                <h2 className='residential__filter__position__title'>Zonas <span onClick={toggleFilter}><Image src={cerrarFiltro} alt='cerrar' /></span></h2>
+                                <h2 className='residential__filter__position__title'>Zonas <span onClick={toggleFilter}><Image width={14} height={14} src={cerrarFiltro} alt='cerrar' /></span></h2>
                                 <h3 className='residential__filter__position__subTitle'>Seleccione una o varias zonas</h3>
                                 <div className='residential__buttons'>
-                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters'><Image src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
+                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters'><Image width={9} height={9} src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
                                 </div>
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
@@ -1261,16 +1223,15 @@ export default function Residential({orderedItems, elements, pages}){
                                     </div>
                                     <div className='residential__filter__selectors__buscar'>
                                         {disableButton === false ?
-                                            <a onClick={getTypeHouse} href={`${routes.Residential}/1?filters=${JSON.stringify(obj)}`} className='residential__filter__selectors__buscar__all'>Ver todos</a>
+                                            <button onClick={() =>getTypeHouse()} className='residential__filter__selectors__buscar__all'>Ver todos</button>
                                             :
                                             <button className='residential__filter__selectors__buscar__allDisabled'>Ver todos</button>
                                         }
                                         {disableButton === true ?
-                                            <a className='residential__filter__selectors__buscar__search'
-                                                onClick={getTypeHouse}
-                                                href={`${routes.Residential}/1?filters=${JSON.stringify(obj)}`}
+                                            <button className='residential__filter__selectors__buscar__search'
+                                                onClick={()=>getTypeHouse()}
                                                 >Buscar
-                                            </a>
+                                            </button>
                                             :
                                             <button className='residential__filter__selectors__buscar__searchDisabled' >Buscar</button>
                                         }
@@ -1278,7 +1239,7 @@ export default function Residential({orderedItems, elements, pages}){
                                     <div className='residential__filter__selectors__ref'>
                                         <h4>Búsqueda por referencia</h4>
                                         <input onChangeCapture={addRef} type='text' />
-                                        <Image className={verLupa === true ? 'residential__filter__selectors__ref__lupa' : 'residential__filter__selectors__ref__lupaOculta'} src={lupa} alt='lupa' />
+                                        <Image width={17} height={17} className={verLupa === true ? 'residential__filter__selectors__ref__lupa' : 'residential__filter__selectors__ref__lupaOculta'} src={lupa} alt='lupa' />
                                         {/* {itemRef !== elementId && elementId !== '' ? <p className='residential__filter__selectors__ref__existe'>La referencia no existe</p> : null} */}
                                     </div>
                                 </div>
@@ -1301,9 +1262,12 @@ export default function Residential({orderedItems, elements, pages}){
                     </div>
                     <div onClick={deletePosition} className='residential__pagination'>
                         <ul className='residential__pagination__list'>
-                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' href={`/residential/${pageNumber}?page=${pageNumber}`}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li>
-                            {pagElements}
-                            <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__next' href={`/residential/${pageNumber}?page=${pageNumber + 2}`}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </a></li>
+                            {parseInt(page) !== 1 && <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' onClick={()=>navigateToNewPath(parseInt(page)-1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li> }
+                            {arrPages.map((__pag, i)=>{
+                                    return <li key={i} className={i + 1 ===  parseInt(page)? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><p onClick={()=>navigateToNewPath(i+1, query)} style={{cursor:"pointer"}}>{i + 1}</p></li>
+
+                            })}
+                            {parseInt(page) !== pagElements?.length && <li className='residential__pagination__list__item'><p className='residential__pagination__list__item__next' onClick={()=>navigateToNewPath(parseInt(page) + 1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </p></li>}
                         </ul>
                     </div>
                     <div className='residential__zoneMap'>
@@ -1314,15 +1278,15 @@ export default function Residential({orderedItems, elements, pages}){
                 :
                 <div className='residential__empty'>
                     {
-                        isFound ?
+                        // isFound ?
                             (
                                 <div className='residential__empty'>
                                     <h2 className='residential__empty__text'>Lamentablemente no existen anuncios bajo sus criterios de búsqueda</h2>
                                     <Link className='residential__empty__button' href={`${routes.FilterResidential}`}>Volver al mapa</Link>
                                 </div>
                             )
-                            :
-                            <BarLoader color="#000000" width='150px' height='2px' />
+                           // :
+                         //   <BarLoader color="#000000" width='150px' height='2px' />
                     }
                 </div>
             }
@@ -1332,33 +1296,46 @@ export default function Residential({orderedItems, elements, pages}){
 }
 
 export async function getServerSideProps(context){
-        let filters = {}
+        let queryFilters = {}
         const query = context.query
-        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page} = context.query
-        console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
-        if(tipo !== undefined)              filters = { ...filters, adType: tipo.split('-') }
-        if(tipodeinmueble !== undefined)    filters = { ...filters, adBuildingType: tipodeinmueble.split('-') }
-        if(referencia !== undefined)        filters = { ...filters, adReference: referencia }
-        if(zona !== undefined)              filters = { ...filters, zone: zona.split('-') }
-        if(garaje !== undefined)            filters = { ...filters, garage: true }
-        if(piscina !== undefined)           filters = { ...filters, swimmingPool: true }
-        if(terraza !== undefined)           filters = { ...filters, terrace: true }
-        if(page !== undefined)              filters = { ...filters, page: page }
+        // console.log(query)
+        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = context.query
+         console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
+         console.log(typeof porfecha)
+        if(tipo !== undefined)                  queryFilters = { ...queryFilters, adType: tipo.split('-') }
+        if(tipodeinmueble !== undefined)        queryFilters = { ...queryFilters, adBuildingType: tipodeinmueble.split('-') }
+        if(referencia !== undefined)            queryFilters = { ...queryFilters, adReference: referencia }
+        if(zona !== undefined)                  queryFilters = { ...queryFilters, zone: zona.split('-') }
+        if(garaje !== undefined)                queryFilters = { ...queryFilters, garage: true }
+        if(piscina !== undefined)               queryFilters = { ...queryFilters, swimmingPool: true }
+        if(terraza !== undefined)               queryFilters = { ...queryFilters, terrace: true }
+        if(page !== undefined)                  queryFilters = { ...queryFilters, page: page }
+        if(porfecha === "true"){
+            queryFilters = { ...queryFilters, orderByDate: true }
+        } else{
+            queryFilters = { ...queryFilters, orderByDate: false }
+        }
+        if(precioventamax !== undefined)        queryFilters = { ...queryFilters, maxSalePrice: precioventamax }
+        if(precioventamin !== undefined)        queryFilters = { ...queryFilters, minSalePrice: precioventamin }
+        if(precioalquilermax !== undefined)     queryFilters = { ...queryFilters, maxRentPrice: precioalquilermax }
+        if(precioalquilermin !== undefined)     queryFilters = { ...queryFilters, minRentPrice: precioalquilermin }
+        if(superficiemin !== undefined)         queryFilters = { ...queryFilters, minSurface: superficiemin }
+        if(superficiemax !== undefined)         queryFilters = { ...queryFilters, maxSurface: superficiemax }
         
-        const {ads, totalAds} = await getResidential(filters)
-        console.log('totales',totalAds)
+        const {ads, totalAds} = await getResidential(queryFilters)
+        // console.log('totales',totalAds)
         const orderedItems = ads
         const elements = totalAds
         const pages = Math.ceil(elements / 30)
     
-    //}
-    console.log(orderedItems.length)
+        console.log(orderedItems.length)
         return {
             props: {
                 orderedItems,
                 elements,
                 pages, 
-                query
+                query, 
+                queryFilters
             }
-  }
-  }
+        }
+}
