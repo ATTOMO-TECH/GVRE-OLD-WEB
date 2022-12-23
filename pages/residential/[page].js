@@ -701,7 +701,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             }
             /* console.log(activeFilters) */
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters))
-
+            if(porfecha !== undefined) queryFilters = { ...queryFilters, porfecha: "false" }
             navigateToNewPath(1, queryFilters)
             
         }
