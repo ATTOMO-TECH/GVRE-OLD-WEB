@@ -1,0 +1,2111 @@
+@import '../styles/fonts.scss';
+@import '../styles/media.scss';
+
+.wrapper{
+    position: relative;
+}
+.residential{
+    margin-top: 80px;
+    &__title{
+        @include subSubTitleMobile;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 15px 20px 15px;
+        &__filter{
+            @include textMobile;
+            background-color: white;
+            border: solid;
+            border-width: 1px;
+        }
+        &__remove{
+            &__filters{
+                @include textMobile;
+                background-color: white;
+                border: solid;
+                border-width: 1px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 5px 7px;
+                img{
+                    max-width: 9px;
+                    max-height: 9px;
+                }
+            }
+        }
+        &__order{
+            @include textMobile;
+            position: relative;
+            z-index: 5;
+            &__title{
+                @include textMobile;
+                background-color: white;
+                border: solid;
+                border-width: 1px;
+                margin: 0;
+                padding: 8px 21px;
+                img{
+                    margin-left: 27px;
+                }
+            }
+            &__listDisabled{
+                display: none;
+
+            }
+            &__list{
+                display: block;
+                list-style: none;
+                padding: 0;
+                position: absolute;
+                background-color: white;
+                width: 138px;
+                height: 100px;
+                left: 0px;
+                top: 40px;
+                margin-top: 5px;
+                padding: 0 15px;
+                z-index: 1;
+                &__first{
+                    border-bottom: solid;
+                    border-width: 2px;
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    padding-bottom: 15px;
+                }
+                li{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &__list{
+        &__item{
+            text-align: center;
+            margin-bottom: 25px;
+            img{
+                height: 250px;
+                max-width: 400px;
+            }
+            a{
+                text-decoration: none;
+            }
+            &__status{
+                position: absolute;
+                top:10px;
+                left: 10px;
+                z-index: 4;
+                background-color: white;
+                height: 30px;
+                width: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p{
+                    margin: 0;
+                    text-align: center;
+                    @include textMobile;
+                }
+            }
+            &__images{
+                .carousel{
+                    position: relative;
+                }
+            }
+            &__text{
+                position: relative;
+                &__price{
+                    top: -50px;
+                    position: absolute; 
+                    left: 0; 
+                    right: 0; 
+                    margin: auto; 
+                    background-color: rgba(255, 255, 255, 0.603);
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    @include textBlackMobile;
+                }
+                &__prices{
+                    top: -50px;
+                    position: absolute; 
+                    left: 0; 
+                    right: 0; 
+                    margin: auto; 
+                    background-color: rgba(255, 255, 255, 0.603);
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    @include textBlackMobile;
+                    display: flex;
+                    justify-content: space-around;
+                    p{
+                        margin-top: 0px;
+                    }
+                }
+                &__title{
+                    @include textBlackMobile;
+                }
+                &__street{
+                    @include contactMobile;
+                    text-transform: uppercase;
+                }
+                &__characteristics{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    list-style: none;
+                    padding: 0;
+                    padding-bottom: 25px;
+                    border-bottom: solid;
+                    border-color: rgb(180, 180, 180);
+                    border-width: 2px;
+                    @include litleTextMobile;
+                    sup{
+                        font-size: 8px;
+                        margin-bottom: 3px;
+                    }
+                    li{
+                        display: flex;
+                        align-items: center;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        p{
+                            margin: 0;
+                        }
+                        span{
+                            margin-right: 5px;
+                            img{
+                                height: 18px;
+                            }
+                        }
+                    }
+                    &__car{
+                        span{
+                            img{
+                                width: 30px!important;
+                            }
+                        }
+                    }
+                }
+                &__clickable{
+                    background-color: transparent;
+                    z-index: 1;
+                    width: 100%;
+                    height: 210px;
+                    position: absolute;
+                    top: -260px;
+                    left: 0px;
+                }
+                &__blocker{
+                    width: 100%;
+                    height: 250px;
+                    position: absolute;
+                    background-color: #5F717C;
+                    filter: opacity(60%);
+                    z-index: 3;
+                    top: -262px;
+                }
+            }
+        }
+    }
+    &__zoneMap{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__button{
+            border: solid;
+            border-color: black;
+            border-width: 2px;
+            text-decoration: none;
+            padding: 7px 20px;
+            @include textMobile;
+            span{
+                margin-right: 11px;
+            }
+
+        }
+    }
+    &__pagination{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__list{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-left: 8px;
+            margin-right: 8px;
+            @include textMobile;
+            &__item{
+                margin-left: 3px;
+                margin-right: 3px;
+                padding-left: 5px;
+                padding-right: 5px;
+                &__back{
+                    img{
+                        width: 8px;
+                        transform: rotate(180deg);
+                    }
+                }
+                &__next{
+                    img{
+                        width: 8px;
+                    }
+                }
+                a{
+                    text-decoration: none;
+                    color: black!important;
+                }
+            }
+        }
+    }
+    &__contact{
+        margin-top: 58px;
+        margin-bottom: 32px;
+        margin-left: 24px;
+        margin-right: 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-bottom: 40px;
+        &__title{
+            @include subTitleMobile;
+        }
+        &__location{
+            @include litleText;
+            display: flex;
+            p{
+                margin: 10px;
+                margin-left: 0;
+            }
+            &__logo{
+                display: none;
+                height: 48px;
+                margin-right: 48px;
+            }
+            &__left{
+                border-right: solid;
+                border-color: rgb(209, 209, 209);
+                border-width: 2px;
+                margin-right: 20px;
+                padding-right: 20px;
+            }
+            &__right{
+                text-align: right;
+            }
+        }
+        &__button{
+            @include buttonMobile;
+            margin-bottom: 0;
+            align-self: flex-start;
+            margin-top: 24px;
+        }        
+    }
+    &__empty{
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &__text{
+            text-align: center;
+            @include textMobile;
+        }
+        &__button{
+            @include buttonMobile;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    }
+}
+.currentPage {
+    background-color: #2B363D;
+    color: white!important;
+    a{
+        color: white!important;
+    }
+}
+.dot{
+    display: none!important;
+}
+.control-arrow:before{
+    border-top: none!important;
+    border-bottom: none!important;
+    border: none!important;
+    display: initial!important;
+}
+.control-arrow{
+    background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+    background-repeat: no-repeat;
+    background-size:cover!important;
+    height: 50px;
+    width: 50px;
+    top: 35%!important;
+    border-radius: 50%;
+    margin-right: 5px;
+    opacity: 1!important;
+}
+.control-prev{
+    transform: rotate(180deg);
+    margin-left: 5px;
+    position: absolute;
+    left: 10px!important;
+}
+.control-next{
+    position: absolute;
+    right: 10px!important;
+}
+//.active{
+    //text-decoration: underline !important;
+//}
+
+@include tablet {
+    .residential{
+        &__title{
+            @include subSubTitleMobile;
+        }
+        &__buttons{
+            &__filter{
+                @include textMobile;
+            }
+            &__order{
+                @include textMobile;
+            }
+        }
+        &__list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            &__item{
+                width: 47%;
+                img{
+                    height: 300px;
+                    max-width: 400px;
+                }
+                &__text{
+                    position: relative;
+                    &__price{
+                        @include textBlackMobile;
+                    }
+                    &__title{
+                        @include textBlackMobile;
+                    }
+                    &__street{
+                        @include contactMobile;
+                    }
+                    &__characteristics{
+                        @include litleTextMobile;
+                        li{
+                            display: flex;
+                            p{
+                                margin: 0;
+                            }
+                            span{
+                                img{
+                                    height: 18px;
+                                }
+                            }
+                        }
+                    }
+                    &__clickable{
+                        height: 260px;
+                        top: -310px;
+                    }
+                    &__blocker{
+                        width: 100%;
+                        height: 300px;
+                        position: absolute;
+                        background-color: #5F717C;
+                        filter: opacity(60%);
+                        z-index: 3;
+                        top: -312px;
+                    }
+                }
+            }
+        }
+    }
+}
+@include desktop {
+    .residential{
+        margin-top: 100px;
+        &__title{
+            @include textHome;
+            color: black!important;
+            padding-left: 36px;
+            padding-top: 30px;
+            margin-bottom: 16px;
+        }
+        &__buttons{
+            margin: 0px 36px 16px 36px;
+            &__filter{
+                @include litleText;
+                padding: 8px 21px;
+                img{
+                    margin-right: 16px;
+                }
+            }
+            &__order{
+                @include litleText;
+                font-size: 14px!important;
+                p{
+                    padding: 8px 21px;
+                    img{
+                        margin-left: 27px;
+                    }
+                }
+            }
+        }
+        &__list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 36px;
+            margin-right: 36px;
+            &__item{
+                width: 47%;
+                margin-bottom: 48px;
+                img{
+                    height: 450px;
+                    max-width: 650px;
+                }
+                &__text{
+                    &__price{
+                        height: 75px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: -105px;
+                        @include textHome;
+                        color: black!important;
+                    }
+                    &__prices{
+                        height: 75px;
+                        align-items: center;
+                        justify-content: space-around;
+                        top: -105px;
+                        @include textHome;
+                        color: black!important;
+                        p{
+                            margin-top: 30px;
+                        }
+                    }
+                    &__title{
+                        @include categoriesLink;
+                        font-size: 20px!important;
+                        font-weight: 600!important;
+                        margin-bottom: 7px;
+                        margin-top: 13px
+                    }
+                    &__street{
+                        @include apart;
+                        font-size: 16px;
+                        font-weight: 400!important;
+                        margin-top: 20px;
+                        margin-bottom: 24px;
+                    }
+                    &__characteristics{
+                        padding-bottom: 16px;
+                        border-width: 2px;
+                        @include mapBut;
+                        font-size: 11px!important;
+                        li{
+                            display: flex;
+                            margin-left: 15px;
+                            margin-right: 15px;
+                            p{
+                                margin: 0;
+                            }
+                            span{
+                                img{
+                                    height: 12px;
+                                }
+                            }
+                        }
+                    }
+                    &__clickable{
+                        height: 360px;
+                        top: -455px;
+                    }
+                    &__blocker{
+                        width: 100%;
+                        height: 450px;
+                        position: absolute;
+                        background-color: #5F717C;
+                        filter: opacity(60%);
+                        z-index: 3;
+                        top: -463px;
+                    }
+                }
+            }
+        }
+        &__pagination{
+            &__list{
+                @include textMobile;
+                &__item{
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    &__back{
+                        img{
+                            width: 8px;
+                        }
+                    }
+                    &__next{
+                        img{
+                            width: 8px;
+                        }
+                    }
+                }
+            }
+        }
+        &__contact{
+            margin-top: 90px;
+            margin-bottom: 40px;
+            margin-left: 92px;
+            margin-right: 92px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 40px;
+            &__title{
+                @include subTitle;
+            }
+            &__location{
+                @include contact;
+                display: flex;
+                p{
+                    margin: 10px;
+                }
+                &__logo{
+                    display: block;
+                    height: 48px;
+                    margin-right: 48px;
+                }
+                &__right{
+                    text-align: right;
+                }
+            }
+            &__button{
+                @include button;
+                margin-bottom: 0;
+                align-self: flex-end;
+                position: absolute;
+                bottom: 0px;
+            }        
+        }
+        &__zoneMap{
+            &__button{
+                margin-top: 48px;
+                border-color: rgb(160, 160, 160);
+                text-decoration: none;
+                padding: 12px 43px;
+                font-size: 18px!important;
+                @include textMobile;
+                span{
+                    margin-right: 16px;
+                    img{
+                        width: 22px;
+                    }
+                }
+    
+            }
+        }
+        &__empty{
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &__text{
+                text-align: center;
+                @include text;
+            }
+            &__button{
+                @include button;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+            }
+        }
+    }
+    .dot{
+        display: none!important;
+    }
+    .control-arrow:before{
+        border-top: none!important;
+        border-bottom: none!important;
+        border: none!important;
+        display: initial!important;
+    }
+    .control-arrow{
+        background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+        background-repeat: no-repeat;
+        background-size:cover!important;
+        height: 50px;
+        width: 50px;
+        top: 43%!important;
+        border-radius: 50%;
+        margin-right: 5px;
+        opacity: 1!important;
+    }
+    .control-prev{
+        transform: rotate(180deg);
+        margin-left: 5px;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.residential{
+    &__filter{
+        position: absolute;
+        top: 51px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 6;
+        &__position{
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            background-color: white;
+            &__title{
+                margin-top: 20px;
+                margin-left: 20px;
+                margin-bottom: 0px;
+                @include titleHomeMobile;
+                color: black!important;
+                display: flex;
+                justify-content: space-between;
+                span{
+                    margin-right: 20px;
+                }
+            }
+            &__subTitle{
+                margin: 0px;
+                margin-left: 15px;
+                margin-top: -7px;
+                @include textBlackMobile;
+            }
+            &__mapContainer{
+                width: initial;
+                overflow-x:scroll;
+                margin-bottom: -12px;
+                padding-bottom: 15px;
+                &__mapa{
+                    height: 392px;
+                    width: 536px;
+                    position: relative;
+                    input{
+                        position: absolute;
+                    }
+                    div{
+                        position: absolute;
+                        p{
+                            @include litleTextMobile;
+                            color: #bbbbbb;
+                            position: absolute;
+                        }
+                    }
+                    button{
+                        position: absolute;
+                        background-color: transparent;
+                        border: none;
+                        width: fit-content;
+                        text-align: left;
+                        padding: 0;
+                        p{
+                            @include litleTextMobile;
+                            color: #bbbbbb;
+                            position: absolute;
+                        }
+                    }
+                    .active{
+                        filter:  contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%) grayscale(85%) brightness(55%);
+                        z-index: 1;
+                    }
+                    .c1{
+                        bottom: 0;
+                        width: 100%;
+                    }
+                    .c2{
+                        bottom:21.5%;
+                        width: 48.9%;
+                    }
+                    .c3{
+                        right: 0px;
+                        bottom: 0px;
+                        width: 87%;
+                    }
+                    .c4{
+                        bottom: 0px;
+                        right: 42%;
+                        width: 18%;
+                    }
+                    .c5{
+                        bottom: 43.8%;
+                        right: 22.4%;
+                        width: 31%;
+                    }
+                    .c6{
+                        bottom: 8.5%;
+                        right: 28.2%;
+                        width: 2.7%;
+                    }
+                    .c62{
+                        bottom: 55.5%;
+                        right: 26.6%;
+                        width: 1.5%;
+                    }
+                    .c7{
+                        bottom:35%;
+                        right: 0;
+                        width: 16%;
+                    }
+                    .c8{
+                        bottom: 0;
+                        right: 0;
+                        width: 18%;
+                    }
+                    .mocl{
+                        bottom: 41%;
+                        left: 1.5%;
+                        width: 12%;
+                        p{
+                            top: -40px;
+                            left: -5px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                        div{
+                            height: 20px;
+                            width: 80px;
+                            background-color: transparent;
+                            transform: rotate(40deg);
+                            margin-top: 20px;
+                            z-index: 1;
+                        }
+                    }
+                    .moal{
+                        bottom: 38%;
+                        left: 0;
+                        width: 12.5%;
+                        p{
+                            bottom: -120px;
+                            right: -10px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .prla{
+                        bottom:31.5%;
+                        left:2.7%;
+                        width: 5.5%;
+                        p{
+                            bottom: -70px;
+                            left: -15px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .enci{
+                        bottom: 45%;
+                        left: 8.2%;
+                        width: 10%;
+                        p{
+                            width: 100%;
+                            top: -25px;
+                            left: 25px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .alam{
+                        bottom: 42.7%;
+                        left: 16%;
+                        width: 10%;
+                        p{
+                            width: 100%;
+                            bottom: -77px;
+                            left: 10px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .flori{
+                        bottom: 61%;
+                        left: 12%;
+                        width: 14.5%;
+                        p{
+                            width: 100%;
+                            bottom: -10px;
+                            left: -10px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .finc{
+                        bottom:20%;
+                        left:19%;
+                        width: 8.5%;
+                        p{
+                            width: 100%;
+                            bottom: -62px;
+                            left: 30px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .somo{
+                        bottom:24.5%;
+                        left:23.5%;
+                        width: 8.7%;
+                        p{
+                            width: 100%;
+                            bottom: -30px;
+                            left: 50px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .arav{
+                        bottom: 49.5%;
+                        left: 29%;
+                        width: 12.5%;
+                        p{
+                            width: 100%;
+                            bottom: -58px;
+                            left: 10px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .vald1{
+                        bottom: 56%;
+                        left: 27.8%;
+                        width: 5.7%;
+                        p{
+                            width: 100%;
+                            bottom:-5px;
+                            left: 10px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .vald2{
+                        position: absolute;
+                        bottom: -31px;
+                        left: 40%;
+                        width: 200%!important;
+                    }
+                    .fuen1{
+                        bottom: 66.8%;
+                        left: 46.1%;
+                        width: 6.5%;
+                        p{
+                            width: 100%;
+                            bottom:-20px;
+                            left: -50px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .fuen2{
+                        bottom: -59px;
+                        left: 17.5%;
+                        width: 50%!important;
+                    }
+                    .puer{
+                        bottom: 54.4%;
+                        left: 52%;
+                        width: 8.5%;
+                        p{
+                            width: 100%;
+                            bottom:-85px;
+                            left: 0px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .rosa{
+                        bottom: 29%;
+                        left: 53%;
+                        width: 7.5%;
+                        p{
+                            width: fit-content;
+                            bottom:-18px;
+                            left: -30px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .pala{
+                        bottom: 21.5%;
+                        left: 58.5%;
+                        width: 5.8%;
+                        p{
+                            width: fit-content;
+                            bottom:-35px;
+                            left: -40px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .mira{
+                        bottom:77%;
+                        left: 58%;
+                        width: 10%;
+                        p{
+                            width: fit-content;
+                            bottom:-40px;
+                            left: 55px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .alma{
+                        bottom:36.5%;
+                        left: 64.4%;
+                        width: 5.8%;
+                        p{
+                            width: fit-content;
+                            bottom:-30px;
+                            left: -38px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .just{
+                        bottom:23%;
+                        left: 65.7%;
+                        width: 3.7%;
+                        p{
+                            width: fit-content;
+                            bottom:-12px;
+                            left: -29px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .cort{
+                        bottom:16.8%;
+                        left: 65.1%;
+                        width: 3.7%;
+                        p{
+                            width: fit-content;
+                            bottom:-52px;
+                            left: -10px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .nuev{
+                        bottom:52%;
+                        left: 71.5%;
+                        width: 11%;
+                        p{
+                            width: 120%;
+                            bottom:-7px;
+                            left: -40px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .hisp{
+                        bottom:46%;
+                        left: 70.7%;
+                        width: 11.7%;
+                        p{
+                            width: 120%;
+                            bottom:-35px;
+                            left: -40px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .viso{
+                        bottom:39%;
+                        left: 70.6%;
+                        width: 5%;
+                        p{
+                            width: 120%;
+                            bottom:-45px;
+                            left: 30px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .sala{
+                        bottom:29.5%;
+                        left: 70.4%;
+                        width: 4.8%;
+                        p{
+                            width: 120%;
+                            bottom:-70px;
+                            left: 20px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .jero{
+                        bottom:16%;
+                        left: 69.8%;
+                        width: 1.8%;
+                        p{
+                            width: 120%;
+                            bottom:-40px;
+                            left: 12px;
+                        }
+                        input{
+                            width: 90%;
+                        }
+                    }
+                    .mora{
+                        bottom:99%;
+                        left: 85.5%;
+                        width: 16.8%;
+                        p{
+                            width: 120%;
+                            bottom:-95px;
+                            left: 30px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .cond{
+                        bottom:48%;
+                        left: 87.5%;
+                        width: 12%;
+                        p{
+                            width: 120%;
+                            bottom:-25px;
+                            left: -15px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                }
+            }
+        }
+        &__selectors{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            &__estado{
+                margin-bottom: 15px;
+                h3{
+                    margin-left: 20px;
+                    margin-bottom: 5px;
+                    @include subSubTitleMobile;
+                }
+                &__buttons{
+                    display: flex;
+                    justify-content:space-between;
+                    align-items: center;
+                    .alq{
+                        margin-left: 20px;
+                        margin-right: 5px;
+                    }
+                    .vent{
+                        margin-right: 20px;
+                        margin-left: 5px;
+                    }
+                    button{
+                        width: 50%;
+                        border-width: 2px;
+                        border-color: #2b363d;
+                        text-align: center;
+                        text-decoration: none;
+                        padding: 5px;
+                        background-color: white;
+                        color: #2b363d;
+                        @include textMobile;
+                    }
+                }
+            }
+            &__tipo{
+                h3{
+                    margin-left: 20px;
+                    margin-bottom: 5px;
+                    @include subSubTitleMobile;
+                }
+                &__buttons{
+                    display: flex;
+                    justify-content:space-between;
+                    align-items: center;
+                    .casa{
+                        margin-left: 20px;
+                        margin-right: 5px;
+                    }
+                    .piso{
+                        margin: 0 5px;
+                    }
+                    .parcela{
+                        margin-right: 20px;
+                        margin-left: 5px;
+                    }
+                    button{
+                        width: 33%;
+                        border-width: 2px;
+                        border-color: #2b363d;
+                        text-align: center;
+                        text-decoration: none;
+                        padding: 5px;
+                        background-color: white;
+                        color: #2b363d;
+                        @include textMobile;
+                    }
+                }
+            }
+            &__extras{
+                h3{
+                    margin-left: 20px;
+                    margin-bottom: 5px;
+                    @include subSubTitleMobile;
+                }
+                &__buttons{
+                    display: flex;
+                    justify-content:space-between;
+                    align-items: center;
+                    .piscina{
+                        margin-left: 20px;
+                        margin-right: 5px;
+                    }
+                    .garaje{
+                        margin: 0 5px;
+                    }
+                    .terraza{
+                        margin-right: 20px;
+                        margin-left: 5px;
+                    }
+                    button{
+                        width: 33%;
+                        border-width: 2px;
+                        border-color: #2b363d;
+                        text-align: center;
+                        text-decoration: none;
+                        padding: 5px;
+                        background-color: white;
+                        color: #2b363d;
+                        @include textMobile;
+                    }
+                }
+            }
+            &__buscar{
+                margin-top: 20px;
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                &__all{
+                    margin-left: 20px;
+                    margin-right: 5px;
+                    width: 50%;
+                    color: #2b363d;
+                    background-color: white;
+                    border: solid;
+                    border-width: 2px;
+                    padding: 5px;
+                    @include textMobile;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none!important;
+                }
+                &__allDisabled{
+                    margin-left: 20px;
+                    margin-right: 5px;
+                    width: 50%;
+                    color: rgb(201, 201, 201)!important;
+                    background-color: rgb(255, 255, 255);
+                    border: solid;
+                    border-width: 2px;
+                    border-color: rgb(201, 201, 201)!important;
+                    padding: 5px;
+                    @include textMobile;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none!important;
+                }
+                &__search{
+                    margin-left: 5px;
+                    margin-right: 20px;
+                    background-color: #2b363d;
+                    color: white !important;
+                    padding: 7px;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include textMobile;
+                    text-decoration: none!important;
+                }
+                &__searchDisabled{
+                    margin-left: 5px;
+                    margin-right: 20px;
+                    border: solid;
+                    border-width: 2px;
+                    padding: 15px;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include textMobile;
+                    text-decoration: none!important;
+                    background-color: white;
+                    color: lightgray!important;
+                    border-color: lightgray!important;
+                    height: 17px;
+                }
+            }
+            &__ref{
+                margin-left: 20px;
+                margin-right: 42px;
+                position: relative;
+                h4{
+                    @include subSubTitleMobile;
+                    color: rgb(180, 180, 180)!important;
+                    margin-bottom: 5px;
+        
+                }
+                input{
+                    border: solid;
+                    border-width: 2px;
+                    border-color: rgb(180, 180, 180);
+                    height: 25px;
+                    width: 100%;
+                    padding-left: 18px;
+                    font-family: 'Jost';
+                    color: #b4b4b4;
+                    font-size: 16px;
+                }
+                &__lupa{
+                    position: absolute;
+                    height: 17px;
+                    bottom: 8px;
+                    left: 18px;
+                }
+                &__lupaOculta{
+                    display: none;
+                }
+                &__existe{
+                    @include litleTextMobile;
+                    color: red!important;
+                }
+            }
+            &__sliders{
+                margin: 20px 30px;
+                position: relative;
+                p{  
+                    position: relative;
+                    left: -10px;
+                    margin-bottom: 30px;
+                    @include textMobile;
+                }
+                &__surfaceDisabled{
+                    filter: opacity(0.3);
+                    margin-top: 15px;
+                }
+                &__priceDisabled{
+                    filter: opacity(0.3);
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}
+@include tablet {
+    .residential{
+        &__filter{
+            &__position{
+                &__mapContainer{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+@include desktop {
+    .residential{
+        &__filter{
+            top: 230px;
+            width: 49.5%;
+            &__position{
+                border-right: solid;
+                border-color: rgb(207, 207, 207);
+                border-width: 2px;
+                &__title{
+                    margin-top: 16px;
+                    margin-left: 36px;
+                    margin-bottom: 0;
+                    @include text;
+                    font-size: 24!important;
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        margin-right: 36px;
+                    }
+                }
+                &__subTitle{
+                    margin-left: 36px;
+                    margin-top: 8px;
+                    @include litleText;
+                    font-size: 14px!important;
+                }
+                &__mapContainer{
+                    margin-left: 36px;
+                    margin-right: 36px;
+                    width: initial;
+                    overflow: hidden;
+                    &__mapa{
+                        height: 475px;
+                        width: 650px;
+                        margin: 0px auto;
+                        .moal{
+                            bottom: 38%;
+                            left: 0;
+                            width: 12.5%;
+                            p{
+                                bottom: -130px;
+                                right: -10px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .alam{
+                            bottom: 42.7%;
+                            left: 16%;
+                            width: 10%;
+                            p{
+                                width: 100%;
+                                bottom: -85px;
+                                left: 10px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .finc{
+                            bottom:20%;
+                            left:18.7%;
+                            width: 8.5%;
+                            p{
+                                width: 100%;
+                                bottom: -75px;
+                                left: 30px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .somo{
+                            bottom:24.5%;
+                            left:23.5%;
+                            width: 8.7%;
+                            p{
+                                width: 100%;
+                                bottom: -30px;
+                                left: 60px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .arav{
+                            bottom: 49.5%;
+                            left: 29%;
+                            width: 12.5%;
+                            p{
+                                width: 100%;
+                                bottom: -62px;
+                                left: 10px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .vald2{
+                            position: absolute;
+                            bottom: -36px;
+                            left: 40%;
+                            width: 200%!important;
+                        }
+                        .fuen1{
+                            bottom: 66.8%;
+                            left: 46.1%;
+                            width: 6.5%;
+                            p{
+                                width: 100%;
+                                bottom:-25px;
+                                left: -50px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .fuen2{
+                            bottom: -72px;
+                            left: 17.5%;
+                            width: 50%!important;
+                        }
+                        .puer{
+                            bottom: 54.4%;
+                            left: 52%;
+                            width: 8.5%;
+                            p{
+                                width: 100%;
+                                bottom:-90px;
+                                left: 0px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .pala{
+                            bottom: 21.5%;
+                            left: 58.5%;
+                            width: 5.8%;
+                            p{
+                                width: fit-content;
+                                bottom:-38px;
+                                left: -40px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .mira{
+                            bottom:77%;
+                            left: 58%;
+                            width: 10%;
+                            p{
+                                width: fit-content;
+                                bottom:-45px;
+                                left: 63px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .hisp{
+                            bottom:46%;
+                            left: 70.7%;
+                            width: 11.7%;
+                            p{
+                                width: 120%;
+                                bottom:-37px;
+                                left: -42px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .viso{
+                            bottom:39%;
+                            left: 70.6%;
+                            width: 5%;
+                            p{
+                                width: 120%;
+                                bottom:-45px;
+                                left: 35px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .sala{
+                            bottom:29.5%;
+                            left: 70.4%;
+                            width: 4.8%;
+                            p{
+                                width: 120%;
+                                bottom:-80px;
+                                left: 25px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .jero{
+                            bottom:16.5%;
+                            left: 69.8%;
+                            width: 1.8%;
+                            p{
+                                width: 120%;
+                                bottom:-38px;
+                                left: 12px;
+                            }
+                            input{
+                                width: 90%;
+                            }
+                        }
+                        .mora{
+                            bottom:99%;
+                            left: 85.5%;
+                            width: 16.8%;
+                            p{
+                                width: 120%;
+                                bottom:-105px;
+                                left: 30px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                    }
+                }
+            }
+            &__selectors{
+                &__estado{
+                    margin-bottom: 24px;
+                    h3{
+                        margin-left: 36px;
+                        @include apart;
+                        margin-bottom: 16px;
+                    }
+                    &__buttons{
+                        .alq{
+                            margin-left: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        .vent{
+                            margin-right: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        button{
+                            @include mapBut;
+                        }
+                    }
+                }
+                &__tipo{
+                    margin-bottom: 24px;
+                    h3{
+                        margin-left: 36px;
+                        @include apart;
+                        margin-bottom: 16px;
+                    }
+                    &__buttons{
+                        .casa{
+                            margin-left: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        .parcela{
+                            margin-right: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        button{
+                            @include mapBut;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                    }
+                }
+                &__extras{
+                    margin-bottom: 24px;
+                    h3{
+                        margin-left: 36px;
+                        margin-bottom: 16px;
+                        @include apart;
+                    }
+                    &__buttons{
+                        .piscina{
+                            margin-left: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        .terraza{
+                            margin-right: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        button{
+                            @include mapBut;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                    }
+                }
+                &__buscar{
+                    margin-top: 0px;
+                    margin-bottom: 16px;
+                    &__all{
+                        margin-left: 36px;
+                        @include mapBut;
+                        padding-top: 11px;
+                        padding-bottom: 11px;
+                    }
+                    &__allDisabled{
+                        margin-left: 36px;
+                        @include mapBut;
+                        padding-top: 11px;
+                        padding-bottom: 11px;
+                    }
+                    &__search{
+                        margin-right: 36px;
+                        border-color:#2b363d ;
+                        width: 50%;
+                        border:solid;
+                        border-width: 2px;
+                        border-color: #2b363d;
+                        text-align: center;
+                        text-decoration: none!important;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0;
+                        height: 37px;
+                        @include mapBut;
+                    }
+                    &__searchDisabled{
+                        margin-right: 36px;
+                        padding: 0;
+                        height: 41px;
+                        @include mapBut;
+                    }
+
+                }
+                &__ref{
+                    margin-left: 36px;
+                    margin-right:56px;
+                    margin-bottom: 30px;
+                    h4{
+                        @include apart;
+                        margin-bottom: 20px;
+                    }
+                    input{
+                        border: solid;
+                        border-width: 2px;
+                        border-color: rgb(180, 180, 180);
+                        height: 40px;
+                        width: 100%;
+                        margin-bottom: 3px;
+                        font-family: 'Jost';
+                        color: #b4b4b4;
+                    }
+                    &__lupa{
+                        position: absolute;
+                        height: 17px;
+                        bottom: 18px;
+                        left: 18px;
+                    }
+                    &__lupaOculta{
+                        display: none;
+                    }
+                }
+                &__sliders{
+                    margin: 0px 46px;
+                    margin-bottom: 80px;
+                    position: relative;
+                    p{  
+                        position: relative;
+                        left: -10px;
+                        @include apart;
+                        margin-bottom: 58px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:1200px) and (max-width:1535px) {
+    .residential{
+        &__filter{
+            &__position{
+                &__mapContainer{
+                    &__mapa{
+                        height: 347px;
+                        width: 475px;
+                        margin: 0px auto;
+                        .enci{
+                            p{
+                                width: 100%;
+                                top: -35px;
+                                left: 25px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .moal{
+                            p{
+                                bottom: -110px;
+                                right: -10px;
+                            }
+                        }
+                        .alam{
+                            p{
+                                width: 100%;
+                                bottom: -75px;
+                                left: 10px;
+                            }
+                        }
+                        .finc{
+                            bottom:18%;
+                            left:18.2%;
+                            width: 8.5%;
+                            p{
+                                width: 100%;
+                                bottom: -55px;
+                                left: 30px;
+                            }
+                        }
+                        .somo{
+                            bottom:24.5%;
+                            left:23.5%;
+                            width: 8.7%;
+                            p{
+                                width: 100%;
+                                bottom: -30px;
+                                left: 45px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .arav{
+                            bottom: 49.5%;
+                            left: 29%;
+                            width: 12.5%;
+                            p{
+                                width: 100%;
+                                bottom: -50px;
+                                left: 10px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .vald2{
+                            position: absolute;
+                            bottom: -27px;
+                            left: 40%;
+                            width: 200%!important;
+                        }
+                        .fuen1{
+                            bottom: 66.8%;
+                            left: 46.1%;
+                            width: 6.5%;
+                            p{
+                                width: 100%;
+                                bottom:-25px;
+                                left: -50px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .fuen2{
+                            bottom: -52px;
+                            left: 17.5%;
+                            width: 50%!important;
+                        }
+                        .puer{
+                            bottom: 54.4%;
+                            left: 52%;
+                            width: 8.5%;
+                            p{
+                                width: 100%;
+                                bottom:-80px;
+                                left: 0px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .pala{
+                            bottom: 21.5%;
+                            left: 58.5%;
+                            width: 5.8%;
+                            p{
+                                width: fit-content;
+                                bottom:-38px;
+                                left: -40px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .mira{
+                            bottom:77%;
+                            left: 58%;
+                            width: 10%;
+                            p{
+                                width: fit-content;
+                                bottom:-45px;
+                                left: 48px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .hisp{
+                            bottom:46%;
+                            left: 70.7%;
+                            width: 11.7%;
+                            p{
+                                width: 120%;
+                                bottom:-37px;
+                                left: -42px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .viso{
+                            bottom:39%;
+                            left: 70.6%;
+                            width: 5%;
+                            p{
+                                width: 120%;
+                                bottom:-45px;
+                                left: 35px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .sala{
+                            bottom:29.5%;
+                            left: 70.4%;
+                            width: 4.8%;
+                            p{
+                                width: 120%;
+                                bottom:-60px;
+                                left: 25px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .jero{
+                            bottom:16.5%;
+                            left: 69.8%;
+                            width: 1.8%;
+                            p{
+                                width: 120%;
+                                bottom:-38px;
+                                left: 12px;
+                            }
+                            input{
+                                width: 90%;
+                            }
+                        }
+                        .mora{
+                            bottom:99%;
+                            left: 85.5%;
+                            width: 16.8%;
+                            p{
+                                width: 120%;
+                                bottom:-85px;
+                                left: 30px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                    }
+                }
+            }
+            &__selectors{
+                &__estado{
+                    margin-bottom: 24px;
+                    h3{
+                        margin-left: 36px;
+                        @include apart;
+                        margin-bottom: 16px;
+                    }
+                    &__buttons{
+                        .alq{
+                            margin-left: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        .vent{
+                            margin-right: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        button{
+                            @include mapBut;
+                        }
+                    }
+                }
+                &__tipo{
+                    margin-bottom: 24px;
+                    h3{
+                        margin-left: 36px;
+                        @include apart;
+                        margin-bottom: 16px;
+                    }
+                    &__buttons{
+                        .casa{
+                            margin-left: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        .parcela{
+                            margin-right: 36px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                        button{
+                            @include mapBut;
+                            padding-top: 11px;
+                            padding-bottom: 11px;
+                        }
+                    }
+                }
+                &__buscar{
+                    margin-top: 0px;
+                    margin-bottom: 16px;
+                    &__all{
+                        margin-left: 36px;
+                        @include mapBut;
+                        padding-top: 11px;
+                        padding-bottom: 11px;
+                    }
+                    &__allDisabled{
+                        margin-left: 36px;
+                        @include mapBut;
+                        padding-top: 11px;
+                        padding-bottom: 11px;
+                    }
+                    &__search{
+                        margin-right: 36px;
+                        @include mapBut;
+                        border-color:#2b363d ;
+                        padding-top: 11px;
+                        padding-bottom: 11px;
+                        height: 15px;
+                    }
+                }
+                &__ref{
+                    margin-left: 36px;
+                    margin-right: 56px;
+                    margin-bottom: 30px;
+                    h4{
+                        @include apart;
+                        margin-bottom: 20px;
+                    }
+                    input{
+                        border: solid;
+                        border-width: 2px;
+                        border-color: rgb(180, 180, 180);
+                        height: 40px;
+                        width: 100%;
+                        margin-bottom: 3px;
+                        font-family: 'Jost';
+                        color: #b4b4b4;
+                    }
+                    &__lupa{
+                        position: absolute;
+                        height: 17px;
+                        bottom: 18px;
+                        left: 18px;
+                    }
+                    &__lupaOculta{
+                        display: none;
+                    }
+                }
+                &__sliders{
+                    margin: 0px 46px;
+                    margin-bottom: 80px;
+                    position: relative;
+                    p{  
+                        position: relative;
+                        left: -10px;
+                        @include apart;
+                        margin-bottom: 58px;
+                    }
+                }
+            }
+        }
+    }
+}
+.activeButton {
+    background-color: #2b363d !important;
+    color: white !important;
+}
+.css-1kz0hui-MuiSlider-valueLabel.MuiSlider-valueLabelOpen{
+    top: -16px;
+    background-color: transparent;
+    color: black;
+    @include mapBut;
+}
+.css-187mznn-MuiSlider-root{
+    color: #2b363d!important;
+}
+span[data-index='1'] {
+    border-width: 6px;
+}
+.css-eg0mwd-MuiSlider-thumb{
+    background-color: white!important;
+    border: solid;
+    border-width: 3px;
+}
+.css-1kz0hui-MuiSlider-valueLabel:before{
+    display: none;
+}
+.css-eg0mwd-MuiSlider-thumb.Mui-active{
+    box-shadow: none !important;
+}
+
+.spinnerBar {
+    height: 20px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.barloader {
+    align-items: center;
+    margin: auto auto;
+}
+.cliploader{
+    align-items: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    opacity: 0.6;
+    z-index: 20;
+
+}
