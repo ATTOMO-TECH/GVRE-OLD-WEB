@@ -1,12 +1,12 @@
 import React, { useEffect,useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import routes from '../../config/routes';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getRustico } from '../../api-requests/requests';
+import routes from '../../config/routes';
 import { generalContext } from '../../providers/generalProvider';
-import ContactIndex from '../../components/ContactInfo/ContactIndex';
+import { getSingular } from '../../api-requests/requests';
 import Header from '../../components/Header/Header';
+import ContactIndex from '../../components/ContactInfo/ContactIndex';
 import { Carousel } from 'react-responsive-carousel';
 import { BarLoader } from 'react-spinners';
 import banera from '../../assets/SVG/mobile/anuncios/anuncios_banos.svg';
@@ -18,13 +18,7 @@ import order from '../../assets/SVG/mobile/comun/flechaOrdenar.svg';
 import supP from '../../assets/SVG/web/anuncios/anuncios_superficieP.svg';
 import mayor from '../../assets/SVG/web/comunes/mayor.svg'
 
-export default function Rustico({orderedItems, pages, query}){
-    //campo rustico:     _id_PREP:   "6368f6f92bf0bfd02dec4ea5"
-    //campo rustico:     _id_PROD:   "636a961ce64d2932b53366f4"
-    //activos singulares _id_PREP:   "6368f7ec2bf0bfd02dec4ea7"
-    //activos singulares _id_PROD:   "636a965fe64d2932b5336711"
-    //costa              _id_PREP:   "6368f82f2bf0bfd02dec4ea9"
-    //costa              _id_PROD:   "636a969ee64d2932b533674b"
+export default function Singular({orderedItems, pages, query}){
 
     const router = useRouter();
     const {porfecha, page} = query
@@ -32,7 +26,8 @@ export default function Rustico({orderedItems, pages, query}){
     const [URLwithoutPage, setURLwithoutPage] = useState([])
     if(porfecha !== undefined)          URLwithoutPage.push(`porfecha=${porfecha}`)
 
-    const [ , setOrderedItems] = useState([])
+
+    const [, setOrderedItems] = useState([])
     const [perPage] = useState(30);
     const [pageNumber, setPageNumber] = useState(0)
     const [state, setState] = useContext(generalContext);
@@ -55,42 +50,42 @@ export default function Rustico({orderedItems, pages, query}){
     const pageCount = pages;
     const getPostItems = orderedItems?.map(item => {
         return item.showOnWeb === true? 
-        <div onClick={setPosition} className='campoRustico__list__item' key={item._id} details={item}>
+        <div onClick={setPosition} className='singular__list__item' key={item._id} details={item}>
             {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
                 <div className='wrapper'>
-                    <div className='campoRustico__list__item__status'>
+                    <div className='singular__list__item__status'>
                         <p>{item.gvOperationClose}</p>
                     </div>
                     <Carousel 
-                        className='campoRustico__list__item__images'
+                        className='singular__list__item__images'
                         showArrows={true}
                         showThumbs={false}
                         infiniteLoop={true}
                         showStatus={false}
                     >
-                        <Image width={400} height={300} src={item.images.main} alt={item.title}/>
+                        <Image width={400} height={300}  src={item.images.main} alt={item.title}/>
                         {/* {item.images.others.map((image)=> (
-                            <img key={item.title} src={image} alt={item.title}/>
+                            <Image key={item.title} src={image} alt={item.title}/>
                         ))} */}
                     </Carousel>
                     <div>
-                        <div className='campoRustico__list__item__text'>
+                        <div className='singular__list__item__text'>
                             {item.adType.length === 1 ? 
-                                <h2 className='campoRustico__list__item__text__price'>{item.adType.map(type => 
+                                <h2 className='singular__list__item__text__price'>{item.adType.map(type => 
                                     type==='Venta' && item.sale.saleShowOnWeb ? 
                                     `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`:
                                     type==='Alquiler' && item.rent.rentShowOnWeb ?
                                     `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
                                 </h2>
                                 :
-                                <h2 className='campoRustico__list__item__text__prices'>
+                                <h2 className='singular__list__item__text__prices'>
                                     {item.sale.saleShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p>:null}
                                     {item.rent.rentShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p>:null}
                                 </h2>
-                            }
-                            <h2 className='campoRustico__list__item__text__title'>{item.title}</h2>
-                            <h3 className='campoRustico__list__item__text__street'>{item.webSubtitle}</h3>
-                            <ul className='campoRustico__list__item__text__characteristics'>
+                            }                        
+                            <h2 className='singular__list__item__text__title'>{item.title}</h2>
+                            <h3 className='singular__list__item__text__street'>{item.webSubtitle}</h3>
+                            <ul className='singular__list__item__text__characteristics'>
                                 {item.buildSurface !== 0 ? 
                                     <li><span><Image width={11} height={16} src={sup} alt='superficie'/></span>{item.buildSurface}m<sup>2</sup></li>
                                 :null}
@@ -104,13 +99,13 @@ export default function Rustico({orderedItems, pages, query}){
                                     <li><span><Image width={15} height={12} src={banera} alt='baños'/></span>{item.quality.bathrooms}</li>
                                 :null}
                                 {item.quality.bedrooms !== 0 ?
-                                    <li><span><Image width={18} height={12} src={habit} alt='habitaciones'/></span>{item.quality.bedrooms}</li>
+                                    <li><span><mage width={18} height={12} src={habit} alt='habitaciones'/></span>{item.quality.bedrooms}</li>
                                 :null}
                                 {item.adReference !== 0 ? 
-                                    <li><span><Image width={13} height={12} src={refer} alt='referencia'/></span><p>Ref {item.adReference}</p></li>
+                                    <li><span><mage width={13} height={12} src={refer} alt='referencia'/></span><p>Ref {item.adReference}</p></li>
                                 :null}
                             </ul>
-                            <div className='campoRustico__list__item__text__blocker'></div>
+                            <div className='singular__list__item__text__blocker'></div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +113,7 @@ export default function Rustico({orderedItems, pages, query}){
                 <div>
                     {/* {isLoading ? */}
                         <Carousel 
-                        className='campoRustico__list__item__images'
+                        className='singular__list__item__images'
                         showArrows={true}
                         showThumbs={false}
                         infiniteLoop={true}
@@ -135,28 +130,28 @@ export default function Rustico({orderedItems, pages, query}){
                     } */}
                     <Link onClick={() => {setState({item:item})}}  
                     href={`${routes.ItemResidential}/${item._id}`}>
-                        <div className='campoRustico__list__item__text'>
+                        <div className='singular__list__item__text'>
                             {item.adType.length === 1 ? 
-                                <h2 className='campoRustico__list__item__text__price'>{item.adType.map(type => 
+                                <h2 className='singular__list__item__text__price'>{item.adType.map(type => 
                                     type==='Venta' && item.sale.saleShowOnWeb ? 
                                     `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`:
                                     type==='Alquiler' && item.rent.rentShowOnWeb ?
                                     `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
                                 </h2>
                                 :
-                                <h2 className='campoRustico__list__item__text__prices'>
+                                <h2 className='singular__list__item__text__prices'>
                                     {item.sale.saleShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p>:null}
                                     {item.rent.rentShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p>:null}
                                 </h2>
                             }                        
-                            <h2 className='campoRustico__list__item__text__title'>{item.title}</h2>
-                            <h3 className='campoRustico__list__item__text__street'>{item.webSubtitle}</h3>
-                            <ul className='campoRustico__list__item__text__characteristics'>
+                            <h2 className='singular__list__item__text__title'>{item.title}</h2>
+                            <h3 className='singular__list__item__text__street'>{item.webSubtitle}</h3>
+                            <ul className='singular__list__item__text__characteristics'>
                                 {item.buildSurface !== 0 ? 
                                     <li><span><Image width={11} height={16} src={sup} alt='superficie'/></span>{item.buildSurface}m<sup>2</sup></li>
                                 :null}
                                 {item.plotSurface !== 0 ?
-                                    <li><span><Image width={15} height={12} src={supP} alt='superficie'/></span>{item.buildSurface}m<sup>2</sup></li>
+                                    <li><span><Image width={15} height={12} src={supP} alt='superficie'/></span>{item.plotSurface}m<sup>2</sup></li>
                                 :null}
                                 {item.quality.outdoorPool !== 0 ?
                                     <li><span><Image width={21} height={12} src={piscina} alt='piscina'/></span>{item.quality.outdoorPool}</li>
@@ -171,7 +166,7 @@ export default function Rustico({orderedItems, pages, query}){
                                     <li><span><Image width={13} height={12} src={refer} alt='referencia'/></span><p>Ref {item.adReference}</p></li>
                                 :null}
                             </ul>
-                            <div className='campoRustico__list__item__text__clickable'></div>
+                            <div className='singular__list__item__text__clickable'></div>
                         </div>
                     </Link>
                 </div>
@@ -183,7 +178,7 @@ export default function Rustico({orderedItems, pages, query}){
         if (state.length>=1) {
             let reducedState = []
             state.map(item => 
-                 item.showOnWeb === true ? reducedState.push(item) : null
+                item.showOnWeb === true ? reducedState.push(item) : null
             )
             if (typeof window !== 'undefined')
             window.localStorage.setItem(
@@ -214,18 +209,19 @@ export default function Rustico({orderedItems, pages, query}){
         let splitedLocation = window.location.href.split('/');
         let elements = []
         setPageNumber(parseInt(splitedLocation[4])-1)
-        for(let i = 0; i< pageCount; i++){
-            if(URLwithoutPage.length !== 0) {
-                const URL = URLwithoutPage.join('&')
-                elements.push(
-                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'campoRustico__pagination__list__item currentPage' : 'campoRustico__pagination__list__item'}><a href={`/rustico/${i + 1}?${URL}&page=${i+1}`}>{i + 1}</a></li>
-                )
-            }else{
-                elements.push(
-                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'campoRustico__pagination__list__item currentPage' : 'campoRustico__pagination__list__item'}><a href={`/rustico/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
+        for(let i = 0; i<pageCount; i++){
+            for(let i = 0; i< pageCount; i++){
+                if(URLwithoutPage.length !== 0) {
+                    const URL = URLwithoutPage.join('&')
+                    elements.push(
+                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'singular__pagination__list__item currentPage' : 'singular__pagination__list__item'}><a href={`/singular/${i + 1}?${URL}&page=${i+1}`}>{i + 1}</a></li>
                     )
-            }
-            
+                }else{
+                    elements.push(
+                        <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'singular__pagination__list__item currentPage' : 'singular__pagination__list__item'}><a href={`/singular/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
+                        )
+                }
+            }            
         }
         setPagElements(elements)
     },[URLwithoutPage, pageCount])
@@ -271,12 +267,12 @@ export default function Rustico({orderedItems, pages, query}){
     }
 
     if (typeof window !== 'undefined'){
-            window.onmousemove = function (e){
+        window.onmousemove = function (e){
             var y = e.pageY
             setCoord(y)
         }
     }
-
+    
     const toggleOrderItems = () => {
         setOrderItems (!orderItems)
     }
@@ -286,6 +282,7 @@ export default function Rustico({orderedItems, pages, query}){
             window.localStorage.removeItem('storedPosition2')
         }
     }
+
     function navigateToNewPath (page, query){
         const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = query
         // console.log( tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax)
@@ -308,7 +305,7 @@ export default function Rustico({orderedItems, pages, query}){
             
             queryFilters = { ...queryFilters, page: page.toString() }
             const newRoute = {
-                pathname: `${routes.Rustico}/${page}`,
+                pathname: `${routes.Singular}/${page}`,
                 query: queryFilters,
               };
               // Navega a la nueva ruta 
@@ -316,51 +313,53 @@ export default function Rustico({orderedItems, pages, query}){
     }
 
     return (
-        <div>
+        <div className='singular'>
         {orderedItems.length>0 ? 
             <div>
                 <Header/>
-                <h1 className='campoRustico__title'>Campo rústico</h1>
-                <div className='campoRustico__buttons'>
-                    <div className='campoRustico__buttons__order'>
-                        <p onClick={toggleOrderItems} className='campoRustico__buttons__order__title' style={{cursor: "pointer"}}>Ordenar por <Image src={order} alt='boton ordenar por'/></p>
-                        <ul className={orderItems === false ? 'campoRustico__buttons__order__listDisabled': 'campoRustico__buttons__order__list'}>
-                            <li onClick={onPrice} className='campoRustico__buttons__order__list__first' style={{cursor: "pointer"}}>Precio más alto</li>
+                <h1 className='singular__title'>Activos singulares</h1>
+                <div className='singular__buttons'>
+                    <div className='singular__buttons__order'>
+                        <p onClick={toggleOrderItems} className='singular__buttons__order__title' style={{cursor: "pointer"}}>Ordenar por <Image src={order} alt='boton ordenar por'/></p>
+                        <ul className={orderItems === false ? 'singular__buttons__order__listDisabled': 'singular__buttons__order__list'}>
+                            <li onClick={onPrice} className='singular__buttons__order__list__first' style={{cursor: "pointer"}}>Precio más alto</li>
                             <li onClick={onDate} style={{cursor: "pointer"}}>Más reciente</li>
                         </ul>
                     </div>
                 </div>
-                <div className='campoRustico__list'>
+                <div className='singular__list'>
                     {getPostItems}
                 </div>
-                <div onClick={deletePosition} className='campoRustico__pagination'>
-                    <ul className='campoRustico__pagination__list'>
-                        {parseInt(page) !== 1 && <li className='campoRustico__pagination__list__item'><a className='campoRustico__pagination__list__item__back' onClick={()=>navigateToNewPath(parseInt(page)-1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li> }
+                <div onClick={deletePosition} className='singular__pagination'>
+                    <ul className='singular__pagination__list'>
+                        {parseInt(page) !== 1 && <li className='singular__pagination__list__item'><a className='singular__pagination__list__item__back' onClick={()=>navigateToNewPath(parseInt(page)-1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li> }
                         {arrPages.map((__pag, i)=>{
-                            return <li key={i} className={i + 1 ===  parseInt(page)? 'campoRustico__pagination__list__item currentPage' : 'campoRustico__pagination__list__item'}><p onClick={()=>navigateToNewPath(i+1, query)} style={{cursor:"pointer"}}>{i + 1}</p></li>
+                            return <li key={i} className={i + 1 ===  parseInt(page)? 'singular__pagination__list__item currentPage' : 'singular__pagination__list__item'}><p onClick={()=>navigateToNewPath(i+1, query)} style={{cursor:"pointer"}}>{i + 1}</p></li>
                         })}
-                        {parseInt(page) !== pagElements?.length && <li className='campoRustico__pagination__list__item'><p className='campoRustico__pagination__list__item__next' onClick={()=>navigateToNewPath(parseInt(page) + 1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </p></li>}
+                        {parseInt(page) !== pagElements?.length && <li className='singular__pagination__list__item'><p className='singular__pagination__list__item__next' onClick={()=>navigateToNewPath(parseInt(page) + 1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </p></li>}
                     </ul>
                 </div>
                 <ContactIndex/>
             </div>
             :
-            <div className='campoRustico__empty'>
+            <div className='singular__empty'>
             {
-                // isFound ?
+                // isFound ? 
                 (
-                    <div className="campoRustico__empty">
+                    <div className="singular__empty">
                         <Header/>
-                        <h2 className='campoRustico__empty__text'>Lamentablemente no existen anuncios bajo sus criterios de búsqueda</h2>
-                        <Link className='campoRustico__empty__button' to={routes.Home}>Volver a la home</Link>            
+                        <h2 className='singular__empty__text'>Lamentablemente no existen anuncios bajo sus criterios de búsqueda</h2>
+                        <Link className='singular__empty__button' to={routes.Home}>Volver a la home</Link>            
+          
                     </div>
                 )
             //    :
             //    <BarLoader color="#000000" width='150px' height='2px'/>
-            }    
+            }
+
             </div>
         }
-    </div>
+    </div>  
     )
 }
 
@@ -391,7 +390,7 @@ export async function getServerSideProps(context){
     if(superficiemin !== undefined)         queryFilters = { ...queryFilters, minSurface: superficiemin }
     if(superficiemax !== undefined)         queryFilters = { ...queryFilters, maxSurface: superficiemax }
     
-    const {ads, totalAds} = await getRustico(queryFilters)
+    const {ads, totalAds} = await getSingular(queryFilters)
     // console.log('totales',totalAds)
     const orderedItems = ads
     const elements = totalAds

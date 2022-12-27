@@ -12,6 +12,7 @@ import "../styles/patrimonio.scss"
 
 import '../styles/costa.scss';
 import '../styles/campoRustico.scss';
+import '../styles/activosSingulares.scss';
 
 import '../styles/index.scss'
 import '../styles/globals.scss'
