@@ -204,26 +204,6 @@ export default function Costa({orderedItems, pages, query}){
         window.localStorage.removeItem('storedState2')
     },[])
 
-    // useEffect (() => {
-    //     const localState = window.localStorage.getItem('storedState')
-    //     let costaItems = []
-    //     if (localState) {
-    //         const itemList = JSON.parse(localState)
-    //         const array = Object.values(itemList.ads);
-    //         itemList.ads.map(item => 
-    //             costaItems.push(item)
-    //         )
-    //         const sortArray = (a, b) => {
-    //             if (a.sale.saleValue < b.sale.saleValue) {return 1;}
-    //             if (a.sale.saleValue > b.sale.saleValue) {return -1;}
-    //             return 0
-    //         }
-    //         let orderedArrayPrice = array.sort(sortArray);
-    //         costaItems=orderedArrayPrice;
-    //     }
-    //      setOrderedItems(costaItems)
-    // },[state])
-
     useEffect(() => {
         let splitedLocation = window.location.href.split('/');
         let elements = []
@@ -242,27 +222,6 @@ export default function Costa({orderedItems, pages, query}){
         }
         setPagElements(elements)
     },[URLwithoutPage, pageCount])
-
-    // useEffect(() => {
-    //     //let costaItems = []
-    //     let totalAds = 0;
-    //     const activeFilters = {};
-    //     let splitedLocation = window.location.href.split('/');
-    //     activeFilters.page = parseInt(splitedLocation[4])
-    //     /* console.log(activeFilters) */
-    //     getCosta().then(rusticoItems =>{
-    //         console.log(rusticoItems)
-    //             totalAds = rusticoItems.totalAds;
-    //              /* console.log('En patrimonio:',rusticoItems) */
-    //              setState(rusticoItems);
-    //              window.localStorage.setItem('storedState', JSON.stringify(rusticoItems))
-    //              window.localStorage.setItem('totalAds', totalAds)
-    //              setIsLoading(true)
-    //              setIsFound(true) 
-    //              /* console.log(items.ads)
-    //              items.ads.forEach(item => console.log(item.zone, item.title)) */
-    //          })
-    // },[setState])
 
     useEffect(() => {
             const localPosition = window.localStorage.getItem('storedPosition2')
@@ -310,7 +269,6 @@ export default function Costa({orderedItems, pages, query}){
             var y = e.pageY
             setCoord(y)
         }
-        
     }
 
     const toggleOrderItems = () => {
