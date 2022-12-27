@@ -13,7 +13,7 @@ const Fail = `${Home}error`;
 const Costa = `${Home}costa`;
 const Singular = `${Home}singular`;
 const Rustico = `${Home}rustico`;
-const RefItem = `${Home}reference/`;
+const RefItem = `${Home}reference`;
 const Aviso = `${Home}aviso-legal`;
 const Politica = `${Home}politica-privacidad`;
 

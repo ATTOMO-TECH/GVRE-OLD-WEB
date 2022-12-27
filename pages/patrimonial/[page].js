@@ -1184,12 +1184,12 @@ export default function Patrimonial ({orderedItems, pages, query, queryFilters})
                     }
                     <h1 className='patrimonial__title'>Patrimonio</h1>
                     <div className='patrimonial__buttons'>
-                        <button onClick={toggleFilter} className='patrimonial__buttons__filter'><Image src={filterImg} alt='boton filtro'/> Filtros</button>
+                        <button onClick={toggleFilter} className='patrimonial__buttons__filter' style={{cursor: "pointer"}}><Image src={filterImg} alt='boton filtro'/> Filtros</button>
                         <div className='patrimonial__buttons__order'>
-                        <button onClick={toggleOrderItems} className='patrimonial__buttons__order__title'>Ordenar por <Image src={order} alt='boton ordenar por'/></button>
+                        <button onClick={toggleOrderItems} className='patrimonial__buttons__order__title' style={{cursor: "pointer"}}>Ordenar por <Image src={order} alt='boton ordenar por'/></button>
                             <ul className={orderItems === false ? 'patrimonial__buttons__order__listDisabled' : 'patrimonial__buttons__order__list'}>
-                                <li onClick={onPrice} className='patrimonial__buttons__order__list__first'>Precio más alto</li>
-                                <li onClick={onDate}>Más reciente</li>
+                                <li onClick={onPrice} className='patrimonial__buttons__order__list__first' style={{cursor: "pointer"}}>Precio más alto</li>
+                                <li onClick={onDate} style={{cursor: "pointer"}}>Más reciente</li>
                             </ul>
                         </div>
                     </div>
