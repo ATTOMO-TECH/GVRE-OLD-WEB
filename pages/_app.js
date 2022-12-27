@@ -10,6 +10,8 @@ import '../styles/residential.scss'
 import '../styles/filtroPatrimonio.scss'
 import "../styles/patrimonio.scss"
 
+import '../styles/costa.scss';
+
 import '../styles/index.scss'
 import '../styles/globals.scss'
 import Provider from '../providers/generalProvider'

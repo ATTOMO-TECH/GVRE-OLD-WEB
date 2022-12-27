@@ -159,21 +159,21 @@ export default function Home({destacado}) {
             <div className='home__otherCategories'>
                 <h2 className='home__otherCategories__title'>Otras categorías</h2>
                 <div className='home__otherCategories__categories'>
-                    <Link href={`${routes.Costa}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Costa}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={costa} alt='categoría costa'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Costa</p>
                             <span><Image width={35} height={16} src={flechaEnviar} alt='flecha'/></span>
                         </div>
                     </Link>
-                    <Link href={`${routes.Rustico}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Rustico}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={rustico} alt='categoría rustico'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Campos Rústicos</p>
                             <span><Image width={35} height={16} src={flechaEnviar} alt='flecha'/></span>
                         </div>
                     </Link>
-                    <Link href={`${routes.Singular}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Singular}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={singular} alt='categoría singulares'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Activos singulares</p>

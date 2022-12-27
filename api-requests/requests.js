@@ -3,6 +3,9 @@ const baseUrlResidential = 'https://api.vamosaporello.com/inmuebles/';
 const baseUrlConsultants = 'https://www.gvrecrm.com/';
 const newBaseUrlResidential = 'https://api.vamosaporello.com/inmuebles/web/department=Residencial&showOnWeb=true';
 const newBaseUrlPatrimonial = 'https://api.vamosaporello.com/inmuebles/web/department=Patrimonio&showOnWeb=true';
+const newBaseUrlCosta =  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
+const newBaseUrlRustico = "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
+const newBaseUrlSingular = "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
 
 //LOCAL
 //const baseUrlResidential = 'http://localhost:3500/inmuebles/';
@@ -54,6 +57,20 @@ export const getPatrimonial = async (filters) => {
     return adsInfo
 }
 
+export const getCosta = async (filters) => {
+    /* console.log(filters) */
+    const filterParams = new URLSearchParams(filters)
+    const urlWithFilters = !!filterParams ? `${newBaseUrlCosta}&${filterParams.toString()}` : `${newBaseUrlCosta}`;
+    /* console.log(urlWithFilters) */
+    const newUrl = new URL(urlWithFilters)
+    /* console.log(newUrl) */
+
+    const response = await fetch(newUrl, requestBaseParams)
+    const adsInfo = await response.json()
+    /* console.log(adsInfo) */
+    return adsInfo
+}
+
 export const getRustico = async (filters) => {
     /* console.log(filters) */
     const filterParams = new URLSearchParams(filters)
@@ -82,19 +99,6 @@ export const getSingular = async (filters) => {
     return adsInfo
 }
 
-export const getCosta = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlCosta}&${filterParams.toString()}` : `${newBaseUrlCosta}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
-
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
 
 export const getResidentialItem = async (id) => {
     const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams)
