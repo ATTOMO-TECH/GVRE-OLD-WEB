@@ -1,0 +1,571 @@
+@import './fonts.scss';
+@import './media.scss';
+
+.wrapper{
+    position: relative;
+}
+
+.campoRustico{
+    &__title{
+        @include subSubTitleMobile;
+        padding-left: 15px;
+        padding-top: 15px;
+        margin-top: 80px;
+    }
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 15px 20px 15px;
+        &__filter{
+            @include textMobile;
+            background-color: white;
+            border: solid;
+            border-width: 1px;
+        }
+        &__order{
+            @include textMobile;
+            position: relative;
+            z-index: 10;
+            &__title{
+                @include textMobile;
+                background-color: white;
+                border: solid;
+                border-width: 1px;
+                margin: 0;
+                padding: 8px 21px;
+                img{
+                    margin-left: 27px;
+                }
+            }
+            &__listDisabled{
+                display: none;
+
+            }
+            &__list{
+                display: block;
+                list-style: none;
+                padding: 0;
+                position: absolute;
+                background-color: white;
+                width: 138px;
+                height: 100px;
+                left: 0px;
+                top: 40px;
+                margin-top: 5px;
+                padding: 0 15px;
+                z-index: 1;
+                &__first{
+                    border-bottom: solid;
+                    border-width: 2px;
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    padding-bottom: 15px;
+                }
+            }
+        }
+    }
+    &__list{
+        &__item{
+            text-align: center;
+            margin-bottom: 25px;
+            img{
+                height: 250px;
+                max-width: 400px;
+            }
+            a{
+                text-decoration: none;
+            }
+            &__status{
+                position: absolute;
+                top:10px;
+                left: 10px;
+                z-index: 4;
+                background-color: white;
+                height: 30px;
+                width: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p{
+                    margin: 0;
+                    text-align: center;
+                    @include textMobile;
+                }
+            }
+            &__text{
+                position: relative;
+                &__price{
+                    top: -50px;
+                    position: absolute; 
+                    left: 0; 
+                    right: 0; 
+                    margin: auto; 
+                    background-color: rgba(255, 255, 255, 0.603);
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    @include textBlackMobile; 
+                    display: flex;
+                    justify-content: center;
+                }
+                &__prices{
+                    top: -50px;
+                    position: absolute; 
+                    left: 0; 
+                    right: 0; 
+                    margin: auto; 
+                    background-color: rgba(255, 255, 255, 0.603);
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    @include textBlackMobile;
+                    display: flex;
+                    justify-content: space-around;
+                    p{
+                        margin-top: 0px;
+                    }
+                }
+                &__title{
+                    @include textBlackMobile;
+                }
+                &__street{
+                    @include contactMobile;
+                    text-transform: uppercase;
+                }
+                &__characteristics{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    list-style: none;
+                    padding: 0;
+                    padding-bottom: 25px;
+                    border-bottom: solid;
+                    border-color: rgb(180, 180, 180);
+                    border-width: 2px;
+                    @include litleTextMobile;
+                    li{
+                        display: flex;
+                        align-items: center;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        p{
+                            margin: 0;
+                        }
+                        span{
+                            margin-right: 5px;
+                            img{
+                                height: 18px;
+                            }
+                        }
+                    }
+                }
+                &__clickable{
+                    background-color: transparent;
+                    z-index: 1;
+                    width: 100%;
+                    height: 210px;
+                    position: absolute;
+                    top: -260px;
+                    left: 0px;
+                }
+                &__blocker{
+                    width: 100%;
+                    height: 250px;
+                    position: absolute;
+                    background-color: #5F717C;
+                    filter: opacity(60%);
+                    z-index: 3;
+                    top: -262px;
+                }
+            }
+        }
+    }
+    &__pagination{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__list{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-left: 8px;
+            margin-right: 8px;
+            @include textMobile;
+            &__item{
+                margin-left: 3px;
+                margin-right: 3px;
+                padding-left: 5px;
+                padding-right: 5px;
+                &__back{
+                    img{
+                        width: 8px;
+                        transform: rotate(180deg);
+                    }
+                }
+                &__next{
+                    img{
+                        width: 8px;
+                    }
+                }
+                a{
+                    text-decoration: none;
+                    color: black!important;
+                }
+            }
+        }
+    }
+    &__contact{
+        margin-top: 58px;
+        margin-bottom: 32px;
+        margin-left: 24px;
+        margin-right: 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-bottom: 40px;
+        &__title{
+            @include subTitleMobile;
+        }
+        &__location{
+            @include litleText;
+            display: flex;
+            p{
+                margin: 10px;
+                margin-left: 0;
+            }
+            &__logo{
+                display: none;
+                height: 48px;
+                margin-right: 48px;
+            }
+            &__left{
+                border-right: solid;
+                border-color: rgb(209, 209, 209);
+                border-width: 2px;
+                margin-right: 20px;
+                padding-right: 20px;
+            }
+            &__right{
+                text-align: right;
+            }
+        }
+        &__button{
+            @include buttonMobile;
+            margin-bottom: 0;
+            align-self: flex-start;
+            margin-top: 24px;
+        }        
+    }
+    &__empty{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &__text{
+            text-align: center;
+            @include textMobile;
+        }
+        &__button{
+            @include buttonMobile;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    }
+}
+.currentPage {
+    background-color: #2B363D;
+    color: white!important;
+    a{
+        color: white!important;
+    }
+}
+.dot{
+    display: none!important;
+}
+.control-arrow:before{
+    border-top: none!important;
+    border-bottom: none!important;
+    border: none!important;
+    display: initial!important;
+}
+.control-arrow{
+    background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+    background-repeat: no-repeat;
+    background-size:cover!important;
+    height: 50px;
+    width: 50px;
+    top: 35%!important;
+    border-radius: 50%;
+    margin-right: 5px;
+    opacity: 1!important;
+}
+.control-prev{
+    transform: rotate(180deg);
+    margin-left: 5px;
+}
+.active{
+    text-decoration: underline !important;
+}
+
+@include tablet {
+    .campoRustico{
+        &__title{
+            @include subSubTitleMobile;
+        }
+        &__buttons{
+            &__filter{
+                @include textMobile;
+            }
+            &__order{
+                @include textMobile;
+            }
+        }
+        &__list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            &__item{
+                width: 47%;
+                img{
+                    height: 300px;
+                    max-width: 400px;
+                }
+                &__text{
+                    position: relative;
+                    &__price{
+                        @include textBlackMobile;
+                    }
+                    &__title{
+                        @include textBlackMobile;
+                    }
+                    &__street{
+                        @include contactMobile;
+                    }
+                    &__characteristics{
+                        @include litleTextMobile;
+                        li{
+                            display: flex;
+                            p{
+                                margin: 0;
+                            }
+                            span{
+                                img{
+                                    height: 18px;
+                                }
+                            }
+                        }
+                    }
+                    &__clickable{
+                        height: 260px;
+                        top: -310px;
+                    }
+                    &__blocker{
+                        width: 100%;
+                        height: 300px;
+                        position: absolute;
+                        background-color: #5F717C;
+                        filter: opacity(60%);
+                        z-index: 3;
+                        top: -312px;
+                    }
+                }
+            }
+        }
+    }
+}
+@include desktop {
+    .campoRustico{
+        &__title{
+            @include textHome;
+            color: black!important;
+            padding-left: 36px;
+            padding-top: 80px;
+            margin-bottom: 16px;
+        }
+        &__buttons{
+            margin: 0px 36px 16px 36px;
+            &__filter{
+                @include litleText;
+                padding: 8px 21px;
+                img{
+                    margin-right: 16px;
+                }
+            }
+            &__order{
+                @include litleText;
+                p{
+                    padding: 8px 21px;
+                    img{
+                        margin-left: 27px;
+                    }
+                }
+            }
+        }
+        &__list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 36px;
+            margin-right: 36px;
+            &__item{
+                width: 47%;
+                margin-bottom: 48px;
+                img{
+                    height: 450px;
+                    max-width: 650px;
+                }
+                &__text{
+                    &__price{
+                        height: 75px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: -105px;
+                        @include textHome;
+                        color: black!important;
+                    }
+                    &__title{
+                        @include categoriesLink;
+                        font-weight: 600!important;
+                        margin-bottom: 7px;
+                        margin-top: 13px
+                    }
+                    &__street{
+                        @include apart;
+                        font-weight: 400!important;
+                        margin-top: 0;
+                        margin-bottom: 24px;
+                    }
+                    &__characteristics{
+                        padding-bottom: 16px;
+                        border-width: 2px;
+                        @include mapBut;
+                        font-size: 11px!important;
+                        li{
+                            display: flex;
+                            margin-left: 15px;
+                            margin-right: 15px;
+                            p{
+                                margin: 0;
+                            }
+                            span{
+                                img{
+                                    height: 12px;
+                                }
+                            }
+                        }
+                    }
+                    &__clickable{
+                        height: 360px;
+                        top: -455px;
+                    }
+                    &__blocker{
+                        width: 100%;
+                        height: 450px;
+                        position: absolute;
+                        background-color: #5F717C;
+                        filter: opacity(60%);
+                        z-index: 3;
+                        top: -463px;
+                    }
+                }
+            }
+        }
+        &__paginate{
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            li{
+                margin-left: 11px;
+                margin-right: 12px;
+                @include text;
+                font-size: 24px!important;
+            }
+        }
+        &__contact{
+            margin-top: 90px;
+            margin-bottom: 40px;
+            margin-left: 92px;
+            margin-right: 92px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 40px;
+            &__title{
+                @include subTitle;
+            }
+            &__location{
+                @include contact;
+                display: flex;
+                p{
+                    margin: 10px;
+                }
+                &__logo{
+                    display: block;
+                    height: 48px;
+                    margin-right: 48px;
+                }
+                &__right{
+                    text-align: right;
+                }
+            }
+            &__button{
+                @include button;
+                margin-bottom: 0;
+                align-self: flex-end;
+                position: absolute;
+                bottom: 0px;
+            }        
+        }
+        &__empty{
+            height: 93vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &__text{
+                text-align: center;
+                @include text;
+            }
+            &__button{
+                @include button;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+            }
+        }
+    }
+    .dot{
+        display: none!important;
+    }
+    .control-arrow:before{
+        border-top: none!important;
+        border-bottom: none!important;
+        border: none!important;
+        display: initial!important;
+    }
+    .control-arrow{
+        background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+        background-repeat: no-repeat;
+        background-size:cover!important;
+        height: 50px;
+        width: 50px;
+        top: 35%!important;
+        border-radius: 50%;
+        margin-right: 5px;
+        opacity: 1!important;
+    }
+    .control-prev{
+        transform: rotate(180deg);
+        margin-left: 5px;
+    }
+}
