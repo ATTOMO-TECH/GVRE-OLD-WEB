@@ -78,7 +78,6 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     if(garaje !== undefined)            URLwithoutPage.push(`garaje=${garaje}`)
     if(piscina !== undefined)           URLwithoutPage.push(`piscina=${piscina}`)
     if(terraza !== undefined)           URLwithoutPage.push(`terraza=${terraza}`)
-    if(terraza !== undefined)           URLwithoutPage.push(`terraza=${terraza}`)
     if(porfecha !== undefined)          URLwithoutPage.push(`porfecha=${porfecha}`)
 
 
@@ -366,8 +365,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             } else {
                 setDisableButton(true)
             }
-            let label = document.getElementsByClassName('MuiSlider-valueLabelLabel')
-            console.log(label)
+            // let label = document.getElementsByClassName('MuiSlider-valueLabelLabel')
+            // console.log(label)
             if(saleOrRent.length === 1){
                 /* console.log('entro en el if cuando la longitud es 1') */
                 setMaxPrice(99999999.9)
@@ -448,8 +447,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             activeFilters = { ...activeFilters, orderByDate: true }
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters));
             /* console.log(activeFilters) */
-            console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
-            console.log(typeof tipo)
+            // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
+            // console.log(typeof tipo)
             let newquery = query
             newquery.porfecha = "true"
             toggleOrderItems()
@@ -816,7 +815,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
 
     function navigateToNewPath (page, query){
         const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = query
-        console.log( tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax)
+        // console.log( tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax)
         let queryFilters ={}
             if(tipo !== undefined)                                  queryFilters = { ...queryFilters, tipo: tipo }
             if(tipodeinmueble !== undefined)                        queryFilters = { ...queryFilters, tipodeinmueble: tipodeinmueble }
@@ -854,7 +853,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                 <h2 className='residential__filter__position__title'>Zonas <span onClick={toggleFilter}><Image width={14} height={14} src={cerrarFiltro} alt='cerrar' /></span></h2>
                                 <h3 className='residential__filter__position__subTitle'>Seleccione una o varias zonas</h3>
                                 <div className='residential__buttons'>
-                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters'><Image width={9} height={9} src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
+                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters' style={{cursor: "pointer"}}><Image width={9} height={9} src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
                                 </div>
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
@@ -1300,8 +1299,8 @@ export async function getServerSideProps(context){
         const query = context.query
         // console.log(query)
         const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = context.query
-         console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
-         console.log(typeof porfecha)
+        // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
+        // console.log(typeof porfecha)
         if(tipo !== undefined)                  queryFilters = { ...queryFilters, adType: tipo.split('-') }
         if(tipodeinmueble !== undefined)        queryFilters = { ...queryFilters, adBuildingType: tipodeinmueble.split('-') }
         if(referencia !== undefined)            queryFilters = { ...queryFilters, adReference: referencia }
@@ -1328,7 +1327,7 @@ export async function getServerSideProps(context){
         const elements = totalAds
         const pages = Math.ceil(elements / 30)
     
-        console.log(orderedItems.length)
+        // console.log(orderedItems.length)
         return {
             props: {
                 orderedItems,

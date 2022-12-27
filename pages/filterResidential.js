@@ -227,7 +227,7 @@ export default function FilterResidential() {
         const queryPage = `page=1`
         queryString.push(queryPage)
         const query = queryString.join('&')
-        console.log(query)
+        // console.log(query)
         Router.push(`${routes.Residential}/${1}?${query}`)
 
     }

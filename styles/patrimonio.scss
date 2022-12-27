@@ -1,10 +1,11 @@
-@import '../styles/fonts.scss';
-@import '../styles/media.scss';
+@import './fonts.scss';
+@import './media.scss';
 
 .wrapper{
     position: relative;
 }
-.residential{
+
+.patrimonial{
     margin-top: 80px;
     &__title{
         @include subSubTitleMobile;
@@ -31,6 +32,7 @@
                 align-items: center;
                 gap: 5px;
                 padding: 5px 7px;
+                margin-top: 10px;
                 img{
                     max-width: 9px;
                     max-height: 9px;
@@ -110,11 +112,6 @@
                     @include textMobile;
                 }
             }
-            &__images{
-                .carousel{
-                    position: relative;
-                }
-            }
             &__text{
                 position: relative;
                 &__price{
@@ -127,6 +124,8 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     @include textBlackMobile;
+                    display: flex;
+                    justify-content: center;
                 }
                 &__prices{
                     top: -50px;
@@ -163,10 +162,6 @@
                     border-color: rgb(180, 180, 180);
                     border-width: 2px;
                     @include litleTextMobile;
-                    sup{
-                        font-size: 8px;
-                        margin-bottom: 3px;
-                    }
                     li{
                         display: flex;
                         align-items: center;
@@ -323,6 +318,23 @@
             text-decoration: none;
         }
     }
+    &__filter{
+        &__selectors{
+            &__tipo{
+                &__buttons{
+                    .exclusiveOfficeBuilding{
+                        height: 50px;
+                    }
+                    .classicBuilding{
+                        height: 50px;
+                    }
+                    .coworking{
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
 }
 .currentPage {
     background-color: #2B363D;
@@ -341,12 +353,12 @@
     display: initial!important;
 }
 .control-arrow{
-    background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+    background-image: url('./../assets/SVG/web/comunes/flechaCarousel.svg')!important;
     background-repeat: no-repeat;
     background-size:cover!important;
     height: 50px;
     width: 50px;
-    top: 35%!important;
+    top: 40%!important;
     border-radius: 50%;
     margin-right: 5px;
     opacity: 1!important;
@@ -354,19 +366,13 @@
 .control-prev{
     transform: rotate(180deg);
     margin-left: 5px;
-    position: absolute;
-    left: 10px!important;
-}
-.control-next{
-    position: absolute;
-    right: 10px!important;
 }
 //.active{
     //text-decoration: underline !important;
 //}
 
 @include tablet {
-    .residential{
+    .patrimonial{
         &__title{
             @include subSubTitleMobile;
         }
@@ -431,10 +437,27 @@
                 }
             }
         }
+        &__filter{
+            &__selectors{
+                &__tipo{
+                    &__buttons{
+                        .exclusiveOfficeBuilding{
+                            height: auto;
+                        }
+                        .classicBuilding{
+                            height: auto;
+                        }
+                        .coworking{
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 @include desktop {
-    .residential{
+    .patrimonial{
         margin-top: 100px;
         &__title{
             @include textHome;
@@ -454,7 +477,6 @@
             }
             &__order{
                 @include litleText;
-                font-size: 14px!important;
                 p{
                     padding: 8px 21px;
                     img{
@@ -462,6 +484,9 @@
                     }
                 }
             }
+        }
+        &__remove{
+            margin: 0px 15px 20px 15px;
         }
         &__list{
             display: flex;
@@ -481,7 +506,6 @@
                 &__text{
                     &__price{
                         height: 75px;
-                        display: flex;
                         align-items: center;
                         justify-content: center;
                         top: -105px;
@@ -508,9 +532,8 @@
                     }
                     &__street{
                         @include apart;
-                        font-size: 16px;
                         font-weight: 400!important;
-                        margin-top: 20px;
+                        margin-top: 18px;
                         margin-bottom: 24px;
                     }
                     &__characteristics{
@@ -637,6 +660,24 @@
                 text-decoration: none;
             }
         }
+        &__filter{
+            &__selectors{
+                &__tipo{
+                    &__buttons{
+                        .exclusiveOfficeBuilding{
+                            height: auto;
+                        }
+                        .classicBuilding{
+                            height: auto;
+                        }
+                        .coworking{
+                            height: auto;
+                        }
+                    }
+                }
+              
+            }
+        }
     }
     .dot{
         display: none!important;
@@ -648,7 +689,7 @@
         display: initial!important;
     }
     .control-arrow{
-        background-image: url('../assets/SVG/web/comunes/flechaCarousel.svg')!important;
+        background-image: url('./../assets/SVG/web/comunes/flechaCarousel.svg')!important;
         background-repeat: no-repeat;
         background-size:cover!important;
         height: 50px;
@@ -664,44 +705,48 @@
     }
 }
 
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
 
-.residential{
+//------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+.patrimonial{
+    &__remove{
+        margin-top: -12px;
+        margin-left: 20px;
+    }
     &__filter{
         position: absolute;
-        top: 51px;
+        top: 70px;
         left: 0%;
         width: 100%;
         height: 100%;
         background-color: white;
         z-index: 6;
+        &__title{
+            margin-top: 1px;
+            margin-left: 20px;
+            margin-bottom: 0px;
+            @include titleHomeMobile;
+            color: black!important;
+            display: flex;
+            justify-content: space-between;
+            span{
+                margin-right: 36px;
+            }
+        }
+        &__subTitle{
+            margin-left: 20px;
+            margin-top: -10px;
+            @include textBlackMobile;
+        }
         &__position{
             margin-bottom: 50px;
-            padding-bottom: 50px;
+            padding-bottom: 25px;
             background-color: white;
-            &__title{
-                margin-top: 20px;
-                margin-left: 20px;
-                margin-bottom: 0px;
-                @include titleHomeMobile;
-                color: black!important;
-                display: flex;
-                justify-content: space-between;
-                span{
-                    margin-right: 20px;
-                }
-            }
-            &__subTitle{
-                margin: 0px;
-                margin-left: 15px;
-                margin-top: -7px;
-                @include textBlackMobile;
-            }
             &__mapContainer{
                 width: initial;
                 overflow-x:scroll;
-                margin-bottom: -12px;
-                padding-bottom: 15px;
+                //margin-bottom: 15px;
+                padding-bottom: 25px;
                 &__mapa{
                     height: 392px;
                     width: 536px;
@@ -732,7 +777,6 @@
                     }
                     .active{
                         filter:  contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%) grayscale(85%) brightness(55%);
-                        z-index: 1;
                     }
                     .c1{
                         bottom: 0;
@@ -777,280 +821,310 @@
                         right: 0;
                         width: 18%;
                     }
-                    .mocl{
-                        bottom: 41%;
-                        left: 1.5%;
+                    .c9{
+                        bottom: 3.5%;
+                        right: 58%;
+                        width: 15%;
+                    }
+                    .c10{
+                        bottom: -8.5%;
+                        right: 21%;
+                        width: 13%;
+                    }
+                    .secu{
+                        bottom: 33%;
+                        right: 32.5%;
+                        width: 15%;
+                        p{
+                            width: 100px;
+                            bottom: 13px;
+                            left: -72px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .ceba{
+                        bottom: 1%;
+                        right: 32.5%;
+                        width: 9%;
+                    }
+                    .plan{
+                        bottom: 60.5%;
+                        left: 16%;
                         width: 12%;
                         p{
-                            top: -40px;
+                            top: -18px;
+                            left: 20px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                        &__2{
+                            bottom: -48px;
                             left: -5px;
                         }
-                        input{
-                            width: 100%;
-                        }
-                        div{
-                            height: 20px;
-                            width: 80px;
-                            background-color: transparent;
-                            transform: rotate(40deg);
-                            margin-top: 20px;
-                            z-index: 1;
-                        }
                     }
-                    .moal{
-                        bottom: 38%;
-                        left: 0;
-                        width: 12.5%;
+                    .vald{
+                        bottom: 53%;
+                        left: 30%;
+                        width: 12%;
                         p{
-                            bottom: -120px;
-                            right: -10px;
-                        }
-                        input{
-                            width: 100%;
-                        }
-                    }
-                    .prla{
-                        bottom:31.5%;
-                        left:2.7%;
-                        width: 5.5%;
-                        p{
-                            bottom: -70px;
-                            left: -15px;
-                        }
-                        input{
-                            width: 100%;
-                        }
-                    }
-                    .enci{
-                        bottom: 45%;
-                        left: 8.2%;
-                        width: 10%;
-                        p{
-                            width: 100%;
-                            top: -25px;
+                            top: -20px;
                             left: 25px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .alam{
-                        bottom: 42.7%;
-                        left: 16%;
-                        width: 10%;
+                    .pozu{
+                        bottom: 37.5%;
+                        left: 28%;
+                        width: 7%;
                         p{
-                            width: 100%;
-                            bottom: -77px;
-                            left: 10px;
+                            bottom: -5px;
+                            right: 10px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .flori{
-                        bottom: 61%;
-                        left: 12%;
-                        width: 14.5%;
+                    .pe{
+                        bottom:21.5%;
+                        left:30%;
+                        width: 2.8%;
                         p{
-                            width: 100%;
-                            bottom: -10px;
-                            left: -10px;
+                            width: 100px;
+                            bottom: -40px;
+                            left: -30px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .finc{
-                        bottom:20%;
-                        left:19%;
-                        width: 8.5%;
+                    .ctba{
+                        bottom: 61.5%;
+                        left: 69.4%;
+                        width: 2.8%;
                         p{
                             width: 100%;
-                            bottom: -62px;
-                            left: 30px;
+                            left: -25px;
                         }
                         input{
                             width: 100%;
                         }
+                        &__2{
+                            right: -14px;
+                        }
                     }
-                    .somo{
-                        bottom:24.5%;
-                        left:23.5%;
-                        width: 8.7%;
+                    .cuzco{
+                        bottom: 48.8%;
+                        left: 70.8%;
+                        width: 2.5%;
+                        p{
+                            width: 100%;
+                            bottom: -25px;
+                            left: -48px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                        &__2{
+                            left: -15px;
+                        }
+                    }
+                    .azca{
+                        bottom: 42.8%;
+                        left: 67.5%;
+                        width: 2.2%;
                         p{
                             width: 100%;
                             bottom: -30px;
-                            left: 50px;
+                            left: -25px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .arav{
-                        bottom: 49.5%;
-                        left: 29%;
-                        width: 12.5%;
+                    .cham{
+                        bottom:36%;
+                        left:61.8%;
+                        width: 8.5%;
                         p{
                             width: 100%;
-                            bottom: -58px;
-                            left: 10px;
+                            bottom: -50px;
+                            left: -40px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .vald1{
-                        bottom: 56%;
-                        left: 27.8%;
-                        width: 5.7%;
+                    .alma{
+                        bottom:27%;
+                        left:68%;
+                        width: 2.5%;
                         p{
                             width: 100%;
-                            bottom:-5px;
-                            left: 10px;
+                            bottom: -45px;
+                            left: -45px;
                         }
                         input{
                             width: 100%;
                         }
                     }
-                    .vald2{
-                        position: absolute;
-                        bottom: -31px;
-                        left: 40%;
-                        width: 200%!important;
-                    }
-                    .fuen1{
-                        bottom: 66.8%;
-                        left: 46.1%;
-                        width: 6.5%;
+                    .cent{
+                        bottom: 20.4%;
+                        left: 66.7%;
+                        width: 2.9%;
                         p{
                             width: 100%;
-                            bottom:-20px;
-                            left: -50px;
+                            bottom: -40px;
+                            left: -30px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .meal{
+                        bottom: 8.3%;
+                        left: 70%;
+                        width: 6.7%;
+                        p{
+                            width: 100px;
+                            bottom:-65px;
+                            left: 35px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .juca{
+                        bottom: 27%;
+                        left: 90%;
+                        width: 7%;
+                        p{
+                            width: 100px;
+                            bottom:-85px;
+                            left: -25px;
+                        }
+                        input{
+                            width: 100%;
+                        }
+                    }
+                    .amer{
+                        bottom:35%;
+                        left: 76%;
+                        width: 6.9%;
+                        p{
+                            width: 100px;
+                            bottom:-50px;
+                            left: 20px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                        &__2{
+                            right: -33px;
+                            bottom: -18px;
+                            width: 80%!important;
+                        }
+                    }
+                    .jova{
+                        bottom: 36.5%;
+                        left: 89%;
+                        width: 10%;
+                        p{
+                            width: 70px;
+                            bottom:-35px;
+                            left: 5px;
                         }
                         input{
                             width: 105%;
                         }
                     }
-                    .fuen2{
-                        bottom: -59px;
-                        left: 17.5%;
-                        width: 50%!important;
-                    }
-                    .puer{
-                        bottom: 54.4%;
-                        left: 52%;
-                        width: 8.5%;
+                    .chama{
+                        bottom: 62%;
+                        left: 70.8%;
+                        width: 11.6%;
                         p{
                             width: 100%;
-                            bottom:-85px;
+                            bottom:-75px;
+                            left: 70px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .arso{
+                        bottom: 64%;
+                        left: 78.4%;
+                        width: 7.5%;
+                        p{
+                            width: fit-content;
+                            bottom:-45px;
+                            left: 25px;
+                        }
+                        input{
+                            width: 105%;
+                        }
+                    }
+                    .cana{
+                        bottom: 66%;
+                        left: 90.4%;
+                        width: 12%;
+                        p{
+                            width: fit-content;
+                            bottom:-5px;
                             left: 0px;
                         }
                         input{
                             width: 105%;
                         }
                     }
-                    .rosa{
-                        bottom: 29%;
-                        left: 53%;
-                        width: 7.5%;
+                    .sanchi{
+                        bottom:85.5%;
+                        left: 74.5%;
+                        width: 8%;
                         p{
-                            width: fit-content;
-                            bottom:-18px;
-                            left: -30px;
+                            width: 70px;
+                            bottom:-65px;
+                            left: -65px;
                         }
                         input{
                             width: 105%;
                         }
-                    }
-                    .pala{
-                        bottom: 21.5%;
-                        left: 58.5%;
-                        width: 5.8%;
-                        p{
-                            width: fit-content;
-                            bottom:-35px;
-                            left: -40px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
-                    .mira{
-                        bottom:77%;
-                        left: 58%;
-                        width: 10%;
-                        p{
-                            width: fit-content;
-                            bottom:-40px;
-                            left: 55px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
-                    .alma{
-                        bottom:36.5%;
-                        left: 64.4%;
-                        width: 5.8%;
-                        p{
-                            width: fit-content;
-                            bottom:-30px;
-                            left: -38px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
-                    .just{
-                        bottom:23%;
-                        left: 65.7%;
-                        width: 3.7%;
-                        p{
-                            width: fit-content;
-                            bottom:-12px;
-                            left: -29px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
-                    .cort{
-                        bottom:16.8%;
-                        left: 65.1%;
-                        width: 3.7%;
-                        p{
-                            width: fit-content;
-                            bottom:-52px;
+                        &__1{
+                            width: 130%!important;
+                            top: -8px;
                             left: -10px;
                         }
+                        &__2{
+                            right: -34px;
+                            bottom: -85px;
+                            width: 130%!important;
+                        }
+                        &__3{
+                            top: -29px;
+                            right: -13px;
+                            width: 75%!important;
+                        }
+                    }
+                    .arva{
+                        bottom:98.7%;
+                        left: 87%;
+                        width: 9%;
+                        p{
+                            width: fit-content;
+                            bottom: -65px;
+                            left: 10px;
+                        }
                         input{
                             width: 105%;
                         }
-                    }
-                    .nuev{
-                        bottom:52%;
-                        left: 71.5%;
-                        width: 11%;
-                        p{
-                            width: 120%;
-                            bottom:-7px;
-                            left: -40px;
-                        }
-                        input{
-                            width: 100%;
-                        }
-                    }
-                    .hisp{
-                        bottom:46%;
-                        left: 70.7%;
-                        width: 11.7%;
-                        p{
-                            width: 120%;
-                            bottom:-35px;
-                            left: -40px;
-                        }
-                        input{
-                            width: 105%;
+                        &__2{
+                            top: -28px;
+                            left: -23px;
+                            width: 190%!important;
                         }
                     }
                     .viso{
@@ -1059,7 +1133,7 @@
                         width: 5%;
                         p{
                             width: 120%;
-                            bottom:-45px;
+                            bottom:-25px;
                             left: 30px;
                         }
                         input{
@@ -1092,33 +1166,8 @@
                             width: 90%;
                         }
                     }
-                    .mora{
-                        bottom:99%;
-                        left: 85.5%;
-                        width: 16.8%;
-                        p{
-                            width: 120%;
-                            bottom:-95px;
-                            left: 30px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
-                    .cond{
-                        bottom:48%;
-                        left: 87.5%;
-                        width: 12%;
-                        p{
-                            width: 120%;
-                            bottom:-25px;
-                            left: -15px;
-                        }
-                        input{
-                            width: 105%;
-                        }
-                    }
                 }
+
             }
         }
         &__selectors{
@@ -1165,50 +1214,30 @@
                 }
                 &__buttons{
                     display: flex;
-                    justify-content:space-between;
+                    justify-content: space-between;
                     align-items: center;
-                    .casa{
+                    margin-bottom: 0.5rem;
+                    grid-gap: 0.5rem;
+                    gap: 0.5rem;
+                    .oficina{
                         margin-left: 20px;
                         margin-right: 5px;
                     }
-                    .piso{
+                    .edificio{
                         margin: 0 5px;
                     }
-                    .parcela{
+                    .retail{
                         margin-right: 20px;
                         margin-left: 5px;
                     }
-                    button{
-                        width: 33%;
-                        border-width: 2px;
-                        border-color: #2b363d;
-                        text-align: center;
-                        text-decoration: none;
-                        padding: 5px;
-                        background-color: white;
-                        color: #2b363d;
-                        @include textMobile;
-                    }
-                }
-            }
-            &__extras{
-                h3{
-                    margin-left: 20px;
-                    margin-bottom: 5px;
-                    @include subSubTitleMobile;
-                }
-                &__buttons{
-                    display: flex;
-                    justify-content:space-between;
-                    align-items: center;
-                    .piscina{
+                    .exclusiveOfficeBuilding{
                         margin-left: 20px;
                         margin-right: 5px;
                     }
-                    .garaje{
+                    .classicBuilding{
                         margin: 0 5px;
                     }
-                    .terraza{
+                    .coworking{
                         margin-right: 20px;
                         margin-left: 5px;
                     }
@@ -1235,11 +1264,11 @@
                     margin-right: 5px;
                     width: 50%;
                     color: #2b363d;
-                    background-color: white;
+                    padding: 6px;
+                    @include textMobile;
+                    background-color: rgb(255, 255, 255);
                     border: solid;
                     border-width: 2px;
-                    padding: 5px;
-                    @include textMobile;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -1265,15 +1294,15 @@
                 &__search{
                     margin-left: 5px;
                     margin-right: 20px;
+                    width: 50%;
+                    padding: 7px;
+                    @include textMobile;
                     background-color: #2b363d;
                     color: white !important;
-                    padding: 7px;
-                    width: 50%;
-                    height: 34px;
+                    border: none;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    @include textMobile;
                     text-decoration: none!important;
                     cursor: pointer;
                 }
@@ -1282,7 +1311,7 @@
                     margin-right: 20px;
                     border: solid;
                     border-width: 2px;
-                    padding: 15px;
+                    padding: 7px;
                     width: 50%;
                     display: flex;
                     align-items: center;
@@ -1292,7 +1321,6 @@
                     background-color: white;
                     color: lightgray!important;
                     border-color: lightgray!important;
-                    height: 17px;
                 }
             }
             &__ref{
@@ -1300,13 +1328,13 @@
                 margin-right: 42px;
                 position: relative;
                 padding-top: 20px;
-                h4{
+                & h4{
                     @include subSubTitleMobile;
                     color: rgb(180, 180, 180)!important;
                     margin-bottom: 5px;
         
                 }
-                input{
+                & input{
                     border: solid;
                     border-width: 2px;
                     border-color: rgb(180, 180, 180);
@@ -1320,7 +1348,7 @@
                 &__lupa{
                     position: absolute;
                     height: 17px;
-                    bottom: 8px;
+                    bottom: 5px;
                     left: 18px;
                 }
                 &__lupaOculta{
@@ -1334,40 +1362,47 @@
             &__sliders{
                 margin: 20px 30px;
                 position: relative;
-                margin-top: 15px;
                 p{  
                     position: relative;
                     left: -10px;
-                    margin-bottom: 30px;
                     @include textMobile;
+                    margin-bottom: 35px;
                 }
                 &__surfaceDisabled{
                     filter: opacity(0.3);
-                    margin-top: 15px;
                 }
                 &__priceDisabled{
                     filter: opacity(0.3);
-                    //margin-top: 15px;
                 }
             }
         }
     }
 }
+.activeButton {
+    background-color: #2b363d !important;
+    color: white !important;
+}
+
 @include tablet {
-    .residential{
+    .patrimonial{
         &__filter{
+            z-index: 5;
+            width: 100%;
             &__position{
+                margin-bottom: 50px;
+                background-color: white;
                 &__mapContainer{
                     display: flex;
                     align-items: center;
                     justify-content: center;
                 }
-            }
+            }    
         }
     }
 }
+
 @include desktop {
-    .residential{
+    .patrimonial{
         &__filter{
             top: 230px;
             width: 49.5%;
@@ -1375,6 +1410,7 @@
                 border-right: solid;
                 border-color: rgb(207, 207, 207);
                 border-width: 2px;
+                margin-left: 20px;
                 &__title{
                     margin-top: 16px;
                     margin-left: 36px;
@@ -1401,145 +1437,366 @@
                     &__mapa{
                         height: 475px;
                         width: 650px;
-                        margin: 0px auto;
-                        .moal{
-                            bottom: 38%;
-                            left: 0;
-                            width: 12.5%;
+                        margin: 0 auto;
+                        div{
                             p{
-                                bottom: -130px;
-                                right: -10px;
+                                @include litleText;
+                            }
+                        }
+                        button{
+                            p{
+                                @include litleTextMobile;
+                                color: #bbbbbb;
+                                position: absolute;
+                            }
+                        }
+                        .c1{
+                            bottom: 0;
+                            width: 100%;
+                        }
+                        .c2{
+                            bottom:21.5%;
+                            width: 48.9%;
+                        }
+                        .c3{
+                            right: 0px;
+                            bottom: 0px;
+                            width: 87%;
+                        }
+                        .c4{
+                            bottom: 0px;
+                            right: 42%;
+                            width: 18%;
+                        }
+                        .c5{
+                            bottom: 43.8%;
+                            right: 22.4%;
+                            width: 31%;
+                        }
+                        .c6{
+                            bottom: 8.5%;
+                            right: 28.2%;
+                            width: 2.7%;
+                        }
+                        .c62{
+                            bottom: 55.5%;
+                            right: 26.6%;
+                            width: 1.5%;
+                        }
+                        .c7{
+                            bottom:35%;
+                            right: 0;
+                            width: 16%;
+                        }
+                        .c8{
+                            bottom: 0;
+                            right: 0;
+                            width: 18%;
+                        }
+                        .c9{
+                            bottom: 3.5%;
+                            right: 58%;
+                            width: 15%;
+                        }
+                        .c10{
+                            bottom: -8.5%;
+                            right: 21%;
+                            width: 13%;
+                        }
+                        .secu{
+                            bottom: 33%;
+                            right: 32.5%;
+                            width: 15%;
+                            p{
+                                width: 100px;
+                                bottom: 14px;
+                                left: -77px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .alam{
-                            bottom: 42.7%;
+                        .ceba{
+                            bottom: 1%;
+                            right: 32.5%;
+                            width: 9%;
+                        }
+                        .plan{
+                            bottom: 60.5%;
                             left: 16%;
-                            width: 10%;
+                            width: 12%;
                             p{
+                                top: -18px;
+                                left: 20px;
+                            }
+                            input{
                                 width: 100%;
-                                bottom: -85px;
-                                left: 10px;
+                            }
+                            &__2{
+                                bottom: -57px;
+                                left: -5px;
+                            }
+                        }
+                        .vald{
+                            bottom: 53%;
+                            left: 30%;
+                            width: 12%;
+                            p{
+                                top: -20px;
+                                left: 25px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .finc{
-                            bottom:20%;
-                            left:18.7%;
-                            width: 8.5%;
+                        .pozu{
+                            bottom: 37.5%;
+                            left: 28%;
+                            width: 7%;
                             p{
-                                width: 100%;
-                                bottom: -75px;
-                                left: 30px;
+                                bottom: -5px;
+                                right: 10px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .somo{
-                            bottom:24.5%;
-                            left:23.5%;
-                            width: 8.7%;
+                        .pe{
+                            bottom:21.5%;
+                            left:30%;
+                            width: 2.8%;
+                            p{
+                                width: 100px;
+                                bottom: -40px;
+                                left: -30px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .ctba{
+                            bottom: 61.5%;
+                            left: 69.7%;
+                            width: 2.8%;
+                            p{
+                                width: 100%;
+                                left: -25px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                            &__2{
+                                right: -14px;
+                            }
+                        }
+                        .cuzco{
+                            bottom: 48.8%;
+                            left: 70.8%;
+                            width: 2.5%;
+                            p{
+                                width: 100%;
+                                bottom: -25px;
+                                left: -48px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                            &__2{
+                                left: -16px;
+                            }
+                        }
+                        .azca{
+                            bottom: 43.1%;
+                            left: 67.5%;
+                            width: 2.2%;
                             p{
                                 width: 100%;
                                 bottom: -30px;
-                                left: 60px;
+                                left: -25px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .arav{
-                            bottom: 49.5%;
-                            left: 29%;
-                            width: 12.5%;
+                        .cham{
+                            bottom:36%;
+                            left:61.8%;
+                            width: 8.5%;
                             p{
                                 width: 100%;
-                                bottom: -62px;
-                                left: 10px;
+                                bottom: -50px;
+                                left: -40px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .vald2{
-                            position: absolute;
-                            bottom: -36px;
-                            left: 40%;
-                            width: 200%!important;
-                        }
-                        .fuen1{
-                            bottom: 66.8%;
-                            left: 46.1%;
-                            width: 6.5%;
+                        .alma{
+                            bottom:27%;
+                            left:68%;
+                            width: 2.5%;
                             p{
                                 width: 100%;
-                                bottom:-25px;
-                                left: -50px;
+                                bottom: -50px;
+                                left: -45px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .cent{
+                            bottom: 20.4%;
+                            left: 66.7%;
+                            width: 2.9%;
+                            p{
+                                width: 100%;
+                                bottom: -40px;
+                                left: -30px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .meal{
+                            bottom: 8.3%;
+                            left: 70%;
+                            width: 6.7%;
+                            p{
+                                width: 100px;
+                                bottom:-65px;
+                                left: 50px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .juca{
+                            bottom: 27%;
+                            left: 90%;
+                            width: 7%;
+                            p{
+                                width: 100px;
+                                bottom:-95px;
+                                left: -25px;
+                            }
+                            input{
+                                width: 100%;
+                            }
+                        }
+                        .amer{
+                            bottom:35%;
+                            left: 76%;
+                            width: 6.9%;
+                            p{
+                                width: 100px;
+                                bottom:-58px;
+                                left: 20px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                            &__2{
+                                right: -40px;
+                                bottom: -25px;
+                                width: 80%!important;
+                            }
+                        }
+                        .jova{
+                            bottom: 36.5%;
+                            left: 89%;
+                            width: 10%;
+                            p{
+                                width: 70px;
+                                bottom:-35px;
+                                left: 5px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
-                        .fuen2{
-                            bottom: -72px;
-                            left: 17.5%;
-                            width: 50%!important;
-                        }
-                        .puer{
-                            bottom: 54.4%;
-                            left: 52%;
-                            width: 8.5%;
+                        .chama{
+                            bottom: 62%;
+                            left: 70.8%;
+                            width: 11.6%;
                             p{
                                 width: 100%;
-                                bottom:-90px;
+                                bottom:-100px;
+                                left: 85px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .arso{
+                            bottom: 64%;
+                            left: 78.4%;
+                            width: 7.5%;
+                            p{
+                                width: fit-content;
+                                bottom:-45px;
+                                left: 25px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                        }
+                        .cana{
+                            bottom: 66%;
+                            left: 90.4%;
+                            width: 12%;
+                            p{
+                                width: fit-content;
+                                bottom:-5px;
                                 left: 0px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
-                        .pala{
-                            bottom: 21.5%;
-                            left: 58.5%;
-                            width: 5.8%;
+                        .sanchi{
+                            bottom:85.5%;
+                            left: 74.5%;
+                            width: 8%;
                             p{
-                                width: fit-content;
-                                bottom:-38px;
-                                left: -40px;
+                                width: 70px;
+                                bottom:-65px;
+                                left: -65px;
                             }
                             input{
                                 width: 105%;
+                            }
+                            &__1{
+                                width: 128%!important;
+                                top: -8px;
+                                left: -10px;
+                            }
+                            &__2{
+                                right: -41px;
+                                bottom: -100px;
+                                width: 130%!important;
+                            }
+                            &__3{
+                                top: -34px;
+                                right: -16px;
+                                width: 75%!important;
                             }
                         }
-                        .mira{
-                            bottom:77%;
-                            left: 58%;
-                            width: 10%;
+                        .arva{
+                            bottom:98.7%;
+                            left: 87%;
+                            width: 9%;
                             p{
                                 width: fit-content;
-                                bottom:-45px;
-                                left: 63px;
+                                bottom: -70px;
+                                left: 10px;
                             }
                             input{
                                 width: 105%;
                             }
-                        }
-                        .hisp{
-                            bottom:46%;
-                            left: 70.7%;
-                            width: 11.7%;
-                            p{
-                                width: 120%;
-                                bottom:-37px;
-                                left: -42px;
-                            }
-                            input{
-                                width: 105%;
+                            &__2{
+                                top: -34px;
+                                left: -28px;
+                                width: 190%!important;
                             }
                         }
                         .viso{
@@ -1548,8 +1805,8 @@
                             width: 5%;
                             p{
                                 width: 120%;
-                                bottom:-45px;
-                                left: 35px;
+                                bottom:-25px;
+                                left: 40px;
                             }
                             input{
                                 width: 105%;
@@ -1561,37 +1818,24 @@
                             width: 4.8%;
                             p{
                                 width: 120%;
-                                bottom:-80px;
-                                left: 25px;
+                                bottom:-85px;
+                                left: 20px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
                         .jero{
-                            bottom:16.5%;
+                            bottom:16%;
                             left: 69.8%;
                             width: 1.8%;
                             p{
                                 width: 120%;
-                                bottom:-38px;
+                                bottom:-40px;
                                 left: 12px;
                             }
                             input{
                                 width: 90%;
-                            }
-                        }
-                        .mora{
-                            bottom:99%;
-                            left: 85.5%;
-                            width: 16.8%;
-                            p{
-                                width: 120%;
-                                bottom:-105px;
-                                left: 30px;
-                            }
-                            input{
-                                width: 105%;
                             }
                         }
                     }
@@ -1606,6 +1850,9 @@
                         margin-bottom: 16px;
                     }
                     &__buttons{
+                        display: flex;
+                        justify-content:space-between;
+                        align-items: center;
                         .alq{
                             margin-left: 36px;
                             padding-top: 11px;
@@ -1629,40 +1876,39 @@
                         margin-bottom: 16px;
                     }
                     &__buttons{
-                        .casa{
+                        .oficina{
                             margin-left: 36px;
                             padding-top: 11px;
                             padding-bottom: 11px;
                         }
-                        .parcela{
+                        .edificio{
+                            margin-right: 5px;
+                            padding-top: 11px;
+                            padding-bottom: 11px;                            
+                        }
+                        .retail{
                             margin-right: 36px;
                             padding-top: 11px;
-                            padding-bottom: 11px;
+                            padding-bottom: 11px;                            
                         }
-                        button{
-                            @include mapBut;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                    }
-                }
-                &__extras{
-                    margin-bottom: 24px;
-                    h3{
-                        margin-left: 36px;
-                        margin-bottom: 16px;
-                        @include apart;
-                    }
-                    &__buttons{
-                        .piscina{
+                        .exclusiveOfficeBuilding{
                             margin-left: 36px;
                             padding-top: 11px;
                             padding-bottom: 11px;
+                            margin-right: 10px;
+                            max-height: fit-content;
                         }
-                        .terraza{
+                        .classicBuilding{
+                            margin-right: 5px;
+                            padding-top: 11px;
+                            padding-bottom: 11px; 
+                            max-height: fit-content;
+                        }
+                        .coworking{
                             margin-right: 36px;
                             padding-top: 11px;
-                            padding-bottom: 11px;
+                            padding-bottom: 11px;  
+                            max-height: fit-content;
                         }
                         button{
                             @include mapBut;
@@ -1699,7 +1945,7 @@
                         align-items: center;
                         justify-content: center;
                         padding: 0;
-                        height: 37px;
+                        height: 41px;
                         @include mapBut;
                     }
                     &__searchDisabled{
@@ -1708,11 +1954,10 @@
                         height: 41px;
                         @include mapBut;
                     }
-
                 }
                 &__ref{
                     margin-left: 36px;
-                    margin-right:56px;
+                    margin-right: 58px;
                     margin-bottom: 30px;
                     h4{
                         @include apart;
@@ -1753,148 +1998,194 @@
         }
     }
 }
+
 @media screen and (min-width:1200px) and (max-width:1535px) {
-    .residential{
+    .patrimonial{
         &__filter{
             &__position{
                 &__mapContainer{
                     &__mapa{
                         height: 347px;
                         width: 475px;
-                        margin: 0px auto;
-                        .enci{
+                        .plan{
+                            bottom: 60.5%;
+                            left: 16%;
+                            width: 12%;
                             p{
-                                width: 100%;
-                                top: -35px;
+                                top: -25px;
                                 left: 25px;
                             }
                             input{
                                 width: 100%;
                             }
+                            &__2{
+                                bottom: -42px;
+                                left: -3px;
+                            }
                         }
-                        .moal{
-                            p{
-                                bottom: -110px;
+                        .ctba{
+                            &__2{
                                 right: -10px;
                             }
                         }
-                        .alam{
+                        .cuzco{
+                            bottom: 48.8%;
+                            left: 70.8%;
+                            width: 2.5%;
                             p{
                                 width: 100%;
-                                bottom: -75px;
-                                left: 10px;
+                                bottom: -25px;
+                                left: -45px;
+                            }
+                            &__2{
+                                left: -13px;
                             }
                         }
-                        .finc{
-                            bottom:18%;
-                            left:18.2%;
-                            width: 8.5%;
+                        .alma{
+                            bottom:27%;
+                            left:68%;
+                            width: 2.5%;
                             p{
                                 width: 100%;
-                                bottom: -55px;
-                                left: 30px;
-                            }
-                        }
-                        .somo{
-                            bottom:24.5%;
-                            left:23.5%;
-                            width: 8.7%;
-                            p{
-                                width: 100%;
-                                bottom: -30px;
-                                left: 45px;
+                                bottom: -45px;
+                                left: -45px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .arav{
-                            bottom: 49.5%;
-                            left: 29%;
-                            width: 12.5%;
+                        .cent{
+                            bottom: 20.4%;
+                            left: 66.9%;
+                            width: 2.9%;
+                        }
+                        .meal{
+                            bottom: 8.3%;
+                            left: 70%;
+                            width: 6.7%;
                             p{
-                                width: 100%;
-                                bottom: -50px;
-                                left: 10px;
+                                width: 100px;
+                                bottom:-55px;
+                                left: 35px;
                             }
                             input{
                                 width: 100%;
                             }
                         }
-                        .vald2{
-                            position: absolute;
-                            bottom: -27px;
-                            left: 40%;
-                            width: 200%!important;
-                        }
-                        .fuen1{
-                            bottom: 66.8%;
-                            left: 46.1%;
-                            width: 6.5%;
+                        .juca{
+                            bottom: 27%;
+                            left: 90%;
+                            width: 7%;
                             p{
+                                width: 100px;
+                                bottom:-75px;
+                                left: -25px;
+                            }
+                            input{
                                 width: 100%;
-                                bottom:-25px;
-                                left: -50px;
+                            }
+                        }
+                        .amer{
+                            bottom:35%;
+                            left: 76%;
+                            width: 6.9%;
+                            p{
+                                width: 100px;
+                                bottom:-50px;
+                                left: 10px;
                             }
                             input{
                                 width: 105%;
                             }
+                            &__2{
+                                right: -30px;
+                                bottom: -17px;
+                                width: 80%!important;
+                            }
                         }
-                        .fuen2{
-                            bottom: -52px;
-                            left: 17.5%;
-                            width: 50%!important;
-                        }
-                        .puer{
-                            bottom: 54.4%;
-                            left: 52%;
-                            width: 8.5%;
+                        .chama{
+                            bottom: 62%;
+                            left: 70.8%;
+                            width: 11.6%;
                             p{
                                 width: 100%;
                                 bottom:-80px;
-                                left: 0px;
+                                left: 65px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
-                        .pala{
-                            bottom: 21.5%;
-                            left: 58.5%;
-                            width: 5.8%;
-                            p{
-                                width: fit-content;
-                                bottom:-38px;
-                                left: -40px;
-                            }
-                            input{
-                                width: 105%;
-                            }
-                        }
-                        .mira{
-                            bottom:77%;
-                            left: 58%;
-                            width: 10%;
+                        .arso{
+                            bottom: 64%;
+                            left: 78.4%;
+                            width: 7.5%;
                             p{
                                 width: fit-content;
                                 bottom:-45px;
-                                left: 48px;
+                                left: 25px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
-                        .hisp{
-                            bottom:46%;
-                            left: 70.7%;
-                            width: 11.7%;
+                        .cana{
+                            bottom: 66%;
+                            left: 90.4%;
+                            width: 12%;
                             p{
-                                width: 120%;
-                                bottom:-37px;
-                                left: -42px;
+                                width: fit-content;
+                                bottom:-5px;
+                                left: 10px;
                             }
                             input{
                                 width: 105%;
+                            }
+                        }
+                        .sanchi{
+                            bottom:85.5%;
+                            left: 74.5%;
+                            width: 8%;
+                            p{
+                                width: 70px;
+                                bottom:-65px;
+                                left: -65px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                            &__1{
+                                width: 128%!important;
+                                top: -7px;
+                                left: -8px;
+                            }
+                            &__2{
+                                right: -30px;
+                                bottom: -75px;
+                                width: 130%!important;
+                            }
+                            &__3{
+                                top: -26px;
+                                right: -12px;
+                                width: 75%!important;
+                            }
+                        }
+                        .arva{
+                            bottom:98.7%;
+                            left: 87%;
+                            width: 9%;
+                            p{
+                                width: fit-content;
+                                bottom: -60px;
+                                left: 10px;
+                            }
+                            input{
+                                width: 105%;
+                            }
+                            &__2{
+                                top: -25px;
+                                left: -21px;
+                                width: 190%!important;
                             }
                         }
                         .viso{
@@ -1902,9 +2193,9 @@
                             left: 70.6%;
                             width: 5%;
                             p{
-                                width: 120%;
-                                bottom:-45px;
-                                left: 35px;
+                                width: 130%;
+                                bottom:-25px;
+                                left: 30px;
                             }
                             input{
                                 width: 105%;
@@ -1916,152 +2207,26 @@
                             width: 4.8%;
                             p{
                                 width: 120%;
-                                bottom:-60px;
-                                left: 25px;
+                                bottom:-65px;
+                                left: 15px;
                             }
                             input{
                                 width: 105%;
                             }
                         }
                         .jero{
-                            bottom:16.5%;
+                            bottom:16%;
                             left: 69.8%;
                             width: 1.8%;
                             p{
                                 width: 120%;
-                                bottom:-38px;
+                                bottom:-40px;
                                 left: 12px;
                             }
                             input{
                                 width: 90%;
                             }
                         }
-                        .mora{
-                            bottom:99%;
-                            left: 85.5%;
-                            width: 16.8%;
-                            p{
-                                width: 120%;
-                                bottom:-85px;
-                                left: 30px;
-                            }
-                            input{
-                                width: 105%;
-                            }
-                        }
-                    }
-                }
-            }
-            &__selectors{
-                &__estado{
-                    margin-bottom: 24px;
-                    h3{
-                        margin-left: 36px;
-                        @include apart;
-                        margin-bottom: 16px;
-                    }
-                    &__buttons{
-                        .alq{
-                            margin-left: 36px;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                        .vent{
-                            margin-right: 36px;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                        button{
-                            @include mapBut;
-                        }
-                    }
-                }
-                &__tipo{
-                    margin-bottom: 24px;
-                    h3{
-                        margin-left: 36px;
-                        @include apart;
-                        margin-bottom: 16px;
-                    }
-                    &__buttons{
-                        .casa{
-                            margin-left: 36px;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                        .parcela{
-                            margin-right: 36px;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                        button{
-                            @include mapBut;
-                            padding-top: 11px;
-                            padding-bottom: 11px;
-                        }
-                    }
-                }
-                &__buscar{
-                    margin-top: 0px;
-                    margin-bottom: 16px;
-                    &__all{
-                        margin-left: 36px;
-                        @include mapBut;
-                        padding-top: 11px;
-                        padding-bottom: 11px;
-                    }
-                    &__allDisabled{
-                        margin-left: 36px;
-                        @include mapBut;
-                        padding-top: 11px;
-                        padding-bottom: 11px;
-                    }
-                    &__search{
-                        margin-right: 36px;
-                        @include mapBut;
-                        border-color:#2b363d ;
-                        padding-top: 11px;
-                        padding-bottom: 11px;
-                        height: 41px;
-                    }
-                }
-                &__ref{
-                    margin-left: 36px;
-                    margin-right: 56px;
-                    margin-bottom: 30px;
-                    h4{
-                        @include apart;
-                        margin-bottom: 20px;
-                    }
-                    input{
-                        border: solid;
-                        border-width: 2px;
-                        border-color: rgb(180, 180, 180);
-                        height: 40px;
-                        width: 100%;
-                        margin-bottom: 3px;
-                        font-family: 'Jost';
-                        color: #b4b4b4;
-                    }
-                    &__lupa{
-                        position: absolute;
-                        height: 17px;
-                        bottom: 18px;
-                        left: 18px;
-                    }
-                    &__lupaOculta{
-                        display: none;
-                    }
-                }
-                &__sliders{
-                    margin: 0px 46px;
-                    margin-bottom: 80px;
-                    position: relative;
-                    p{  
-                        position: relative;
-                        left: -10px;
-                        @include apart;
-                        margin-bottom: 58px;
                     }
                 }
             }
