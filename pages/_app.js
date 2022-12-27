@@ -7,6 +7,8 @@ import './../styles/filterResidential.scss'
 import './../components/Header/header.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/residential.scss'
+import '../styles/filtroPatrimonio.scss'
+import "../styles/patrimonio.scss"
 
 import '../styles/index.scss'
 import '../styles/globals.scss'
