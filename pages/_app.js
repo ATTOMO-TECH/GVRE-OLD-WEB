@@ -13,6 +13,7 @@ import "../styles/patrimonio.scss"
 import '../styles/costa.scss';
 import '../styles/campoRustico.scss';
 import '../styles/activosSingulares.scss';
+import '../styles/contextuales.scss';
 import '../styles/equipo.scss';
 
 import '../styles/avisoLegal.scss'
