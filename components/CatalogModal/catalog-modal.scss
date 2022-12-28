@@ -1,0 +1,36 @@
+#catalogModal{
+    min-height: 100%;
+    min-width: 100%;
+}
+#catalogModal_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.p-dialog-header {
+    background-color: #fff !important;
+    z-index: 10000;
+
+}
+
+.p-dialog-header-icons{
+    background-color: #fff;
+    border-radius: 50%;
+    height: fit-content;
+}
+.p-dialog-content{
+    //overflow-y: hidden !important;
+    border-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+.p-dialog .p-dialog-header{
+    border-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+

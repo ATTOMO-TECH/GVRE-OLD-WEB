@@ -1,0 +1,143 @@
+@import './media.scss';
+
+.container__pdf{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 2rem;
+    &__data{
+        display: flex;
+        align-items: center;
+        // z-index: 1000;
+        & div {
+            display: flex;
+        }
+        &__viewer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        & img{
+            cursor: pointer;
+        }
+    }
+    &__options{
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        margin-top: 1rem;
+        max-height: 2rem;
+        background-color: #333333;
+        width: 80%;
+        padding: 0.5rem 1.5rem;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Inter";
+        font-size: 0.8rem;
+        &__pages{
+            min-width: fit-content;
+        }
+        &__sliders{
+            margin: 0rem 1.1rem;
+        }
+        &__icons{
+            font-size: 2rem;
+        }
+    }
+}
+
+.opacity{
+    opacity: 0.3;
+}
+
+
+
+
+.scroll2{
+    overflow: auto;
+}
+.scroll3{
+    overflow: scroll;
+}
+.scroll4{
+    overflow: scroll;
+}
+
+.zoom2{
+    overflow: auto;
+    transition: transform 0.5s;
+    transform: scale(1.2); 
+}
+
+.zoom3{
+    overflow: scroll;
+    transition: transform 0.5s;
+    transform: scale(1.4); 
+}
+
+.zoom4{
+    overflow: scroll;
+    transition: transform 0.5s;
+    transform: scale(1.6); 
+}
+
+@include tablet{
+    .container__pdf{
+        &__options{
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@include desktop {
+    .container__pdf{
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 2rem;
+        &__data{
+            display: flex;
+            align-items: center;
+            & div {
+                display: flex;
+            }
+            &__viewer{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            & img{
+                cursor: pointer;
+            }
+        }
+        &__options{
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            margin-top: 2rem;
+            max-height: 2rem;
+            background-color: #333333;
+            width: 70%; //dejar
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            color: #fff;
+            font-family: "Inter";
+            font-size: 1rem;
+            &__pages{
+                min-width: fit-content;
+            }
+            &__sliders{
+                margin: 0rem 1.1rem;
+            }
+            &__icons{
+                font-size: 2rem;
+            }
+        }
+    }
+}
