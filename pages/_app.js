@@ -16,6 +16,8 @@ import '../styles/activosSingulares.scss';
 import '../styles/equipo.scss';
 
 import '../styles/avisoLegal.scss'
+import '../styles/politicaPrivacidad.scss'
+
 
 import '../styles/index.scss'
 import '../styles/globals.scss'
