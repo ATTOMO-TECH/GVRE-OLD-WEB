@@ -15,6 +15,8 @@ import '../styles/campoRustico.scss';
 import '../styles/activosSingulares.scss';
 import '../styles/contextuales.scss';
 import '../styles/equipo.scss';
+import '../styles/contacto.scss';
+
 
 import '../styles/avisoLegal.scss'
 import '../styles/politicaPrivacidad.scss'
