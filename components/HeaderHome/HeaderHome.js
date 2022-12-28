@@ -56,10 +56,10 @@ const Header = () => {
                                 <ul className='headerHome__menu__list__GV__name__menu' >
                                     <li><Link onClick={toggleClass} href={routes.Team}>Equipo</Link></li>
                                     <li><Link onClick={toggleClass} href={routes.Contextual}>Comercialización</Link></li>
-                                    <li><Link onClick={toggleClass && situate} href={routes.Contextual}>Inversión</Link></li>
-                                    <li><Link onClick={toggleClass && situate2} href={routes.Contextual}>Gestión patrimonial</Link></li>
-                                    <li><Link onClick={toggleClass && situate3} href={routes.Contextual}>Nuevos desarrollos</Link></li>
-                                    <li><Link onClick={toggleClass && situate4} href={routes.Contextual}>Arquitectura e interiorismo</Link></li>
+                                    <li><Link onClick={toggleClass && situate} href={`${routes.Contextual}#inversion`}>Inversión</Link></li>
+                                    <li><Link onClick={toggleClass && situate2} href={`${routes.Contextual}#gestion`}>Gestión patrimonial</Link></li>
+                                    <li><Link onClick={toggleClass && situate3} href={`${routes.Contextual}#desarrollos`}>Nuevos desarrollos</Link></li>
+                                    <li><Link onClick={toggleClass && situate4} href={`${routes.Contextual}#arquitectura`}>Arquitectura e interiorismo</Link></li>
                                 </ul>
                             </div>
                         </li>
