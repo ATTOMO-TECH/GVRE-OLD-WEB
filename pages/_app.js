@@ -16,6 +16,12 @@ import '../styles/activosSingulares.scss';
 import '../styles/contextuales.scss';
 import '../styles/equipo.scss';
 import '../styles/contacto.scss';
+import '../styles/catalogo.scss';
+import '../components/catalog-pdf/catalog-pdf.scss';
+import '../components/CatalogModal/catalog-modal.scss';
+
+
+
 
 
 import '../styles/avisoLegal.scss'
