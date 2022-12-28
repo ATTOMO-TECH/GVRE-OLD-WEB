@@ -15,6 +15,8 @@ import '../styles/campoRustico.scss';
 import '../styles/activosSingulares.scss';
 import '../styles/equipo.scss';
 
+import '../styles/avisoLegal.scss'
+
 import '../styles/index.scss'
 import '../styles/globals.scss'
 import Provider from '../providers/generalProvider'
