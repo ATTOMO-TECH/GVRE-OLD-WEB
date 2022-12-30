@@ -101,6 +101,7 @@ export const getSingular = async (filters) => {
 
 
 export const getResidentialItem = async (id) => {
+    // console.log(`${baseUrlResidential}${id}`)
     const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams)
     /* console.log(response) */
     const adInfo = await response.json()

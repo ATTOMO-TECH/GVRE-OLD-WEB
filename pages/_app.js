@@ -4,21 +4,23 @@ import '../components/HeaderHome/headerHome.scss'
 import '../components/ContactInfo/contactIndex.scss'
 import './../components/Footer/footer.scss'
 import './../styles/filterResidential.scss'
-import './../components/Header/header.scss';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './../components/Header/header.scss'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import '../styles/residential.scss'
+import "../styles/residentialItem.scss"
 import '../styles/filtroPatrimonio.scss'
 import "../styles/patrimonio.scss"
+import './../components/DisplayVideo/displayVideo.scss'
 
-import '../styles/costa.scss';
-import '../styles/campoRustico.scss';
-import '../styles/activosSingulares.scss';
-import '../styles/contextuales.scss';
-import '../styles/equipo.scss';
-import '../styles/contacto.scss';
-import '../styles/catalogo.scss';
-import '../components/catalog-pdf/catalog-pdf.scss';
-import '../components/CatalogModal/catalog-modal.scss';
+import '../styles/costa.scss'
+import '../styles/campoRustico.scss'
+import '../styles/activosSingulares.scss'
+import '../styles/contextuales.scss'
+import '../styles/equipo.scss'
+import '../styles/contacto.scss'
+import '../styles/catalogo.scss'
+import '../components/catalog-pdf/catalog-pdf.scss'
+import '../components/CatalogModal/catalog-modal.scss'
 
 
 

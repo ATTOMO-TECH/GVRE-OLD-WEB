@@ -1,0 +1,89 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/media.scss';
+
+.video__container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 0rem;
+    position: relative;
+    &__imageLeft{
+        width: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        & img{
+            height: 100%;
+            width: 100%;
+            opacity: 0.5;
+        }
+    }
+    &__video{
+        width: 80%;
+        z-index: 10;
+    }
+    &__imageRigth{
+        width: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        & img{
+            height: 100%;
+            width: 100%;
+            opacity: 0.5;
+        }
+    }
+}
+
+@include tablet{
+    .video__container{
+        margin-top: 1.5rem;
+        &__video{
+            width: 60%;
+        }
+    }
+}
+
+@include desktop {
+    .video__container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0rem 0rem;
+        margin-top: 130px;
+
+        //background-color: #D7D7D7;
+        &__video{
+            width: 60%;
+        }
+        &__imageLeft{
+            width: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            & img{
+                height: 100%;
+                width: 100%;
+                opacity: 0.5;
+            }
+        }
+        &__imageRigth{
+            width: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            & img{
+                height: 100%;
+                width: 100%;
+                opacity: 0.5;
+            }
+        }
+    }
+       
+}

@@ -38,6 +38,7 @@ export default function Document() {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,500;1,400&display=swap" rel="stylesheet"></link>
           {/* eslint-disable-next-line @next/next/no-css-tags */}
           <link rel="stylesheet" href="carousel.css" />
       </Head>
