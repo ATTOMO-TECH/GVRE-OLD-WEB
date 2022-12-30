@@ -10,6 +10,7 @@ import '../styles/residential.scss'
 import "../styles/residentialItem.scss"
 import '../styles/filtroPatrimonio.scss'
 import "../styles/patrimonio.scss"
+import "../styles/patrimonioItem.scss"
 import './../components/DisplayVideo/displayVideo.scss'
 
 import '../styles/costa.scss'

@@ -96,7 +96,7 @@ export default function ResidentialItem({list, currentConsultant}){
                 )
             //return state
         //})
-    },[list, router.query, state])
+    },[list, state])
 
     useEffect(() => {
         window.scroll({
