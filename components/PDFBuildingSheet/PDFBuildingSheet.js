@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { Document, View, Page, Text, Font, PDFDownloadLink, Image } from "@react-pdf/renderer";
-import logoGVRE from '../../assets/logogvre.png';
-import check from '../../assets/SVG/mobile/comun/check.png';
 import mailIcon from '../../assets/SVG/fichaPDF/mail-icon.png';
 import mapPinIcon from '../../assets/SVG/fichaPDF/map-pin-icon.png';
 import phoneIcon from '../../assets/SVG/fichaPDF/phone-icon.png';
@@ -28,8 +26,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
     //   })
     
     //console.log("dataURL", typeof dataURL)
-    console.log("state", typeof state)
-    console.log("consultant", typeof consultant)
+    
     const [qualities, setQualities] = useState([])
 
     // const loadFonts = useCallback(async () => {
@@ -47,7 +44,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
     let dataURL = ""
     if (typeof window !== 'undefined') {
         const data = document.getElementById("qrCode");
-        console.log(data)
+        // console.log(data)
         if(data !== null){
             dataURL = data.toDataURL()
        }
@@ -130,7 +127,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
         <Page size='A4' style={{display: "flex", flexDirection:"column", alignItems: "center"}}>
            <Image 
              style={{padding: "1px 0px", width:"50px"}} 
-             src={logoGVRE}
+             src="https://gvre-images.fra1.digitaloceanspaces.com/logogvre.png"
              alt={""}
            />
            <Image
@@ -304,7 +301,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
                 <View key={i}
                     style={{display: "flex", flexDirection: "row", width: "33%", marginTop: "6px", marginBottom:"6px", height: "15px"}}
                 >
-                    <Image style={{width: "15px", height: "15px"}} src={state.images.main} alt='check'/> 
+                    <Image style={{width: "15px", height: "15px"}} src="https://gvre-images.fra1.digitaloceanspaces.com/check.png" alt='check'/> 
                     <Text  style={{ fontSize: "10px" }}> {quality} </Text>
                 </View>
                ))}
@@ -325,7 +322,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
                        <View style={{ display:"flex", flexDirection:"row", justifyContent:"start", alignItems:"center", gap:"2px"}}>
                          <Image 
                            style={{width:"10px", height:"10px"}}
-                           src={mapPinIcon} alt="map icon" />
+                           src="https://gvre-images.fra1.digitaloceanspaces.com/map-pin-icon.png" alt="map icon" />
                          <Text 
                            style={{ fontSize: "10px", textAlign:"center", marginLeft:"8px"}}
                            >{consultant !== undefined ? consultant.office1 : "Lagasca 36"} {consultant !== undefined && consultant.office2 !== "" ? `| ${consultant.office2}` : null}</Text>
@@ -333,7 +330,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
                        <View style={{ display:"flex", flexDirection:"row", justifyContent:"start", alignItems:"center"}}>
                          <Image 
                            style={{width:"10px", height:"10px"}}
-                           src={phoneIcon} alt="phone icon" />
+                           src="https://gvre-images.fra1.digitaloceanspaces.com/phone-icon.png" alt="phone icon" />
                          <Text 
                            style={{ fontSize: "10px", textAlign:"center", marginLeft:"8px"}}
                            >{consultant !== undefined ? consultant.consultantMobileNumber : "917 365 385"} {consultant !== undefined && consultant.consultantPhoneNumber !== "" ? `| ${consultant.consultantPhoneNumber}` : null}</Text>
@@ -341,7 +338,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant}){
                        <View style={{ display:"flex", flexDirection:"row", justifyContent:"start", alignItems:"center"}}>
                          <Image 
                            style={{width:"10px", height:"10px"}}
-                           src={mailIcon} alt="mail icon" />
+                           src="https://gvre-images.fra1.digitaloceanspaces.com/mail-icon.png" alt="mail icon" />
                          <Text 
                            style={{ fontSize: "10px", textAlign:"center", marginLeft:"8px"}}
                            >{consultant !== undefined ? consultant.consultantEmail : "retail@gvre.es"}</Text>
