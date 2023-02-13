@@ -46,6 +46,7 @@ import routes from './../config/routes';
 import { getZoneId } from './../globalFunctions/MapZones/MapZones';
 import Image from 'next/image';
 import Router from 'next/router';
+import useWindowSize from '../hooks/useWindowsSize';
 
 export default function FilterResidential() {
 
@@ -65,6 +66,8 @@ export default function FilterResidential() {
     const [itemPage] = useState([]);
     const [elementId, setElementId] = useState('');
     /*const [filter, setFilter] = useState({});*/
+    const size = useWindowSize();
+console.log(size)
 
     const toggleActive = (e) => {
         /* console.log(e.currentTarget.name) */
@@ -266,15 +269,15 @@ export default function FilterResidential() {
             <div className='filterPosition'>
                 <div className='filterPosition__mapContainer'>
                     <div className='mapa'>
-                        <Image className='c1' src={carretera1} alt='componente mapa' />
-                        <Image className='c2' src={carretera2} alt='componente mapa' />
-                        <Image className='c3' src={carretera3} alt='componente mapa' />
-                        <Image className='c4' src={carretera4} alt='componente mapa' />
-                        <Image className='c5' src={carretera5} alt='componente mapa' />
-                        <Image className='c6' src={carretera6} alt='componente mapa' />
-                        <Image className='c62' src={carretera62} alt='componente mapa' />
-                        <Image className='c7' src={carretera7} alt='componente mapa' />
-                        <Image className='c8' src={carretera8} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 536*1.54 : 536*1.6 } height={size >= 1350 ? 392*1.53 : 353*1.1 } className='c1' src={carretera1} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 262*1.54 : 262*1.6 } height={size >= 1350 ? 70*1.53 : 63*1.1 } className='c2' src={carretera2} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 466*1.54 : 466*1.6 } height={size >= 1350 ? 352*1.53 : 316*1.1 } className='c3' src={carretera3} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 97*1.54 : 97*1.6 } height={size >= 1350 ? 60*1.53 : 54*1.1 } className='c4' src={carretera4} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 166*1.54 : 166*1.6 } height={size >= 1350 ? 77*1.53 : 70*1.1 } className='c5' src={carretera5} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 15*1.54 : 15*1.6 } height={size >= 1350 ? 176*1.53 : 158*1.1 } className='c6' src={carretera6} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 8*1.54 : 8*1.6 } height={size >= 1350 ? 26*1.53 : 23*1.1 } className='c62' src={carretera62} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 86*1.54 : 86*1.6 } height={size >= 1350 ? 12*1.53 : 11*1.1 } className='c7' src={carretera7} alt='componente mapa' />
+                        <Image width={size >= 1350 ? 97*1.54 : 97*1.6 } height={size >= 1350 ? 54*1.53 : 49*1.1 } className='c8' src={carretera8} alt='componente mapa' />
                         <Image className='avion' src={avion} alt='componente mapa' />
                         <Image className='boca' src={boca} alt='componente mapa' />
                         <div className='a1'>A1</div>
@@ -325,28 +328,28 @@ export default function FilterResidential() {
                             <p>Valdemarín</p>
                         </button>
                         <button onClick={toggleActive} name='Colonia Fuentelarreyna' id='fuen1' className='fuen1'>
-                            <Image type='image' src={fuen1} alt='componente mapa' />
+                            <Image type='image' height={size >= 1350 ? 95 : 66} src={fuen1} alt='componente mapa' />
                             <Image type='image' className='fuen2' src={fuen2} alt='componente mapa' />
                             <p>Fuentelarreyna</p>
                         </button>
                         <button onClick={toggleActive} name='Puerta de Hierro' id='puer' className='puer' >
-                            <Image type='image' src={puer} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 90 : 61} type='image' src={puer} alt='componente mapa' />
                             <p>Puerta de <br />Hierro</p>
                         </button>
                         <button onClick={toggleActive} name='Rosales' id='rosa' className='rosa'>
-                            <Image type='image' src={rosa} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 55 : 45} type='image' src={rosa} alt='componente mapa' />
                             <p>Rosales</p>
                         </button>
                         <button onClick={toggleActive} name='Palacio' id='pala' className='pala'>
-                            <Image type='image' src={pala} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 70 : 59} type='image' src={pala} alt='componente mapa' />
                             <p>Palacio</p>
                         </button>
                         <button onClick={toggleActive} name='Mirasierra' id='mira' className='mira'>
-                            <Image type='image' src={mira} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 95 : 86} type='image' src={mira} alt='componente mapa' />
                             <p>Mirasierra</p>
                         </button>
                         <button onClick={toggleActive} name='Almagro' id='alma' className='alma'>
-                            <Image type='image' src={alma} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 90 : 85} type='image' src={alma} alt='componente mapa' />
                             <p>Almagro</p>
                         </button>
                         <button onClick={toggleActive} name='Justicia' id='just' className='just'>
@@ -370,7 +373,7 @@ export default function FilterResidential() {
                             <p>El Viso</p>
                         </button>
                         <button onClick={toggleActive} name='Barrio Salamanca' id='sala' className='sala'>
-                            <Image type='image' src={sala} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 80 : 70} type='image' src={sala} alt='componente mapa' />
                             <p>Salamanca</p>
                         </button>
                         <button onClick={toggleActive} name='Jeronimos' id='jero' className='jero'>
@@ -378,11 +381,11 @@ export default function FilterResidential() {
                             <p>Jerónimos</p>
                         </button>
                         <button onClick={toggleActive} name='La Moraleja' id='mora' className='mora'>
-                            <Image type='image' src={mora} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 95 : 90} type='image' src={mora} alt='componente mapa' />
                             <p>Moraleja</p>
                         </button>
                         <button onClick={toggleActive} name='Conde de Orgaz' id='cond' className='cond'>
-                            <Image type='image' src={cond} alt='componente mapa' />
+                            <Image height={size >= 1350 ? 70 : 53} type='image' src={cond} alt='componente mapa' />
                             <p>Conde<br />Orgaz</p>
                         </button>
                     </div>
