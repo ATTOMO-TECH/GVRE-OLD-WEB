@@ -1,0 +1,1334 @@
+@import './fonts.scss';
+@import './media.scss';
+
+.mapa{
+    height: 392px;
+    width: 536px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    img{
+        position: absolute;
+    }
+    div{
+        position: absolute;
+        p{
+            @include litleTextMobile;
+            color: #bbbbbb;
+            position: absolute;
+        }
+    }
+    button{
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        width: fit-content;
+        text-align: left;
+        padding: 0;
+        p{
+            @include litleTextMobile;
+            color: #bbbbbb;
+            position: absolute;
+        }
+    }
+    .active{
+        filter:  contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%) grayscale(85%) brightness(55%);
+        z-index: 1;
+    }
+    .c1{
+        bottom: 0;
+        width: 100%;
+    }
+    .c2{
+        bottom:21.5%;
+        width: 48.9%;
+    }
+    .c3{
+        right: 0px;
+        bottom: 0px;
+        width: 87%;
+    }
+    .c4{
+        bottom: 0px;
+        right: 42%;
+        width: 18%;
+    }
+    .c5{
+        bottom: 43.8%;
+        right: 22.4%;
+        width: 31%;
+    }
+    .c6{
+        bottom: 8.5%;
+        right: 28.2%;
+        width: 2.7%;
+    }
+    .c62{
+        bottom: 55.5%;
+        right: 26.6%;
+        width: 1.5%;
+    }
+    .c7{
+        bottom:35%;
+        right: 0;
+        width: 16%;
+    }
+    .c8{
+        bottom: 0;
+        right: 0;
+        width: 18%;
+    }
+    .avion{
+        right: 3%;
+        bottom: 68%;
+        width: 1.5%;
+    }
+    .boca{
+        right: 2.5%;
+        bottom: 67%;
+        width: 2.5%;
+    }
+    .a1{
+        border: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        @include litleTextMobile;
+        font-size: 9px!important;
+        line-height: 11px!important;
+        color: rgb(161, 161, 161)!important;
+        padding: 0 4px;
+        right: 18%;
+        bottom: 65%;
+    }
+    .a2{
+        border: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        @include litleTextMobile;
+        font-size: 9px!important;
+        line-height: 11px!important;
+        color: rgb(161, 161, 161)!important;
+        padding: 0 4px;
+        right: 12%;
+        bottom: 31%;
+    }
+    .a3{
+        border: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        @include litleTextMobile;
+        font-size: 9px!important;
+        line-height: 11px!important;
+        color: rgb(161, 161, 161)!important;
+        padding: 0 4px;
+        right: 14%;
+        bottom: 3%;
+    }
+    .a5{
+        border: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        @include litleTextMobile;
+        font-size: 9px!important;
+        line-height: 11px!important;
+        color: rgb(161, 161, 161)!important;
+        padding: 0 4px;
+        right: 44%;
+        bottom: 5%;
+    }
+    .a6{
+        border: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        @include litleTextMobile;
+        font-size: 9px!important;
+        line-height: 11px!important;
+        color: rgb(161, 161, 161)!important;
+        padding: 0 4px;
+        right: 54%;
+        bottom: 49%;
+    }
+    .mocl{
+        bottom: 41%;
+        left: 1.5%;
+        width: 12%;
+        p{
+            top: -40px;
+            left: -5px;
+        }
+        img{
+            width: 100%;
+            bottom: -67px;
+        }
+        div{
+            height: 25px;
+            width: 70px;
+            background-color: transparent;
+            transform: rotate(40deg);
+            margin-top: 10px;
+            z-index: 1;
+        }
+    }
+    .moal{
+        bottom: 38%;
+        left: 0;
+        width: 12.5%;
+        p{
+            bottom: -103px;
+            right: -10px;
+        }
+        img{
+            width: 100%;
+            bottom: -91px;
+        }
+    }
+    .prla{
+        bottom:31.5%;
+        left:2.7%;
+        width: 5.5%;
+        p{
+            bottom: -70px;
+            left: -15px;
+        }
+        img{
+            width: 100%;
+            bottom: -69px;
+        }
+    }
+    .enci{
+        bottom: 45%;
+        left: 8.2%;
+        width: 10%;
+        p{
+            width: 100%;
+            top: -25px;
+            left: 25px;
+        }
+        img{
+            width: 100%;
+            bottom: -44px;
+        }
+    }
+    .alam{
+        bottom: 42.7%;
+        left: 16%;
+        width: 10%;
+        p{
+            width: 100%;
+            bottom: -72px;
+            left: 10px;
+        }
+        img{
+            width: 100%;
+            bottom: -53px;
+        }
+    }
+    .flori{
+        bottom: 61%;
+        left: 12%;
+        width: 14.5%;
+        p{
+            width: 100%;
+            bottom: 0px;
+            left: -10px;
+        }
+        img{
+            width: 100%;
+            bottom: -47px;
+        }
+    }
+    .finc{
+        bottom:20%;
+        left:19%;
+        width: 8.5%;
+        p{
+            width: 100%;
+            bottom: -49px;
+            left: 30px;
+        }
+        img{
+            width: 100%;
+            bottom: -50px;
+        }
+    }
+    .somo{
+        bottom:24.5%;
+        left:23.5%;
+        width: 8.7%;
+        p{
+            width: 100%;
+            bottom: -15px;
+            left: 50px;
+        }
+        img{
+            width: 100%;
+            bottom: -36px;
+        }
+    }
+    .arav{
+        bottom: 49.5%;
+        left: 29%;
+        width: 12.5%;
+        p{
+            width: 100%;
+            bottom: -49px;
+            left: 10px;
+        }
+        img{
+            width: 100%;
+            bottom: -43px;
+        }
+    }
+    .vald1{
+        bottom: 56%;
+        left: 27.8%;
+        width: 5.7%;
+        p{
+            width: 100%;
+            bottom:-5px;
+            left: 10px;
+        }
+        img{
+            width: 100%;
+        }
+    }
+    .vald2{
+        position: absolute;
+        bottom: -39px;
+        left: 50%;
+        width: 200%!important;
+    }
+    .fuen1{
+        bottom: 66.8%;
+        left: 46.1%;
+        width: 6.5%;
+        p{
+            width: 100%;
+            bottom:-20px;
+            left: -50px;
+        }
+        img{
+            width: 105%;
+            bottom: -58px;
+        }
+    }
+    .fuen2{
+        bottom: -59px;
+        left: 17.5%;
+        width: 50%!important;
+    }
+    .puer{
+        bottom: 54.4%;
+        left: 52%;
+        width: 8.5%;
+        p{
+            width: 100%;
+            bottom: -71px;
+            left: 0px;
+        }
+        img{
+            width: 105%;
+            bottom: -54px;
+        }
+    }
+    .rosa{
+        bottom: 29%;
+        left: 53%;
+        width: 7.5%;
+        p{
+            width: fit-content;
+            bottom: -11px;
+            left: -30px;
+        }
+        img{
+            width: 105%;
+            bottom: -39px;
+        }
+    }
+    .pala{
+        bottom: 21.5%;
+        left: 58.5%;
+        width: 5.8%;
+        p{
+            width: fit-content;
+            bottom: -27px;
+            left: -40px;
+        }
+        img{
+            width: 105%;
+            bottom: -52px;
+        }
+    }
+    .mira{
+        bottom:77%;
+        left: 58%;
+        width: 10%;
+        p{
+            width: fit-content;
+            bottom:-40px;
+            left: 55px;
+        }
+        img{
+            width: 105%;
+            bottom: -76px;
+        }
+    }
+    .alma{
+        bottom:36.5%;
+        left: 64.4%;
+        width: 5.8%;
+        p{
+            width: fit-content;
+            bottom: -17px;
+            left: -38px;
+        }
+        img{
+            width: 105%;
+            bottom: -71px;
+        }
+    }
+    .just{
+        bottom:23%;
+        left: 65.7%;
+        width: 3.7%;
+        p{
+            width: fit-content;
+            bottom: 0px;
+            left: -29px;
+        }
+        img{
+            width: 105%;
+            bottom: -29px;
+        }
+    }
+    .cort{
+        bottom:16.8%;
+        left: 65.1%;
+        width: 3.7%;
+        p{
+            width: fit-content;
+            bottom: -37px;
+            left: -10px;
+        }
+        img{
+            width: 105%;
+            bottom: -33px;
+        }
+    }
+    .nuev{
+        bottom:52%;
+        left: 71.5%;
+        width: 11%;
+        p{
+            width: 120%;
+            bottom: 4px;
+            left: -40px;
+        }
+        img{
+            width: 100%;
+            bottom: -36px;
+        }
+    }
+    .hisp{
+        bottom:46%;
+        left: 70.7%;
+        width: 11.7%;
+        p{
+            width: 120%;
+            bottom: -19px;
+            left: -40px;
+        }
+        img{
+            width: 105%;
+            bottom: -31px;
+        }
+    }
+    .viso{
+        bottom:39%;
+        left: 70.6%;
+        width: 5%;
+        p{
+            width: 120%;
+            bottom: -28px;
+            left: 30px;
+        }
+        img{
+            width: 105%;
+            bottom: -45px;
+        }
+    }
+    .sala{
+        bottom:29.5%;
+        left: 70.4%;
+        width: 4.8%;
+        p{
+            width: 120%;
+            bottom: -59px;
+            left: 20px;
+        }
+        img{
+            width: 105%;
+            bottom: -60px;
+        }
+    }
+    .jero{
+        bottom:16%;
+        left: 69.8%;
+        width: 1.8%;
+        p{
+            width: 120%;
+            bottom: -30px;
+            left: 12px;
+        }
+        img{
+            width: 90%;
+            bottom: -39px;
+        }
+    }
+    .mora{
+        bottom:99%;
+        left: 85.5%;
+        width: 16.8%;
+        p{
+            width: 120%;
+            bottom: -90px;
+            left: 30px;
+        }
+        img{
+            width: 105%;
+            bottom: -84px;
+        }
+    }
+    .cond{
+        bottom:48%;
+        left: 87.5%;
+        width: 12%;
+        p{
+            width: 120%;
+            bottom: -7px;
+            left: -15px;
+        }
+        img{
+            width: 105%;
+            bottom: -46px;
+        }
+    }
+}
+.filtroResidencial{
+    display: block;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    &__title{
+        margin-top: 72px;
+        margin-left: 20px;
+        margin-bottom: 0px;
+        @include titleHomeMobile;
+        color: black!important;
+    }
+    &__subTitle{
+        margin: 0px;
+        margin-left: 20px;
+        margin-top: 0px;
+        @include textBlackMobile;
+    }
+}
+.filterPosition{
+    padding-bottom: 50px;
+    &__mapContainer{
+        width: initial;
+        overflow-x:scroll;
+        //margin-bottom: 15px;
+        padding-bottom: 25px;
+    }
+}
+.selectors{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 20px;
+    &__estado{
+        //margin-bottom: 15px;
+        h3{
+            margin-left: 20px;
+            margin-bottom: 5px;
+            @include subSubTitleMobile;
+        }
+        &__buttons{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            .alq{
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            .vent{
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+            button{
+                width: 50%;
+                border-width: 2px;
+                border-color: #2b363d;
+                text-align: center;
+                text-decoration: none;
+                padding: 5px;
+                background-color: white;
+                color: #2b363d;
+                @include textMobile;
+            }
+        }
+    }
+    &__tipo{
+        h3{
+            margin-left: 20px;
+            margin-bottom: 5px;
+            @include subSubTitleMobile;
+        }
+        &__buttons{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            .casa{
+                margin-left: 20px;
+                margin-right: 5px;
+            }
+            .piso{
+                margin: 0 5px;
+            }
+            .parcela{
+                margin-right: 20px;
+                margin-left: 5px;
+            }
+            button{
+                width: 33%;
+                border-width: 2px;
+                border-color: #2b363d;
+                text-align: center;
+                text-decoration: none;
+                padding: 5px;
+                background-color: white;
+                color: #2b363d;
+                @include textMobile;
+            }
+        }
+    }
+    &__extras{
+        h3{
+            margin-left: 20px;
+            margin-bottom: 5px;
+            @include subSubTitleMobile;
+        }
+        &__buttons{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            .piscina{
+                margin-left: 20px;
+                margin-right: 5px;
+            }
+            .garaje{
+                margin: 0 5px;
+            }
+            .terraza{
+                margin-right: 20px;
+                margin-left: 5px;
+            }
+            button{
+                width: 33%;
+                border-width: 2px;
+                border-color: #2b363d;
+                text-align: center;
+                text-decoration: none;
+                padding: 5px;
+                background-color: white;
+                color: #2b363d;
+                @include textMobile;
+            }
+        }
+    }
+    &__buscar{
+        margin-top: 70px;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        &__all{
+            margin-left: 20px;
+            margin-right: 5px;
+            color: #2b363d;
+            background-color: #fff;
+            width: 45%;
+            height: 35px;
+            font-family: 'Jost';
+            font-size: 18px;
+            cursor: pointer;
+
+
+        }
+        &__allDisabled{
+            margin-left: 20px;
+            margin-right: 5px;
+            width: 50%;
+            color: rgb(201, 201, 201)!important;
+            background-color: rgb(255, 255, 255);
+            border: solid;
+            border-width: 2px;
+            border-color: rgb(201, 201, 201)!important;
+            padding: 5px;
+            @include textMobile;
+        }
+        &__search{
+            margin-left: 5px;
+            margin-right: 20px;
+            background-color: #2b363d;
+            color: white !important;
+            width: 45%;
+            height: 35px;
+            font-family: 'Jost';
+            font-size: 18px;
+            cursor: pointer;
+        }
+        &__searchDisabled{
+            width: 50%;
+            height: 35px;
+            margin-left: 5px;
+            margin-right: 20px;
+            background-color: white;
+            color: lightgray!important;
+            border-color: lightgray!important;
+        }
+        a{
+            width: 50%;
+            border:solid;
+            border-width: 2px;
+            border-color: #2b363d;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            @include textMobile;
+        }
+    }
+    &__ref{
+        margin-left: 20px;
+        margin-right: 42px;
+        padding-top: 20px;
+        position: relative;
+        h4{
+            @include subSubTitleMobile;
+            color: rgb(180, 180, 180)!important;
+            margin-bottom: 5px;
+
+        }
+        input{
+            border: solid;
+            border-width: 2px;
+            border-color: rgb(180, 180, 180);
+            height: 25px;
+            width: 100%;
+            padding-left: 18px;
+            font-family: 'Jost';
+            color: #b4b4b4;
+            font-size: 16px;
+        }
+        &__lupa{
+            position: absolute;
+            height: 17px;
+            bottom: 8px;
+            left: 18px;
+        }
+        &__lupaOculta{
+            display: none;
+        }
+        &__existe{
+            @include litleTextMobile;
+            color: red!important;
+        }
+    }
+}
+.activeButton {
+    background-color: #2b363d !important;
+    color: white !important;
+}
+
+@include desktop {
+    .mapa{
+        height: 600px;
+        width: 820px;
+        margin: 0px auto;
+        .mocl{
+            div{
+                width: 110px;
+                margin-top: 25px;
+            }
+            img{
+                bottom: -84px;
+            }
+        }
+        .moal{
+            bottom: 38%;
+            left: 0;
+            width: 12.5%;
+            p{
+                bottom: -131px;
+                right: -10px;
+            }
+            img{
+                width: 100%;
+                bottom: -105px;
+            }
+        }
+        .alam{
+            bottom: 42.7%;
+            left: 16%;
+            width: 10%;
+            p{
+                width: 100%;
+                bottom: -84px;
+                left: 10px;
+            }
+            img{
+                width: 100%;
+                bottom: -54px;
+            }
+        }
+        .alma{
+            img{
+                bottom: -82px;
+            }
+        }
+        .finc{
+            bottom:20%;
+            left:18.7%;
+            width: 8.5%;
+            p{
+                width: 100%;
+                bottom: -75px;
+                left: 30px;
+            }
+            img{
+                width: 100%;
+                bottom: -60px;
+            }
+        }
+        .somo{
+            bottom:24.5%;
+            left:23.5%;
+            width: 8.7%;
+            p{
+                width: 100%;
+                bottom: -30px;
+                left: 80px;
+            }
+            img{
+                width: 100%;
+                bottom: -45px;
+            }
+        }
+        .arav{
+            bottom: 49.5%;
+            left: 29%;
+            width: 12.5%;
+            p{
+                width: 100%;
+                bottom: -72px;
+                left: 10px;
+            }
+            img{
+                width: 100%;
+                bottom: -48px;
+            }
+        }
+        .vald1{
+            p{
+                bottom: 0px;
+            }
+        }
+        .vald2{
+            position: absolute;
+            bottom: -46px;
+            left: 40%;
+            width: 200%!important;
+        }
+        .fuen1{
+            bottom: 66.8%;
+            left: 46.1%;
+            width: 6.5%;
+            p{
+                width: 100%;
+                bottom:-25px;
+                left: -50px;
+            }
+            img{
+                width: 105%;
+                bottom: -85px;
+            }
+        }
+        .fuen2{
+            bottom: -92px;
+            left: 17.5%;
+            width: 50%!important;
+        }
+        .puer{
+            bottom: 54.4%;
+            left: 52%;
+            width: 8.5%;
+            p{
+                width: 100%;
+                bottom: -99px;
+                left: 0px;
+            }
+            img{
+                width: 105%;
+                bottom: -80px;
+            }
+        }
+        .pala{
+            bottom: 21.5%;
+            left: 58.5%;
+            width: 5.8%;
+            p{
+                width: fit-content;
+                bottom:-45px;
+                left: -40px;
+            }
+            img{
+                width: 105%;
+                bottom: -72px;
+            }
+        }
+        .mira{
+            bottom:77%;
+            left: 58%;
+            width: 10%;
+            p{
+                width: fit-content;
+                bottom:-45px;
+                left: 83px;
+            }
+            img{
+                width: 105%;
+                bottom: -96px;
+            }
+        }
+        .hisp{
+            bottom:46%;
+            left: 70.7%;
+            width: 11.7%;
+            p{
+                width: 120%;
+                bottom:-37px;
+                left: -42px;
+            }
+            img{
+                width: 105%;
+            }
+        }
+        .viso{
+            bottom:39%;
+            left: 70.6%;
+            width: 5%;
+            p{
+                width: 120%;
+                bottom: -25px;
+                left: 45px;
+            }
+            img{
+                width: 105%;
+            }
+        }
+        .sala{
+            bottom:29.5%;
+            left: 70.4%;
+            width: 4.8%;
+            p{
+                width: 120%;
+                bottom: -78px;
+                left: 35px;
+            }
+            img{
+                width: 105%;
+                bottom: -71px;
+            }
+        }
+        .jero{
+            bottom:16.5%;
+            left: 69.8%;
+            width: 1.8%;
+            p{
+                width: 120%;
+                bottom:-48px;
+                left: 19px;
+            }
+            img{
+                width: 90%;
+                bottom: -48px;
+            }
+        }
+        .mora{
+            bottom:99%;
+            left: 85.5%;
+            width: 16.8%;
+            p{
+                width: 120%;
+                bottom: -135px;
+                left: 30px;
+            }
+            img{
+                width: 105%;
+                bottom: -94px;
+            }
+        }
+        .flori{
+            img{
+                bottom: -55px;
+            }
+        }
+        .cond{
+            img{
+                bottom: -65px;
+            }
+        }
+        .rosa{
+            p{
+                bottom: -21px;
+            }
+            img{
+                bottom: -56px;
+            }
+        }
+        img{
+            position: absolute;
+        }
+        .active{
+            filter:  contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%) grayscale(85%) brightness(55%);
+        }
+    }
+    .filtroResidencial{
+        display: block;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 2;
+        &__title{
+            margin-top: 90px;
+            margin-left: 36px;
+            @include textBlack;
+            color: black!important;
+        }
+        &__subTitle{
+            margin-left: 36px;
+            @include desc;
+        }
+    }
+    .filterPosition{
+        display: flex;
+        &__mapContainer{
+            width: 70%;
+            margin-top: 41px;
+            margin-left: 36px;
+            margin-bottom: 168px;
+            overflow-x: initial;
+        }
+    }
+    .selectors{
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        margin-right: 0px;
+        margin-bottom: 99px;
+        height: auto;
+        border-left: solid;
+        border-color: rgb(211, 211, 211);
+        border-width: 2px;
+        padding-left: 22px;
+        z-index: 1;
+        background-color: white;
+        &__estado{
+            margin-bottom: 27px;
+            h3{
+                margin-top: 0;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                @include apart;
+            }
+            &__buttons{
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                button{
+                    width: 50%;
+                    height: 48px;
+                    border-width: 2px;
+                    border-color: #2b363d;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 5px;
+                    background-color: white;
+                    color: #2b363d;
+                    @include mapBut;
+                }
+            }
+        }
+        &__tipo{
+            margin-bottom: 27px;
+            h3{
+                margin-left: 20px;
+                margin-bottom: 20px;
+                @include apart;
+            }
+            &__buttons{
+                display: flex;
+                align-items: center;
+                button{
+                    width: 33%;
+                    height: 48px;
+                    border-width: 2px;
+                    border-color: #2b363d;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 5px;
+                    background-color: white;
+                    color: #2b363d;
+                    @include mapBut;
+                }
+            }
+        }
+        &__extras{
+            margin-bottom: 245px;
+            h3{
+                margin-left: 20px;
+                margin-bottom: 20px;
+                @include apart;
+            }
+            &__buttons{
+                display: flex;
+                align-items: center;
+                button{
+                    width: 33%;
+                    height: 48px;
+                    border-width: 2px;
+                    border-color: #2b363d;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 5px;
+                    background-color: white;
+                    color: #2b363d;
+                    @include mapBut;
+                }
+            }
+        }
+        &__buscar{
+            margin-top: 0px;
+            margin-bottom: 27px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            &__allDisabled{
+                height: 50px;
+                @include mapBut;
+            }
+            &__searchDisabled{
+                height: 50px;
+                @include mapBut;
+            }
+            
+            button{
+                width: 50%;
+                border:solid;
+                border-width: 2px;
+                border-color: #2b363d;
+                text-align: center;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                height: 50px;
+
+                @include mapBut;
+            }
+        }
+        &__ref{
+            margin-left: 20px;
+            margin-right: 25px;
+            position: relative;
+            h4{
+                @include apart;
+                color: rgb(180, 180, 180)!important;
+                margin-bottom: 20px;
+    
+            }
+            input{
+                border: solid;
+                border-width: 2px;
+                border-color: rgb(180, 180, 180);
+                height: 46px;
+                width: 97%;
+                padding-left: 18px;
+                font-family: 'Jost';
+                color: #b4b4b4;
+            }
+            &__lupa{
+                position: absolute;
+                height: 17px;
+                bottom: 18px;
+                left: 18px;
+            }
+            &__lupaOculta{
+                display: none;
+            }
+        }
+    }
+}
+
+@include tablet {
+    .filtroResidencial{
+        background-color: white;
+        z-index: 2;
+        &__title{
+            margin-top: 70px;
+            margin-left: 20px;
+            margin-bottom: 0px;
+            @include titleHomeMobile;
+            color: black!important;
+        }
+        &__subTitle{
+            margin-left: 20px;
+            margin-top: 0px;
+            @include textBlackMobile;
+        }
+    }
+    .filterPosition{
+        padding-bottom: 50px;
+        &__mapContainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .selectors{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 90%;
+        max-width: 700px;
+        &__estado{
+            margin-bottom: 15px;
+            h3{
+                margin-left: 20px;
+                margin-bottom: 5px;
+                @include subSubTitleMobile;
+            }
+            &__buttons{
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                .alq{
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+                .vent{
+                    margin-right: 20px;
+                    margin-left: 20px;
+                }
+                button{
+                    width: 50%;
+                    height: 35px;
+                    border-width: 2px;
+                    border-color: #2b363d;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 5px;
+                    background-color: white;
+                    color: #2b363d;
+                    @include textMobile;
+                }
+            }
+        }
+        &__extras{
+            padding-top: 20px;
+        }
+        &__tipo{
+            h3{
+                margin-left: 20px;
+                margin-bottom: 5px;
+                @include subSubTitleMobile;
+            }
+            &__buttons{
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                .casa{
+                    margin-left: 20px;
+                    margin-right: 5px;
+                }
+                .piso{
+                    margin: 0 5px;
+                }
+                .parcela{
+                    margin-right: 20px;
+                    margin-left: 5px;
+                }
+                button{
+                    width: 33%;
+                    border-width: 2px;
+                    border-color: #2b363d;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 5px;
+                    background-color: white;
+                    color: #2b363d;
+                    @include textMobile;
+                }
+            }
+        }
+        &__buscar{
+            margin-top: 80px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            &__all{
+                margin-left: 20px;
+                margin-right: 5px;
+                color: #2b363d;
+            }
+            &__search{
+                margin-left: 5px;
+                margin-right: 20px;
+                background-color: #2b363d;
+                color: white !important;
+            }
+            button{
+                width: 50%;
+                height: 35px;
+                border:solid;
+                border-width: 2px;
+                border-color: #2b363d;
+                text-align: center;
+                text-decoration: none;
+                padding: 5px;
+                @include textMobile;
+            }
+        }
+        &__ref{
+            margin-left: 20px;
+            margin-right: 25px;
+            h4{
+                @include subSubTitleMobile;
+                color: rgb(180, 180, 180)!important;
+                margin-bottom: 5px;
+    
+            }
+            input{
+                border: solid;
+                border-width: 2px;
+                border-color: rgb(180, 180, 180);
+                height: 25px;
+                width: 100%;
+            }
+        }
+    }
+}

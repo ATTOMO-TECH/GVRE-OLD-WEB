@@ -56,36 +56,44 @@ export default function Home({destacado}) {
   function sideScroll(element,direction,speed,distance,step){
       let scrollAmount = 0;
       var slideTimer = setInterval(function(){
-          if(direction === 'left'){
-              element.scrollLeft -= step;
-          } else {
-              element.scrollLeft += step;
-          }
-          scrollAmount += step;
-          if(scrollAmount >= distance){
-              window.clearInterval(slideTimer);
-          }
+        if (typeof window !== 'undefined'){
+            if(direction === 'left'){
+                element.scrollLeft -= step;
+            } else {
+                element.scrollLeft += step;
+            }
+            scrollAmount += step;
+            if(scrollAmount >= distance){
+                window.clearInterval(slideTimer);
+            }
+        }
       }, speed);
   }
 
   const arrow = () => {
       let element = document.getElementById('top');
-      window.scroll({
+    if (typeof window !== 'undefined'){
+        window.scroll({
           top:element.clientHeight,
           behavior:'smooth'
       })
+    }
   }
 
   const situate4 = () => {
-      window.scroll ({
-          top:3250,
-          behavior:'smooth'
-      })
+    if (typeof window !== 'undefined'){
+        window.scroll ({
+            top:3250,
+            behavior:'smooth'
+        })
+    }
   }
   const situate2 = () => {
-      window.scroll ({
+    if (typeof window !== 'undefined'){
+        window.scroll ({
           top:0,
       })
+    }
   }
 
 
@@ -137,7 +145,7 @@ export default function Home({destacado}) {
                 <div className='home__more__text'>
                     <h3 className='home__more__text__title'>Interiorismo y arquitectos</h3>
                     <p className='home__more__text__description'>Nuestra marca representa el compromiso con para trabajar con el mejor equipo de expertos y brindarle un servicio a la altura de sus expectativas.</p>
-                    <Link href={routes.Contextual} onClick={situate4} className='home__more__text__link'>Saber más <span className='longArrow'><Image width={30} height={20} src={flechaEnviar} alt='flecha'/></span><span className='shortArrow'><Image width={35} height={16} src={flechaCategoriasWeb} alt='flecha'/></span></Link>
+                    <Link href={`${routes.Contextual}#arquitectura`} onClick={situate4} className='home__more__text__link'>Saber más <span className='longArrow'><Image width={30} height={20} src={flechaEnviar} alt='flecha'/></span><span className='shortArrow'><Image width={35} height={16} src={flechaCategoriasWeb} alt='flecha'/></span></Link>
                 </div>
             </div>
             <div className='home__moreB'>
@@ -145,7 +153,7 @@ export default function Home({destacado}) {
                 <div className='home__moreB__text'>
                     <h3 className='home__moreB__text__title'>Venda con nosotros</h3>
                     <p className='home__moreB__text__description'>La experiencia del cliente comprador es nuestra prioridad, es por ello que en GV nos centramos en ofrecer una búsqueda más condicionada para que las ofertas estén perfectamente centradas en sus necesidades.</p>
-                    <Link href={routes.Contextual} className='home__moreB__text__link'>Saber más <span className='longArrow'><Image width={30} height={20} src={flechaEnviar} alt='flecha'/></span><span className='shortArrow'><Image width={35} height={16} src={flechaCategoriasWeb} alt='flecha'/></span></Link>
+                    <Link href={`${routes.Contextual}#desarrollos`} className='home__moreB__text__link'>Saber más <span className='longArrow'><Image width={30} height={20} src={flechaEnviar} alt='flecha'/></span><span className='shortArrow'><Image width={35} height={16} src={flechaCategoriasWeb} alt='flecha'/></span></Link>
                 </div>
             </div>
             <div className='home__more'>
@@ -159,21 +167,21 @@ export default function Home({destacado}) {
             <div className='home__otherCategories'>
                 <h2 className='home__otherCategories__title'>Otras categorías</h2>
                 <div className='home__otherCategories__categories'>
-                    <Link href={`${routes.Costa}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Costa}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={costa} alt='categoría costa'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Costa</p>
                             <span><Image width={35} height={16} src={flechaEnviar} alt='flecha'/></span>
                         </div>
                     </Link>
-                    <Link href={`${routes.Rustico}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Rustico}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={rustico} alt='categoría rustico'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Campos Rústicos</p>
                             <span><Image width={35} height={16} src={flechaEnviar} alt='flecha'/></span>
                         </div>
                     </Link>
-                    <Link href={`${routes.Singular}/${1}}`} className='home__otherCategories__categories__item'>
+                    <Link href={`${routes.Singular}/1&page=1`} className='home__otherCategories__categories__item'>
                         <Image width={650} height={405} className='home__otherCategories__categories__item__image' src={singular} alt='categoría singulares'/>
                         <div className='home__otherCategories__categories__item__link'>
                             <p>GV Activos singulares</p>

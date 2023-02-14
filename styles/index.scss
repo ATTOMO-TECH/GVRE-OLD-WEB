@@ -1,4 +1,4 @@
-@import './styles/media.scss';
+@import './media.scss';
 
 body{
     margin: 0;
@@ -7,6 +7,22 @@ main {
   background-color: #fff;
   min-height: 100vh;
 }
+
+.react-pdf{
+    &__Page{
+        &__annotations{
+            display: none !important;
+        }
+    }
+}
+.react-pdf{
+    &__Page{
+        &__textContent{
+            display: none !important;
+        }
+    }
+}
+
 .control-dots{
     display: none!important;
 }
@@ -79,6 +95,10 @@ span[data-index='1'] {
     margin-left: 17px;
 }
 
+#zoomSlider{
+    width: 15% !important;
+}
+
 @include tablet {
     .css-1hojzj1-MuiSlider-root {
         width: 91% !important;
@@ -89,6 +109,6 @@ span[data-index='1'] {
 @include desktop {
     .css-1hojzj1-MuiSlider-root {
         width: 92% !important;
-        margin-left: -4px;
+        margin-left: 10px;
     }
 }
