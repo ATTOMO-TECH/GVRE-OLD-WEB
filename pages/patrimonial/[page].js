@@ -66,6 +66,7 @@ import mayor from '../../assets/SVG/web/comunes/mayor.svg'
 import cerrarFiltro from '../../assets/SVG/mobile/comun/cerrarCompleta.svg';
 //import { Navigate, useNavigate} from 'react-router'
 import { BarLoader, ClipLoader } from 'react-spinners';
+import useWindowSize from '../../hooks/useWindowsSize';
 
 
 export default function Patrimonial ({orderedItems, pages, query, queryFilters}){
@@ -127,6 +128,8 @@ export default function Patrimonial ({orderedItems, pages, query, queryFilters})
     //const navigate = useNavigate();
     const [maxZonePrice, setMaxZonePrice] = useState(0);
     const [getMaxPrices, setGetMaxPrices] = useState(false);
+
+    const size = useWindowSize();
 
     const getTypeHouse = () => {
         setParam('')
@@ -816,17 +819,17 @@ export default function Patrimonial ({orderedItems, pages, query, queryFilters})
                                 </div>
                                 <div className='patrimonial__filter__position__mapContainer'>
                                     <div className='patrimonial__filter__position__mapContainer__mapa'>
-                                        <Image className='c1' src={carretera1} alt='componente mapa' />
-                                        <Image className='c2' src={carretera2} alt='componente mapa' />
-                                        <Image className='c3' src={carretera3} alt='componente mapa' />
-                                        <Image className='c4' src={carretera4} alt='componente mapa' />
-                                        <Image className='c5' src={carretera5} alt='componente mapa' />
-                                        <Image className='c6' src={carretera6} alt='componente mapa' />
-                                        <Image className='c62' src={carretera62} alt='componente mapa' />
-                                        <Image className='c7' src={carretera7} alt='componente mapa' />
-                                        <Image className='c8' src={carretera8} alt='componente mapa' />
-                                        <Image className='c9' src={carretera9} alt='componente mapa' />
-                                        <Image className='c10' src={carretera10} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 475 : 536 } height={size >= 1350 ? 347 : 392 } className='c1' src={carretera1} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 232 : 262 } height={size >= 1350 ? 63 : 71 } className='c2' src={carretera2} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 413 : 466 } height={size >= 1350 ? 312 : 352 } className='c3' src={carretera3} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 96 } height={size >= 1350 ? 53 : 60 } className='c4' src={carretera4} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 147 : 166 } height={size >= 1350 ? 68 : 77 } className='c5' src={carretera5} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 13 : 15 } height={size >= 1350 ? 156 : 176 } className='c6' src={carretera6} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 7 : 8 } height={size >= 1350 ? 23 : 26 } className='c62' src={carretera62} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 76 : 86 } height={size >= 1350 ? 10 : 12 } className='c7' src={carretera7} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 96 } height={size >= 1350 ? 48 : 54 } className='c8' src={carretera8} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 71 : 80 } height={size >= 1350 ? 79 : 89 } className='c9' src={carretera9} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 62 : 70 } height={size >= 1350 ? 36 : 41 } className='c10' src={carretera10} alt='componente mapa' />
                                         {
                                             getMaxPrices ? 
                                             <ClipLoader color="#000000" size={40} className='cliploader' />
