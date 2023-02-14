@@ -63,6 +63,7 @@ import { getZoneId } from '../../globalFunctions/MapZones/MapZones';
 import { PricesSliders } from '../../styles/sliders-style';
 import Link from 'next/link';
 import Image from 'next/image';
+import useWindowSize from '../../hooks/useWindowsSize';
 
 
 
@@ -124,6 +125,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     //const navigate = useNavigate()
     const [maxZonePrice, setMaxZonePrice] = useState(0);
     const [getMaxPrices, setGetMaxPrices] = useState(false);
+
+    const size = useWindowSize();
 
     const getTypeHouse = () => {
         setParam('')
@@ -858,15 +861,15 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
 
-                                        <Image className='c1' src={carretera1} alt='componente mapa' />
-                                        <Image className='c2' src={carretera2} alt='componente mapa' />
-                                        <Image className='c3' src={carretera3} alt='componente mapa' />
-                                        <Image className='c4' src={carretera4} alt='componente mapa' />
-                                        <Image className='c5' src={carretera5} alt='componente mapa' />
-                                        <Image className='c6' src={carretera6} alt='componente mapa' />
-                                        <Image className='c62' src={carretera62} alt='componente mapa' />
-                                        <Image className='c7' src={carretera7} alt='componente mapa' />
-                                        <Image className='c8' src={carretera8} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 475 : 536*1.5 } height={size >= 1350 ? 348 : 392 } className='c1' src={carretera1} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 232 : 262*1.5 } height={size >= 1350 ? 63 : 70 } className='c2' src={carretera2} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 413 : 466*1.5 } height={size >= 1350 ? 312 : 352 } className='c3' src={carretera3} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 97*1.5 } height={size >= 1350 ? 53 : 60 } className='c4' src={carretera4} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 147 : 166*1.5 } height={size >= 1350 ? 68 : 77 } className='c5' src={carretera5} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 13 : 15*1.5 } height={size >= 1350 ? 156 : 176 } className='c6' src={carretera6} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 7 : 8*1.5 } height={size >= 1350 ? 23 : 26 } className='c62' src={carretera62} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 76 : 86*1.5 } height={size >= 1350 ? 10 : 12 } className='c7' src={carretera7} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 97*1.5 } height={size >= 1350 ? 48 : 54 } className='c8' src={carretera8} alt='componente mapa' />
                                         {
                                             getMaxPrices ?
                                             <ClipLoader color="#000000" size={40} className='cliploader' />
@@ -879,7 +882,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     : ""
                                                 }`}
                                         >
-                                            <Image src={mocl} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 57 : 65 } height={size >= 1350 ? 50 : 57 } src={mocl} alt='componente mapa' />
                                             <p>Monte <br /> Claro</p>
                                             <div></div>
                                         </button>
@@ -890,7 +893,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     : ""
                                                 }`}
                                         >
-                                            <Image src={moal} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 59 : 65 } height={size >= 1350 ? 69 : 77 } src={moal} alt='componente mapa' />
                                             <p>Monte<br />Alina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Prado Largo' id='prla'
@@ -900,7 +903,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     : ""
                                                 }`}
                                         >
-                                            <Image src={prla} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 26 : 29 } height={size >= 1350 ? 46 : 52 } src={prla} alt='componente mapa' />
                                             <p>Prado<br />Largo</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Las Encinas' id='enci'
@@ -909,7 +912,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={enci} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 47 : 53 } height={size >= 1350 ? 29 : 32 } src={enci} alt='componente mapa' />
                                             <p>Las Encinas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Alamo de Bulanas' id='alam'
@@ -918,7 +921,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={alam} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 47 : 54 } height={size >= 1350 ? 35 : 39 } src={alam} alt='componente mapa' />
                                             <p>Álamos de<br />Bularas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Florida' id='flori'
@@ -927,7 +930,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={flori} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 69 : 77 } height={size >= 1350 ? 33 : 36 } src={flori} alt='componente mapa' />
                                             <p>La Florida</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Finca' id='finc'
@@ -936,7 +939,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={finc} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 40 : 45 } height={size >= 1350 ? 36 : 40 } src={finc} alt='componente mapa' />
                                             <p>La Finca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Somosaguas' id='somo'
@@ -945,7 +948,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={somo} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 41 : 46 } height={size >= 1350 ? 25 : 28 } src={somo} alt='componente mapa' />
                                             <p>Somosaguas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Aravaca' id='arav'
@@ -954,7 +957,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={arav} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 59 : 67 } height={size >= 1350 ? 29 : 32 } src={arav} alt='componente mapa' />
                                             <p>Aravaca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Valdemarin' id='vald1'
@@ -963,8 +966,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={vald1} alt='componente mapa' />
-                                            <Image className='vald2' src={vald2} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 27 : 30 } height={size >= 1350 ? 16 : 18 } src={vald1} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 54 : 61 } height={size >= 1350 ? 27 : 30 } className='vald2' src={vald2} alt='componente mapa' />
                                             <p>Valdemarín</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Colonia Fuentelarreyna' id='fuen1'
@@ -973,8 +976,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={fuen1} alt='componente mapa' />
-                                            <Image className='fuen2' src={fuen2} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 32 : 36 } height={size >= 1350 ? 43 : 48 } src={fuen1} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 15 : 17 } height={size >= 1350 ? 12 : 13 } className='fuen2' src={fuen2} alt='componente mapa' />
                                             <p>Fuentelarreina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Puerta de Hierro' id='puer'
@@ -983,7 +986,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image src={puer} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 42 : 47 } height={size >= 1350 ? 39 : 44 } src={puer} alt='componente mapa' />
                                             <p>Puerta de <br />Hierro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Rosales' id='rosa'
@@ -992,7 +995,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image src={rosa} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 37 : 42 } height={size >= 1350 ? 28 : 31 } src={rosa} alt='componente mapa' />
                                             <p>Rosales</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Palacio' id='pala'
@@ -1001,7 +1004,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image src={pala} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 32 } height={size >= 1350 ? 39 : 43 } src={pala} alt='componente mapa' />
                                             <p>Palacio</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Mirasierra' id='mira'
@@ -1010,7 +1013,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={mira} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 50 : 56 } height={size >= 1350 ? 54 : 61 } src={mira} alt='componente mapa' />
                                             <p>Mirasierra</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Almagro' id='alma'
@@ -1019,7 +1022,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={alma} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 32 } height={size >= 1350 ? 54 : 60 } src={alma} alt='componente mapa' />
                                             <p>Almagro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Justicia' id='just'
@@ -1028,7 +1031,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={just} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 18 : 21 } height={size >= 1350 ? 23 : 26 } src={just} alt='componente mapa' />
                                             <p>Justicia</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Cortes' id='cort'
@@ -1037,7 +1040,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={cort} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 18 : 21 } height={size >= 1350 ? 25 : 28 } src={cort} alt='componente mapa' />
                                             <p>Cortes</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='nuev'
@@ -1046,7 +1049,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={nuev} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 52 : 59 } height={size >= 1350 ? 25 : 28 } src={nuev} alt='componente mapa' />
                                             <p>Nueva España</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='hisp'
@@ -1055,7 +1058,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={hisp} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 58 : 66 } height={size >= 1350 ? 22 : 25 } src={hisp} alt='componente mapa' />
                                             <p>Hispano <br /> América</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='El Viso' id='viso'
@@ -1064,7 +1067,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={viso} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 25 : 28 } height={size >= 1350 ? 32 : 36 } src={viso} alt='componente mapa' />
                                             <p>El Viso</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Barrio Salamanca' id='sala'
@@ -1073,7 +1076,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={sala} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 27 } height={size >= 1350 ? 45 : 51 } src={sala} alt='componente mapa' />
                                             <p>Salamanca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Jeronimos' id='jero'
@@ -1082,7 +1085,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={jero} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 8 : 9 } height={size >= 1350 ? 26 : 29 } src={jero} alt='componente mapa' />
                                             <p>Jerónimos</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Moraleja' id='mora'
@@ -1091,7 +1094,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={mora} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 84 : 94 } height={size >= 1350 ? 59 : 66 } src={mora} alt='componente mapa' />
                                             <p>Moraleja</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Conde de Orgaz' id='cond'
@@ -1100,7 +1103,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image src={cond} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 60 : 67 } height={size >= 1350 ? 35 : 40 } src={cond} alt='componente mapa' />
                                             <p>Conde<br />Orgaz</p>
                                         </button>
                                     </div>

@@ -67,7 +67,6 @@ export default function FilterResidential() {
     const [elementId, setElementId] = useState('');
     /*const [filter, setFilter] = useState({});*/
     const size = useWindowSize();
-console.log(size)
 
     const toggleActive = (e) => {
         /* console.log(e.currentTarget.name) */
