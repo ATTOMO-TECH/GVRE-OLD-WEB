@@ -55,6 +55,7 @@ import { getPatrimonial } from '../api-requests/requests';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router  from 'next/router';
+import useWindowSize from '../hooks/useWindowsSize';
 
 
 export default function FilterPatrimonial (){
@@ -82,6 +83,7 @@ export default function FilterPatrimonial (){
     const [maxZonePrice, setMaxZonePrice] = useState(0);
     const [getMaxPrices, setGetMaxPrices] = useState(false);
 
+    const size = useWindowSize();
 
     const toggleActive = (e) => {
         /* console.log(e.currentTarget.name) */
@@ -424,17 +426,17 @@ export default function FilterPatrimonial (){
         <div className='filtroPatrimonio__filterPosition'>
             <div className='filtroPatrimonio__filterPosition__mapContainer'>
                 <div className='filtroPatrimonio__filterPosition__mapContainer__mapa'>
-                    <Image className='c1' src={carretera1} alt='componente mapa' />
-                    <Image className='c2' src={carretera2} alt='componente mapa' />
-                    <Image className='c3' src={carretera3} alt='componente mapa' />
-                    <Image className='c4' src={carretera4} alt='componente mapa' />
-                    <Image className='c5' src={carretera5} alt='componente mapa' />
-                    <Image className='c6' src={carretera6} alt='componente mapa' />
-                    <Image className='c62' src={carretera62} alt='componente mapa' />
-                    <Image className='c7' src={carretera7} alt='componente mapa' />
-                    <Image className='c8' src={carretera8} alt='componente mapa' />
-                    <Image className='c9' src={carretera9} alt='componente mapa' />
-                    <Image className='c10' src={carretera10} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 720 : 536 } height={size >= 1350 ? 526 : 392 } className='c1' src={carretera1} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 352 : 262 } height={size >= 1350 ? 95 : 71 } className='c2' src={carretera2} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 626 : 466 } height={size >= 1350 ? 473 : 352 } className='c3' src={carretera3} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 130 : 96 } height={size >= 1350 ? 80 : 60 } className='c4' src={carretera4} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 223 : 166 } height={size >= 1350 ? 103 : 77 } className='c5' src={carretera5} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 19 : 15 } height={size >= 1350 ? 236 : 176 } className='c6' src={carretera6} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 11 : 8 } height={size >= 1350 ? 35 : 26 } className='c62' src={carretera62} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 115 : 86 } height={size >= 1350 ? 16 : 12 } className='c7' src={carretera7} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 130 : 96 } height={size >= 1350 ? 73 : 54 } className='c8' src={carretera8} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 108 : 80 } height={size >= 1350 ? 120 : 89 } className='c9' src={carretera9} alt='componente mapa' />
+                    <Image width={size >= 1350 ? 93 : 70 } height={size >= 1350 ? 55 : 41 } className='c10' src={carretera10} alt='componente mapa' />
                     {/* <Image className='secu' src={secu} alt='componente mapa' /> */}
                     {
                         getMaxPrices ? 
