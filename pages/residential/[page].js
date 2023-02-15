@@ -827,8 +827,8 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             if(garaje !== undefined)                                queryFilters = { ...queryFilters, garaje: true }
             if(piscina !== undefined)                               queryFilters = { ...queryFilters, piscina: true }
             if(terraza !== undefined)                               queryFilters = { ...queryFilters, terraza: true }
-            if(porfecha === undefined || porfecha === "true")       queryFilters = { ...queryFilters, porfecha: true }
-            if(porfecha === "false")                                queryFilters = { ...queryFilters, porfecha: false }
+            if(porfecha === "true")                                 queryFilters = { ...queryFilters, porfecha: true }
+            if(porfecha === undefined || porfecha === "false")      queryFilters = { ...queryFilters, porfecha: false }
             if(precioventamax !== undefined)                        queryFilters = { ...queryFilters, precioventamax: precioventamax }
             if(precioventamin !== undefined)                        queryFilters = { ...queryFilters, precioventamin: precioventamin }
             if(precioalquilermax !== undefined)                     queryFilters = { ...queryFilters, precioalquilermax: precioalquilermax }

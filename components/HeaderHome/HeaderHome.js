@@ -42,7 +42,7 @@ const Header = () => {
     return (
         <header>
             <div className='headerHome'>
-                <div className='headerHome__logo'><Image width={50} height={50} src={logo} alt='logo'/></div>
+                <div className='headerHome__logo'><Image width={45} height={45} src={logo} alt='logo'/></div>
                 <div className='headerHome__menu'>
                     <span onClick={toggleClass} className='headerHome__menu__burguer'><Image src={menuHam} alt='menu'/></span>
                     <ul className={isActive ? "notVisibleMenu headerHome__menu__list" : 'headerHome__menu__list'}>

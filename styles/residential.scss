@@ -127,6 +127,7 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     @include textBlackMobile;
+                    font-weight: 400!important;
                 }
                 &__prices{
                     top: -50px;
@@ -138,6 +139,7 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     @include textBlackMobile;
+                    font-weight: 400!important;
                     display: flex;
                     justify-content: space-around;
                     p{
@@ -146,10 +148,13 @@
                 }
                 &__title{
                     @include textBlackMobile;
+                    font-weight: 500!important;
+                    margin: 11.62px 0;
                 }
                 &__street{
                     @include contactMobile;
                     text-transform: uppercase;
+                    margin: 12px 0;
                 }
                 &__characteristics{
                     display: flex;
@@ -237,9 +242,10 @@
             display: flex;
             flex-wrap: wrap;
             padding: 0;
-            margin-left: 8px;
-            margin-right: 8px;
+            // margin-left: 8px;
+            // margin-right: 8px;
             @include textMobile;
+            margin: 14px 8px;
             &__item{
                 margin-left: 3px;
                 margin-right: 3px;
@@ -397,6 +403,8 @@
                     }
                     &__title{
                         @include textBlackMobile;
+                        font-weight: 500!important;
+
                     }
                     &__street{
                         @include contactMobile;
@@ -484,7 +492,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        top: -105px;
+                        top: -88px;
                         @include textHome;
                         color: black!important;
                     }
@@ -492,17 +500,17 @@
                         height: 75px;
                         align-items: center;
                         justify-content: space-around;
-                        top: -105px;
+                        top: -88px;
                         @include textHome;
                         color: black!important;
-                        p{
-                            margin-top: 30px;
-                        }
+                        // p{
+                        //     margin-top: 30px;
+                        // }
                     }
                     &__title{
                         @include categoriesLink;
                         font-size: 20px!important;
-                        font-weight: 600!important;
+                        font-weight: 500!important;
                         margin-bottom: 7px;
                         margin-top: 13px
                     }

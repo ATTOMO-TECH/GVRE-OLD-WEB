@@ -8,10 +8,10 @@ import { BsFullscreen } from "react-icons/bs";
 import { AiOutlinePlus,  AiOutlineMinus} from "react-icons/ai";
 import { BarLoader, BeatLoader } from 'react-spinners';
 import { PricesSliders } from '../../styles/sliders-style';
-import leftArrow from './../../assets/SVG/mobile/comun/left-arrow.svg';
-import leftArrowDark from './../../assets/SVG/mobile/comun/left-arrowDark.svg';
-import rigthArrow from './../../assets/SVG/mobile/comun/right-arrow.svg';
-import rigthArrowDark from './../../assets/SVG/mobile/comun/right-arrowDark.svg';
+// import leftArrow from './../../assets/SVG/mobile/comun/left-arrow.svg';
+// import leftArrowDark from './../../assets/SVG/mobile/comun/left-arrowDark.svg';
+// import rigthArrow from './../../assets/SVG/mobile/comun/right-arrow.svg';
+// import rigthArrowDark from './../../assets/SVG/mobile/comun/right-arrowDark.svg';
 
 // LIBRERIAS NECESARIAS
 //     "@react-pdf/font": "2.2.0",
@@ -103,18 +103,12 @@ export default function CatalogPDF({ catalogNumber, displayFullScren, setDisplay
         <div className="container__pdf">
         <div className="container__pdf__data">
             {
-                pageNumber > 1 ? <Image
+                pageNumber > 1 && <Image
                                     width={79} height={79} 
                                     style={size < 400 ? {height: "3rem"} : {}}
                                     onClick={changePageBack} 
-                                    src={displayFullScren === false ? leftArrow : leftArrowDark} alt=""
-                                    /> : 
-                                    <Image
-                                    width={79} height={79} 
-                                    style={size < 400 ? {height: "3rem"} : {}}
-                                    className='opacity'
-                                    src={displayFullScren === false ? leftArrow : leftArrowDark} alt=""
-                                    />
+                                    src={displayFullScren === false ? "/SVG/left-arrow.svg" : "/SVG/left-arrowDark.svg"} alt=""
+                                    /> 
             }
                 <div id="documentPDF" className="container__pdf__data__viewer">
                     <Document loading={<BeatLoader color="#fff" />} style={displayFullScren === true ? {width: "90%"}: {}} file={catalogs[catalogNumber]?.catalog} onLoadSuccess={onDocumentLoadSuccess}>
@@ -151,18 +145,12 @@ export default function CatalogPDF({ catalogNumber, displayFullScren, setDisplay
                     
                 </div>
             {
-                pageNumber < numPages ? <Image
+                pageNumber < numPages && <Image
                                             width={79} height={79} 
                                             style={size < 400 ? {height: "3rem"} : {}}
                                             onClick={changePageNext} 
-                                            src={displayFullScren === false ? rigthArrow : rigthArrowDark} 
-                                            alt="" /> :
-                                            <Image
-                                            width={79} height={79} 
-                                            style={size < 400 ? {height: "3rem"} : {}}
-                                            className='opacity'
-                                            src={displayFullScren === false ? rigthArrow : rigthArrowDark} alt=""
-                                            />
+                                            src={displayFullScren === false ? "/SVG/right-arrow.svg" : "/SVG/right-arrowDark.svg"} 
+                                            alt="" /> 
             }
         </div>
         <div 
