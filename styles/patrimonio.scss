@@ -124,6 +124,7 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     @include textBlackMobile;
+                    font-weight: 500 !important;
                     display: flex;
                     justify-content: center;
                 }
@@ -137,6 +138,7 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     @include textBlackMobile;
+                    font-weight: 500 !important;
                     display: flex;
                     justify-content: space-around;
                     p{
@@ -145,6 +147,8 @@
                 }
                 &__title{
                     @include textBlackMobile;
+                    margin: 12px 0;
+                    font-weight: 500 !important;
                 }
                 &__street{
                     @include contactMobile;
@@ -508,25 +512,27 @@
                         height: 75px;
                         align-items: center;
                         justify-content: center;
-                        top: -105px;
+                        top: -88px;
                         @include textHome;
+                        font-weight: 400 !important;
                         color: black!important;
                     }
                     &__prices{
                         height: 75px;
                         align-items: center;
                         justify-content: space-around;
-                        top: -105px;
+                        top: -88px;
                         @include textHome;
+                        font-weight: 400 !important;
                         color: black!important;
-                        p{
-                            margin-top: 30px;
-                        }
+                        // p{
+                        //     margin-top: 30px;
+                        // }
                     }
                     &__title{
                         @include categoriesLink;
                         font-size: 20px!important;
-                        font-weight: 600!important;
+                        font-weight: 500!important;
                         margin-bottom: 7px;
                         margin-top: 13px
                     }
@@ -837,15 +843,16 @@
                         width: 15%;
                         p{
                             width: 100px;
-                            bottom: 13px;
+                            bottom: 25px;
                             left: -72px;
                         }
                         img{
                             width: 100%;
+                            bottom: -21px;
                         }
                     }
                     .ceba{
-                        bottom: 1%;
+                        bottom: -7px;
                         right: 32.5%;
                         width: 9%;
                     }
@@ -854,14 +861,15 @@
                         left: 16%;
                         width: 12%;
                         p{
-                            top: -18px;
+                            top: -5px;
                             left: 20px;
                         }
                         img{
                             width: 100%;
+                            bottom: -44px;
                         }
                         &__2{
-                            bottom: -48px;
+                            bottom: -51px !important;
                             left: -5px;
                         }
                     }
@@ -870,11 +878,12 @@
                         left: 30%;
                         width: 12%;
                         p{
-                            top: -20px;
+                            top: -11px;
                             left: 25px;
                         }
                         img{
                             width: 100%;
+                            bottom: -23px;
                         }
                     }
                     .pozu{
@@ -882,11 +891,12 @@
                         left: 28%;
                         width: 7%;
                         p{
-                            bottom: -5px;
+                            bottom: 0px;
                             right: 10px;
                         }
                         img{
                             width: 100%;
+                            bottom: -36px;
                         }
                     }
                     .pe{
@@ -912,6 +922,7 @@
                         }
                         img{
                             width: 100%;
+                            bottom: -60px;
                         }
                         &__2{
                             right: -14px;
@@ -923,11 +934,12 @@
                         width: 2.5%;
                         p{
                             width: 100%;
-                            bottom: -25px;
-                            left: -48px;
+                            bottom: -15px;
+                            left: -42px;
                         }
                         img{
                             width: 100%;
+                            bottom: -29px;
                         }
                         &__2{
                             left: -15px;
@@ -939,11 +951,12 @@
                         width: 2.2%;
                         p{
                             width: 100%;
-                            bottom: -30px;
+                            bottom: -20px;
                             left: -25px;
                         }
                         img{
                             width: 100%;
+                            bottom: -40px;
                         }
                     }
                     .cham{
@@ -952,8 +965,8 @@
                         width: 8.5%;
                         p{
                             width: 100%;
-                            bottom: -50px;
-                            left: -40px;
+                            bottom: -36px;
+                            left: -37px;
                         }
                         img{
                             width: 100%;
@@ -965,8 +978,8 @@
                         width: 2.5%;
                         p{
                             width: 100%;
-                            bottom: -45px;
-                            left: -45px;
+                            bottom: -37px;
+                            left: -41px;
                         }
                         img{
                             width: 100%;
@@ -983,6 +996,7 @@
                         }
                         img{
                             width: 100%;
+                            bottom: -69px;
                         }
                     }
                     .meal{
@@ -991,11 +1005,12 @@
                         width: 6.7%;
                         p{
                             width: 100px;
-                            bottom:-65px;
+                            bottom: -50px;
                             left: 35px;
                         }
                         img{
                             width: 100%;
+                            bottom: -54px;
                         }
                     }
                     .juca{
@@ -1004,7 +1019,7 @@
                         width: 7%;
                         p{
                             width: 100px;
-                            bottom:-85px;
+                            bottom: -77px;
                             left: -25px;
                         }
                         img{
@@ -1017,15 +1032,16 @@
                         width: 6.9%;
                         p{
                             width: 100px;
-                            bottom:-50px;
+                            bottom: -41px;
                             left: 20px;
                         }
                         img{
                             width: 105%;
+                            bottom: -40px;
                         }
                         &__2{
                             right: -33px;
-                            bottom: -18px;
+                            bottom: -24px !important;
                             width: 80%!important;
                         }
                     }
@@ -1035,11 +1051,12 @@
                         width: 10%;
                         p{
                             width: 70px;
-                            bottom:-35px;
+                            bottom: -27px;
                             left: 5px;
                         }
                         img{
                             width: 105%;
+                            bottom: -12px;
                         }
                     }
                     .chama{
@@ -1053,6 +1070,7 @@
                         }
                         img{
                             width: 105%;
+                            bottom: -105px;
                         }
                     }
                     .arso{
@@ -1061,11 +1079,12 @@
                         width: 7.5%;
                         p{
                             width: fit-content;
-                            bottom:-45px;
+                            bottom: -37px;
                             left: 25px;
                         }
                         img{
                             width: 105%;
+                            bottom: -66px;
                         }
                     }
                     .cana{
@@ -1074,11 +1093,12 @@
                         width: 12%;
                         p{
                             width: fit-content;
-                            bottom:-5px;
+                            bottom: -1px;
                             left: 0px;
                         }
                         img{
                             width: 105%;
+                            bottom: -89px;
                         }
                     }
                     .sanchi{
@@ -1092,10 +1112,11 @@
                         }
                         img{
                             width: 105%;
+                            bottom: -96px;
                         }
                         &__1{
                             width: 130%!important;
-                            top: -8px;
+                            top: -16px;
                             left: -10px;
                         }
                         &__2{
@@ -1104,7 +1125,7 @@
                             width: 130%!important;
                         }
                         &__3{
-                            top: -29px;
+                            top: -30px;
                             right: -13px;
                             width: 75%!important;
                         }
@@ -1120,9 +1141,10 @@
                         }
                         img{
                             width: 105%;
+                            bottom: -35px;
                         }
                         &__2{
-                            top: -28px;
+                            top: -34px;
                             left: -23px;
                             width: 190%!important;
                         }
@@ -1133,11 +1155,13 @@
                         width: 5%;
                         p{
                             width: 120%;
-                            bottom:-25px;
+                            bottom: -20px;
                             left: 30px;
                         }
                         img{
                             width: 105%;
+                            bottom: -47px;
+                            left: 1.5px;
                         }
                     }
                     .sala{
@@ -1146,11 +1170,12 @@
                         width: 4.8%;
                         p{
                             width: 120%;
-                            bottom:-70px;
-                            left: 20px;
+                            bottom: -43px;
+                            left: 26px;
                         }
                         img{
                             width: 105%;
+                            bottom: -61px;
                         }
                     }
                     .jero{
@@ -1159,11 +1184,12 @@
                         width: 1.8%;
                         p{
                             width: 120%;
-                            bottom:-40px;
+                            bottom: -24px;
                             left: 12px;
                         }
                         img{
                             width: 90%;
+                            bottom: -39px;
                         }
                     }
                 }
@@ -1435,8 +1461,10 @@
                     width: initial;
                     overflow: hidden;
                     &__mapa{
-                        height: 475px;
-                        width: 650px;
+                        // height: 475px;
+                        // width: 650px;
+                        height: 347px;
+                        width: 475px;
                         margin: 0 auto;
                         div{
                             p{
@@ -1509,15 +1537,16 @@
                             width: 15%;
                             p{
                                 width: 100px;
-                                bottom: 14px;
-                                left: -77px;
+                                bottom: 21px;
+                                left: -70px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -27px;
                             }
                         }
                         .ceba{
-                            bottom: 1%;
+                            bottom: -9px;
                             right: 32.5%;
                             width: 9%;
                         }
@@ -1526,14 +1555,16 @@
                             left: 16%;
                             width: 12%;
                             p{
-                                top: -18px;
+                                width: 100%;
+                                top: -2px;
                                 left: 20px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -42px;
                             }
                             &__2{
-                                bottom: -57px;
+                                bottom: -48px !important;
                                 left: -5px;
                             }
                         }
@@ -1542,7 +1573,7 @@
                             left: 30%;
                             width: 12%;
                             p{
-                                top: -20px;
+                                top: -9px;
                                 left: 25px;
                             }
                             img{
@@ -1584,9 +1615,10 @@
                             }
                             img{
                                 width: 100%;
+                                bottom: -55px;
                             }
                             &__2{
-                                right: -14px;
+                                right: -11px;
                             }
                         }
                         .cuzco{
@@ -1595,14 +1627,15 @@
                             width: 2.5%;
                             p{
                                 width: 100%;
-                                bottom: -25px;
-                                left: -48px;
+                                bottom: -14px;
+                                left: -41px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -26px;
                             }
                             &__2{
-                                left: -16px;
+                                left: -12px;
                             }
                         }
                         .azca{
@@ -1611,8 +1644,8 @@
                             width: 2.2%;
                             p{
                                 width: 100%;
-                                bottom: -30px;
-                                left: -25px;
+                                bottom: -18px;
+                                left: -22px;
                             }
                             img{
                                 width: 100%;
@@ -1629,6 +1662,7 @@
                             }
                             img{
                                 width: 100%;
+                                bottom: -61px;
                             }
                         }
                         .alma{
@@ -1637,11 +1671,12 @@
                             width: 2.5%;
                             p{
                                 width: 100%;
-                                bottom: -50px;
-                                left: -45px;
+                                bottom: -37px;
+                                left: -41px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -33px;
                             }
                         }
                         .cent{
@@ -1650,11 +1685,12 @@
                             width: 2.9%;
                             p{
                                 width: 100%;
-                                bottom: -40px;
+                                bottom: -30px;
                                 left: -30px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -65px;
                             }
                         }
                         .meal{
@@ -1663,11 +1699,12 @@
                             width: 6.7%;
                             p{
                                 width: 100px;
-                                bottom:-65px;
-                                left: 50px;
+                                bottom: -42px;
+                                left: 35px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -51px;
                             }
                         }
                         .juca{
@@ -1676,11 +1713,12 @@
                             width: 7%;
                             p{
                                 width: 100px;
-                                bottom:-95px;
+                                bottom: -67px;
                                 left: -25px;
                             }
                             img{
                                 width: 100%;
+                                bottom: -68px;
                             }
                         }
                         .amer{
@@ -1689,15 +1727,16 @@
                             width: 6.9%;
                             p{
                                 width: 100px;
-                                bottom:-58px;
-                                left: 20px;
+                                bottom: -35px;
+                                left: 15px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -37px;
                             }
                             &__2{
-                                right: -40px;
-                                bottom: -25px;
+                                right: -30px;
+                                bottom: -23px !important;
                                 width: 80%!important;
                             }
                         }
@@ -1707,7 +1746,7 @@
                             width: 10%;
                             p{
                                 width: 70px;
-                                bottom:-35px;
+                                bottom: -21px;
                                 left: 5px;
                             }
                             img{
@@ -1720,11 +1759,12 @@
                             width: 11.6%;
                             p{
                                 width: 100%;
-                                bottom:-100px;
-                                left: 85px;
+                                bottom: -67px;
+                                left: 58px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -100px;
                             }
                         }
                         .arso{
@@ -1733,11 +1773,12 @@
                             width: 7.5%;
                             p{
                                 width: fit-content;
-                                bottom:-45px;
-                                left: 25px;
+                                bottom: -34px;
+                                left: 20px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -63px;
                             }
                         }
                         .cana{
@@ -1745,12 +1786,13 @@
                             left: 90.4%;
                             width: 12%;
                             p{
-                                width: fit-content;
+                                width: 105%;
                                 bottom:-5px;
                                 left: 0px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -86px;
                             }
                         }
                         .sanchi{
@@ -1759,25 +1801,28 @@
                             width: 8%;
                             p{
                                 width: 70px;
-                                bottom:-65px;
+                                bottom: -65px;
                                 left: -65px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -30px;
                             }
                             &__1{
                                 width: 128%!important;
-                                top: -8px;
-                                left: -10px;
+                                top: -21px;
+                                left: -7px!important;
                             }
                             &__2{
                                 right: -41px;
-                                bottom: -100px;
+                                bottom: -90px !important;
                                 width: 130%!important;
+                                left: 19px !important;
                             }
                             &__3{
-                                top: -34px;
-                                right: -16px;
+                                top: -33px;
+                                right: -14px !important;
+                                left: 22px !important;
                                 width: 75%!important;
                             }
                         }
@@ -1786,16 +1831,17 @@
                             left: 87%;
                             width: 9%;
                             p{
-                                width: fit-content;
-                                bottom: -70px;
+                                width: 100%;
+                                bottom: -44px;
                                 left: 10px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -33px;
                             }
                             &__2{
-                                top: -34px;
-                                left: -28px;
+                                top: -40px;
+                                left: -18px;
                                 width: 190%!important;
                             }
                         }
@@ -1804,12 +1850,13 @@
                             left: 70.6%;
                             width: 5%;
                             p{
-                                width: 120%;
-                                bottom:-25px;
-                                left: 40px;
+                                width: 125%;
+                                bottom: -17px;
+                                left: 27px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -44px;
                             }
                         }
                         .sala{
@@ -1818,11 +1865,12 @@
                             width: 4.8%;
                             p{
                                 width: 120%;
-                                bottom:-85px;
-                                left: 20px;
+                                bottom: -35px;
+                                left: 23px;
                             }
                             img{
                                 width: 105%;
+                                bottom: -58px;
                             }
                         }
                         .jero{
@@ -1831,11 +1879,12 @@
                             width: 1.8%;
                             p{
                                 width: 120%;
-                                bottom:-40px;
+                                bottom: -21px;
                                 left: 12px;
                             }
                             img{
                                 width: 90%;
+                                bottom: -37px;
                             }
                         }
                     }
@@ -1999,240 +2048,240 @@
     }
 }
 
-@media screen and (min-width:1200px) and (max-width:1535px) {
-    .patrimonial{
-        &__filter{
-            &__position{
-                &__mapContainer{
-                    &__mapa{
-                        height: 347px;
-                        width: 475px;
-                        .plan{
-                            bottom: 60.5%;
-                            left: 16%;
-                            width: 12%;
-                            p{
-                                top: -25px;
-                                left: 25px;
-                            }
-                            img{
-                                width: 100%;
-                            }
-                            &__2{
-                                bottom: -42px;
-                                left: -3px;
-                            }
-                        }
-                        .ctba{
-                            &__2{
-                                right: -10px;
-                            }
-                        }
-                        .cuzco{
-                            bottom: 48.8%;
-                            left: 70.8%;
-                            width: 2.5%;
-                            p{
-                                width: 100%;
-                                bottom: -25px;
-                                left: -45px;
-                            }
-                            &__2{
-                                left: -13px;
-                            }
-                        }
-                        .alma{
-                            bottom:27%;
-                            left:68%;
-                            width: 2.5%;
-                            p{
-                                width: 100%;
-                                bottom: -45px;
-                                left: -45px;
-                            }
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .cent{
-                            bottom: 20.4%;
-                            left: 66.9%;
-                            width: 2.9%;
-                        }
-                        .meal{
-                            bottom: 8.3%;
-                            left: 70%;
-                            width: 6.7%;
-                            p{
-                                width: 100px;
-                                bottom:-55px;
-                                left: 35px;
-                            }
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .juca{
-                            bottom: 27%;
-                            left: 90%;
-                            width: 7%;
-                            p{
-                                width: 100px;
-                                bottom:-75px;
-                                left: -25px;
-                            }
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .amer{
-                            bottom:35%;
-                            left: 76%;
-                            width: 6.9%;
-                            p{
-                                width: 100px;
-                                bottom:-50px;
-                                left: 10px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                            &__2{
-                                right: -30px;
-                                bottom: -17px;
-                                width: 80%!important;
-                            }
-                        }
-                        .chama{
-                            bottom: 62%;
-                            left: 70.8%;
-                            width: 11.6%;
-                            p{
-                                width: 100%;
-                                bottom:-80px;
-                                left: 65px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                        }
-                        .arso{
-                            bottom: 64%;
-                            left: 78.4%;
-                            width: 7.5%;
-                            p{
-                                width: fit-content;
-                                bottom:-45px;
-                                left: 25px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                        }
-                        .cana{
-                            bottom: 66%;
-                            left: 90.4%;
-                            width: 12%;
-                            p{
-                                width: fit-content;
-                                bottom:-5px;
-                                left: 10px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                        }
-                        .sanchi{
-                            bottom:85.5%;
-                            left: 74.5%;
-                            width: 8%;
-                            p{
-                                width: 70px;
-                                bottom:-65px;
-                                left: -65px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                            &__1{
-                                width: 128%!important;
-                                top: -7px;
-                                left: -8px;
-                            }
-                            &__2{
-                                right: -30px;
-                                bottom: -75px;
-                                width: 130%!important;
-                            }
-                            &__3{
-                                top: -26px;
-                                right: -12px;
-                                width: 75%!important;
-                            }
-                        }
-                        .arva{
-                            bottom:98.7%;
-                            left: 87%;
-                            width: 9%;
-                            p{
-                                width: fit-content;
-                                bottom: -60px;
-                                left: 10px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                            &__2{
-                                top: -25px;
-                                left: -21px;
-                                width: 190%!important;
-                            }
-                        }
-                        .viso{
-                            bottom:39%;
-                            left: 70.6%;
-                            width: 5%;
-                            p{
-                                width: 130%;
-                                bottom:-25px;
-                                left: 30px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                        }
-                        .sala{
-                            bottom:29.5%;
-                            left: 70.4%;
-                            width: 4.8%;
-                            p{
-                                width: 120%;
-                                bottom:-65px;
-                                left: 15px;
-                            }
-                            img{
-                                width: 105%;
-                            }
-                        }
-                        .jero{
-                            bottom:16%;
-                            left: 69.8%;
-                            width: 1.8%;
-                            p{
-                                width: 120%;
-                                bottom:-40px;
-                                left: 12px;
-                            }
-                            img{
-                                width: 90%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+// @media screen and (min-width:1200px) and (max-width:1535px) {
+//     .patrimonial{
+//         &__filter{
+//             &__position{
+//                 &__mapContainer{
+//                     &__mapa{
+//                         height: 347px;
+//                         width: 475px;
+//                         .plan{
+//                             bottom: 60.5%;
+//                             left: 16%;
+//                             width: 12%;
+//                             p{
+//                                 top: -25px;
+//                                 left: 25px;
+//                             }
+//                             img{
+//                                 width: 100%;
+//                             }
+//                             &__2{
+//                                 bottom: -42px;
+//                                 left: -3px;
+//                             }
+//                         }
+//                         .ctba{
+//                             &__2{
+//                                 right: -10px;
+//                             }
+//                         }
+//                         .cuzco{
+//                             bottom: 48.8%;
+//                             left: 70.8%;
+//                             width: 2.5%;
+//                             p{
+//                                 width: 100%;
+//                                 bottom: -25px;
+//                                 left: -45px;
+//                             }
+//                             &__2{
+//                                 left: -13px;
+//                             }
+//                         }
+//                         .alma{
+//                             bottom:27%;
+//                             left:68%;
+//                             width: 2.5%;
+//                             p{
+//                                 width: 100%;
+//                                 bottom: -45px;
+//                                 left: -45px;
+//                             }
+//                             img{
+//                                 width: 100%;
+//                             }
+//                         }
+//                         .cent{
+//                             bottom: 20.4%;
+//                             left: 66.9%;
+//                             width: 2.9%;
+//                         }
+//                         .meal{
+//                             bottom: 8.3%;
+//                             left: 70%;
+//                             width: 6.7%;
+//                             p{
+//                                 width: 100px;
+//                                 bottom:-55px;
+//                                 left: 35px;
+//                             }
+//                             img{
+//                                 width: 100%;
+//                             }
+//                         }
+//                         .juca{
+//                             bottom: 27%;
+//                             left: 90%;
+//                             width: 7%;
+//                             p{
+//                                 width: 100px;
+//                                 bottom:-75px;
+//                                 left: -25px;
+//                             }
+//                             img{
+//                                 width: 100%;
+//                             }
+//                         }
+//                         .amer{
+//                             bottom:35%;
+//                             left: 76%;
+//                             width: 6.9%;
+//                             p{
+//                                 width: 100px;
+//                                 bottom:-50px;
+//                                 left: 10px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                             &__2{
+//                                 right: -30px;
+//                                 bottom: -17px;
+//                                 width: 80%!important;
+//                             }
+//                         }
+//                         .chama{
+//                             bottom: 62%;
+//                             left: 70.8%;
+//                             width: 11.6%;
+//                             p{
+//                                 width: 100%;
+//                                 bottom:-80px;
+//                                 left: 65px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                         }
+//                         .arso{
+//                             bottom: 64%;
+//                             left: 78.4%;
+//                             width: 7.5%;
+//                             p{
+//                                 width: fit-content;
+//                                 bottom:-45px;
+//                                 left: 25px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                         }
+//                         .cana{
+//                             bottom: 66%;
+//                             left: 90.4%;
+//                             width: 12%;
+//                             p{
+//                                 width: fit-content;
+//                                 bottom:-5px;
+//                                 left: 10px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                         }
+//                         .sanchi{
+//                             bottom:85.5%;
+//                             left: 74.5%;
+//                             width: 8%;
+//                             p{
+//                                 width: 70px;
+//                                 bottom:-65px;
+//                                 left: -65px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                             &__1{
+//                                 width: 128%!important;
+//                                 top: -7px;
+//                                 left: -8px;
+//                             }
+//                             &__2{
+//                                 right: -30px;
+//                                 bottom: -75px;
+//                                 width: 130%!important;
+//                             }
+//                             &__3{
+//                                 top: -26px;
+//                                 right: -12px;
+//                                 width: 75%!important;
+//                             }
+//                         }
+//                         .arva{
+//                             bottom:98.7%;
+//                             left: 87%;
+//                             width: 9%;
+//                             p{
+//                                 width: fit-content;
+//                                 bottom: -60px;
+//                                 left: 10px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                             &__2{
+//                                 top: -25px;
+//                                 left: -21px;
+//                                 width: 190%!important;
+//                             }
+//                         }
+//                         .viso{
+//                             bottom:39%;
+//                             left: 70.6%;
+//                             width: 5%;
+//                             p{
+//                                 width: 130%;
+//                                 bottom:-25px;
+//                                 left: 30px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                         }
+//                         .sala{
+//                             bottom:29.5%;
+//                             left: 70.4%;
+//                             width: 4.8%;
+//                             p{
+//                                 width: 120%;
+//                                 bottom:-65px;
+//                                 left: 15px;
+//                             }
+//                             img{
+//                                 width: 105%;
+//                             }
+//                         }
+//                         .jero{
+//                             bottom:16%;
+//                             left: 69.8%;
+//                             width: 1.8%;
+//                             p{
+//                                 width: 120%;
+//                                 bottom:-40px;
+//                                 left: 12px;
+//                             }
+//                             img{
+//                                 width: 90%;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 .activeButton {
     background-color: #2b363d !important;
     color: white !important;

@@ -104,7 +104,7 @@
     }
     &__ref{
         position: absolute;
-        top: 78px;
+        top: 95px;
         right: 10px;
         background-color: white;
         padding: 5px 10px;
@@ -123,9 +123,11 @@
             border-width: 2px;
             &__price{
                 @include textBlackMobile;
+                font-weight: 400 !important;
             }
             &__prices{
                 @include textBlackMobile;
+                font-weight: 400 !important;
                 display: flex;
                 justify-content: space-around;
                 margin: 0.83em 0px;
@@ -135,6 +137,7 @@
             }
             &__title{
                 @include textBlackMobile;
+                font-weight: 500 !important;
                 margin: 0.67em 0px;
             }
             h3{
@@ -495,6 +498,7 @@
             margin-bottom: 50px;
             p{
                 @include textBlackMobile;
+                font-weight: 500 ;
                 width: 50%;
                 margin-top: 8px;
                 margin-bottom: 8px;
@@ -832,7 +836,7 @@
             }
         }
         &__ref{
-            top: 100px;
+            top: 114px;
             right: 20px;
             @include text;
             font-size: 14px!important;
@@ -1184,6 +1188,7 @@
                 p{
                     width: 31.2%;
                     @include more;
+                    font-weight: 500 !important;
                     font-weight:600;
                     margin-left: 8px;
                     margin-right: 8px;

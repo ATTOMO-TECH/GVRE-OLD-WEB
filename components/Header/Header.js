@@ -49,7 +49,7 @@ const Header = () => {
     return (
         <header>
             <div className='header'>
-                <Link href={routes.Home} className='header__logo'><Image width={50} height={50} src={logo} alt='logo'/><p>GV Real Estate</p></Link>
+                <Link href={routes.Home} className='header__logo'><Image width={45} height={45} src={logo} alt='logo'/><p>GV Real Estate</p></Link>
                 <div className='header__menu'>
                     <span onClick={toggleClass} className='header__menu__burguer'><Image src={menuHam} alt='menu'/></span>
                     <ul className={isActive ? "notVisibleMenu header__menu__list" : 'header__menu__list'}>
