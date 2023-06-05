@@ -127,6 +127,10 @@
             margin-bottom: 0px;
 
         }
+
+        input:focus{
+            outline: none
+        }
         p{
             @include litleTextMobile;
             color: rgb(129, 129, 129);
