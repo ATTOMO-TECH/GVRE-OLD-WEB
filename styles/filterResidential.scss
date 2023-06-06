@@ -1043,7 +1043,7 @@
         border-left: solid;
         border-color: rgb(211, 211, 211);
         border-width: 2px;
-        padding-left: 22px;
+        padding-left: 0px;
         z-index: 1;
         background-color: white;
         &__estado{
@@ -1097,7 +1097,7 @@
             }
         }
         &__extras{
-            margin-bottom: 245px;
+            margin-bottom: 180px;
             h3{
                 margin-left: 20px;
                 margin-bottom: 20px;
