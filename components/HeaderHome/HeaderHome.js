@@ -63,6 +63,7 @@ const Header = () => {
                                 </ul>
                             </div>
                         </li>
+                        <li><Link href={routes.Catalogo}>Catálogo</Link></li>
                         <li className='headerHome__menu__list__contact'><Link onClick={toggleClass} href={routes.Contact}>Contacto</Link></li>
                         <li className='headerHome__menu__list__social'>
                             <div>
