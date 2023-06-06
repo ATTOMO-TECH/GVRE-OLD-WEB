@@ -752,6 +752,14 @@
     color: white !important;
 }
 
+
+.selectors__ref__lupa {
+    position: absolute;
+    height: 18px;
+    bottom: 4px;
+    left: 90%;
+}
+
 @include desktop {
     .mapa{
         height: 600px;
@@ -1171,11 +1179,11 @@
                 font-family: 'Jost';
                 color: #b4b4b4;
             }
-            &__lupa{
+            .selectors__ref__lupa {
                 position: absolute;
-                height: 17px;
-                bottom: 18px;
-                left: 18px;
+                height: 18px;
+                bottom: 14px;
+                left: 90%;
             }
             &__lupaOculta{
                 display: none;
@@ -1185,6 +1193,13 @@
 }
 
 @include tablet {
+
+    .selectors__ref__lupa {
+        position: absolute;
+        height: 18px;
+        bottom: 4px;
+        left: 90%;
+    }
     .filtroResidencial{
         background-color: white;
         z-index: 2;
@@ -1215,6 +1230,8 @@
         margin: 0 auto;
         width: 90%;
         max-width: 700px;
+
+
         &__estado{
             margin-bottom: 15px;
             h3{
