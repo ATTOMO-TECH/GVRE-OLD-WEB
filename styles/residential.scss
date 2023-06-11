@@ -1324,12 +1324,13 @@
                     font-family: 'Jost';
                     color: #b4b4b4;
                     font-size: 16px;
+                    padding: 1rem;
                 }
                 &__lupa{
                     position: absolute;
                     height: 17px;
                     bottom: 8px;
-                    left: 18px;
+                    left: 90%;
                 }
                 &__lupaOculta{
                     display: none;
@@ -1915,7 +1916,7 @@
                         position: absolute;
                         height: 17px;
                         bottom: 18px;
-                        left: 18px;
+                        left: 95%;
                     }
                     &__lupaOculta{
                         display: none;
@@ -2230,7 +2231,7 @@
                         position: absolute;
                         height: 17px;
                         bottom: 18px;
-                        left: 18px;
+                        left: 95%;
                     }
                     &__lupaOculta{
                         display: none;
