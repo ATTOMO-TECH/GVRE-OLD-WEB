@@ -1353,7 +1353,7 @@
                 }
                 &__ref{
                     margin-left: 20px;
-                    margin-right: 25px;
+                    margin-right: 0px;
                     h4{
                         @include apart;
                         color: rgb(180, 180, 180)!important;
@@ -1365,7 +1365,7 @@
                         border-width: 2px;
                         border-color: rgb(180, 180, 180);
                         height: 46px;
-                        width: 97%;
+                        width: 96.5%;
                         font-family: 'Jost';
                         color: #b4b4b4;
                     }
