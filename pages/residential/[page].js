@@ -67,19 +67,19 @@ import useWindowSize from '../../hooks/useWindowsSize';
 
 
 
-export default function Residential({orderedItems, pages, query, queryFilters}){
+export default function Residential({ orderedItems, pages, query, queryFilters }) {
     const router = useRouter();
-    const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page} = query
+    const { tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page } = query
     const arrPages = new Array(pages).fill(null)
     const [URLwithoutPage, setURLwithoutPage] = useState([])
-    if(tipo !== undefined)              URLwithoutPage.push(`tipo=${tipo}`)
-    if(tipodeinmueble !== undefined)    URLwithoutPage.push(`tipodeinmueble=${tipodeinmueble}`)
-    if(referencia !== undefined)        URLwithoutPage.push(`referencia=${referencia}`)
-    if(zona !== undefined)              URLwithoutPage.push(`zona=${zona}`)
-    if(garaje !== undefined)            URLwithoutPage.push(`garaje=${garaje}`)
-    if(piscina !== undefined)           URLwithoutPage.push(`piscina=${piscina}`)
-    if(terraza !== undefined)           URLwithoutPage.push(`terraza=${terraza}`)
-    if(porfecha !== undefined)          URLwithoutPage.push(`porfecha=${porfecha}`)
+    if (tipo !== undefined) URLwithoutPage.push(`tipo=${tipo}`)
+    if (tipodeinmueble !== undefined) URLwithoutPage.push(`tipodeinmueble=${tipodeinmueble}`)
+    if (referencia !== undefined) URLwithoutPage.push(`referencia=${referencia}`)
+    if (zona !== undefined) URLwithoutPage.push(`zona=${zona}`)
+    if (garaje !== undefined) URLwithoutPage.push(`garaje=${garaje}`)
+    if (piscina !== undefined) URLwithoutPage.push(`piscina=${piscina}`)
+    if (terraza !== undefined) URLwithoutPage.push(`terraza=${terraza}`)
+    if (porfecha !== undefined) URLwithoutPage.push(`porfecha=${porfecha}`)
 
 
 
@@ -93,11 +93,11 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     if (typeof window !== 'undefined') {
         localFilters = window.localStorage.getItem('residentialFilters');
     }
-    const [selected, setSelected] = useState(localFilters.includes('zone') ? JSON.parse(localFilters).zone :[]);
+    const [selected, setSelected] = useState(localFilters.includes('zone') ? JSON.parse(localFilters).zone : []);
     const [selectedActive, setSelectedActive] = useState(false);
-    const [saleOrRent, setSaleOrRent] = useState(localFilters.includes('adType') ? JSON.parse(localFilters).adType :[]);
+    const [saleOrRent, setSaleOrRent] = useState(localFilters.includes('adType') ? JSON.parse(localFilters).adType : []);
     const [saleOrRentActive, setSaleOrRentActive] = useState(false);
-    const [typeHouse, setTypeHouse] = useState(localFilters.includes('adBuildingType') ? JSON.parse(localFilters).adBuildingType :[]);
+    const [typeHouse, setTypeHouse] = useState(localFilters.includes('adBuildingType') ? JSON.parse(localFilters).adBuildingType : []);
     const [typeHouseActive, setTypeHouseActive] = useState(false);
     const [extras, setExtras] = useState([]);
     const [extrasActive, setExtrasActive] = useState(false);
@@ -138,146 +138,147 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
 
     const setPosition = () => {
         if (coord !== 0) {
-        /*console.log('setPosition',coord)*/
+            /*console.log('setPosition',coord)*/
             window.localStorage.setItem(
                 'storedPosition2', JSON.stringify(coord)
             )
         }
     }
     const pageCount = pages;
-   
+
     const getPostItems = orderedItems?.map(item => {
-            return item.department === "Residencial" && item.showOnWeb === true ?
-                <div onClick={setPosition} className='residential__list__item' key={item._id} >
-                    {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
-                        <div className='wrapper'>
-                            <div className='residential__list__item__status'>
-                                <p>{item.gvOperationClose}</p>
-                            </div>
-                            <Carousel
-                                className='residential__list__item__images'
-                                showArrows={true}
-                                showThumbs={false}
-                                infiniteLoop={true}
-                                showStatus={false}
-                            >
-                                <Image width={400} height={300} src={item.images.main} alt={item.title} loading="lazy" />
-                                {/*{item.images.others.map((image)=> (
+        return item.department === "Residencial" && item.showOnWeb === true ?
+            <div onClick={setPosition} className='residential__list__item' key={item._id} >
+                {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
+                    <div className='wrapper'>
+                        <div className='residential__list__item__status'>
+                            <p>{item.gvOperationClose}</p>
+                        </div>
+                        <Carousel
+                            className='residential__list__item__images'
+                            showArrows={true}
+                            showThumbs={false}
+                            infiniteLoop={true}
+                            showStatus={false}
+                        >
+                            <Image width={400} height={300} src={item.images.main.replaceAll(' ', '%20')} alt={item.title} loading="lazy" />
+                            {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
                             ))}*/}
-                            </Carousel>
-                            <div>
-                                <div className='residential__list__item__text'>
-                                    {item.adType.length === 1 ?
-                                        <h2 className='residential__list__item__text__price'>{item.adType.map(type =>
-                                            type === 'Venta' && item.sale.saleShowOnWeb ?
-                                                `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €` :
-                                                type === 'Alquiler' && item.rent.rentShowOnWeb ?
-                                                    `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
-                                        </h2>
-                                        :
-                                        <h2 className='residential__list__item__text__prices'>
-                                            {item.sale.saleShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p> : null}
-                                            {item.rent.rentShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p> : null}
-                                        </h2>
-                                    }
-                                    <h2 className='residential__list__item__text__title'>{item.title}</h2>
-                                    <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
-                                    <ul className='residential__list__item__text__characteristics'>
-                                        {item.buildSurface !== 0 ?
-                                            <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
-                                            : null}
-                                        {item.plotSurface !== 0 ?
-                                            <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
-                                            : null}
-                                        {item.quality.bedrooms !== 0 ?
-                                            <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
-                                            : null}
-                                        {item.quality.bathrooms !== 0 ?
-                                            <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
-                                            : null}
-                                        {item.quality.parking !== 0 ?
-                                            <li className='residential__list__item__text__characteristics__car'><span><Image width={21} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
-                                            : null}
-                                        {item.quality.outdoorPool !== 0 ?
-                                            <li><span><Image width={30} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
-                                            : null}
-                                        {item.adReference !== 0 ?
-                                            <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p>Ref {item.adReference}</p></li>
-                                            : null}
-                                    </ul>
-                                    <div className='residential__list__item__text__blocker'></div>
-                                </div>
+                        </Carousel>
+                        <div>
+                            <div className='residential__list__item__text'>
+                                {item.adType.length === 1 ?
+                                    <h2 className='residential__list__item__text__price'>{item.adType.map(type =>
+                                        type === 'Venta' && item.sale.saleShowOnWeb ?
+                                            `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €` :
+                                            type === 'Alquiler' && item.rent.rentShowOnWeb ?
+                                                `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
+                                    </h2>
+                                    :
+                                    <h2 className='residential__list__item__text__prices'>
+                                        {item.sale.saleShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p> : null}
+                                        {item.rent.rentShowOnWeb ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p> : null}
+                                    </h2>
+                                }
+                                <h2 className='residential__list__item__text__title'>{item.title}</h2>
+                                <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
+                                <ul className='residential__list__item__text__characteristics'>
+                                    {item.buildSurface !== 0 ?
+                                        <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
+                                        : null}
+                                    {item.plotSurface !== 0 ?
+                                        <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
+                                        : null}
+                                    {item.quality.bedrooms !== 0 ?
+                                        <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
+                                        : null}
+                                    {item.quality.bathrooms !== 0 ?
+                                        <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
+                                        : null}
+                                    {item.quality.parking !== 0 ?
+                                        <li className='residential__list__item__text__characteristics__car'><span><Image width={21} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
+                                        : null}
+                                    {item.quality.outdoorPool !== 0 ?
+                                        <li><span><Image width={30} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
+                                        : null}
+                                    {item.adReference !== 0 ?
+                                        <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p>Ref {item.adReference}</p></li>
+                                        : null}
+                                </ul>
+                                <div className='residential__list__item__text__blocker'></div>
                             </div>
                         </div>
-                        :
-                        <div >
-                            {/*{item.images.main > 0 && item.images.others > 0 ? OPCION 1*/}
-                            {/* {isLoading ? */}
-                                <Carousel
-                                    className='residential__list__item__images'
-                                    showArrows={true}
-                                    showThumbs={false}
-                                    infiniteLoop={true}
-                                    showStatus={false}
-                                >
-                                    <Image width={400} height={300} src={item.images.main} alt={item.title} loading="lazy" />
-                                    {/*{item.images.others.map((image)=> (
+                    </div>
+                    :
+                    <div >
+                        {/*{item.images.main > 0 && item.images.others > 0 ? OPCION 1*/}
+                        {/* {isLoading ? */}
+                        <Carousel
+                            className='residential__list__item__images'
+                            showArrows={true}
+                            showThumbs={false}
+                            infiniteLoop={true}
+                            showStatus={false}
+                        >
+                            <Image width={400} height={300} src={item.images.main.replaceAll(' ', '%20')} alt={item.title} loading="lazy" />
+                            {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
                             ))}*/}
-                                </Carousel>
-                                {/* : <div className='spinnerBar'>
+                        </Carousel>
+                        {/* : <div className='spinnerBar'>
                                     <BarLoader color="#000000" width='80px' height='2px' className='barloader' />
                                 </div>
                             } */}
-                            <Link onClick={() => { setState({ item: item })
-                             }} href={`${routes.ItemResidential}/${item._id}`}>
-                                <div className='residential__list__item__text'>
-                                    {item.adType.length === 1 ?
-                                        <h2 className='residential__list__item__text__price'>{item.adType.map(type =>
-                                            type === 'Venta' && item.sale.saleShowOnWeb === true && item.sale.saleValue !== 0 ?
-                                                `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €` :
-                                                type === 'Alquiler' && item.rent.rentShowOnWeb === true && item.rent.rentValue !== 0 ?
-                                                    `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
-                                        </h2>
-                                        :
-                                        <h2 className='residential__list__item__text__prices'>
-                                            {item.sale.saleShowOnWeb && item.sale.saleValue !== 0 ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p> : null}
-                                            {item.rent.rentShowOnWeb && item.rent.rentValue !== 0 ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p> : null}
-                                        </h2>
-                                    }
-                                    <h2 className='residential__list__item__text__title'>{item.title}</h2>
-                                    <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
-                                    <ul className='residential__list__item__text__characteristics'>
-                                        {item.buildSurface !== 0 ?
-                                            <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
-                                            : null}
-                                        {item.plotSurface !== 0 ?
-                                            <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
-                                            : null}
-                                        {item.quality.bedrooms !== 0 ?
-                                            <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
-                                            : null}
-                                        {item.quality.bathrooms !== 0 ?
-                                            <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
-                                            : null}
-                                        {item.quality.outdoorPool !== 0 ?
-                                            <li><span><Image width={21} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
-                                            : null}
-                                        {item.quality.parking !== 0 ?
-                                            <li className='residential__list__item__text__characteristics__car'><span><Image width={30} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
-                                            : null}
-                                        {item.adReference !== 0 ?
-                                            <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p> Ref {item.adReference}</p></li>
-                                            : null}
-                                    </ul>
-                                    <div className='residential__list__item__text__clickable'></div>
-                                </div>
-                            </Link>
-                        </div>
-                    }
-                </div> : null
-        })
+                        <Link onClick={() => {
+                            setState({ item: item })
+                        }} href={`${routes.ItemResidential}/${item._id}`}>
+                            <div className='residential__list__item__text'>
+                                {item.adType.length === 1 ?
+                                    <h2 className='residential__list__item__text__price'>{item.adType.map(type =>
+                                        type === 'Venta' && item.sale.saleShowOnWeb === true && item.sale.saleValue !== 0 ?
+                                            `${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €` :
+                                            type === 'Alquiler' && item.rent.rentShowOnWeb === true && item.rent.rentValue !== 0 ?
+                                                `${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes` : null)}
+                                    </h2>
+                                    :
+                                    <h2 className='residential__list__item__text__prices'>
+                                        {item.sale.saleShowOnWeb && item.sale.saleValue !== 0 ? <p>{`${new Intl.NumberFormat('de-DE').format(item.sale.saleValue)} €`}</p> : null}
+                                        {item.rent.rentShowOnWeb && item.rent.rentValue !== 0 ? <p>{`${new Intl.NumberFormat('de-DE').format(item.rent.rentValue)} € mes`}</p> : null}
+                                    </h2>
+                                }
+                                <h2 className='residential__list__item__text__title'>{item.title}</h2>
+                                <h3 className='residential__list__item__text__street'>{item.webSubtitle}</h3>
+                                <ul className='residential__list__item__text__characteristics'>
+                                    {item.buildSurface !== 0 ?
+                                        <li><span><Image width={11} height={16} src={sup} alt='superficie' /></span>{item.buildSurface}m<sup>2</sup></li>
+                                        : null}
+                                    {item.plotSurface !== 0 ?
+                                        <li><span><Image width={15} height={12} src={supP} alt='superficie' /></span>{item.plotSurface}m<sup>2</sup></li>
+                                        : null}
+                                    {item.quality.bedrooms !== 0 ?
+                                        <li><span><Image width={18} height={12} src={habit} alt='habitaciones' /></span>{item.quality.bedrooms}</li>
+                                        : null}
+                                    {item.quality.bathrooms !== 0 ?
+                                        <li><span><Image width={15} height={12} src={banera} alt='baños' /></span>{item.quality.bathrooms}</li>
+                                        : null}
+                                    {item.quality.outdoorPool !== 0 ?
+                                        <li><span><Image width={21} height={12} src={piscinaImg} alt='piscina' /></span>{item.quality.outdoorPool}</li>
+                                        : null}
+                                    {item.quality.parking !== 0 ?
+                                        <li className='residential__list__item__text__characteristics__car'><span><Image width={30} height={12} src={parking} alt='plazas parking' /></span>{item.quality.parking}</li>
+                                        : null}
+                                    {item.adReference !== 0 ?
+                                        <li><span><Image width={13} height={12} src={refer} alt='referencia' /></span><p> Ref {item.adReference}</p></li>
+                                        : null}
+                                </ul>
+                                <div className='residential__list__item__text__clickable'></div>
+                            </div>
+                        </Link>
+                    </div>
+                }
+            </div> : null
+    })
 
     useEffect(() => {
         if (state.length >= 1) {
@@ -286,19 +287,19 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                 item.department === 'Residencial' && item.showOnWeb === true ? reducedState.push(item) : null
             )
             if (typeof window !== 'undefined')
-            window.localStorage.setItem(
-                'storedState', JSON.stringify(reducedState)
-            )
+                window.localStorage.setItem(
+                    'storedState', JSON.stringify(reducedState)
+                )
         }
     }, [state])
 
-    useEffect(()=>{
+    useEffect(() => {
         let extrasLocal = [];
-        if(localFilters.includes('garage')) extrasLocal = [...extrasLocal, 'garage']
-        if(localFilters.includes('swimmingPool')) extrasLocal = [...extrasLocal, 'swimmingPool']
-        if(localFilters.includes('terrace')) extrasLocal = [...extrasLocal, 'terrace']
+        if (localFilters.includes('garage')) extrasLocal = [...extrasLocal, 'garage']
+        if (localFilters.includes('swimmingPool')) extrasLocal = [...extrasLocal, 'swimmingPool']
+        if (localFilters.includes('terrace')) extrasLocal = [...extrasLocal, 'terrace']
         setExtras(extrasLocal)
-    },[localFilters])
+    }, [localFilters])
 
     useEffect(() => {
         const localState = window.localStorage.getItem('storedState')
@@ -313,15 +314,15 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
         let elements = []
         setPageNumber(parseInt(splitedLocation[4]) - 1)
         for (let i = 0; i < pageCount; i++) {
-            if(URLwithoutPage.length !== 0) {
+            if (URLwithoutPage.length !== 0) {
                 const URL = URLwithoutPage.join('&')
                 elements.push(
-                <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?${URL}&page=${i+1}`}>{i + 1}</a></li>
+                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a></li>
                 )
-            }else{
+            } else {
                 elements.push(
-                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?page=${i+1}`}>{i + 1}</a></li>
-                    )
+                    <li key={i} className={i + 1 === parseInt(splitedLocation[4]) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><a href={`/residential/${i + 1}?page=${i + 1}`}>{i + 1}</a></li>
+                )
             }
         }
         setPagElements(elements)
@@ -329,20 +330,20 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
 
 
     useEffect(() => {
-        if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '' /* ||  surface[0] !== 0.1 || surface[1] !== 99999999.9 */ ) {
+        if (selectedActive === true || saleOrRentActive === true || typeHouseActive === true || extrasActive === true || elementId !== '' /* ||  surface[0] !== 0.1 || surface[1] !== 99999999.9 */) {
             setDisableButton(true)
         } else {
             setDisableButton(false)
         }
     }, [elementId, selectedActive, saleOrRentActive, typeHouseActive, extrasActive /*, surface */])
 
-    useEffect(()=>{
-        if (selected.length === 0 && saleOrRent.length === 0 && typeHouse.length === 0 && extras.length === 0 ) {
+    useEffect(() => {
+        if (selected.length === 0 && saleOrRent.length === 0 && typeHouse.length === 0 && extras.length === 0) {
             setDisableButton(false)
         } else {
             setDisableButton(true)
         }
-    },[selected, saleOrRent, typeHouse, extras])
+    }, [selected, saleOrRent, typeHouse, extras])
 
     useEffect(() => {
         if (state2.length > 0) {
@@ -363,14 +364,14 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
 
     useEffect(() => {
         if (filter === true) {
-            if(saleOrRent.length === 0 && typeHouse.length === 0 && extras.length === 0  && selected.length === 0){
+            if (saleOrRent.length === 0 && typeHouse.length === 0 && extras.length === 0 && selected.length === 0) {
                 setDisableButton(false)
             } else {
                 setDisableButton(true)
             }
             // let label = document.getElementsByClassName('MuiSlider-valueLabelLabel')
             // console.log(label)
-            if(saleOrRent.length === 1){
+            if (saleOrRent.length === 1) {
                 /* console.log('entro en el if cuando la longitud es 1') */
                 setMaxPrice(99999999.9)
                 setMaxSurface(99999999.9)
@@ -395,7 +396,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                     // }
                 }
             }
-            if (saleOrRent.length === 0 || saleOrRent.length === 2){
+            if (saleOrRent.length === 0 || saleOrRent.length === 2) {
                 setMaxPrice(99999999.9)
                 setMaxSurface(99999999.9)
                 setPrice([0, 99999999.9])
@@ -418,16 +419,16 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     }, [filters, saleOrRent, typeHouse, extras, selected, filter, disableSliders])
 
     useEffect(() => {
-            const localPosition = JSON.parse(window.localStorage.getItem('storedPosition2'))
-            if (localPosition !== 0 && localPosition !== null) {
-                window.scroll({
-                  top:localPosition -500
-                })
-            } else {
-                window.scroll(
-                    { top: 0 }
-                )
-            }
+        const localPosition = JSON.parse(window.localStorage.getItem('storedPosition2'))
+        if (localPosition !== 0 && localPosition !== null) {
+            window.scroll({
+                top: localPosition - 500
+            })
+        } else {
+            window.scroll(
+                { top: 0 }
+            )
+        }
     }, [])
 
     const onPrice = () => {
@@ -439,7 +440,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             let newquery = query
             newquery.porfecha = "false"
             toggleOrderItems()
-            navigateToNewPath(1,newquery)
+            navigateToNewPath(1, newquery)
 
         }
     }
@@ -455,44 +456,44 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             let newquery = query
             newquery.porfecha = "true"
             toggleOrderItems()
-            navigateToNewPath(1,newquery)
+            navigateToNewPath(1, newquery)
         }
     }
 
     const toggleActive = (e) => {
         /* console.log('Zona seleccionada', e.currentTarget.name) */
         if (e.currentTarget.className === e.currentTarget.id) {
-            if(e.currentTarget.className === 'nuev' || e.currentTarget.className === 'hisp'){
+            if (e.currentTarget.className === 'nuev' || e.currentTarget.className === 'hisp') {
                 const idZoneSelected = getZoneId(e.currentTarget.name)
-                if(!selected.includes(`${idZoneSelected}`)){
+                if (!selected.includes(`${idZoneSelected}`)) {
                     idZoneSelected.forEach(idZone => selected.push(idZone))
                 }
-            /* console.log(selected); */
+                /* console.log(selected); */
                 document.getElementById('nuev').className = 'nuev active';
                 document.getElementById('hisp').className = 'hisp active';
-            }else{
+            } else {
                 e.currentTarget.className = `${e.currentTarget.className} active`
                 const idZoneSelected = getZoneId(e.currentTarget.name)
 
-                if(!selected.includes(`${idZoneSelected[0]}`)){
+                if (!selected.includes(`${idZoneSelected[0]}`)) {
                     idZoneSelected.forEach(idZone => selected.push(idZone))
                 }
                 /* console.log(selected) */
             }
-        /* console.log('array de zonas', selected) */
+            /* console.log('array de zonas', selected) */
             /* console.log(selected) */
             let activeFilters = {};
             activeFilters = { ...activeFilters, zone: selected };
             activeFilters = { ...activeFilters, adType: saleOrRent };
             /* console.log(activeFilters) */
-            if(saleOrRent.length === 1){
+            if (saleOrRent.length === 1) {
                 setGetMaxPrices(true);
-                getResidential(activeFilters).then(items =>{
+                getResidential(activeFilters).then(items => {
                     /* console.log(items) */
-                    if(items.ads.length !== 0){
-                        if(saleOrRent[0]=== 'Venta') {setMaxZonePrice(items.ads[0].sale.saleValue)}
-                        else {setMaxZonePrice(items.ads[0].rent.rentValue)}
-                    }else{
+                    if (items.ads.length !== 0) {
+                        if (saleOrRent[0] === 'Venta') { setMaxZonePrice(items.ads[0].sale.saleValue) }
+                        else { setMaxZonePrice(items.ads[0].rent.rentValue) }
+                    } else {
                         setMaxZonePrice(0)
                     }
                     setGetMaxPrices(false);
@@ -500,36 +501,36 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             }
 
         } else {
-            if(e.currentTarget.id === 'nuev' || e.currentTarget.id === 'hisp'){
+            if (e.currentTarget.id === 'nuev' || e.currentTarget.id === 'hisp') {
                 document.getElementById('nuev').classList.remove('active');
                 document.getElementById('hisp').classList.remove('active');
                 const idZoneElement = getZoneId(e.currentTarget.name);
                 //Tengo que eliminar todos los id de la variable Selected que sean iguales a cada uno de los que hay en la variable idZoneElement
-                idZoneElement.forEach(idZone =>{
+                idZoneElement.forEach(idZone => {
                     const newSelected = selected.filter(item => item !== idZone);
                     selected.splice(0, selected.length, ...newSelected);
                 })
-            }else {
+            } else {
                 e.currentTarget.className = `${e.currentTarget.id}`
                 const idZoneElement = getZoneId(e.currentTarget.name);
-                idZoneElement.forEach(idZone =>{
+                idZoneElement.forEach(idZone => {
                     const newSelected = selected.filter(item => item !== idZone);
                     selected.splice(0, selected.length, ...newSelected);
                 })
             }
 
-            if(saleOrRent.length === 1){
+            if (saleOrRent.length === 1) {
                 setGetMaxPrices(true);
                 /* console.log(selected) */
                 let activeFilters = {};
                 activeFilters = { ...activeFilters, zone: selected };
                 activeFilters = { ...activeFilters, adType: saleOrRent };
-                getResidential(activeFilters).then(items =>{
+                getResidential(activeFilters).then(items => {
                     /* console.log(items) */
-                    if(items.ads.length !== 0){
-                        if(saleOrRent[0]=== 'Venta') {setMaxZonePrice(items.ads[0].sale.saleValue)}
-                        else {setMaxZonePrice(items.ads[0].rent.rentValue)}
-                    }else{
+                    if (items.ads.length !== 0) {
+                        if (saleOrRent[0] === 'Venta') { setMaxZonePrice(items.ads[0].sale.saleValue) }
+                        else { setMaxZonePrice(items.ads[0].rent.rentValue) }
+                    } else {
                         setMaxZonePrice(0)
                     }
                     setGetMaxPrices(false);
@@ -546,7 +547,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     const selectSaleOrRent = (e) => {
         if (e.currentTarget.className === e.currentTarget.id) {
             e.currentTarget.className = `${e.currentTarget.className} activeButton`
-            if(!saleOrRent.includes(`${e.currentTarget.name}`)){
+            if (!saleOrRent.includes(`${e.currentTarget.name}`)) {
                 saleOrRent.push(e.currentTarget.name)
             }
         } else {
@@ -565,12 +566,12 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             let activeFilters = {};
             activeFilters = { ...activeFilters, zone: selected };
             activeFilters = { ...activeFilters, adType: saleOrRent };
-            getResidential(activeFilters).then(items =>{
+            getResidential(activeFilters).then(items => {
                 /* console.log(items) */
-                if(items.ads.length !== 0){
-                    if(saleOrRent[0]=== 'Venta') {setMaxZonePrice(items.ads[0].sale.saleValue)}
-                    else {setMaxZonePrice(items.ads[0].rent.rentValue)}
-                }else{
+                if (items.ads.length !== 0) {
+                    if (saleOrRent[0] === 'Venta') { setMaxZonePrice(items.ads[0].sale.saleValue) }
+                    else { setMaxZonePrice(items.ads[0].rent.rentValue) }
+                } else {
                     setMaxZonePrice(0)
                 }
                 setGetMaxPrices(false);
@@ -682,20 +683,20 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                     queryFilters = { ...queryFilters, terraza: true }
                 }
             }
-            if(saleOrRent.length === 1){
-                if(saleOrRent[0] === 'Venta'){
+            if (saleOrRent.length === 1) {
+                if (saleOrRent[0] === 'Venta') {
                     activeFilters = { ...activeFilters, maxSalePrice: price[1] }
                     activeFilters = { ...activeFilters, minSalePrice: price[0] }
                     queryFilters = { ...queryFilters, precioventamax: price[1] }
                     queryFilters = { ...queryFilters, precioventamin: price[0] }
-                }else{
+                } else {
                     activeFilters = { ...activeFilters, maxRentPrice: price[1] }
                     activeFilters = { ...activeFilters, minRentPrice: price[0] }
                     queryFilters = { ...queryFilters, precioalquilermax: price[1] }
                     queryFilters = { ...queryFilters, precioalquilermin: price[0] }
                 }
             }
-            if(surface){
+            if (surface) {
                 activeFilters = { ...activeFilters, minSurface: surface[0] }
                 activeFilters = { ...activeFilters, maxSurface: surface[1] }
                 queryFilters = { ...queryFilters, superficiemin: surface[0] }
@@ -703,16 +704,16 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             }
             /* console.log(activeFilters) */
             window.localStorage.setItem('residentialFilters', JSON.stringify(activeFilters))
-            if(porfecha !== undefined) queryFilters = { ...queryFilters, porfecha: "false" }
+            if (porfecha !== undefined) queryFilters = { ...queryFilters, porfecha: "false" }
             navigateToNewPath(1, queryFilters)
-            
+
         }
     }
 
     const addType = (e) => {
         if (e.currentTarget.className === e.currentTarget.id) {
             e.currentTarget.className = `${e.currentTarget.className} activeButton`
-            if(!typeHouse.includes(`${e.currentTarget.className}`)){
+            if (!typeHouse.includes(`${e.currentTarget.className}`)) {
                 typeHouse.push(e.currentTarget.name)
             }
         } else {
@@ -730,7 +731,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
     const addExtra = (e) => {
         if (e.currentTarget.className === e.currentTarget.id) {
             e.currentTarget.className = `${e.currentTarget.className} activeButton`
-            if(!extras.includes(`${e.currentTarget.className}`)){
+            if (!extras.includes(`${e.currentTarget.className}`)) {
                 extras.push(e.currentTarget.name)
             }
         } else {
@@ -766,7 +767,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
         setOrderItems(!orderItems)
     }
 
-    if (typeof window !== 'undefined'){
+    if (typeof window !== 'undefined') {
         window.onmousemove = function (e) {
             const y = e.pageY
             /*console.log('y:',y)*/
@@ -799,7 +800,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             var collectionButtonsArr = Array.from(collectionButtons);
             /* console.log(collectionButtonsArr); */
             /* console.log(collectionButtonsArr.length); */
-            if(collectionButtons.length !== 0) {
+            if (collectionButtons.length !== 0) {
                 //hacer un forEach para eliminar las clases
                 collectionButtonsArr.forEach(element => element.classList.remove("activeButton"));
             }
@@ -808,7 +809,7 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
             var toggleButtonsArr = Array.from(toggleButtons);
             /* console.log(toggleButtonsArr); */
             /* console.log(toggleButtonsArr.length); */
-            if(toggleButtons.length !== 0) {
+            if (toggleButtons.length !== 0) {
                 //hacer un forEach para eliminar las clases
                 toggleButtonsArr.forEach(element => element.classList.remove("active"));
             }
@@ -816,33 +817,33 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
         }
     }
 
-    function navigateToNewPath (page, query){
-        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = query
+    function navigateToNewPath(page, query) {
+        const { tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax } = query
         // console.log( tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax)
-        let queryFilters ={}
-            if(tipo !== undefined)                                  queryFilters = { ...queryFilters, tipo: tipo }
-            if(tipodeinmueble !== undefined)                        queryFilters = { ...queryFilters, tipodeinmueble: tipodeinmueble }
-            if(referencia !== undefined)                            queryFilters = { ...queryFilters, referencia: referencia }
-            if(zona !== undefined)                                  queryFilters = { ...queryFilters, zona: zona }
-            if(garaje !== undefined)                                queryFilters = { ...queryFilters, garaje: true }
-            if(piscina !== undefined)                               queryFilters = { ...queryFilters, piscina: true }
-            if(terraza !== undefined)                               queryFilters = { ...queryFilters, terraza: true }
-            if(porfecha === "true")                                 queryFilters = { ...queryFilters, porfecha: true }
-            if(porfecha === undefined || porfecha === "false")      queryFilters = { ...queryFilters, porfecha: false }
-            if(precioventamax !== undefined)                        queryFilters = { ...queryFilters, precioventamax: precioventamax }
-            if(precioventamin !== undefined)                        queryFilters = { ...queryFilters, precioventamin: precioventamin }
-            if(precioalquilermax !== undefined)                     queryFilters = { ...queryFilters, precioalquilermax: precioalquilermax }
-            if(precioalquilermin !== undefined)                     queryFilters = { ...queryFilters, precioalquilermin: precioalquilermin }
-            if(superficiemin !== undefined)                         queryFilters = { ...queryFilters, superficiemin: superficiemin }
-            if(superficiemax !== undefined)                         queryFilters = { ...queryFilters, superficiemax: superficiemax }
-            
-            queryFilters = { ...queryFilters, page: page.toString() }
-            const newRoute = {
-                pathname: `${routes.Residential}/${page}`,
-                query: queryFilters,
-              };
-              // Navega a la nueva ruta 
-              router.push(newRoute);
+        let queryFilters = {}
+        if (tipo !== undefined) queryFilters = { ...queryFilters, tipo: tipo }
+        if (tipodeinmueble !== undefined) queryFilters = { ...queryFilters, tipodeinmueble: tipodeinmueble }
+        if (referencia !== undefined) queryFilters = { ...queryFilters, referencia: referencia }
+        if (zona !== undefined) queryFilters = { ...queryFilters, zona: zona }
+        if (garaje !== undefined) queryFilters = { ...queryFilters, garaje: true }
+        if (piscina !== undefined) queryFilters = { ...queryFilters, piscina: true }
+        if (terraza !== undefined) queryFilters = { ...queryFilters, terraza: true }
+        if (porfecha === "true") queryFilters = { ...queryFilters, porfecha: true }
+        if (porfecha === undefined || porfecha === "false") queryFilters = { ...queryFilters, porfecha: false }
+        if (precioventamax !== undefined) queryFilters = { ...queryFilters, precioventamax: precioventamax }
+        if (precioventamin !== undefined) queryFilters = { ...queryFilters, precioventamin: precioventamin }
+        if (precioalquilermax !== undefined) queryFilters = { ...queryFilters, precioalquilermax: precioalquilermax }
+        if (precioalquilermin !== undefined) queryFilters = { ...queryFilters, precioalquilermin: precioalquilermin }
+        if (superficiemin !== undefined) queryFilters = { ...queryFilters, superficiemin: superficiemin }
+        if (superficiemax !== undefined) queryFilters = { ...queryFilters, superficiemax: superficiemax }
+
+        queryFilters = { ...queryFilters, page: page.toString() }
+        const newRoute = {
+            pathname: `${routes.Residential}/${page}`,
+            query: queryFilters,
+        };
+        // Navega a la nueva ruta 
+        router.push(newRoute);
     }
 
     return (
@@ -856,254 +857,229 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                 <h2 className='residential__filter__position__title'>Zonas <span onClick={toggleFilter}><Image width={14} height={14} src={cerrarFiltro} alt='cerrar' /></span></h2>
                                 <h3 className='residential__filter__position__subTitle'>Seleccione una o varias zonas</h3>
                                 <div className='residential__buttons'>
-                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters' style={{cursor: "pointer"}}><Image width={9} height={9} src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
+                                    <button onClick={removeFilterOptions} className='residential__buttons__remove__filters' style={{ cursor: "pointer" }}><Image width={9} height={9} src={cerrarFiltro} alt='boton borrar filtro' /> Borrar filtros</button>
                                 </div>
                                 <div className='residential__filter__position__mapContainer'>
                                     <div className='residential__filter__position__mapContainer__mapa'>
 
-                                        <Image width={size >= 1350 ? 475 : 536*1.5 } height={size >= 1350 ? 348 : 392 } className='c1' src={carretera1} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 232 : 262*1.5 } height={size >= 1350 ? 63 : 70 } className='c2' src={carretera2} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 413 : 466*1.5 } height={size >= 1350 ? 312 : 352 } className='c3' src={carretera3} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 85 : 97*1.5 } height={size >= 1350 ? 53 : 60 } className='c4' src={carretera4} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 147 : 166*1.5 } height={size >= 1350 ? 68 : 77 } className='c5' src={carretera5} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 13 : 15*1.5 } height={size >= 1350 ? 156 : 176 } className='c6' src={carretera6} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 7 : 8*1.5 } height={size >= 1350 ? 23 : 26 } className='c62' src={carretera62} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 76 : 86*1.5 } height={size >= 1350 ? 10 : 12 } className='c7' src={carretera7} alt='componente mapa' />
-                                        <Image width={size >= 1350 ? 85 : 97*1.5 } height={size >= 1350 ? 48 : 54 } className='c8' src={carretera8} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 475 : 536 * 1.5} height={size >= 1350 ? 348 : 392} className='c1' src={carretera1} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 232 : 262 * 1.5} height={size >= 1350 ? 63 : 70} className='c2' src={carretera2} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 413 : 466 * 1.5} height={size >= 1350 ? 312 : 352} className='c3' src={carretera3} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 97 * 1.5} height={size >= 1350 ? 53 : 60} className='c4' src={carretera4} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 147 : 166 * 1.5} height={size >= 1350 ? 68 : 77} className='c5' src={carretera5} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 13 : 15 * 1.5} height={size >= 1350 ? 156 : 176} className='c6' src={carretera6} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 7 : 8 * 1.5} height={size >= 1350 ? 23 : 26} className='c62' src={carretera62} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 76 : 86 * 1.5} height={size >= 1350 ? 10 : 12} className='c7' src={carretera7} alt='componente mapa' />
+                                        <Image width={size >= 1350 ? 85 : 97 * 1.5} height={size >= 1350 ? 48 : 54} className='c8' src={carretera8} alt='componente mapa' />
                                         {
                                             getMaxPrices ?
-                                            <ClipLoader color="#000000" size={40} className='cliploader' />
-                                            : null
+                                                <ClipLoader color="#000000" size={40} className='cliploader' />
+                                                : null
                                         }
                                         <button name='Monteclaro' onClick={!getMaxPrices ? toggleActive : null} id='mocl'
-                                        className={`mocl${
-                                                localFilters.toString().includes("61dfdc8b3e6cc4fe56c29807")
+                                            className={`mocl${localFilters.toString().includes("61dfdc8b3e6cc4fe56c29807")
                                                     ? " active"
                                                     : ""
                                                 }`}
                                         >
-                                            <Image width={size >= 1350 ? 57 : 65 } height={size >= 1350 ? 50 : 57 } src={mocl} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 57 : 65} height={size >= 1350 ? 50 : 57} src={mocl} alt='componente mapa' />
                                             <p>Monte <br /> Claro</p>
                                             <div></div>
                                         </button>
                                         <button type='image' onClick={!getMaxPrices ? toggleActive : null} name='Montealina' id='moal'
-                                        className={`moal${
-                                                localFilters.toString().includes("61dfdc843e6cc4fe56c29805")
+                                            className={`moal${localFilters.toString().includes("61dfdc843e6cc4fe56c29805")
                                                     ? " active"
                                                     : ""
                                                 }`}
                                         >
-                                            <Image width={size >= 1350 ? 59 : 65 } height={size >= 1350 ? 69 : 77 } src={moal} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 59 : 65} height={size >= 1350 ? 69 : 77} src={moal} alt='componente mapa' />
                                             <p>Monte<br />Alina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Prado Largo' id='prla'
-                                        className={`prla${
-                                                localFilters.toString().includes("61dfdc953e6cc4fe56c29809")
+                                            className={`prla${localFilters.toString().includes("61dfdc953e6cc4fe56c29809")
                                                     ? " active"
                                                     : ""
                                                 }`}
                                         >
-                                            <Image width={size >= 1350 ? 26 : 29 } height={size >= 1350 ? 46 : 52 } src={prla} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 26 : 29} height={size >= 1350 ? 46 : 52} src={prla} alt='componente mapa' />
                                             <p>Prado<br />Largo</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Las Encinas' id='enci'
-                                        className={`enci${
-                                                localFilters.toString().includes("61dfdc9f3e6cc4fe56c2980b")
+                                            className={`enci${localFilters.toString().includes("61dfdc9f3e6cc4fe56c2980b")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 47 : 53 } height={size >= 1350 ? 29 : 32 } src={enci} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 47 : 53} height={size >= 1350 ? 29 : 32} src={enci} alt='componente mapa' />
                                             <p>Las Encinas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Alamo de Bulanas' id='alam'
-                                        className={`alam${
-                                                localFilters.toString().includes("61dfdca93e6cc4fe56c2980d")
+                                            className={`alam${localFilters.toString().includes("61dfdca93e6cc4fe56c2980d")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 47 : 54 } height={size >= 1350 ? 35 : 39 } src={alam} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 47 : 54} height={size >= 1350 ? 35 : 39} src={alam} alt='componente mapa' />
                                             <p>Álamos de<br />Bularas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Florida' id='flori'
-                                        className={`flori${
-                                                localFilters.toString().includes("61dfdc5f3e6cc4fe56c297ff")
+                                            className={`flori${localFilters.toString().includes("61dfdc5f3e6cc4fe56c297ff")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 69 : 77 } height={size >= 1350 ? 33 : 36 } src={flori} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 69 : 77} height={size >= 1350 ? 33 : 36} src={flori} alt='componente mapa' />
                                             <p>La Florida</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Finca' id='finc'
-                                        className={`finc${
-                                                localFilters.toString().includes("61dfdce53e6cc4fe56c29819")
+                                            className={`finc${localFilters.toString().includes("61dfdce53e6cc4fe56c29819")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 40 : 45 } height={size >= 1350 ? 36 : 40 } src={finc} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 40 : 45} height={size >= 1350 ? 36 : 40} src={finc} alt='componente mapa' />
                                             <p>La Finca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Somosaguas' id='somo'
-                                        className={`somo${
-                                                localFilters.toString().includes("61dfdd2e3e6cc4fe56c2982d")
+                                            className={`somo${localFilters.toString().includes("61dfdd2e3e6cc4fe56c2982d")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 41 : 46 } height={size >= 1350 ? 25 : 28 } src={somo} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 41 : 46} height={size >= 1350 ? 25 : 28} src={somo} alt='componente mapa' />
                                             <p>Somosaguas</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Aravaca' id='arav'
-                                        className={`arav${
-                                                localFilters.toString().includes("61dfdc733e6cc4fe56c29801")
+                                            className={`arav${localFilters.toString().includes("61dfdc733e6cc4fe56c29801")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 59 : 67 } height={size >= 1350 ? 29 : 32 } src={arav} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 59 : 67} height={size >= 1350 ? 29 : 32} src={arav} alt='componente mapa' />
                                             <p>Aravaca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Valdemarin' id='vald1'
-                                        className={`vald1${
-                                                localFilters.toString().includes("61dfdc7b3e6cc4fe56c29803")
+                                            className={`vald1${localFilters.toString().includes("61dfdc7b3e6cc4fe56c29803")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 27 : 30 } height={size >= 1350 ? 16 : 18 } src={vald1} alt='componente mapa' />
-                                            <Image width={size >= 1350 ? 54 : 61 } height={size >= 1350 ? 27 : 30 } className='vald2' src={vald2} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 27 : 30} height={size >= 1350 ? 16 : 18} src={vald1} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 54 : 61} height={size >= 1350 ? 27 : 30} className='vald2' src={vald2} alt='componente mapa' />
                                             <p>Valdemarín</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Colonia Fuentelarreyna' id='fuen1'
-                                        className={`fuen1${
-                                                localFilters.toString().includes("61dfdd563e6cc4fe56c2983b")
+                                            className={`fuen1${localFilters.toString().includes("61dfdd563e6cc4fe56c2983b")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 32 : 36 } height={size >= 1350 ? 43 : 48 } src={fuen1} alt='componente mapa' />
-                                            <Image width={size >= 1350 ? 15 : 17 } height={size >= 1350 ? 12 : 13 } className='fuen2' src={fuen2} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 32 : 36} height={size >= 1350 ? 43 : 48} src={fuen1} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 15 : 17} height={size >= 1350 ? 12 : 13} className='fuen2' src={fuen2} alt='componente mapa' />
                                             <p>Fuentelarreina</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Puerta de Hierro' id='puer'
-                                        className={`puer${
-                                                localFilters.toString().includes("61dfdd4b3e6cc4fe56c29837")
+                                            className={`puer${localFilters.toString().includes("61dfdd4b3e6cc4fe56c29837")
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image width={size >= 1350 ? 42 : 47 } height={size >= 1350 ? 39 : 44 } src={puer} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 42 : 47} height={size >= 1350 ? 39 : 44} src={puer} alt='componente mapa' />
                                             <p>Puerta de <br />Hierro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Rosales' id='rosa'
-                                        className={`rosa${
-                                                localFilters.toString().includes("61dfdcf13e6cc4fe56c2981b")
+                                            className={`rosa${localFilters.toString().includes("61dfdcf13e6cc4fe56c2981b")
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image width={size >= 1350 ? 37 : 42 } height={size >= 1350 ? 28 : 31 } src={rosa} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 37 : 42} height={size >= 1350 ? 28 : 31} src={rosa} alt='componente mapa' />
                                             <p>Rosales</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Palacio' id='pala'
-                                        className={`pala${
-                                                localFilters.toString().includes("61dfdd0b3e6cc4fe56c29821")
+                                            className={`pala${localFilters.toString().includes("61dfdd0b3e6cc4fe56c29821")
                                                     ? " active"
                                                     : ""
                                                 }`} >
-                                            <Image width={size >= 1350 ? 29 : 32 } height={size >= 1350 ? 39 : 43 } src={pala} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 32} height={size >= 1350 ? 39 : 43} src={pala} alt='componente mapa' />
                                             <p>Palacio</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Mirasierra' id='mira'
-                                        className={`mira${
-                                                localFilters.toString().includes("61dfdcb13e6cc4fe56c2980f")
+                                            className={`mira${localFilters.toString().includes("61dfdcb13e6cc4fe56c2980f")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 50 : 56 } height={size >= 1350 ? 54 : 61 } src={mira} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 50 : 56} height={size >= 1350 ? 54 : 61} src={mira} alt='componente mapa' />
                                             <p>Mirasierra</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Almagro' id='alma'
-                                        className={`alma${
-                                                localFilters.toString().includes("61dfdcd63e6cc4fe56c29815")
+                                            className={`alma${localFilters.toString().includes("61dfdcd63e6cc4fe56c29815")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 29 : 32 } height={size >= 1350 ? 54 : 60 } src={alma} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 32} height={size >= 1350 ? 54 : 60} src={alma} alt='componente mapa' />
                                             <p>Almagro</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Justicia' id='just'
-                                        className={`just${
-                                                localFilters.toString().includes("61dfdcfc3e6cc4fe56c2981d")
+                                            className={`just${localFilters.toString().includes("61dfdcfc3e6cc4fe56c2981d")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 18 : 21 } height={size >= 1350 ? 23 : 26 } src={just} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 18 : 21} height={size >= 1350 ? 23 : 26} src={just} alt='componente mapa' />
                                             <p>Justicia</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Cortes' id='cort'
-                                        className={`cort${
-                                                localFilters.toString().includes("61dfdd043e6cc4fe56c2981f")
+                                            className={`cort${localFilters.toString().includes("61dfdd043e6cc4fe56c2981f")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 18 : 21 } height={size >= 1350 ? 25 : 28 } src={cort} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 18 : 21} height={size >= 1350 ? 25 : 28} src={cort} alt='componente mapa' />
                                             <p>Cortes</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='nuev'
-                                        className={`nuev${
-                                                localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
+                                            className={`nuev${localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 52 : 59 } height={size >= 1350 ? 25 : 28 } src={nuev} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 52 : 59} height={size >= 1350 ? 25 : 28} src={nuev} alt='componente mapa' />
                                             <p>Nueva España</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Nueva España - Hispanoamerica' id='hisp'
-                                        className={`hisp${
-                                                localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
+                                            className={`hisp${localFilters.toString().includes("61dfdd383e6cc4fe56c29831")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 58 : 66 } height={size >= 1350 ? 22 : 25 } src={hisp} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 58 : 66} height={size >= 1350 ? 22 : 25} src={hisp} alt='componente mapa' />
                                             <p>Hispano <br /> América</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='El Viso' id='viso'
-                                        className={`viso${
-                                                localFilters.toString().includes("61dfdcc23e6cc4fe56c29811")
+                                            className={`viso${localFilters.toString().includes("61dfdcc23e6cc4fe56c29811")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 25 : 28 } height={size >= 1350 ? 32 : 36 } src={viso} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 25 : 28} height={size >= 1350 ? 32 : 36} src={viso} alt='componente mapa' />
                                             <p>El Viso</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Barrio Salamanca' id='sala'
-                                        className={`sala${
-                                                localFilters.toString().includes("61dfdd113e6cc4fe56c29823")
+                                            className={`sala${localFilters.toString().includes("61dfdd113e6cc4fe56c29823")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 29 : 27 } height={size >= 1350 ? 45 : 51 } src={sala} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 29 : 27} height={size >= 1350 ? 45 : 51} src={sala} alt='componente mapa' />
                                             <p>Salamanca</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Jeronimos' id='jero'
-                                        className={`jero${
-                                                localFilters.toString().includes("61dfdccd3e6cc4fe56c29813")
+                                            className={`jero${localFilters.toString().includes("61dfdccd3e6cc4fe56c29813")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 8 : 9 } height={size >= 1350 ? 26 : 29 } src={jero} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 8 : 9} height={size >= 1350 ? 26 : 29} src={jero} alt='componente mapa' />
                                             <p>Jerónimos</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='La Moraleja' id='mora'
-                                        className={`mora${
-                                                localFilters.toString().includes("61dfdd1d3e6cc4fe56c29827")
+                                            className={`mora${localFilters.toString().includes("61dfdd1d3e6cc4fe56c29827")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 84 : 94 } height={size >= 1350 ? 59 : 66 } src={mora} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 84 : 94} height={size >= 1350 ? 59 : 66} src={mora} alt='componente mapa' />
                                             <p>Moraleja</p>
                                         </button>
                                         <button onClick={!getMaxPrices ? toggleActive : null} name='Conde de Orgaz' id='cond'
-                                        className={`cond${
-                                                localFilters.toString().includes("61dfdcde3e6cc4fe56c29817")
+                                            className={`cond${localFilters.toString().includes("61dfdcde3e6cc4fe56c29817")
                                                     ? " active"
                                                     : ""
                                                 }`}>
-                                            <Image width={size >= 1350 ? 60 : 67 } height={size >= 1350 ? 35 : 40 } src={cond} alt='componente mapa' />
+                                            <Image width={size >= 1350 ? 60 : 67} height={size >= 1350 ? 35 : 40} src={cond} alt='componente mapa' />
                                             <p>Conde<br />Orgaz</p>
                                         </button>
                                     </div>
@@ -1113,43 +1089,38 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                         <h3>Estado</h3>
                                         <div className='residential__filter__selectors__estado__buttons'>
                                             <button onClick={selectSaleOrRent} name='Alquiler' id='alq'
-                                            className={`alq${
-                                                localFilters.toString().includes("Alquiler")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`alq${localFilters.toString().includes("Alquiler")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Alquiler</button>
                                             <button onClick={selectSaleOrRent} name='Venta' id='vent'
-                                            className={`vent${
-                                                localFilters.toString().includes("Venta")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}>Venta</button>
+                                                className={`vent${localFilters.toString().includes("Venta")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}>Venta</button>
                                         </div>
                                     </div>
                                     <div className='residential__filter__selectors__tipo'>
                                         <h3>Tipo</h3>
                                         <div className='residential__filter__selectors__tipo__buttons'>
                                             <button onClick={addType} name='Casa' id='casa'
-                                            className={`casa${
-                                                localFilters.toString().includes("Casa")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`casa${localFilters.toString().includes("Casa")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Casa</button>
                                             <button onClick={addType} name='Piso' id='piso'
-                                            className={`piso${
-                                                localFilters.toString().includes("Piso")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`piso${localFilters.toString().includes("Piso")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Piso</button>
                                             <button onClick={addType} name='Parcela' id='parcela'
-                                            className={`parcela${
-                                                localFilters.toString().includes("Parcela")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`parcela${localFilters.toString().includes("Parcela")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Parcela</button>
                                         </div>
                                     </div>
@@ -1157,25 +1128,22 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                         <h3>Extras</h3>
                                         <div className='residential__filter__selectors__extras__buttons'>
                                             <button onClick={addExtra} name='swimmingPool' id='piscina'
-                                            className={`piscina${
-                                                localFilters.toString().includes("swimmingPool")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`piscina${localFilters.toString().includes("swimmingPool")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Piscina</button>
                                             <button onClick={addExtra} name='garage' id='garaje'
-                                            className={`garaje${
-                                                localFilters.toString().includes("garage")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`garaje${localFilters.toString().includes("garage")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Garaje</button>
                                             <button onClick={addExtra} name='terrace' id='terraza'
-                                            className={`terraza${
-                                                localFilters.toString().includes("terrace")
-                                                    ? " activeButton"
-                                                    : ""
-                                                }`}
+                                                className={`terraza${localFilters.toString().includes("terrace")
+                                                        ? " activeButton"
+                                                        : ""
+                                                    }`}
                                             >Terraza</button>
                                         </div>
                                     </div>
@@ -1183,31 +1151,31 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                         <p className={disableSliders === true ? 'residential__filter__selectors__sliders__price' : 'residential__filter__selectors__sliders__priceDisabled'}>Precio €</p>
                                         {disableSliders ?
                                             <PricesSliders
-                                            className={'residential__filter__selectors__sliders__price' }
-                                            getAriaLabel={() => 'Minimum distance'}
-                                            value={price}
-                                            onChange={handlePriceInput}
-                                            valueLabelDisplay='on'
-                                            disableSwap
-                                            min={0}
-                                            max={saleOrRent[0] === 'Venta'  ? ( maxZonePrice !== 0 ? maxZonePrice : 20000000 ) : (maxZonePrice !== 0 ? maxZonePrice : 30000) }
-                                            step={saleOrRent[0] === 'Venta' ? 500000 : 1000}
+                                                className={'residential__filter__selectors__sliders__price'}
+                                                getAriaLabel={() => 'Minimum distance'}
+                                                value={price}
+                                                onChange={handlePriceInput}
+                                                valueLabelDisplay='on'
+                                                disableSwap
+                                                min={0}
+                                                max={saleOrRent[0] === 'Venta' ? (maxZonePrice !== 0 ? maxZonePrice : 20000000) : (maxZonePrice !== 0 ? maxZonePrice : 30000)}
+                                                step={saleOrRent[0] === 'Venta' ? 500000 : 1000}
 
-                                            valueLabelFormat={saleOrRent[0] === 'Venta' ? value => `${new Intl.NumberFormat('de-DE').format(value)} €` : value => `${new Intl.NumberFormat('de-DE').format(value)} €/mes`}
-                                        /> :
-                                        <PricesSliders
-                                            className={'residential__filter__selectors__sliders__priceDisabled'}
-                                            getAriaLabel={() => 'Minimum distance'}
-                                            value={price}
-                                            onChange={handlePriceInput}
-                                            valueLabelDisplay='on'
-                                            disableSwap
-                                            disabled='true'
-                                            min={0}
-                                            max={saleOrRent[0] === 'Venta' ? 20000000 : 30000}
-                                            step={saleOrRent[0] === 'Venta' ? 500000 : 1000}
-                                            valueLabelFormat={saleOrRent[0] === 'Venta' ? value => `${new Intl.NumberFormat('de-DE').format(value)} €` : value => `${new Intl.NumberFormat('de-DE').format(value)} €/mes`}
-                                        />
+                                                valueLabelFormat={saleOrRent[0] === 'Venta' ? value => `${new Intl.NumberFormat('de-DE').format(value)} €` : value => `${new Intl.NumberFormat('de-DE').format(value)} €/mes`}
+                                            /> :
+                                            <PricesSliders
+                                                className={'residential__filter__selectors__sliders__priceDisabled'}
+                                                getAriaLabel={() => 'Minimum distance'}
+                                                value={price}
+                                                onChange={handlePriceInput}
+                                                valueLabelDisplay='on'
+                                                disableSwap
+                                                disabled='true'
+                                                min={0}
+                                                max={saleOrRent[0] === 'Venta' ? 20000000 : 30000}
+                                                step={saleOrRent[0] === 'Venta' ? 500000 : 1000}
+                                                valueLabelFormat={saleOrRent[0] === 'Venta' ? value => `${new Intl.NumberFormat('de-DE').format(value)} €` : value => `${new Intl.NumberFormat('de-DE').format(value)} €/mes`}
+                                            />
                                         }
                                         <p className={'residential__filter__selectors__sliders__surface'}>Superficie m<sup>2</sup></p>
                                         <PricesSliders
@@ -1225,14 +1193,14 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                                     </div>
                                     <div className='residential__filter__selectors__buscar'>
                                         {disableButton === false ?
-                                            <button onClick={() =>getTypeHouse()} className='residential__filter__selectors__buscar__all'>Ver todos</button>
+                                            <button onClick={() => getTypeHouse()} className='residential__filter__selectors__buscar__all'>Ver todos</button>
                                             :
                                             <button className='residential__filter__selectors__buscar__allDisabled'>Ver todos</button>
                                         }
                                         {disableButton === true ?
                                             <button className='residential__filter__selectors__buscar__search'
-                                                onClick={()=>getTypeHouse()}
-                                                >Buscar
+                                                onClick={() => getTypeHouse()}
+                                            >Buscar
                                             </button>
                                             :
                                             <button className='residential__filter__selectors__buscar__searchDisabled' >Buscar</button>
@@ -1250,12 +1218,12 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                     }
                     <h1 className='residential__title'>Residencial</h1>
                     <div className='residential__buttons'>
-                        <button onClick={toggleFilter} className='residential__buttons__filter' style={{cursor: "pointer"}}><Image src={filterImg} alt='boton filtro' /> Filtros</button>
+                        <button onClick={toggleFilter} className='residential__buttons__filter' style={{ cursor: "pointer" }}><Image src={filterImg} alt='boton filtro' /> Filtros</button>
                         <div className='residential__buttons__order'>
-                            <button onClick={toggleOrderItems} className='residential__buttons__order__title' style={{cursor: "pointer"}}>Ordenar por <Image src={order} alt='boton ordenar por' /></button>
+                            <button onClick={toggleOrderItems} className='residential__buttons__order__title' style={{ cursor: "pointer" }}>Ordenar por <Image src={order} alt='boton ordenar por' /></button>
                             <ul className={orderItems === false ? 'residential__buttons__order__listDisabled' : 'residential__buttons__order__list'}>
-                                <li onClick={onPrice} className='residential__buttons__order__list__first' style={{cursor: "pointer"}}>Precio más alto</li>
-                                <li onClick={onDate} style={{cursor: "pointer"}}>Más reciente</li>
+                                <li onClick={onPrice} className='residential__buttons__order__list__first' style={{ cursor: "pointer" }}>Precio más alto</li>
+                                <li onClick={onDate} style={{ cursor: "pointer" }}>Más reciente</li>
                             </ul>
                         </div>
                     </div>
@@ -1264,12 +1232,12 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                     </div>
                     <div onClick={deletePosition} className='residential__pagination'>
                         <ul className='residential__pagination__list'>
-                            {parseInt(page) !== 1 && <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' onClick={()=>navigateToNewPath(parseInt(page)-1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li> }
-                            {arrPages.map((__pag, i)=>{
-                                    return <li key={i} className={i + 1 ===  parseInt(page)? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><p onClick={()=>navigateToNewPath(i+1, query)} style={{cursor:"pointer"}}>{i + 1}</p></li>
+                            {parseInt(page) !== 1 && <li className='residential__pagination__list__item'><a className='residential__pagination__list__item__back' onClick={() => navigateToNewPath(parseInt(page) - 1, query)} style={{ cursor: "pointer" }}> <Image width={8} height={10} src={mayor} alt='simbolo mayor' /> </a></li>}
+                            {arrPages.map((__pag, i) => {
+                                return <li key={i} className={i + 1 === parseInt(page) ? 'residential__pagination__list__item currentPage' : 'residential__pagination__list__item'}><p onClick={() => navigateToNewPath(i + 1, query)} style={{ cursor: "pointer" }}>{i + 1}</p></li>
 
                             })}
-                            {parseInt(page) !== pagElements?.length && <li className='residential__pagination__list__item'><p className='residential__pagination__list__item__next' onClick={()=>navigateToNewPath(parseInt(page) + 1, query)} style={{cursor:"pointer"}}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </p></li>}
+                            {parseInt(page) !== pagElements?.length && <li className='residential__pagination__list__item'><p className='residential__pagination__list__item__next' onClick={() => navigateToNewPath(parseInt(page) + 1, query)} style={{ cursor: "pointer" }}> <Image width={8} height={10} src={mayor} alt='simbolo menor' /> </p></li>}
                         </ul>
                     </div>
                     <div className='residential__zoneMap'>
@@ -1281,14 +1249,14 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
                 <div className='residential__empty'>
                     {
                         // isFound ?
-                            (
-                                <div className='residential__empty'>
-                                    <h2 className='residential__empty__text'>Lamentablemente no existen anuncios bajo sus criterios de búsqueda</h2>
-                                    <Link className='residential__empty__button' href={`${routes.FilterResidential}`}>Volver al mapa</Link>
-                                </div>
-                            )
-                           // :
-                         //   <BarLoader color="#000000" width='150px' height='2px' />
+                        (
+                            <div className='residential__empty'>
+                                <h2 className='residential__empty__text'>Lamentablemente no existen anuncios bajo sus criterios de búsqueda</h2>
+                                <Link className='residential__empty__button' href={`${routes.FilterResidential}`}>Volver al mapa</Link>
+                            </div>
+                        )
+                        // :
+                        //   <BarLoader color="#000000" width='150px' height='2px' />
                     }
                 </div>
             }
@@ -1297,47 +1265,47 @@ export default function Residential({orderedItems, pages, query, queryFilters}){
 
 }
 
-export async function getServerSideProps(context){
-        let queryFilters = {}
-        const query = context.query
-        // console.log(query)
-        const {tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax} = context.query
-        // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
-        // console.log(typeof porfecha)
-        if(tipo !== undefined)                  queryFilters = { ...queryFilters, adType: tipo.split('-') }
-        if(tipodeinmueble !== undefined)        queryFilters = { ...queryFilters, adBuildingType: tipodeinmueble.split('-') }
-        if(referencia !== undefined)            queryFilters = { ...queryFilters, adReference: referencia }
-        if(zona !== undefined)                  queryFilters = { ...queryFilters, zone: zona.split('-') }
-        if(garaje !== undefined)                queryFilters = { ...queryFilters, garage: true }
-        if(piscina !== undefined)               queryFilters = { ...queryFilters, swimmingPool: true }
-        if(terraza !== undefined)               queryFilters = { ...queryFilters, terrace: true }
-        if(page !== undefined)                  queryFilters = { ...queryFilters, page: page }
-        if(porfecha === "true"){
-            queryFilters = { ...queryFilters, orderByDate: true }
-        } else{
-            queryFilters = { ...queryFilters, orderByDate: false }
+export async function getServerSideProps(context) {
+    let queryFilters = {}
+    const query = context.query
+    // console.log(query)
+    const { tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page, porfecha, precioventamax, precioventamin, precioalquilermax, precioalquilermin, superficiemin, superficiemax } = context.query
+    // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
+    // console.log(typeof porfecha)
+    if (tipo !== undefined) queryFilters = { ...queryFilters, adType: tipo.split('-') }
+    if (tipodeinmueble !== undefined) queryFilters = { ...queryFilters, adBuildingType: tipodeinmueble.split('-') }
+    if (referencia !== undefined) queryFilters = { ...queryFilters, adReference: referencia }
+    if (zona !== undefined) queryFilters = { ...queryFilters, zone: zona.split('-') }
+    if (garaje !== undefined) queryFilters = { ...queryFilters, garage: true }
+    if (piscina !== undefined) queryFilters = { ...queryFilters, swimmingPool: true }
+    if (terraza !== undefined) queryFilters = { ...queryFilters, terrace: true }
+    if (page !== undefined) queryFilters = { ...queryFilters, page: page }
+    if (porfecha === "true") {
+        queryFilters = { ...queryFilters, orderByDate: true }
+    } else {
+        queryFilters = { ...queryFilters, orderByDate: false }
+    }
+    if (precioventamax !== undefined) queryFilters = { ...queryFilters, maxSalePrice: precioventamax }
+    if (precioventamin !== undefined) queryFilters = { ...queryFilters, minSalePrice: precioventamin }
+    if (precioalquilermax !== undefined) queryFilters = { ...queryFilters, maxRentPrice: precioalquilermax }
+    if (precioalquilermin !== undefined) queryFilters = { ...queryFilters, minRentPrice: precioalquilermin }
+    if (superficiemin !== undefined) queryFilters = { ...queryFilters, minSurface: superficiemin }
+    if (superficiemax !== undefined) queryFilters = { ...queryFilters, maxSurface: superficiemax }
+
+    const { ads, totalAds } = await getResidential(queryFilters)
+    // console.log('totales',totalAds)
+    const orderedItems = ads
+    const elements = totalAds
+    const pages = Math.ceil(elements / 30)
+
+    // console.log(orderedItems.length)
+    return {
+        props: {
+            orderedItems,
+            elements,
+            pages,
+            query,
+            queryFilters
         }
-        if(precioventamax !== undefined)        queryFilters = { ...queryFilters, maxSalePrice: precioventamax }
-        if(precioventamin !== undefined)        queryFilters = { ...queryFilters, minSalePrice: precioventamin }
-        if(precioalquilermax !== undefined)     queryFilters = { ...queryFilters, maxRentPrice: precioalquilermax }
-        if(precioalquilermin !== undefined)     queryFilters = { ...queryFilters, minRentPrice: precioalquilermin }
-        if(superficiemin !== undefined)         queryFilters = { ...queryFilters, minSurface: superficiemin }
-        if(superficiemax !== undefined)         queryFilters = { ...queryFilters, maxSurface: superficiemax }
-        
-        const {ads, totalAds} = await getResidential(queryFilters)
-        // console.log('totales',totalAds)
-        const orderedItems = ads
-        const elements = totalAds
-        const pages = Math.ceil(elements / 30)
-    
-        // console.log(orderedItems.length)
-        return {
-            props: {
-                orderedItems,
-                elements,
-                pages, 
-                query, 
-                queryFilters
-            }
-        }
+    }
 }
