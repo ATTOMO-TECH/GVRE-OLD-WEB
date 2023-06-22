@@ -22,7 +22,9 @@
         text-decoration: none;
     }
 } 
-
+.carousel.carousel-slider .control-arrow{
+    margin-top: 50px;
+}
 .residentialItem{
     margin-top: 83px;
     &__carousel{
