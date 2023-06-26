@@ -613,12 +613,14 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   </div>
                 ) : null}
                 {state.trashFee.trashFeeValue !== 0 &&
+                state.trashFee.trashFeeValue !== "" &&
+                state.trashFee.trashFeeValue !== undefined &&
                 state.trashFee.trashFeeShowOnWeb === true ? (
                   <div className="patrimonialItem__description__numbers__bed">
                     <p className="patrimonialItem__description__numbers__bed__data">
                       {state.trashFee.trashFeeValue}
                     </p>
-                    <p>Tasa de basuras €/mes</p>
+                    <p>Tasa de basuras €/año</p>
                   </div>
                 ) : null}
               </div>
