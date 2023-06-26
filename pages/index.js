@@ -392,7 +392,7 @@ export default function Home({ destacado }) {
                         DESTACADO
                       </p>
                       <div>
-                        <h2 className="text__price">{`${new Intl.NumberFormat(
+                        <h2 className="home__outstanding__position__images__text__price">{`${new Intl.NumberFormat(
                           "de-DE"
                         ).format(item.sale.saleValue)} €`}</h2>
                         <Image
