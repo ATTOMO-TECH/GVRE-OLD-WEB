@@ -1,131 +1,130 @@
-@import './media.scss';
+@import "./media.scss";
 
-.catalogo__main__container{
+.catalogo__main__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__banner {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    &__banner{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url("./../assets/images/catalogo/banner-catalogo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__text {
+    padding: 2.5rem 4rem;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 0.9rem;
+    & p {
+      font-family: "Jost";
+      font-weight: 300;
+      font-size: 0.9rem;
+      margin: 1em 0px;
+    }
+    & h3 {
+      margin: 1em 0px;
+    }
+  }
+  &__catalogs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 60%;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      margin-bottom: 2rem;
+      border-top-left-radius: 13.51px;
+      border-top-right-radius: 13.51px;
+      & img {
         width: 100%;
-        height: 100vh;
-        background-image: url('./../assets/images/catalogo/banner-catalogo.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        //height: 400px;
+        border-top-left-radius: 13.51px;
+        border-top-right-radius: 13.51px;
+        height: auto;
+      }
+      & h2 {
+        padding: 0.5rem 1rem;
+        margin: 0rem 0rem 0.5rem 0px;
+        font-family: "Jost";
+        font-weight: bold;
+        font-size: 1rem;
+      }
     }
-    &__text{
-        padding: 2.5rem 4rem;
-        font-family: "Inter";
-        font-weight: 500;
-        font-size: 0.9rem;
-        & p{
-            font-family: "Jost";
-            font-weight: 300;
-            font-size: 0.9rem;
-            margin: 1em 0px;
-        }
-        & h3{
-            margin: 1em 0px;
-        }
+    &__empty {
+      width: 80%;
     }
-    &__catalogs{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        &__item{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            width: 60%;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-            margin-bottom: 2rem;
-            border-top-left-radius: 13.51px;
-            border-top-right-radius: 13.51px;
-            & img{
-                width: 100%;
-                //height: 400px;
-                border-top-left-radius: 13.51px;
-                border-top-right-radius: 13.51px;
-            }
-            & h2{
-                padding: 0.5rem 1rem;
-                margin: 0rem 0rem 0.5rem 0px;
-                font-family: "Jost";
-                font-weight: bold;
-                font-size: 1rem;
-            }
-        }
-        &__empty{
-            width: 80%;
-        }
-    }
+  }
 }
 
-
-
-@include tablet{
-    .catalogo__main__container{
-        &banner{
-            height: 100vh;
-        }
-        &__text{
-            font-size: 1.5rem;
-            & p{
-                font-size: 1.2rem;
-            }
-        }
-        &__catalogs{
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 0rem 4rem;
-            &__item{
-                width: 47%;
-                & h2{
-                    font-size: 1.2rem;
-                }
-            }
-        }
+@include tablet {
+  .catalogo__main__container {
+    &banner {
+      height: 100vh;
     }
+    &__text {
+      font-size: 1.5rem;
+      & p {
+        font-size: 1.2rem;
+      }
+    }
+    &__catalogs {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0rem 4rem;
+      &__item {
+        width: 47%;
+        & h2 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
 }
 
-@include desktop{
-    .catalogo__main__container{
-        &__banner{
-            height: 110vh;
-        }
-        &__text{
-            padding: 1.5rem 0rem;
-            font-size: 1.5rem;
-            width: 65%;
-
-            & p{
-                font-size: 1.2rem;
-            }
-        }
-        &__catalogs{
-            flex-direction: row;
-            gap: 10%;
-            flex-wrap: wrap;
-            padding: 0rem 7rem;
-            width: 100%;
-            &__item{
-                width: 40%;
-                margin-bottom: 5rem;
-                & h2{
-                    padding: 1rem 1rem;
-                    font-size: 1.3rem;
-                }
-            }
-        }
+@include desktop {
+  .catalogo__main__container {
+    &__banner {
+      height: 110vh;
     }
+    &__text {
+      padding: 1.5rem 0rem;
+      font-size: 1.5rem;
+      width: 65%;
+
+      & p {
+        font-size: 1.2rem;
+      }
+    }
+    &__catalogs {
+      flex-direction: row;
+      gap: 10%;
+      flex-wrap: wrap;
+      padding: 0rem 7rem;
+      width: 100%;
+      &__item {
+        width: 40%;
+        margin-bottom: 5rem;
+        & h2 {
+          padding: 1rem 1rem;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
 }

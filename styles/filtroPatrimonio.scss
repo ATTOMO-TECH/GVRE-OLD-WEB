@@ -1,1450 +1,1451 @@
-@import './fonts.scss';
-@import './media.scss';
+@import "./fonts.scss";
+@import "./media.scss";
 
-.filtroPatrimonio{
-    display: block;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    z-index: 2;
-    &__title{
-        margin-top: 70px;
+.filtroPatrimonio {
+  display: block;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 2;
+  &__title {
+    margin-top: 70px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    @include titleHomeMobile;
+    color: black !important;
+  }
+  &__subTitle {
+    margin-left: 20px;
+    margin-top: 0px;
+    @include textBlackMobile;
+  }
+  &__filterPosition {
+    margin-bottom: 50px;
+    &__mapContainer {
+      width: initial;
+      overflow-x: scroll;
+      margin-bottom: 15px;
+      padding-bottom: 25px;
+      &__mapa {
+        height: 392px;
+        width: 536px;
         margin-left: 20px;
-        margin-bottom: 0px;
-        @include titleHomeMobile;
-        color: black!important;
-    }
-    &__subTitle{
-        margin-left: 20px;
-        margin-top: 0px;
-        @include textBlackMobile;
-    }
-    &__filterPosition{
-        margin-bottom: 50px;
-        &__mapContainer{
-            width: initial;
-            overflow-x:scroll;
-            margin-bottom: 15px;
-            padding-bottom: 25px;
-            &__mapa{
-                height: 392px;
-                width: 536px;
-                margin-left: 20px;
-                margin-right: 20px;
-                position: relative;
-                img{
-                    position: absolute;
-                }
-                div{
-                    position: absolute;
-                    p{
-                        @include litleTextMobile;
-                        color: #bbbbbb;
-                        position: absolute;
-                    }
-                }
-                button{
-                    position: absolute;
-                    background-color: transparent;
-                    border: none;
-                    width: fit-content;
-                    text-align: left;
-                    padding: 0;
-                    p{
-                        @include litleTextMobile;
-                        color: #bbbbbb;
-                        position: absolute;
-                    }
-                }
-                .active{
-                    filter:  contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%) grayscale(85%) brightness(55%);
-                }
-                .c1{
-                    bottom: 0;
-                    width: 100%;
-                }
-                .c2{
-                    bottom:21.5%;
-                    width: 48.9%;
-                }
-                .c3{
-                    right: 0px;
-                    bottom: 0px;
-                    width: 87%;
-                }
-                .c4{
-                    bottom: 0px;
-                    right: 42%;
-                    width: 18%;
-                }
-                .c5{
-                    bottom: 43.8%;
-                    right: 22.4%;
-                    width: 31%;
-                }
-                .c6{
-                    bottom: 8.5%;
-                    right: 28.2%;
-                    width: 2.7%;
-                }
-                .c62{
-                    bottom: 55.5%;
-                    right: 26.6%;
-                    width: 1.5%;
-                }
-                .c7{
-                    bottom:35%;
-                    right: 0;
-                    width: 16%;
-                }
-                .c8{
-                    bottom: 0;
-                    right: 0;
-                    width: 18%;
-                }
-                .c9{
-                    bottom: 3.5%;
-                    right: 58%;
-                    width: 15%;
-                }
-                .c10{
-                    bottom: -8.5%;
-                    right: 21%;
-                    width: 13%;
-                }
-                .avion{
-                    right: 3%;
-                    bottom: 76%;
-                    width: 1.5%;
-                }
-                .boca{
-                    right: 2.5%;
-                    bottom: 75%;
-                    width: 2.5%;
-                }
-                .a1{
-                    border: solid;
-                    border-width: 1px;
-                    border-color: lightgray;
-                    @include litleTextMobile;
-                    font-size: 9px!important;
-                    line-height: 11px!important;
-                    color: rgb(161, 161, 161)!important;
-                    padding: 0 4px;
-                    right: 26%;
-                    bottom: 65%;
-                }
-                .a2{
-                    border: solid;
-                    border-width: 1px;
-                    border-color: lightgray;
-                    @include litleTextMobile;
-                    font-size: 9px!important;
-                    line-height: 11px!important;
-                    color: rgb(161, 161, 161)!important;
-                    padding: 0 4px;
-                    right: 12%;
-                    bottom: 38%;
-                }
-                .a3{
-                    border: solid;
-                    border-width: 1px;
-                    border-color: lightgray;
-                    @include litleTextMobile;
-                    font-size: 9px!important;
-                    line-height: 11px!important;
-                    color: rgb(161, 161, 161)!important;
-                    padding: 0 4px;
-                    right: 14%;
-                    bottom: 3%;
-                }
-                .a5{
-                    border: solid;
-                    border-width: 1px;
-                    border-color: lightgray;
-                    @include litleTextMobile;
-                    font-size: 9px!important;
-                    line-height: 11px!important;
-                    color: rgb(161, 161, 161)!important;
-                    padding: 0 4px;
-                    right: 44%;
-                    bottom: 5%;
-                }
-                .a6{
-                    border: solid;
-                    border-width: 1px;
-                    border-color: lightgray;
-                    @include litleTextMobile;
-                    font-size: 9px!important;
-                    line-height: 11px!important;
-                    color: rgb(161, 161, 161)!important;
-                    padding: 0 4px;
-                    right: 54%;
-                    bottom: 49%;
-                }
-                .secu{
-                    bottom: 33%;
-                    right: 32.5%;
-                    width: 15%;
-                    p{
-                        width: 100px;
-                        bottom: 25px;
-                        left: -74px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -20px;
-                        left: -25px;
-                    }
-                }
-                .ceba{
-                    bottom: -6px;
-                    right: 32.5%;
-                    width: 9%;
-                    
-                }
-                .plan{
-                    bottom: 60.5%;
-                    left: 16%;
-                    width: 12%;
-                    p{
-                        top: -18px;
-                        left: 20px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -44px;
-                    }
-                    &__2{
-                        bottom: -51px !important;
-                        left: -5px;
-                    }
-                }
-                .vald{
-                    bottom: 53%;
-                    left: 30%;
-                    width: 12%;
-                    p{
-                        top: -12px;
-                        left: 25px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -23px;
-                    }
-                }
-                .pozu{
-                    bottom: 37.5%;
-                    left: 28%;
-                    width: 7%;
-                    p{
-                        bottom: -1px;
-                        right: 10px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -37px;
-                    }
-                }
-                .pe{
-                    bottom:21.5%;
-                    left:30%;
-                    width: 2.8%;
-                    p{
-                        width: 100px;
-                        bottom: -40px;
-                        left: -30px;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                }
-                .ctba{
-                    bottom: 61.5%;
-                    left: 69.4%;
-                    width: 2.8%;
-                    z-index: 1;
-                    p{
-                        width: 100%;
-                        left: -25px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -62px;
-                    }
-                    &__2{
-                        right: -14px;
-                    }
-                }
-                .cuzco{
-                    bottom: 48.8%;
-                    left: 70.8%;
-                    width: 2.5%;
-                    z-index: 1;
-                    p{
-                        width: 100%;
-                        bottom: -25px;
-                        left: -48px;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                    &__2{
-                        left: -15px;
-                    }
-                }
-                .azca{
-                    bottom: 42.8%;
-                    left: 67.5%;
-                    width: 2.2%;
-                    p{
-                        width: 100%;
-                        bottom: -21px;
-                        left: -25px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -40px;
-                    }
-                }
-                .cham{
-                    bottom:36%;
-                    left:61.8%;
-                    width: 8.5%;
-                    p{
-                        width: 100%;
-                        bottom: -50px;
-                        left: -40px;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                }
-                .alma{
-                    bottom:27%;
-                    left:68%;
-                    width: 2.5%;
-                    p{
-                        width: 100%;
-                        bottom: -45px;
-                        left: -45px;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                }
-                .cent{
-                    bottom: 20.4%;
-                    left: 66.7%;
-                    width: 2.9%;
-                    p{
-                        width: 100%;
-                        bottom: -40px;
-                        left: -30px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -68px;
-                    }
-                }
-                .meal{
-                    bottom: 8.3%;
-                    left: 70%;
-                    width: 6.7%;
-                    p{
-                        width: 100px;
-                        bottom: -52px;
-                        left: 35px;
-                    }
-                    img{
-                        width: 100%;
-                        bottom: -55px;
-                    }
-                }
-                .juca{
-                    bottom: 27%;
-                    left: 90%;
-                    width: 7%;
-                    p{
-                        width: 100px;
-                        bottom: -77px;
-                        left: -25px;
-                    }
-                    img{
-                        width: 100%;
-                    }
-                }
-                .amer{
-                    bottom:35%;
-                    left: 76%;
-                    width: 6.9%;
-                    p{
-                        width: 100px;
-                        bottom: -40px;
-                        left: 20px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -40px;
-                    }
-                    &__2{
-                        right: -33px;
-                        bottom: -26px !important;
-                        width: 80%!important;
-                    }
-                }
-                .jova{
-                    bottom: 36.5%;
-                    left: 89%;
-                    width: 10%;
-                    p{
-                        width: 70px;
-                        bottom:-35px;
-                        left: 5px;
-                    }
-                    img{
-                        width: 105%;
-                    }
-                }
-                .chama{
-                    bottom: 62%;
-                    left: 70.8%;
-                    width: 11.6%;
-                    p{
-                        width: 100%;
-                        bottom:-75px;
-                        left: 70px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -104px;
-                    }
-                }
-                .arso{
-                    bottom: 64%;
-                    left: 78.4%;
-                    width: 7.5%;
-                    p{
-                        width: fit-content;
-                        bottom: -36px;
-                        left: 25px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -65px;
-                    }
-                }
-                .cana{
-                    bottom: 66%;
-                    left: 90.4%;
-                    width: 12%;
-                    p{
-                        width: fit-content;
-                        bottom: -5px;
-                        left: 0px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -92px;
-                        left: 1px;
-                    }
-                }
-                .sanchi{
-                    bottom:85.5%;
-                    left: 74.5%;
-                    width: 8%;
-                    p{
-                        width: 70px;
-                        bottom:-65px;
-                        left: -65px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -95px;
-                        left: 24px;
-                    }
-                    &__1{
-                        width: 130% !important;
-                        top: -15px;
-                        left: -9px !important;
-                    }
-                    &__2{
-                        right: 34px ;
-                        bottom: -96px ;
-                        width: 130%;
-                    }
-                    &__3{
-                        top: -29px;
-                        right: -13px;
-                        width: 75%!important;
-                    }
-                }
-                .arva{
-                    bottom:98.7%;
-                    left: 87%;
-                    width: 9%;
-                    p{
-                        width: fit-content;
-                        bottom: -62px;
-                        left: 10px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -34px;
-                    }
-                    &__2{
-                        top: -34px !important;
-                        left: -23px;
-                        width: 190%!important;
-                    }
-                }
-                .viso{
-                    bottom:39%;
-                    left: 70.6%;
-                    width: 5%;
-                    p{
-                        width: 120%;
-                        bottom: -13px;
-                        left: 30px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -45px;
-                    }
-                }
-                .sala{
-                    bottom:29.5%;
-                    left: 70.4%;
-                    width: 4.8%;
-                    p{
-                        width: 120%;
-                        bottom: -41px;
-                        left: 25px;
-                    }
-                    img{
-                        width: 105%;
-                        bottom: -60px;
-                    }
-                }
-                .jero{
-                    bottom:16%;
-                    left: 69.8%;
-                    width: 1.8%;
-                    p{
-                        width: 120%;
-                        bottom: -21px;
-                        left: 12px;
-                    }
-                    img{
-                        width: 90%;
-                        bottom: -37px;
-                    }
-                }
-            }
+        margin-right: 20px;
+        position: relative;
+        img {
+          position: absolute;
         }
-        &__selectors{
-            display: flex;
-            flex-direction: column;
+        div {
+          position: absolute;
+          p {
+            @include litleTextMobile;
+            color: #bbbbbb;
+            position: absolute;
+          }
+        }
+        button {
+          position: absolute;
+          background-color: transparent;
+          border: none;
+          width: fit-content;
+          text-align: left;
+          padding: 0;
+          p {
+            @include litleTextMobile;
+            color: #bbbbbb;
+            position: absolute;
+          }
+        }
+        .active {
+          filter: contrast(0%) sepia(1) hue-rotate(202deg) saturate(1000%)
+            grayscale(85%) brightness(55%);
+        }
+        .c1 {
+          bottom: 0;
+          width: 100%;
+        }
+        .c2 {
+          bottom: 21.5%;
+          width: 48.9%;
+        }
+        .c3 {
+          right: 0px;
+          bottom: 0px;
+          width: 87%;
+        }
+        .c4 {
+          bottom: 0px;
+          right: 42%;
+          width: 18%;
+        }
+        .c5 {
+          bottom: 43.8%;
+          right: 22.4%;
+          width: 31%;
+        }
+        .c6 {
+          bottom: 8.5%;
+          right: 28.2%;
+          width: 2.7%;
+        }
+        .c62 {
+          bottom: 55.5%;
+          right: 26.6%;
+          width: 1.5%;
+        }
+        .c7 {
+          bottom: 35%;
+          right: 0;
+          width: 16%;
+        }
+        .c8 {
+          bottom: 0;
+          right: 0;
+          width: 18%;
+        }
+        .c9 {
+          bottom: 3.5%;
+          right: 58%;
+          width: 15%;
+        }
+        .c10 {
+          bottom: -8.5%;
+          right: 21%;
+          width: 13%;
+        }
+        .avion {
+          right: 3%;
+          bottom: 76%;
+          width: 1.5%;
+        }
+        .boca {
+          right: 2.5%;
+          bottom: 75%;
+          width: 2.5%;
+        }
+        .a1 {
+          border: solid;
+          border-width: 1px;
+          border-color: lightgray;
+          @include litleTextMobile;
+          font-size: 9px !important;
+          line-height: 11px !important;
+          color: rgb(161, 161, 161) !important;
+          padding: 0 4px;
+          right: 26%;
+          bottom: 65%;
+        }
+        .a2 {
+          border: solid;
+          border-width: 1px;
+          border-color: lightgray;
+          @include litleTextMobile;
+          font-size: 9px !important;
+          line-height: 11px !important;
+          color: rgb(161, 161, 161) !important;
+          padding: 0 4px;
+          right: 12%;
+          bottom: 38%;
+        }
+        .a3 {
+          border: solid;
+          border-width: 1px;
+          border-color: lightgray;
+          @include litleTextMobile;
+          font-size: 9px !important;
+          line-height: 11px !important;
+          color: rgb(161, 161, 161) !important;
+          padding: 0 4px;
+          right: 14%;
+          bottom: 3%;
+        }
+        .a5 {
+          border: solid;
+          border-width: 1px;
+          border-color: lightgray;
+          @include litleTextMobile;
+          font-size: 9px !important;
+          line-height: 11px !important;
+          color: rgb(161, 161, 161) !important;
+          padding: 0 4px;
+          right: 44%;
+          bottom: 5%;
+        }
+        .a6 {
+          border: solid;
+          border-width: 1px;
+          border-color: lightgray;
+          @include litleTextMobile;
+          font-size: 9px !important;
+          line-height: 11px !important;
+          color: rgb(161, 161, 161) !important;
+          padding: 0 4px;
+          right: 54%;
+          bottom: 49%;
+        }
+        .secu {
+          bottom: 33%;
+          right: 32.5%;
+          width: 15%;
+          p {
+            width: 100px;
+            bottom: 25px;
+            left: -74px;
+          }
+          img {
             width: 100%;
-            &__estado{
-                margin-bottom: 15px;
-                h3{
-                    margin-left: 20px;
-                    margin-bottom: 5px;
-                    @include subSubTitleMobile;
-                }
-                &__buttons{
-                    display: flex;
-                    justify-content:space-between;
-                    align-items: center;
-                    .alq{
-                        margin-left: 20px;
-                        margin-right: 20px;
-                    }
-                    .vent{
-                        margin-right: 20px;
-                        margin-left: 20px;
-                    }
-                    button{
-                        width: 50%;
-                        border-width: 2px;
-                        border-color: #2b363d;
-                        text-align: center;
-                        text-decoration: none;
-                        padding: 5px;
-                        background-color: white;
-                        color: #2b363d;
-                        @include textMobile;
-                    }
-                }
-            }
-            &__tipo{
-                h3{
-                    margin-left: 20px;
-                    margin-bottom: 5px;
-                    @include subSubTitleMobile;
-                }
-                &__buttons{
-                    display: flex;
-                    justify-content:space-between;
-                    align-items: center;
-                    margin-bottom: 0.5rem;
-                    .oficina{
-                        margin-left: 20px;
-                        margin-right: 5px;
-                    }
-                    .edificio{
-                        margin: 0 5px;
-                    }
-                    .retail{
-                        margin-right: 20px;
-                        margin-left: 5px;
-                    }
-                    .exclusiveOfficeBuilding{
-                        margin-left: 20px;
-                        margin-right: 5px;
-                        height: 50px;
-                    }
-                    .classicBuilding{
-                        margin: 0 5px;
-                        height: 50px;
-                    }
-                    .coworking{
-                        margin-right: 20px;
-                        margin-left: 5px;
-                        height: 50px;
-                    }
-                    button{
-                        width: 33%;
-                        border-width: 2px;
-                        border-color: #2b363d;
-                        text-align: center;
-                        text-decoration: none;
-                        padding: 5px;
-                        background-color: white;
-                        color: #2b363d;
-                        @include textMobile;
-                    }
-                }
-            }
-            &__buscar{
-                margin-top: 20px;
-                display: flex;
-                justify-content:space-between;
-                align-items: center;
-                &__all{
-                    margin-left: 20px;
-                    margin-right: 5px;
-                    color: #2b363d;
-                    background-color: #fff;
-                    cursor: pointer;
-                    
-                }
-                &__allDisabled{
-                    margin-left: 20px;
-                    margin-right: 5px;
-                    width: 50%;
-                    color: rgb(201, 201, 201)!important;
-                    background-color: rgb(255, 255, 255);
-                    border: solid;
-                    border-width: 2px;
-                    border-color: rgb(201, 201, 201)!important;
-                    padding: 5px;
-                    @include textMobile;
-                }
-                &__search{
-                    margin-left: 5px;
-                    margin-right: 20px;
-                    background-color: #2b363d;
-                    color: white !important;
-                    cursor: pointer;
-                }
-                &__searchDisabled{
-                    width: 50%;
-                    height: 35px;
-                    margin-left: 5px;
-                    margin-right: 20px;
-                    background-color: white;
-                    color: lightgray!important;
-                    border-color: lightgray!important;
-                }
-                button{
-                    width: 50%;
-                    border:solid;
-                    border-width: 2px;
-                    border-color: #2b363d;
-                    text-align: center;
-                    text-decoration: none;
-                    padding: 5px;
-                    @include textMobile;
-                }
-            }
-            &__ref{
-                margin-left: 20px;
-                margin-right: 42px;
-                position: relative;
-                padding-top: 20px;
-                h4{
-                    @include subSubTitleMobile;
-                    color: rgb(180, 180, 180)!important;
-                    margin-bottom: 5px;
-        
-                }
-                input{
-                    border: solid;
-                    border-width: 2px;
-                    border-color: rgb(180, 180, 180);
-                    height: 25px;
-                    width: 100%;
-                    padding-left: 18px;
-                    font-family: 'Jost';
-                    color: #b4b4b4;
-                    font-size: 16px;
-                    padding: 1rem;
-                }
-                &__lupa{
-                    position: absolute;
-                    height: 17px;
-                    bottom: 8px;
-                    left: 90%;
-
-                }
-                &__lupaOculta{
-                    display: none;
-                }
-                &__existe{
-                    @include litleTextMobile;
-                    color: red!important;
-                }
-            }
-            &__sliders{
-                margin: 20px 30px;
-                position: relative;
-                p{  
-                    position: relative;
-                    left: -10px;
-                    margin-bottom: 30px;
-                    @include textMobile;
-                }
-                &__surfaceDisabled{
-                    filter: opacity(0.3);
-                }
-                &__priceDisabled{
-                    filter: opacity(0.3);
-                }
-            }
+            bottom: -20px;
+            left: -25px;
+          }
         }
+        .ceba {
+          bottom: -6px;
+          right: 32.5%;
+          width: 9%;
+        }
+        .plan {
+          bottom: 60.5%;
+          left: 16%;
+          width: 12%;
+          p {
+            top: -18px;
+            left: 20px;
+          }
+          img {
+            width: 100%;
+            bottom: -44px;
+          }
+          &__2 {
+            bottom: -51px !important;
+            left: -5px;
+          }
+        }
+        .vald {
+          bottom: 53%;
+          left: 30%;
+          width: 12%;
+          p {
+            top: -12px;
+            left: 25px;
+          }
+          img {
+            width: 100%;
+            bottom: -23px;
+          }
+        }
+        .pozu {
+          bottom: 37.5%;
+          left: 28%;
+          width: 7%;
+          p {
+            bottom: -1px;
+            right: 10px;
+          }
+          img {
+            width: 100%;
+            bottom: -37px;
+          }
+        }
+        .pe {
+          bottom: 21.5%;
+          left: 30%;
+          width: 2.8%;
+          p {
+            width: 100px;
+            bottom: -40px;
+            left: -30px;
+          }
+          img {
+            width: 100%;
+          }
+        }
+        .ctba {
+          bottom: 61.5%;
+          left: 69.4%;
+          width: 2.8%;
+          z-index: 1;
+          p {
+            width: 100%;
+            left: -25px;
+          }
+          img {
+            width: 100%;
+            bottom: -62px;
+          }
+          &__2 {
+            right: -14px;
+          }
+        }
+        .cuzco {
+          bottom: 48.8%;
+          left: 70.8%;
+          width: 2.5%;
+          z-index: 1;
+          p {
+            width: 100%;
+            bottom: -25px;
+            left: -48px;
+          }
+          img {
+            width: 100%;
+          }
+          &__2 {
+            left: -15px;
+          }
+        }
+        .azca {
+          bottom: 42.8%;
+          left: 67.5%;
+          width: 2.2%;
+          p {
+            width: 100%;
+            bottom: -21px;
+            left: -25px;
+          }
+          img {
+            width: 100%;
+            bottom: -40px;
+          }
+        }
+        .cham {
+          bottom: 36%;
+          left: 61.8%;
+          width: 8.5%;
+          p {
+            width: 100%;
+            bottom: -50px;
+            left: -40px;
+          }
+          img {
+            width: 100%;
+          }
+        }
+        .alma {
+          bottom: 27%;
+          left: 68%;
+          width: 2.5%;
+          p {
+            width: 100%;
+            bottom: -45px;
+            left: -45px;
+          }
+          img {
+            width: 100%;
+          }
+        }
+        .cent {
+          bottom: 20.4%;
+          left: 66.7%;
+          width: 2.9%;
+          p {
+            width: 100%;
+            bottom: -40px;
+            left: -30px;
+          }
+          img {
+            width: 100%;
+            bottom: -68px;
+          }
+        }
+        .meal {
+          bottom: 8.3%;
+          left: 70%;
+          width: 6.7%;
+          p {
+            width: 100px;
+            bottom: -52px;
+            left: 35px;
+          }
+          img {
+            width: 100%;
+            bottom: -55px;
+          }
+        }
+        .juca {
+          bottom: 27%;
+          left: 90%;
+          width: 7%;
+          p {
+            width: 100px;
+            bottom: -77px;
+            left: -25px;
+          }
+          img {
+            width: 100%;
+          }
+        }
+        .amer {
+          bottom: 35%;
+          left: 76%;
+          width: 6.9%;
+          p {
+            width: 100px;
+            bottom: -40px;
+            left: 20px;
+          }
+          img {
+            width: 105%;
+            bottom: -40px;
+          }
+          &__2 {
+            right: -33px;
+            bottom: -26px !important;
+            width: 80% !important;
+          }
+        }
+        .jova {
+          bottom: 36.5%;
+          left: 89%;
+          width: 10%;
+          p {
+            width: 70px;
+            bottom: -35px;
+            left: 5px;
+          }
+          img {
+            width: 105%;
+          }
+        }
+        .chama {
+          bottom: 62%;
+          left: 70.8%;
+          width: 11.6%;
+          p {
+            width: 100%;
+            bottom: -75px;
+            left: 70px;
+          }
+          img {
+            width: 105%;
+            bottom: -104px;
+          }
+        }
+        .arso {
+          bottom: 64%;
+          left: 78.4%;
+          width: 7.5%;
+          p {
+            width: fit-content;
+            bottom: -36px;
+            left: 25px;
+          }
+          img {
+            width: 105%;
+            bottom: -65px;
+          }
+        }
+        .cana {
+          bottom: 66%;
+          left: 90.4%;
+          width: 12%;
+          p {
+            width: fit-content;
+            bottom: -5px;
+            left: 0px;
+          }
+          img {
+            width: 105%;
+            bottom: -92px;
+            left: 1px;
+          }
+        }
+        .sanchi {
+          bottom: 85.5%;
+          left: 74.5%;
+          width: 8%;
+          p {
+            width: 70px;
+            bottom: -65px;
+            left: -65px;
+          }
+          img {
+            width: 105%;
+            bottom: -95px;
+            left: 24px;
+          }
+          &__1 {
+            width: 130% !important;
+            top: -15px;
+            left: -9px !important;
+          }
+          &__2 {
+            right: 34px;
+            bottom: -96px;
+            width: 130%;
+          }
+          &__3 {
+            top: -29px;
+            right: -13px;
+            width: 75% !important;
+          }
+        }
+        .arva {
+          bottom: 98.7%;
+          left: 87%;
+          width: 9%;
+          p {
+            width: fit-content;
+            bottom: -62px;
+            left: 10px;
+          }
+          img {
+            width: 105%;
+            bottom: -34px;
+          }
+          &__2 {
+            top: -34px !important;
+            left: -23px;
+            width: 190% !important;
+          }
+        }
+        .viso {
+          bottom: 39%;
+          left: 70.6%;
+          width: 5%;
+          p {
+            width: 120%;
+            bottom: -13px;
+            left: 30px;
+          }
+          img {
+            width: 105%;
+            bottom: -45px;
+          }
+        }
+        .sala {
+          bottom: 29.5%;
+          left: 70.4%;
+          width: 4.8%;
+          p {
+            width: 120%;
+            bottom: -41px;
+            left: 25px;
+          }
+          img {
+            width: 105%;
+            bottom: -60px;
+          }
+        }
+        .jero {
+          bottom: 16%;
+          left: 69.8%;
+          width: 1.8%;
+          p {
+            width: 120%;
+            bottom: -21px;
+            left: 12px;
+          }
+          img {
+            width: 90%;
+            bottom: -37px;
+          }
+        }
+      }
     }
+    &__selectors {
+      // display: flex;
+      // flex-direction: column;
+      // width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      width: 90%;
+      max-width: 700px;
+      &__estado {
+        margin-bottom: 15px;
+        h3 {
+          margin-left: 20px;
+          margin-bottom: 5px;
+          @include subSubTitleMobile;
+        }
+        &__buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .alq {
+            margin-left: 20px;
+            margin-right: 20px;
+          }
+          .vent {
+            margin-right: 20px;
+            margin-left: 20px;
+          }
+          button {
+            width: 50%;
+            border-width: 2px;
+            border-color: #2b363d;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            background-color: white;
+            color: #2b363d;
+            @include textMobile;
+          }
+        }
+      }
+      &__tipo {
+        h3 {
+          margin-left: 20px;
+          margin-bottom: 5px;
+          @include subSubTitleMobile;
+        }
+        &__buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
+          .oficina {
+            margin-left: 20px;
+            margin-right: 5px;
+          }
+          .edificio {
+            margin: 0 5px;
+          }
+          .retail {
+            margin-right: 20px;
+            margin-left: 5px;
+          }
+          .exclusiveOfficeBuilding {
+            margin-left: 20px;
+            margin-right: 5px;
+            height: 50px;
+          }
+          .classicBuilding {
+            margin: 0 5px;
+            height: 50px;
+          }
+          .coworking {
+            margin-right: 20px;
+            margin-left: 5px;
+            height: 50px;
+          }
+          button {
+            width: 33%;
+            border-width: 2px;
+            border-color: #2b363d;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            background-color: white;
+            color: #2b363d;
+            @include textMobile;
+          }
+        }
+      }
+      &__buscar {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__all {
+          margin-left: 20px;
+          margin-right: 5px;
+          color: #2b363d;
+          background-color: #fff;
+          cursor: pointer;
+        }
+        &__allDisabled {
+          margin-left: 20px;
+          margin-right: 5px;
+          width: 50%;
+          color: rgb(201, 201, 201) !important;
+          background-color: rgb(255, 255, 255);
+          border: solid;
+          border-width: 2px;
+          border-color: rgb(201, 201, 201) !important;
+          padding: 5px;
+          @include textMobile;
+        }
+        &__search {
+          margin-left: 5px;
+          margin-right: 20px;
+          background-color: #2b363d;
+          color: white !important;
+          cursor: pointer;
+        }
+        &__searchDisabled {
+          width: 50%;
+          height: 35px;
+          margin-left: 5px;
+          margin-right: 20px;
+          background-color: white;
+          color: lightgray !important;
+          border-color: lightgray !important;
+        }
+        button {
+          width: 50%;
+          border: solid;
+          border-width: 2px;
+          border-color: #2b363d;
+          text-align: center;
+          text-decoration: none;
+          padding: 5px;
+          @include textMobile;
+        }
+      }
+      &__ref {
+        margin-left: 20px;
+        margin-right: 42px;
+        position: relative;
+        padding-top: 20px;
+        h4 {
+          @include subSubTitleMobile;
+          color: rgb(180, 180, 180) !important;
+          margin-bottom: 5px;
+        }
+        input {
+          border: solid;
+          border-width: 2px;
+          border-color: rgb(180, 180, 180);
+          height: 25px;
+          width: 100%;
+          padding-left: 18px;
+          font-family: "Jost";
+          color: #b4b4b4;
+          font-size: 16px;
+          padding: 1rem;
+        }
+        &__lupa {
+          position: absolute;
+          height: 17px;
+          bottom: 8px;
+          left: 90%;
+        }
+        &__lupaOculta {
+          display: none;
+        }
+        &__existe {
+          @include litleTextMobile;
+          color: red !important;
+        }
+      }
+      &__sliders {
+        margin: 20px 30px;
+        position: relative;
+        p {
+          position: relative;
+          left: -10px;
+          margin-bottom: 30px;
+          @include textMobile;
+        }
+        &__surfaceDisabled {
+          filter: opacity(0.3);
+        }
+        &__priceDisabled {
+          filter: opacity(0.3);
+        }
+      }
+    }
+  }
 }
 
 .activeButton {
-    background-color: #2b363d !important;
-    color: white !important;
+  background-color: #2b363d !important;
+  color: white !important;
 }
 
 @include tablet {
-    .filtroPatrimonio{
-        &__filterPosition{
-            &__mapContainer{
-                display: flex;
-                justify-content: center;
-                align-items: center;
+  .filtroPatrimonio {
+    &__filterPosition {
+      &__mapContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &__selectors {
+        &__tipo {
+          &__buttons {
+            .exclusiveOfficeBuilding {
+              height: auto;
             }
-            &__selectors{
-                &__tipo{
-                    &__buttons{
-                        .exclusiveOfficeBuilding{
-                            height: auto;
-                        }
-                        .classicBuilding{
-                            height: auto;
-                        }
-                        .coworking{
-                            height: auto;
-                        }
-                    }
-                }
-                &__ref{
-                    padding-top: 30px;
-                }
+            .classicBuilding {
+              height: auto;
             }
+            .coworking {
+              height: auto;
+            }
+          }
         }
-        &__selectors{
-            max-width: 700px;
-            margin: 0 auto;
+        &__ref {
+          padding-top: 30px;
         }
+      }
     }
+    &__selectors {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
 }
 @include desktop {
-    .filtroPatrimonio{
-        margin-top: 120px;
-        &__title{
-            margin-left: 36px;
-            @include textBlack;
-        }
-        &__subTitle{
-            margin-left: 36px;
-            @include desc;
-        }
-        &__filterPosition{
-            display: flex;
-            &__mapContainer{
-                width: 70%;
-                margin-top: 41px;
-                margin-left: 36px;
-                margin-bottom: 168px;
-                overflow-x: initial;
-                position: relative;
-                background-color: white;
-                &__mapa{
-                    height: 527px;
-                    width: 720px;
-                    margin: 0px auto;
-                    .c1{
-                        bottom: 0;
-                        width: 100%;
-                    }
-                    .c2{
-                        bottom:21.5%;
-                        width: 48.9%;
-                    }
-                    .c3{
-                        right: 0px;
-                        bottom: 0px;
-                        width: 87%;
-                    }
-                    .c4{
-                        bottom: 0px;
-                        right: 42%;
-                        width: 18%;
-                    }
-                    .c5{
-                        bottom: 43.8%;
-                        right: 22.4%;
-                        width: 31%;
-                    }
-                    .c6{
-                        bottom: 8.5%;
-                        right: 28.2%;
-                        width: 2.7%;
-                    }
-                    .c62{
-                        bottom: 55.5%;
-                        right: 26.6%;
-                        width: 1.5%;
-                    }
-                    .c7{
-                        bottom:35%;
-                        right: 0;
-                        width: 16%;
-                    }
-                    .c8{
-                        bottom: 0;
-                        right: 0;
-                        width: 18%;
-                    }
-                    .c9{
-                        bottom: 3.5%;
-                        right: 58%;
-                        width: 15%;
-                    }
-                    .c10{
-                        bottom: -8.5%;
-                        right: 21%;
-                        width: 13%;
-                    }
-                    .secu{
-                        bottom: 33%;
-                        right: 32.7%;
-                        width: 15%;
-                        p{
-                            width: 100px;
-                            bottom: 39px;
-                            left: -78px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -5px;
-                            left: -33px;
-                        }
-                    }
-                    .ceba{
-                        bottom: 2px;
-                        right: 32.5%;
-                        width: 9%;
-                    }
-                    .plan{
-                        bottom: 60.5%;
-                        left: 16%;
-                        width: 12%;
-                        p{
-                            top: -2px;
-                            left: 20px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -51px;
-                        }
-                        &__2{
-                            bottom: -65px !important;
-                            left: -5px;
-                        }
-                    }
-                    .vald{
-                        bottom: 53%;
-                        left: 30%;
-                        width: 12%;
-                        p{
-                            top: -11px;
-                            left: 25px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -27px;
-                            left: 1px;
-                        }
-                    }
-                    .pozu{
-                        bottom: 37.5%;
-                        left: 28.5%;
-                        width: 7%;
-                        p{
-                            bottom: -5px;
-                            right: 10px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -43px;
-                        }
-                    }
-                    .pe{
-                        bottom:21.5%;
-                        left:30%;
-                        width: 2.8%;
-                        p{
-                            width: 100px;
-                            bottom: -26px;
-                            left: -30px;
-                        }
-                        img{
-                            width: 100%;
-                        }
-                    }
-                    .ctba{
-                        bottom: 61.5%;
-                        left: 69.7%;
-                        width: 2.8%;
-                        p{
-                            width: 100%;
-                            left: -18px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -65px;
-                        }
-                        &__2{
-                            right: -17px;
-                        }
-                    }
-                    .cuzco{
-                        bottom: 48.8%;
-                        left: 70.8%;
-                        width: 2.5%;
-                        p{
-                            width: 100%;
-                            bottom: -16px;
-                            left: -48px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -26px;
-                        }
-                        &__2{
-                            left: -20px;
-                        }
-                    }
-                    .azca{
-                        bottom: 43.1%;
-                        left: 67.5%;
-                        width: 2.2%;
-                        p{
-                            width: 100%;
-                            bottom: -30px;
-                            left: -25px;
-                        }
-                        img{
-                            width: 100%;
-                        }
-                    }
-                    .cham{
-                        bottom:36%;
-                        left:61.8%;
-                        width: 8.5%;
-                        p{
-                            width: 100%;
-                            bottom: -50px;
-                            left: -27px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -67px;
-                            left: 5px;
-                        }
-                    }
-                    .alma{
-                        bottom:27%;
-                        left:68%;
-                        width: 2.5%;
-                        p{
-                            width: 100%;
-                            bottom: -32px;
-                            left: -40px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -30px;
-                        }
-                    }
-                    .cent{
-                        bottom: 20.4%;
-                        left: 66.7%;
-                        width: 2.9%;
-                        p{
-                            width: 100%;
-                            bottom: -32px;
-                            left: -30px;
-                        }
-                        img{
-                            width: 100%;
-                            left: 4px;
-                        }
-                    }
-                    .meal{
-                        bottom: 8.3%;
-                        left: 70%;
-                        width: 6.7%;
-                        p{
-                            width: 100px;
-                            bottom: -58px;
-                            left: 54px;
-                        }
-                        img{
-                            width: 100%;
-                            bottom: -61px;
-                        }
-                    }
-                    .juca{
-                        bottom: 27%;
-                        left: 90%;
-                        width: 7%;
-                        p{
-                            width: 100px;
-                            bottom: -92px;
-                            left: -9px;
-                        }
-                        img{
-                            width: 100%;
-                        }
-                    }
-                    .amer{
-                        bottom:35%;
-                        left: 76%;
-                        width: 6.9%;
-                        p{
-                            width: 100px;
-                            bottom: -47px;
-                            left: 22px;
-                        }
-                        img{
-                            width: 105%;
-                        }
-                        &__2{
-                            right: -45px;
-                            bottom: -28px;
-                            width: 80%!important;
-                        }
-                    }
-                    .jova{
-                        bottom: 36.5%;
-                        left: 89%;
-                        width: 10%;
-                        p{
-                            width: 70px;
-                            bottom: -29px;
-                            left: 5px;
-                        }
-                        img{
-                            width: 105%;
-                        }
-                    }
-                    .chama{
-                        bottom: 62%;
-                        left: 70.8%;
-                        width: 11.6%;
-                        p{
-                            width: 100%;
-                            bottom: -90px;
-                            left: 88px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -116px;
-                        }
-                    }
-                    .arso{
-                        bottom: 64%;
-                        left: 78.4%;
-                        width: 7.5%;
-                        p{
-                            width: fit-content;
-                            bottom:-45px;
-                            left: 25px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -77px;
-                        }
-                    }
-                    .cana{
-                        bottom: 66%;
-                        left: 90.4%;
-                        width: 12%;
-                        p{
-                            width: fit-content;
-                            bottom:-5px;
-                            left: 0px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -104px;
-                        }
-                    }
-                    .sanchi{
-                        bottom:85.5%;
-                        left: 74.5%;
-                        width: 8%;
-                        p{
-                            width: 70px;
-                            bottom: -57px;
-                            left: -65px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -114px;
-                        }
-                        &__1{
-                            width: 128%!important;
-                            top: -2px;
-                            left: -11px;
-                        }
-                        &__2{
-                            right: -48px;
-                            bottom: -120px;
-                            width: 140%!important;
-                        }
-                        &__3{
-                            top: -29px;
-                            right: 37px;
-                            width: 65%!important;
-                            left: 37px!important;
-                        }
-                    }
-                    .arva{
-                        bottom:98.7%;
-                        left: 87%;
-                        width: 9%;
-                        p{
-                            width: fit-content;
-                            bottom: -60px;
-                            left: 10px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -38px;
-                        }
-                        &__2{
-                            top: -21px !important;
-                            left: -28px;
-                            width: 160%!important;
-                        }
-                    }
-                    .viso{
-                        bottom:39%;
-                        left: 70.6%;
-                        width: 5%;
-                        p{
-                            width: 120%;
-                            bottom: -15px;
-                            left: 41px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -47px;
-                        }
-                    }
-                    .sala{
-                        bottom:29.5%;
-                        left: 70.4%;
-                        width: 4.8%;
-                        p{
-                            width: 120%;
-                            bottom: -50px;
-                            left: 38px;
-                        }
-                        img{
-                            width: 105%;
-                            bottom: -65px;
-                        }
-                    }
-                    .jero{
-                        bottom:16%;
-                        left: 69.8%;
-                        width: 1.8%;
-                        p{
-                            width: 120%;
-                            bottom: -32px;
-                            left: 20px;
-                        }
-                        img{
-                            width: 90%;
-                            bottom: -43px;
-                        }
-                    }
-                }
-            }
-            &__selectors{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 45%;
-                margin-right: 0px;
-                margin-bottom: 99px;
-                height: auto;
-                border-left: solid;
-                border-color: rgb(211, 211, 211);
-                border-width: 2px;
-                padding-left: 22px;
-                z-index: 1;
-                background-color: white;
-                &__estado{
-                    margin-bottom: 27px;
-                    h3{
-                        margin-top: 0;
-                        margin-left: 20px;
-                        margin-bottom: 20px;
-                        @include apart;
-                    }
-                    &__buttons{
-                        display: flex;
-                        justify-content:space-between;
-                        align-items: center;
-                        .alq{
-                            margin-left: 20px;
-                            margin-right: 20px;
-                        }
-                        .vent{
-                            margin-right: 20px;
-                            margin-left: 20px;
-                        }
-                        button{
-                            width: 50%;
-                            height: 48px;
-                            border-width: 2px;
-                            border-color: #2b363d;
-                            text-align: center;
-                            text-decoration: none;
-                            padding: 5px;
-                            background-color: white;
-                            color: #2b363d;
-                            @include mapBut;
-                        }
-                    }
-                }
-                &__tipo{
-                    margin-bottom: 27px;
-                    h3{
-                        margin-left: 20px;
-                        margin-bottom: 20px;
-                        @include apart;
-                    }
-                    &__buttons{
-                        display: flex;
-                        align-items: center;
-                        .oficina{
-                            margin-left: 20px;
-                            margin-right: 5px;
-                        }
-                        .edificio{
-                            margin: 0 5px;
-                        }
-                        .retail{
-                            margin-right: 20px;
-                            margin-left: 5px;
-                        }
-                        .exclusiveOfficeBuilding{
-                            margin-left: 20px;
-                            margin-right: 5px;
-                            //height: fit-content;
-                        }
-                        .classicBuilding{
-                            margin: 0 5px;
-                            //height: fit-content;
-                        }
-                        .coworking{
-                            margin-right: 20px;
-                            margin-left: 5px;
-                            //height: fit-content;
-                        }
-                        button{
-                            width: 33%;
-                            height: 48px;
-                            border-width: 2px;
-                            border-color: #2b363d;
-                            text-align: center;
-                            text-decoration: none;
-                            padding: 5px;
-                            background-color: white;
-                            color: #2b363d;
-                            @include mapBut;
-                        }
-                    }
-                }
-                &__buscar{
-                    margin-top: 0px;
-                    margin-bottom: 27px;
-                    display: flex;
-                    justify-content:space-between;
-                    align-items: center;
-                    &__all{
-                        margin-left: 20px;
-                        margin-right: 5px;
-                        color: #2b363d;
-                    }
-                    &__allDisabled{
-                        height: 50px;
-                        @include mapBut;
-                    }
-                    &__search{
-                        margin-left: 5px;
-                        margin-right: 20px;
-                        background-color: #2b363d;
-                        color: white !important;
-                    }
-                    &__searchDisabled{
-                        height: 50px;
-                        @include mapBut;
-                    }
-                    button{
-                        width: 50%;
-                        border:solid;
-                        border-width: 2px;
-                        border-color: #2b363d;
-                        text-align: center;
-                        text-decoration: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 0;
-                        height: 46px;
-                        @include mapBut;
-
-                    }
-                }
-                &__ref{
-                    margin-left: 20px;
-                    margin-right: 0px;
-                    h4{
-                        @include apart;
-                        color: rgb(180, 180, 180)!important;
-                        margin-bottom: 20px;
-            
-                    }
-                    input{
-                        border: solid;
-                        border-width: 2px;
-                        border-color: rgb(180, 180, 180);
-                        height: 46px;
-                        width: 96.5%;
-                        font-family: 'Jost';
-                        color: #b4b4b4;
-                    }
-                    &__lupa{
-                        position: absolute;
-                        height: 17px;
-                        bottom: 14px;
-                        left: 90%;
-                    }
-                    &__lupaOculta{
-                        display: none;
-                    }
-                }
-                &__sliders{
-                    margin: 27px 30px;
-                    margin-top: 30px;
-                    margin-bottom: 62px;
-                    position: relative;
-                    p{  
-                        position: relative;
-                        left: -10px;
-                        @include apart;
-                        margin-bottom: 57px;
-                    }
-                    &__price{
-                        margin-top: 0px;
-                    }
-                }
-            }
-        }
+  .filtroPatrimonio {
+    margin-top: 120px;
+    &__title {
+      margin-left: 36px;
+      @include textBlack;
     }
+    &__subTitle {
+      margin-left: 36px;
+      @include desc;
+    }
+    &__filterPosition {
+      display: flex;
+      &__mapContainer {
+        width: 70%;
+        margin-top: 41px;
+        margin-left: 36px;
+        margin-bottom: 168px;
+        overflow-x: initial;
+        position: relative;
+        background-color: white;
+        &__mapa {
+          height: 527px;
+          width: 720px;
+          margin: 0px auto;
+          .c1 {
+            bottom: 0;
+            width: 100%;
+          }
+          .c2 {
+            bottom: 21.5%;
+            width: 48.9%;
+          }
+          .c3 {
+            right: 0px;
+            bottom: 0px;
+            width: 87%;
+          }
+          .c4 {
+            bottom: 0px;
+            right: 42%;
+            width: 18%;
+          }
+          .c5 {
+            bottom: 43.8%;
+            right: 22.4%;
+            width: 31%;
+          }
+          .c6 {
+            bottom: 8.5%;
+            right: 28.2%;
+            width: 2.7%;
+          }
+          .c62 {
+            bottom: 55.5%;
+            right: 26.6%;
+            width: 1.5%;
+          }
+          .c7 {
+            bottom: 35%;
+            right: 0;
+            width: 16%;
+          }
+          .c8 {
+            bottom: 0;
+            right: 0;
+            width: 18%;
+          }
+          .c9 {
+            bottom: 3.5%;
+            right: 58%;
+            width: 15%;
+          }
+          .c10 {
+            bottom: -8.5%;
+            right: 21%;
+            width: 13%;
+          }
+          .secu {
+            bottom: 33%;
+            right: 32.7%;
+            width: 15%;
+            p {
+              width: 100px;
+              bottom: 39px;
+              left: -78px;
+            }
+            img {
+              width: 100%;
+              bottom: -5px;
+              left: -33px;
+            }
+          }
+          .ceba {
+            bottom: 2px;
+            right: 32.5%;
+            width: 9%;
+          }
+          .plan {
+            bottom: 60.5%;
+            left: 16%;
+            width: 12%;
+            p {
+              top: -2px;
+              left: 20px;
+            }
+            img {
+              width: 100%;
+              bottom: -51px;
+            }
+            &__2 {
+              bottom: -65px !important;
+              left: -5px;
+            }
+          }
+          .vald {
+            bottom: 53%;
+            left: 30%;
+            width: 12%;
+            p {
+              top: -11px;
+              left: 25px;
+            }
+            img {
+              width: 100%;
+              bottom: -27px;
+              left: 1px;
+            }
+          }
+          .pozu {
+            bottom: 37.5%;
+            left: 28.5%;
+            width: 7%;
+            p {
+              bottom: -5px;
+              right: 10px;
+            }
+            img {
+              width: 100%;
+              bottom: -43px;
+            }
+          }
+          .pe {
+            bottom: 21.5%;
+            left: 30%;
+            width: 2.8%;
+            p {
+              width: 100px;
+              bottom: -26px;
+              left: -30px;
+            }
+            img {
+              width: 100%;
+            }
+          }
+          .ctba {
+            bottom: 61.5%;
+            left: 69.7%;
+            width: 2.8%;
+            p {
+              width: 100%;
+              left: -18px;
+            }
+            img {
+              width: 100%;
+              bottom: -65px;
+            }
+            &__2 {
+              right: -17px;
+            }
+          }
+          .cuzco {
+            bottom: 48.8%;
+            left: 70.8%;
+            width: 2.5%;
+            p {
+              width: 100%;
+              bottom: -16px;
+              left: -48px;
+            }
+            img {
+              width: 100%;
+              bottom: -26px;
+            }
+            &__2 {
+              left: -20px;
+            }
+          }
+          .azca {
+            bottom: 43.1%;
+            left: 67.5%;
+            width: 2.2%;
+            p {
+              width: 100%;
+              bottom: -30px;
+              left: -25px;
+            }
+            img {
+              width: 100%;
+            }
+          }
+          .cham {
+            bottom: 36%;
+            left: 61.8%;
+            width: 8.5%;
+            p {
+              width: 100%;
+              bottom: -50px;
+              left: -27px;
+            }
+            img {
+              width: 100%;
+              bottom: -67px;
+              left: 5px;
+            }
+          }
+          .alma {
+            bottom: 27%;
+            left: 68%;
+            width: 2.5%;
+            p {
+              width: 100%;
+              bottom: -32px;
+              left: -40px;
+            }
+            img {
+              width: 100%;
+              bottom: -30px;
+            }
+          }
+          .cent {
+            bottom: 20.4%;
+            left: 66.7%;
+            width: 2.9%;
+            p {
+              width: 100%;
+              bottom: -32px;
+              left: -30px;
+            }
+            img {
+              width: 100%;
+              left: 4px;
+            }
+          }
+          .meal {
+            bottom: 8.3%;
+            left: 70%;
+            width: 6.7%;
+            p {
+              width: 100px;
+              bottom: -58px;
+              left: 54px;
+            }
+            img {
+              width: 100%;
+              bottom: -61px;
+            }
+          }
+          .juca {
+            bottom: 27%;
+            left: 90%;
+            width: 7%;
+            p {
+              width: 100px;
+              bottom: -92px;
+              left: -9px;
+            }
+            img {
+              width: 100%;
+            }
+          }
+          .amer {
+            bottom: 35%;
+            left: 76%;
+            width: 6.9%;
+            p {
+              width: 100px;
+              bottom: -47px;
+              left: 22px;
+            }
+            img {
+              width: 105%;
+            }
+            &__2 {
+              right: -45px;
+              bottom: -28px;
+              width: 80% !important;
+            }
+          }
+          .jova {
+            bottom: 36.5%;
+            left: 89%;
+            width: 10%;
+            p {
+              width: 70px;
+              bottom: -29px;
+              left: 5px;
+            }
+            img {
+              width: 105%;
+            }
+          }
+          .chama {
+            bottom: 62%;
+            left: 70.8%;
+            width: 11.6%;
+            p {
+              width: 100%;
+              bottom: -90px;
+              left: 88px;
+            }
+            img {
+              width: 105%;
+              bottom: -116px;
+            }
+          }
+          .arso {
+            bottom: 64%;
+            left: 78.4%;
+            width: 7.5%;
+            p {
+              width: fit-content;
+              bottom: -45px;
+              left: 25px;
+            }
+            img {
+              width: 105%;
+              bottom: -77px;
+            }
+          }
+          .cana {
+            bottom: 66%;
+            left: 90.4%;
+            width: 12%;
+            p {
+              width: fit-content;
+              bottom: -5px;
+              left: 0px;
+            }
+            img {
+              width: 105%;
+              bottom: -104px;
+            }
+          }
+          .sanchi {
+            bottom: 85.5%;
+            left: 74.5%;
+            width: 8%;
+            p {
+              width: 70px;
+              bottom: -57px;
+              left: -65px;
+            }
+            img {
+              width: 105%;
+              bottom: -114px;
+            }
+            &__1 {
+              width: 128% !important;
+              top: -2px;
+              left: -11px;
+            }
+            &__2 {
+              right: -48px;
+              bottom: -120px;
+              width: 140% !important;
+            }
+            &__3 {
+              top: -29px;
+              right: 37px;
+              width: 65% !important;
+              left: 37px !important;
+            }
+          }
+          .arva {
+            bottom: 98.7%;
+            left: 87%;
+            width: 9%;
+            p {
+              width: fit-content;
+              bottom: -60px;
+              left: 10px;
+            }
+            img {
+              width: 105%;
+              bottom: -38px;
+            }
+            &__2 {
+              top: -21px !important;
+              left: -28px;
+              width: 160% !important;
+            }
+          }
+          .viso {
+            bottom: 39%;
+            left: 70.6%;
+            width: 5%;
+            p {
+              width: 120%;
+              bottom: -15px;
+              left: 41px;
+            }
+            img {
+              width: 105%;
+              bottom: -47px;
+            }
+          }
+          .sala {
+            bottom: 29.5%;
+            left: 70.4%;
+            width: 4.8%;
+            p {
+              width: 120%;
+              bottom: -50px;
+              left: 38px;
+            }
+            img {
+              width: 105%;
+              bottom: -65px;
+            }
+          }
+          .jero {
+            bottom: 16%;
+            left: 69.8%;
+            width: 1.8%;
+            p {
+              width: 120%;
+              bottom: -32px;
+              left: 20px;
+            }
+            img {
+              width: 90%;
+              bottom: -43px;
+            }
+          }
+        }
+      }
+      &__selectors {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 45%;
+        margin-right: 0px;
+        margin-bottom: 99px;
+        height: auto;
+        border-left: solid;
+        border-color: rgb(211, 211, 211);
+        border-width: 2px;
+        padding-left: 22px;
+        z-index: 1;
+        background-color: white;
+        &__estado {
+          margin-bottom: 27px;
+          h3 {
+            margin-top: 0;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            @include apart;
+          }
+          &__buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .alq {
+              margin-left: 20px;
+              margin-right: 20px;
+            }
+            .vent {
+              margin-right: 20px;
+              margin-left: 20px;
+            }
+            button {
+              width: 50%;
+              height: 48px;
+              border-width: 2px;
+              border-color: #2b363d;
+              text-align: center;
+              text-decoration: none;
+              padding: 5px;
+              background-color: white;
+              color: #2b363d;
+              @include mapBut;
+            }
+          }
+        }
+        &__tipo {
+          margin-bottom: 27px;
+          h3 {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            @include apart;
+          }
+          &__buttons {
+            display: flex;
+            align-items: center;
+            .oficina {
+              margin-left: 20px;
+              margin-right: 5px;
+            }
+            .edificio {
+              margin: 0 5px;
+            }
+            .retail {
+              margin-right: 20px;
+              margin-left: 5px;
+            }
+            .exclusiveOfficeBuilding {
+              margin-left: 20px;
+              margin-right: 5px;
+              //height: fit-content;
+            }
+            .classicBuilding {
+              margin: 0 5px;
+              //height: fit-content;
+            }
+            .coworking {
+              margin-right: 20px;
+              margin-left: 5px;
+              //height: fit-content;
+            }
+            button {
+              width: 33%;
+              height: 48px;
+              border-width: 2px;
+              border-color: #2b363d;
+              text-align: center;
+              text-decoration: none;
+              padding: 5px;
+              background-color: white;
+              color: #2b363d;
+              @include mapBut;
+            }
+          }
+        }
+        &__buscar {
+          margin-top: 0px;
+          margin-bottom: 27px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &__all {
+            margin-left: 20px;
+            margin-right: 5px;
+            color: #2b363d;
+          }
+          &__allDisabled {
+            height: 50px;
+            @include mapBut;
+          }
+          &__search {
+            margin-left: 5px;
+            margin-right: 20px;
+            background-color: #2b363d;
+            color: white !important;
+          }
+          &__searchDisabled {
+            height: 50px;
+            @include mapBut;
+          }
+          button {
+            width: 50%;
+            border: solid;
+            border-width: 2px;
+            border-color: #2b363d;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            height: 46px;
+            @include mapBut;
+          }
+        }
+        &__ref {
+          margin-left: 20px;
+          margin-right: 0px;
+          h4 {
+            @include apart;
+            color: rgb(180, 180, 180) !important;
+            margin-bottom: 20px;
+          }
+          input {
+            border: solid;
+            border-width: 2px;
+            border-color: rgb(180, 180, 180);
+            height: 46px;
+            width: 96.5%;
+            font-family: "Jost";
+            color: #b4b4b4;
+          }
+          &__lupa {
+            position: absolute;
+            height: 17px;
+            bottom: 14px;
+            left: 90%;
+          }
+          &__lupaOculta {
+            display: none;
+          }
+        }
+        &__sliders {
+          margin: 27px 30px;
+          margin-top: 30px;
+          margin-bottom: 62px;
+          position: relative;
+          p {
+            position: relative;
+            left: -10px;
+            @include apart;
+            margin-bottom: 57px;
+          }
+          &__price {
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
 }
 .activeButton {
-    background-color: #2b363d !important;
-    color: white !important;
+  background-color: #2b363d !important;
+  color: white !important;
 }
 
-.cliploader{
-    align-items: center;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    opacity: 0.6;
-    z-index: 20;
-
+.cliploader {
+  align-items: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  opacity: 0.6;
+  z-index: 20;
 }
 
-.css-1kz0hui-MuiSlider-valueLabel.MuiSlider-valueLabelOpen{
-    top: 16;
-    background-color: transparent;
-    color: black;
-    @include mapBut;
+.css-1kz0hui-MuiSlider-valueLabel.MuiSlider-valueLabelOpen {
+  top: 16;
+  background-color: transparent;
+  color: black;
+  @include mapBut;
 }
 
-.css-187mznn-MuiSlider-root{
-    color: #2b363d!important;
+.css-187mznn-MuiSlider-root {
+  color: #2b363d !important;
 }
-.css-exkjcx{
-    color: #2b363d!important;
-}
-
-span[data-index='1'] {
-    border-width: 6px;
+.css-exkjcx {
+  color: #2b363d !important;
 }
 
-.css-eg0mwd-MuiSlider-thumb{
-    background-color: white!important;
-    border: solid;
-    border-width: 3px;
-}
-.css-7drnjp{
-    background-color: white!important;
-    border: solid;
-    border-width: 3px;
+span[data-index="1"] {
+  border-width: 6px;
 }
 
-.css-1kz0hui-MuiSlider-valueLabel:before{
-    display: none;
+.css-eg0mwd-MuiSlider-thumb {
+  background-color: white !important;
+  border: solid;
+  border-width: 3px;
 }
-.css-eg0mwd-MuiSlider-thumb.Mui-active{
-    box-shadow: none !important;
+.css-7drnjp {
+  background-color: white !important;
+  border: solid;
+  border-width: 3px;
+}
+
+.css-1kz0hui-MuiSlider-valueLabel:before {
+  display: none;
+}
+.css-eg0mwd-MuiSlider-thumb.Mui-active {
+  box-shadow: none !important;
 }

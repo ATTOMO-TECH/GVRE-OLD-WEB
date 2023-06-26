@@ -1,288 +1,288 @@
 @mixin titleHomeMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 52px;
-    font-style: normal;
-    color: white;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 52px;
+  font-style: normal;
+  color: white;
+  text-decoration: none;
 }
 @mixin textHomeMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 26px;
-    font-style: normal;
-    color: white;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  font-style: normal;
+  color: white;
+  text-decoration: none;
 }
 @mixin buttonHomeMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 26px;
-    font-style: normal;
-    color: white;
-    background-color: transparent;
-    border: solid;
-    border-color: white;
-    border-width: 2px;
-    width: 130px;
-    height: 40px;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  font-style: normal;
+  color: white;
+  background-color: transparent;
+  border: solid;
+  border-color: white;
+  border-width: 2px;
+  width: 130px;
+  height: 40px;
 }
 @mixin buttonMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 17px;
-    font-style: normal;
-    color: white;
-    background-color: #2B363D;
-    height: 29px;
-    width: 140px;
-    border-color: #2B363D;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  font-style: normal;
+  color: white;
+  background-color: #2b363d;
+  height: 29px;
+  width: 140px;
+  border-color: #2b363d;
 }
 @mixin buttonWhiteMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 17px;
-    font-style: normal;
-    color: #2B363D;
-    background-color: white;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  font-style: normal;
+  color: #2b363d;
+  background-color: white;
 }
 @mixin subTitleMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 43px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 43px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin categoriesLinkMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 26px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  font-style: normal;
+  color: black;
 }
 @mixin subSubTitleMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 26px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin textMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin textBlackMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin moreMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 17px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin contactMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 17px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 @mixin litleTextMobile {
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 14px;
-    font-style: normal;
-    color: black;
-    text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+  font-style: normal;
+  color: black;
+  text-decoration: none;
 }
 
 //---------------------------------------------------------Desktop----------------------------------------------
 
 @mixin titleHome {
-    font-family: 'Jost', sans-serif;
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 86px;
-    font-style: normal;
-    color: white;
+  font-family: "Jost", sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 86px;
+  font-style: normal;
+  color: white;
 }
 @mixin textHome {
-    font-family: 'Jost', sans-serif;
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 43px;
-    font-style: normal;
-    color: white;
+  font-family: "Jost", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 43px;
+  font-style: normal;
+  color: white;
 }
 @mixin button {
-    font-family: 'Jost', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 34px;
-    font-style: normal;
-    color: white;
-    background-color: #2B363D;
-    height: 64px;
-    width: 210px;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 34px;
+  font-style: normal;
+  color: white;
+  background-color: #2b363d;
+  height: 64px;
+  width: 210px;
 }
 @mixin buttonWhite {
-    font-family: 'Jost', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 34px;
-    font-style: normal;
-    color: #2B363D;
-    background-color: white;
-    height: 64px;
-    width: 210px;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 34px;
+  font-style: normal;
+  color: #2b363d;
+  background-color: white;
+  height: 64px;
+  width: 210px;
 }
 @mixin subTitle {
-    font-family: 'Jost', sans-serif;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 86px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 86px;
+  font-style: normal;
+  color: black;
 }
 @mixin categoriesLink {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 36px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;
+  font-style: normal;
+  color: black;
 }
 @mixin subSubTitle {
-    font-family: 'Jost', sans-serif;
-    font-size: 25px;
-    font-weight: 400;
-    line-height: 57px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 57px;
+  font-style: normal;
+  color: black;
 }
 @mixin text {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 36px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;
+  font-style: normal;
+  color: black;
 }
-@mixin textBlack{
-    font-family: 'Jost', sans-serif;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 52px;
-    font-style: normal;
-    color: black;
+@mixin textBlack {
+  font-family: "Jost", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 52px;
+  font-style: normal;
+  color: black;
 }
 @mixin more {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 36px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;
+  font-style: normal;
+  color: black;
 }
 @mixin contact {
-    font-family: 'Jost', sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 11px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 11px;
+  font-style: normal;
+  color: black;
 }
 @mixin litleText {
-    font-family: 'Jost', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 15px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+  font-style: normal;
+  color: black;
 }
 @mixin desc {
-    font-family: 'Jost', sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 15px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 15px;
+  font-style: normal;
+  color: black;
 }
 @mixin apart {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 15px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 15px;
+  font-style: normal;
+  color: black;
 }
 @mixin mapBut {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 15px;
-    font-style: normal;
-    color: black;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 15px;
+  font-style: normal;
+  color: black;
 }
 
-@font-face{
-    font-family: "PoppinsLigth300";
-    src: local("PoppinsLigth300"),
-        url('./../assets/fonts/poppins/Poppins-Light.ttf') format("truetype");
-    font-weight: 300;
+@font-face {
+  font-family: "PoppinsLigth300";
+  src: local("PoppinsLigth300"),
+    url("./../assets/fonts/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
 }
 
-@font-face{
-    font-family: "PoppinsMedium500";
-    src: local("PoppinsMedium500"),
-        url('./../assets/fonts/poppins/Poppins-Medium.ttf') format("truetype");
-    font-weight: 500;
+@font-face {
+  font-family: "PoppinsMedium500";
+  src: local("PoppinsMedium500"),
+    url("./../assets/fonts/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
 }
 
- @font-face{
-    font-family: "PoppinsRegular400";
-    src: local("PoppinsRegular400"),
-        url('./../assets/fonts/poppins/Poppins-Regular.ttf') format("truetype");
-    font-weight: 400;
+@font-face {
+  font-family: "PoppinsRegular400";
+  src: local("PoppinsRegular400"),
+    url("./../assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
 }
 
-@font-face{
-    font-family: "JostRegular400";
-    src: local("JostRegular400"),
-        url('./../assets/fonts/jost/Jost-Regular.ttf') format("truetype");
-    font-weight: 400;
+@font-face {
+  font-family: "JostRegular400";
+  src: local("JostRegular400"),
+    url("./../assets/fonts/jost/Jost-Regular.ttf") format("truetype");
+  font-weight: 400;
 }
 
-@font-face{
-    font-family: "JostMedium500";
-    src: local("JostMedium500"),
-        url('./../assets/fonts/jost/Jost-Medium.ttf') format("truetype");
-    font-weight: 500;
+@font-face {
+  font-family: "JostMedium500";
+  src: local("JostMedium500"),
+    url("./../assets/fonts/jost/Jost-Medium.ttf") format("truetype");
+  font-weight: 500;
 }
