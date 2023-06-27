@@ -87,7 +87,12 @@ export default function ResidentialItem({ list, currentConsultant }) {
 
   //Redirección a la home si el inmueble está inactivo
   useEffect(() => {
-    if (list[0].adStatus !== "Activo") router.push("/");
+    if (
+      list[0].adStatus !== "Activo" ||
+      list[0].gvOperationClose === "Alquilado" ||
+      list[0].gvOperationClose === "Vendido"
+    )
+      router.push("/");
   }, [list, router]);
 
   useEffect(() => {
