@@ -49,7 +49,7 @@ export default function Costa({ orderedItems, pages, query }) {
     const pageCount = pages;
     const getPostItems = orderedItems?.map(item => {
         return item.showOnWeb === true ?
-            <div onClick={setPosition} className='costa__list__item' key={item._id} details={item}>
+            <div onClick={setPosition} className='costa__list__item' key={item._id}>
                 {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
                     <div className='wrapper'>
                         <div className='costa__list__item__status'>
