@@ -554,15 +554,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  width: 90%;
+  margin: 20px auto;
+  width: 100%;
   max-width: 700px;
   &__estado {
-    //margin-bottom: 15px;
+    margin-bottom: 30px; 
     h3 {
       margin-left: 20px;
       margin-bottom: 5px;
       @include subSubTitleMobile;
+    
     }
     &__buttons {
       display: flex;
@@ -590,6 +591,8 @@
     }
   }
   &__tipo {
+    
+    margin-bottom: 30px;
     h3 {
       margin-left: 20px;
       margin-bottom: 5px;
@@ -721,21 +724,25 @@
     margin-right: 42px;
     padding-top: 20px;
     position: relative;
+    margin-top: 30px;
     h4 {
       @include subSubTitleMobile;
       color: rgb(180, 180, 180) !important;
       margin-bottom: 5px;
+      font-weight: 100;
     }
     input {
       border: solid;
       border-width: 2px;
       border-color: rgb(180, 180, 180);
       height: 25px;
-      width: 100%;
+      width: 107%;
       padding-left: 18px;
       font-family: "Jost";
       color: #b4b4b4;
       font-size: 16px;
+      padding: 1rem; 
+    
     }
     &__lupa {
       position: absolute;
@@ -760,7 +767,7 @@
 .selectors__ref__lupa {
   position: absolute;
   height: 18px;
-  bottom: 4px;
+  bottom: 10px;
   left: 90%;
 }
 
@@ -1066,6 +1073,7 @@
         margin-left: 20px;
         margin-bottom: 20px;
         @include apart;
+        font-weight: 400;
       }
       &__buttons {
         display: flex;
@@ -1082,6 +1090,7 @@
           background-color: white;
           color: #2b363d;
           @include mapBut;
+          font-size: 16px;
         }
       }
     }
@@ -1091,6 +1100,8 @@
         margin-left: 20px;
         margin-bottom: 20px;
         @include apart;
+        font-weight: 400;
+        
       }
       &__buttons {
         display: flex;
@@ -1106,6 +1117,7 @@
           background-color: white;
           color: #2b363d;
           @include mapBut;
+          font-size: 16px;
         }
       }
     }
@@ -1115,6 +1127,7 @@
         margin-left: 20px;
         margin-bottom: 20px;
         @include apart;
+        font-weight: 400;
       }
       &__buttons {
         display: flex;
@@ -1130,6 +1143,7 @@
           background-color: white;
           color: #2b363d;
           @include mapBut;
+          font-size: 16px;
         }
       }
     }
@@ -1159,8 +1173,7 @@
         align-items: center;
         justify-content: center;
         padding: 0;
-        height: 50px;
-
+        height: 50px;    
         @include mapBut;
       }
     }
@@ -1172,6 +1185,7 @@
         @include apart;
         color: rgb(180, 180, 180) !important;
         margin-bottom: 20px;
+        font-weight: 100;
       }
       input {
         border: solid;
@@ -1245,6 +1259,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    
         .alq {
           margin-left: 20px;
           margin-right: 20px;
@@ -1262,7 +1277,7 @@
           text-decoration: none;
           padding: 5px;
           background-color: white;
-          color: #2b363d;
+          color: #2b363d;          
           @include textMobile;
         }
       }
@@ -1299,7 +1314,7 @@
           text-decoration: none;
           padding: 5px;
           background-color: white;
-          color: #2b363d;
+          color: #2b363d;          
           @include textMobile;
         }
       }
@@ -1312,7 +1327,7 @@
       &__all {
         margin-left: 20px;
         margin-right: 5px;
-        color: #2b363d;
+        color: #2b363d;        
       }
       &__search {
         margin-left: 5px;
@@ -1328,7 +1343,7 @@
         border-color: #2b363d;
         text-align: center;
         text-decoration: none;
-        padding: 5px;
+        padding: 5px;        
         @include textMobile;
       }
     }
