@@ -34,6 +34,14 @@ import '../styles/politicaPrivacidad.scss'
 import '../styles/index.scss'
 import '../styles/globals.scss'
 import Provider from '../providers/generalProvider'
+
+import TagManager from 'react-gtm-module';
+import { useEffect } from 'react';
+
+const tagManagerArgs = {
+  gtmId: 'GTM-TZPVZRC',
+};
+
 // Componente que envuelve la app. 
 /**
  * NOTAS: Este componente envuelve toda la app. Todo lo que se muestra aquí se renderiza para cada página. Es por eso que aquí importaremos nuestros estilos globales.
@@ -42,6 +50,9 @@ import Provider from '../providers/generalProvider'
  * 
  */
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
   return (
     <Provider>
       <Component {...pageProps} />

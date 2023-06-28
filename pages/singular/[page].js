@@ -50,7 +50,7 @@ export default function Singular({ orderedItems, pages, query }) {
     const pageCount = pages;
     const getPostItems = orderedItems?.map(item => {
         return item.showOnWeb === true ?
-            <div onClick={setPosition} className='singular__list__item' key={item._id} details={item}>
+            <div onClick={setPosition} className='singular__list__item' key={item._id}>
                 {item.gvOperationClose === 'Alquilado' || item.gvOperationClose === 'Vendido' ?
                     <div className='wrapper'>
                         <div className='singular__list__item__status'>
