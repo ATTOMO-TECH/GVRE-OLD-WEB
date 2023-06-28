@@ -552,10 +552,10 @@
       flex-direction: column;
       justify-content: center;
       margin: 0 auto;
-      width: 90%;
+      width: 100%;
       max-width: 700px;
       &__estado {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         h3 {
           margin-left: 20px;
           margin-bottom: 5px;
@@ -581,12 +581,14 @@
             text-decoration: none;
             padding: 5px;
             background-color: white;
-            color: #2b363d;
+            color: #2b363d;            
             @include textMobile;
           }
         }
       }
       &__tipo {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
         h3 {
           margin-left: 20px;
           margin-bottom: 5px;
@@ -688,13 +690,14 @@
       }
       &__ref {
         margin-left: 20px;
-        margin-right: 42px;
+        margin-right: 20px;
         position: relative;
-        padding-top: 20px;
+        padding-top: 40px;
         h4 {
           @include subSubTitleMobile;
           color: rgb(180, 180, 180) !important;
           margin-bottom: 5px;
+          font-weight: 100;
         }
         input {
           border: solid;
@@ -1228,7 +1231,7 @@
         border-left: solid;
         border-color: rgb(211, 211, 211);
         border-width: 2px;
-        padding-left: 22px;
+        
         z-index: 1;
         background-color: white;
         &__estado {
@@ -1238,6 +1241,7 @@
             margin-left: 20px;
             margin-bottom: 20px;
             @include apart;
+            font-weight: 400;
           }
           &__buttons {
             display: flex;
@@ -1261,6 +1265,7 @@
               padding: 5px;
               background-color: white;
               color: #2b363d;
+              font-size: 16px !important;
               @include mapBut;
             }
           }
@@ -1271,6 +1276,7 @@
             margin-left: 20px;
             margin-bottom: 20px;
             @include apart;
+            font-weight: 400;
           }
           &__buttons {
             display: flex;
@@ -1310,6 +1316,7 @@
               padding: 5px;
               background-color: white;
               color: #2b363d;
+              font-size: 16px !important;
               @include mapBut;
             }
           }
@@ -1351,6 +1358,7 @@
             justify-content: center;
             padding: 0;
             height: 46px;
+            font-size: 16px !important;
             @include mapBut;
           }
         }
@@ -1361,6 +1369,7 @@
             @include apart;
             color: rgb(180, 180, 180) !important;
             margin-bottom: 20px;
+            font-weight: 100;
           }
           input {
             border: solid;
