@@ -1204,7 +1204,7 @@ export default function Patrimonial({
                       id="secu"
                       className={`secu${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdddf3e6cc4fe56c2986d")
                           ? " active"
                           : ""
@@ -1226,7 +1226,7 @@ export default function Patrimonial({
                       id="plan"
                       className={`plan${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddcb3e6cc4fe56c29865")
                           ? " active"
                           : ""
@@ -1251,7 +1251,7 @@ export default function Patrimonial({
                       id="vald"
                       className={`vald${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddc53e6cc4fe56c29863")
                           ? " active"
                           : ""
@@ -1266,7 +1266,7 @@ export default function Patrimonial({
                       id="pozu"
                       className={`pozu${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddcf3e6cc4fe56c29867")
                           ? " active"
                           : ""
@@ -1281,7 +1281,7 @@ export default function Patrimonial({
                       id="pe"
                       className={`pe${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddd53e6cc4fe56c29869")
                           ? " active"
                           : ""
@@ -1298,7 +1298,7 @@ export default function Patrimonial({
                       id="ctba"
                       className={`ctba${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd9d3e6cc4fe56c29853")
                           ? " active"
                           : ""
@@ -1322,7 +1322,7 @@ export default function Patrimonial({
                       id="cuzco"
                       className={`cuzco${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd933e6cc4fe56c2984f")
                           ? " active"
                           : ""
@@ -1342,7 +1342,7 @@ export default function Patrimonial({
                       id="azca"
                       className={`azca${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd883e6cc4fe56c2984d")
                           ? " active"
                           : ""
@@ -1357,7 +1357,7 @@ export default function Patrimonial({
                       id="cham"
                       className={`cham${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd7e3e6cc4fe56c29849")
                           ? " active"
                           : ""
@@ -1372,7 +1372,7 @@ export default function Patrimonial({
                       id="alma"
                       className={`alma${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd783e6cc4fe56c29847")
                           ? " active"
                           : ""
@@ -1387,7 +1387,7 @@ export default function Patrimonial({
                       id="cent"
                       className={`cent${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd6d3e6cc4fe56c29843")
                           ? " active"
                           : ""
@@ -1402,7 +1402,7 @@ export default function Patrimonial({
                       id="meal"
                       className={`meal${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd623e6cc4fe56c2983f")
                           ? " active"
                           : ""
@@ -1417,7 +1417,7 @@ export default function Patrimonial({
                       id="juca"
                       className={`juca${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddc13e6cc4fe56c29861")
                           ? " active"
                           : ""
@@ -1432,7 +1432,7 @@ export default function Patrimonial({
                       id="amer"
                       className={`amer${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddb23e6cc4fe56c2985b")
                           ? " active"
                           : ""
@@ -1452,7 +1452,7 @@ export default function Patrimonial({
                       id="jova"
                       className={`jova${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddb73e6cc4fe56c2985d")
                           ? " active"
                           : ""
@@ -1467,7 +1467,7 @@ export default function Patrimonial({
                       id="chama"
                       className={`chama${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd983e6cc4fe56c29851")
                           ? " active"
                           : ""
@@ -1482,7 +1482,7 @@ export default function Patrimonial({
                       id="arso"
                       className={`arso${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddbc3e6cc4fe56c2985f")
                           ? " active"
                           : ""
@@ -1499,7 +1499,7 @@ export default function Patrimonial({
                       id="cana"
                       className={`cana${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdda73e6cc4fe56c29857")
                           ? " active"
                           : ""
@@ -1516,7 +1516,7 @@ export default function Patrimonial({
                       id="sanchi"
                       className={`sanchi${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdda23e6cc4fe56c29855")
                           ? " active"
                           : ""
@@ -1548,7 +1548,7 @@ export default function Patrimonial({
                       id="arva"
                       className={`arva${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfddac3e6cc4fe56c29859")
                           ? " active"
                           : ""
@@ -1571,7 +1571,7 @@ export default function Patrimonial({
                       id="viso"
                       className={`viso${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd833e6cc4fe56c2984b")
                           ? " active"
                           : ""
@@ -1586,7 +1586,7 @@ export default function Patrimonial({
                       id="sala"
                       className={`sala${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd733e6cc4fe56c29845")
                           ? " active"
                           : ""
@@ -1601,7 +1601,7 @@ export default function Patrimonial({
                       id="jero"
                       className={`jero${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd673e6cc4fe56c29841")
                           ? " active"
                           : ""
@@ -1621,7 +1621,7 @@ export default function Patrimonial({
                         name="Alquiler"
                         id="alq"
                         className={`alq${
-                          localFilters.toString().includes("Alquiler")
+                          localFilters?.toString().includes("Alquiler")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1633,7 +1633,7 @@ export default function Patrimonial({
                         name="Venta"
                         id="vent"
                         className={`vent${
-                          localFilters.toString().includes("Venta")
+                          localFilters?.toString().includes("Venta")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1650,7 +1650,7 @@ export default function Patrimonial({
                         name="Oficina"
                         id="oficina"
                         className={`oficina${
-                          localFilters.toString().includes("Oficina")
+                          localFilters?.toString().includes("Oficina")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1662,7 +1662,7 @@ export default function Patrimonial({
                         name="Edificio"
                         id="edificio"
                         className={`edificio${
-                          localFilters.toString().includes("Edificio")
+                          localFilters?.toString().includes("Edificio")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1674,7 +1674,7 @@ export default function Patrimonial({
                         name="Local"
                         id="retail"
                         className={`retail${
-                          localFilters.toString().includes("Local")
+                          localFilters?.toString().includes("Local")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1692,7 +1692,7 @@ export default function Patrimonial({
                         id="exclusiveOfficeBuilding"
                         className={`exclusiveOfficeBuilding${
                           localFilters
-                            .toString()
+                            ?.toString()
                             .includes("exclusiveOfficeBuilding")
                             ? " activeButton"
                             : ""
@@ -1705,7 +1705,7 @@ export default function Patrimonial({
                         name="classicBuilding"
                         id="classicBuilding"
                         className={`classicBuilding${
-                          localFilters.toString().includes("classicBuilding")
+                          localFilters?.toString().includes("classicBuilding")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1717,7 +1717,7 @@ export default function Patrimonial({
                         name="coworking"
                         id="coworking"
                         className={`coworking${
-                          localFilters.toString().includes("coworking")
+                          localFilters?.toString().includes("coworking")
                             ? " activeButton"
                             : ""
                         }`}
