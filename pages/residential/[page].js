@@ -751,7 +751,7 @@ export default function Residential({
         e.currentTarget.className === "hisp"
       ) {
         const idZoneSelected = getZoneId(e.currentTarget.name);
-        if (!selected.includes(`${idZoneSelected}`)) {
+        if (!selected?.includes(`${idZoneSelected}`)) {
           idZoneSelected.forEach((idZone) => selected.push(idZone));
         }
         /* console.log(selected); */
@@ -761,7 +761,7 @@ export default function Residential({
         e.currentTarget.className = `${e.currentTarget.className} active`;
         const idZoneSelected = getZoneId(e.currentTarget.name);
 
-        if (!selected.includes(`${idZoneSelected[0]}`)) {
+        if (!selected?.includes(`${idZoneSelected[0]}`)) {
           idZoneSelected.forEach((idZone) => selected.push(idZone));
         }
         /* console.log(selected) */
@@ -838,7 +838,7 @@ export default function Residential({
   const selectSaleOrRent = (e) => {
     if (e.currentTarget.className === e.currentTarget.id) {
       e.currentTarget.className = `${e.currentTarget.className} activeButton`;
-      if (!saleOrRent.includes(`${e.currentTarget.name}`)) {
+      if (!saleOrRent?.includes(`${e.currentTarget.name}`)) {
         saleOrRent.push(e.currentTarget.name);
       }
     } else {
@@ -962,17 +962,17 @@ export default function Residential({
         queryFilters = { ...queryFilters, zona: querySelected };
       }
       if (extras.length) {
-        if (extras.includes("garage")) {
+        if (extras?.includes("garage")) {
           activeFilters = { ...activeFilters, garage: true };
           queryFilters = { ...queryFilters, garaje: true };
         }
 
-        if (extras.includes("swimmingPool")) {
+        if (extras?.includes("swimmingPool")) {
           activeFilters = { ...activeFilters, swimmingPool: true };
           queryFilters = { ...queryFilters, piscina: true };
         }
 
-        if (extras.includes("terrace")) {
+        if (extras?.includes("terrace")) {
           activeFilters = { ...activeFilters, terrace: true };
           queryFilters = { ...queryFilters, terraza: true };
         }
@@ -1010,7 +1010,7 @@ export default function Residential({
   const addType = (e) => {
     if (e.currentTarget.className === e.currentTarget.id) {
       e.currentTarget.className = `${e.currentTarget.className} activeButton`;
-      if (!typeHouse.includes(`${e.currentTarget.className}`)) {
+      if (!typeHouse?.includes(`${e.currentTarget.className}`)) {
         typeHouse.push(e.currentTarget.name);
       }
     } else {
@@ -1028,7 +1028,7 @@ export default function Residential({
   const addExtra = (e) => {
     if (e.currentTarget.className === e.currentTarget.id) {
       e.currentTarget.className = `${e.currentTarget.className} activeButton`;
-      if (!extras.includes(`${e.currentTarget.className}`)) {
+      if (!extras?.includes(`${e.currentTarget.className}`)) {
         extras.push(e.currentTarget.name);
       }
     } else {
@@ -1288,7 +1288,7 @@ export default function Residential({
                       id="mocl"
                       className={`mocl${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc8b3e6cc4fe56c29807")
                           ? " active"
                           : ""
@@ -1312,7 +1312,7 @@ export default function Residential({
                       id="moal"
                       className={`moal${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc843e6cc4fe56c29805")
                           ? " active"
                           : ""
@@ -1336,7 +1336,7 @@ export default function Residential({
                       id="prla"
                       className={`prla${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc953e6cc4fe56c29809")
                           ? " active"
                           : ""
@@ -1360,7 +1360,7 @@ export default function Residential({
                       id="enci"
                       className={`enci${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc9f3e6cc4fe56c2980b")
                           ? " active"
                           : ""
@@ -1380,7 +1380,7 @@ export default function Residential({
                       id="alam"
                       className={`alam${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdca93e6cc4fe56c2980d")
                           ? " active"
                           : ""
@@ -1404,7 +1404,7 @@ export default function Residential({
                       id="flori"
                       className={`flori${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc5f3e6cc4fe56c297ff")
                           ? " active"
                           : ""
@@ -1424,7 +1424,7 @@ export default function Residential({
                       id="finc"
                       className={`finc${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdce53e6cc4fe56c29819")
                           ? " active"
                           : ""
@@ -1444,7 +1444,7 @@ export default function Residential({
                       id="somo"
                       className={`somo${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd2e3e6cc4fe56c2982d")
                           ? " active"
                           : ""
@@ -1464,7 +1464,7 @@ export default function Residential({
                       id="arav"
                       className={`arav${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc733e6cc4fe56c29801")
                           ? " active"
                           : ""
@@ -1484,7 +1484,7 @@ export default function Residential({
                       id="vald1"
                       className={`vald1${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdc7b3e6cc4fe56c29803")
                           ? " active"
                           : ""
@@ -1511,7 +1511,7 @@ export default function Residential({
                       id="fuen1"
                       className={`fuen1${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd563e6cc4fe56c2983b")
                           ? " active"
                           : ""
@@ -1538,7 +1538,7 @@ export default function Residential({
                       id="puer"
                       className={`puer${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd4b3e6cc4fe56c29837")
                           ? " active"
                           : ""
@@ -1561,7 +1561,7 @@ export default function Residential({
                       id="rosa"
                       className={`rosa${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcf13e6cc4fe56c2981b")
                           ? " active"
                           : ""
@@ -1581,7 +1581,7 @@ export default function Residential({
                       id="pala"
                       className={`pala${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd0b3e6cc4fe56c29821")
                           ? " active"
                           : ""
@@ -1601,7 +1601,7 @@ export default function Residential({
                       id="mira"
                       className={`mira${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcb13e6cc4fe56c2980f")
                           ? " active"
                           : ""
@@ -1621,7 +1621,7 @@ export default function Residential({
                       id="alma"
                       className={`alma${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcd63e6cc4fe56c29815")
                           ? " active"
                           : ""
@@ -1641,7 +1641,7 @@ export default function Residential({
                       id="just"
                       className={`just${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcfc3e6cc4fe56c2981d")
                           ? " active"
                           : ""
@@ -1661,7 +1661,7 @@ export default function Residential({
                       id="cort"
                       className={`cort${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd043e6cc4fe56c2981f")
                           ? " active"
                           : ""
@@ -1681,7 +1681,7 @@ export default function Residential({
                       id="nuev"
                       className={`nuev${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd383e6cc4fe56c29831")
                           ? " active"
                           : ""
@@ -1701,7 +1701,7 @@ export default function Residential({
                       id="hisp"
                       className={`hisp${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd383e6cc4fe56c29831")
                           ? " active"
                           : ""
@@ -1723,7 +1723,7 @@ export default function Residential({
                       id="viso"
                       className={`viso${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcc23e6cc4fe56c29811")
                           ? " active"
                           : ""
@@ -1743,7 +1743,7 @@ export default function Residential({
                       id="sala"
                       className={`sala${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd113e6cc4fe56c29823")
                           ? " active"
                           : ""
@@ -1763,7 +1763,7 @@ export default function Residential({
                       id="jero"
                       className={`jero${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdccd3e6cc4fe56c29813")
                           ? " active"
                           : ""
@@ -1783,7 +1783,7 @@ export default function Residential({
                       id="mora"
                       className={`mora${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdd1d3e6cc4fe56c29827")
                           ? " active"
                           : ""
@@ -1803,7 +1803,7 @@ export default function Residential({
                       id="cond"
                       className={`cond${
                         localFilters
-                          .toString()
+                          ?.toString()
                           .includes("61dfdcde3e6cc4fe56c29817")
                           ? " active"
                           : ""
@@ -1832,7 +1832,7 @@ export default function Residential({
                         name="Alquiler"
                         id="alq"
                         className={`alq${
-                          localFilters.toString().includes("Alquiler")
+                          localFilters?.toString().includes("Alquiler")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1844,7 +1844,7 @@ export default function Residential({
                         name="Venta"
                         id="vent"
                         className={`vent${
-                          localFilters.toString().includes("Venta")
+                          localFilters?.toString().includes("Venta")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1861,7 +1861,7 @@ export default function Residential({
                         name="Casa"
                         id="casa"
                         className={`casa${
-                          localFilters.toString().includes("Casa")
+                          localFilters?.toString().includes("Casa")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1873,7 +1873,7 @@ export default function Residential({
                         name="Piso"
                         id="piso"
                         className={`piso${
-                          localFilters.toString().includes("Piso")
+                          localFilters?.toString().includes("Piso")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1885,7 +1885,7 @@ export default function Residential({
                         name="Parcela"
                         id="parcela"
                         className={`parcela${
-                          localFilters.toString().includes("Parcela")
+                          localFilters?.toString().includes("Parcela")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1902,7 +1902,7 @@ export default function Residential({
                         name="swimmingPool"
                         id="piscina"
                         className={`piscina${
-                          localFilters.toString().includes("swimmingPool")
+                          localFilters?.toString().includes("swimmingPool")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1914,7 +1914,7 @@ export default function Residential({
                         name="garage"
                         id="garaje"
                         className={`garaje${
-                          localFilters.toString().includes("garage")
+                          localFilters?.toString().includes("garage")
                             ? " activeButton"
                             : ""
                         }`}
@@ -1926,7 +1926,7 @@ export default function Residential({
                         name="terrace"
                         id="terraza"
                         className={`terraza${
-                          localFilters.toString().includes("terrace")
+                          localFilters?.toString().includes("terrace")
                             ? " activeButton"
                             : ""
                         }`}
