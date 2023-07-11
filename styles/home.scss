@@ -166,6 +166,7 @@
         text-align: right;
         margin-right: 20px;
         margin-bottom: 15px;
+        margin-top: 10px;
         display: flex;
         justify-content: flex-end;
         span {
@@ -232,7 +233,9 @@
         @include textBlackMobile;
         text-align: right;
         margin-right: 20px;
+        font-weight: 600;
         margin-bottom: 15px;
+        margin-top: 10px;
         display: flex;
         justify-content: flex-end;
         border: none;
@@ -259,7 +262,7 @@
     &__categories {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      
       justify-content: center;
       &__item {
         border-bottom: solid;
@@ -270,7 +273,7 @@
         text-decoration: none;
         &__image {
           width: 100%;
-          max-width: 300px;
+          
           height: 300px;
         }
         &__link {
@@ -424,7 +427,7 @@
         }
       }
       &__buttons {
-        display: none;
+        padding-bottom: 100px;
       }
       &__arrow {
         span {
@@ -508,6 +511,7 @@
         }
         &__link {
           margin-top: 0px;
+          font-weight: 600 !important;
           @include more;
         }
       }
@@ -543,6 +547,7 @@
         }
         &__link {
           margin-top: 0px;
+          font-weight: 600 !important;
           @include more;
         }
       }
@@ -719,7 +724,7 @@
         }
       }
       &__buttons {
-        display: none;
+        padding-bottom: 100px;
       }
     }
     &__categories {

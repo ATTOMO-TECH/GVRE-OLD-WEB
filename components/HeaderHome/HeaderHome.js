@@ -54,6 +54,7 @@ const Header = () => {
                             <div className='headerHome__menu__list__GV__name'>
                                 GV Real Estate
                                 <ul className='headerHome__menu__list__GV__name__menu' >
+                                    <li><Link href={routes.Catalogo}>Catálogo</Link></li>
                                     <li><Link onClick={toggleClass} href={routes.Team}>Equipo</Link></li>
                                     <li><Link onClick={toggleClass} href={routes.Contextual}>Comercialización</Link></li>
                                     <li><Link onClick={toggleClass && situate} href={`${routes.Contextual}#inversion`}>Inversión</Link></li>
@@ -63,7 +64,16 @@ const Header = () => {
                                 </ul>
                             </div>
                         </li>
-                        <li><Link href={routes.Catalogo}>Catálogo</Link></li>
+                        <li className='headerHome__menu__list__GV'>
+                            <div className='headerHome__menu__list__GV__name'>
+                                Otras Zonas
+                                <ul className='headerHome__menu__list__GV__name__menu' >
+                                    <li><Link href={`${routes.Rustico}/1&page=1`}>Campo Rústico</Link></li>
+                                    <li><Link href={`${routes.Singular}/1&page=1`}>Activos Singulares</Link></li>
+                                    <li><Link href={`${routes.Costa}/1&page=1`}>Costa</Link></li>                                    
+                                </ul>
+                            </div>
+                        </li>
                         <li className='headerHome__menu__list__contact'><Link onClick={toggleClass} href={routes.Contact}>Contacto</Link></li>
                         <li className='headerHome__menu__list__social'>
                             <div>
