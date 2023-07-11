@@ -92,6 +92,10 @@ const Header = () => {
                 GV Real Estate
                 <ul className="header__menu__list__GV__name__menu">
                   <li>
+                    <Link href={routes.Catalogo}>Catálogo
+                    </Link>
+                  </li>
+                  <li>
                     <Link onClick={toggleClass} href={routes.Team}>
                       Equipo
                     </Link>
@@ -136,9 +140,31 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li>
-              <Link href={routes.Catalogo}>Catálogo</Link>
+
+            <li className="header__menu__list__GV">
+              <div className="header__menu__list__GV__name">
+                Otras Zonas
+                <ul className="header__menu__list__GV__name__menu">
+                  <li>
+                    <Link href={`${routes.Rustico}/1&page=1`}>
+                      Campo Rústico
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`${routes.Singular}/1&page=1`}>
+                        Activos Singulares
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`${routes.Costa}/1&page=1`}>
+                      Costa
+                    </Link>
+                  </li>                                    
+                </ul>
+              </div>
             </li>
+
+            
             <li className="header__menu__list__contact">
               <Link onClick={toggleClass} href={routes.Contact}>
                 Contacto
