@@ -6,7 +6,6 @@ import Geocode from "react-geocode";
 import emailjs from "emailjs-com";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
-import googleKey from "../../keys/Keys.js";
 import {
   getConsultants,
   getResidentialItem,
@@ -48,7 +47,7 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(googleKey.googleKey);
+Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
 Geocode.setLanguage("es");
 Geocode.setRegion("es");
 Geocode.setLocationType("ROOFTOP");
@@ -98,7 +97,9 @@ export default function ResidentialItem({ list, currentConsultant }) {
   useEffect(() => {
     //list?.map(item => {
     Geocode.fromAddress(
-      `${state.adDirection.address.street}${state.adDirection.address.directionNumber}, ${state.adDirection.city}`
+      `${state.adDirection.address.street}
+      ${state.adDirection.address.directionNumber}, 
+      ${state.adDirection.city}`
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -215,7 +216,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
           <Header />
           {isLoading ? (
             state?.featuredDrawings !== undefined &&
-            state?.featuredDrawings !== false ? (
+              state?.featuredDrawings !== false ? (
               <Carousel
                 className="residentialItem__carousel"
                 showArrows={true}
@@ -340,18 +341,18 @@ export default function ResidentialItem({ list, currentConsultant }) {
                 {/* Meter planos aqui si queremos que se vean en web */}
                 {state.featuredDrawings && state.images.blueprint.length !== 0
                   ? state.images.blueprint.map((image) => {
-                      //console.log('ruta:', image)
-                      return (
-                        <Image
-                          width={1486}
-                          height={862}
-                          className="carouselImages"
-                          key={image}
-                          src={image.replaceAll(" ", "%20")}
-                          alt={state.title}
-                        />
-                      );
-                    })
+                    //console.log('ruta:', image)
+                    return (
+                      <Image
+                        width={1486}
+                        height={862}
+                        className="carouselImages"
+                        key={image}
+                        src={image.replaceAll(" ", "%20")}
+                        alt={state.title}
+                      />
+                    );
+                  })
                   : null}
               </Carousel>
             </div>
@@ -409,18 +410,18 @@ export default function ResidentialItem({ list, currentConsultant }) {
                 <h2 className="residentialItem__description__principal__price">
                   {state.adType.map((type) =>
                     type === "Venta" &&
-                    state.sale.saleShowOnWeb === true &&
-                    state.sale.saleValue !== 0
+                      state.sale.saleShowOnWeb === true &&
+                      state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.sale.saleValue
-                        )} €`
+                        state.sale.saleValue
+                      )} €`
                       : type === "Alquiler" &&
                         state.rent.rentShowOnWeb === true &&
                         state.rent.rentValue !== 0
-                      ? `${new Intl.NumberFormat("de-DE").format(
+                        ? `${new Intl.NumberFormat("de-DE").format(
                           state.rent.rentValue
                         )} € mes`
-                      : null
+                        : null
                   )}
                 </h2>
               ) : (
@@ -448,8 +449,8 @@ export default function ResidentialItem({ list, currentConsultant }) {
                   key={i}
                   className={
                     state.expensesIncluded !== 0 &&
-                    state.monthlyRent !== 0 &&
-                    state.expenses !== 0
+                      state.monthlyRent !== 0 &&
+                      state.expenses !== 0
                       ? "residentialItem__description__rent"
                       : "residentialItem__description__rentEmpty"
                   }
@@ -460,8 +461,8 @@ export default function ResidentialItem({ list, currentConsultant }) {
                   <div
                     className={
                       state.expensesIncluded !== 0 &&
-                      state.monthlyRent !== 0 &&
-                      state.expenses !== 0
+                        state.monthlyRent !== 0 &&
+                        state.expenses !== 0
                         ? "residentialItem__description__rent__numbers"
                         : "residentialItem__description__rentEmpty__numbers"
                     }
@@ -550,7 +551,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
                   )}
                 {(state?.featuredDrawings === undefined ||
                   !state?.featuredDrawings) &&
-                state.images.blueprint.length !== 0 ? (
+                  state.images.blueprint.length !== 0 ? (
                   <button onClick={toggleMap}>Ver plano</button>
                 ) : null}
                 {/* SI CAMBIA LA URL DE RESIDENTIALITEM HAY QUE CAMBIAR ESTE PATH TAMBIEN */}
@@ -643,7 +644,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
                   </div>
                 ) : null}
                 {state.communityExpenses.expensesValue !== 0 &&
-                state.communityExpenses.expensesShowOnWeb === true ? (
+                  state.communityExpenses.expensesShowOnWeb === true ? (
                   <div className="residentialItem__description__numbers__bed">
                     <p className="residentialItem__description__numbers__bed__data">
                       {state.communityExpenses.expensesValue}
@@ -1005,7 +1006,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
             </div>
             <div className="residentialItem__description__filter"></div>
             <div className="residentialItem__description__locationMap">
-              <MapItem long={longitude} lati={latitude} />
+              <MapItem lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
