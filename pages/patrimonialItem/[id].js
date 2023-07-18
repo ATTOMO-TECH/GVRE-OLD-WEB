@@ -6,7 +6,6 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import Geocode from "react-geocode";
 import emailjs from "emailjs-com";
-import googleKey from "../../keys/Keys.js";
 import useWindowSize from "../../hooks/useWindowsSize.js";
 import {
   getConsultants,
@@ -44,7 +43,7 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(googleKey.googleKey);
+Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
 Geocode.setLanguage("es");
 Geocode.setRegion("es");
 Geocode.setLocationType("ROOFTOP");
@@ -88,9 +87,12 @@ export default function PatrimonialItem({ list, currentConsultant }) {
       router.push("/");
   }, [list, router]);
 
+
   useEffect(() => {
     Geocode.fromAddress(
-      `${state.adDirection.address.street}${state.adDirection.address.directionNumber}, ${state.adDirection.city}`
+      `${state.adDirection.address.street} 
+      ${state.adDirection.address.directionNumber}, 
+      ${state.adDirection.city}`
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -98,7 +100,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
         setLongitude(lng + 0.0013);
       },
       (error) => {
-        console.error(error);
+        console.error('ERROR', error);
       }
     );
   }, [list, state]);
@@ -194,7 +196,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
         <div>
           <Header />
           {state?.featuredDrawings !== undefined &&
-          state?.featuredDrawings !== false ? (
+            state?.featuredDrawings !== false ? (
             <Carousel
               className="patrimonialItem__carousel"
               showArrows={true}
@@ -308,18 +310,18 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                 ))}
                 {state.featuredDrawings && state.images.blueprint.length !== 0
                   ? state.images.blueprint.map((image) => {
-                      //console.log('ruta:', image)
-                      return (
-                        <Image
-                          width={1486}
-                          height={862}
-                          className="carouselImages"
-                          key={image}
-                          src={image.replaceAll(" ", "%20")}
-                          alt={state.title}
-                        />
-                      );
-                    })
+                    //console.log('ruta:', image)
+                    return (
+                      <Image
+                        width={1486}
+                        height={862}
+                        className="carouselImages"
+                        key={image}
+                        src={image.replaceAll(" ", "%20")}
+                        alt={state.title}
+                      />
+                    );
+                  })
                   : null}
               </Carousel>
             </div>
@@ -364,8 +366,8 @@ export default function PatrimonialItem({ list, currentConsultant }) {
             <div
               className={
                 state.expensesIncluded !== 0 &&
-                state.monthlyRent !== 0 &&
-                state.expenses !== 0
+                  state.monthlyRent !== 0 &&
+                  state.expenses !== 0
                   ? "patrimonialItem__description__principal"
                   : "patrimonialItem__description__principalEmpty"
               }
@@ -381,18 +383,18 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                 <h2 className="patrimonialItem__description__principal__price">
                   {state.adType.map((type) =>
                     type === "Venta" &&
-                    state.sale.saleShowOnWeb === true &&
-                    state.sale.saleValue !== 0
+                      state.sale.saleShowOnWeb === true &&
+                      state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.sale.saleValue
-                        )} €`
+                        state.sale.saleValue
+                      )} €`
                       : type === "Alquiler" &&
                         state.rent.rentShowOnWeb === true &&
                         state.rent.rentValue !== 0
-                      ? `${new Intl.NumberFormat("de-DE").format(
+                        ? `${new Intl.NumberFormat("de-DE").format(
                           state.rent.rentValue
                         )} € mes`
-                      : null
+                        : null
                   )}
                 </h2>
               ) : (
@@ -422,8 +424,8 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   key={i}
                   className={
                     state.expensesIncluded !== 0 &&
-                    state.monthlyRent !== 0 &&
-                    state.expenses !== 0
+                      state.monthlyRent !== 0 &&
+                      state.expenses !== 0
                       ? "patrimonialItem__description__rent"
                       : "patrimonialItem__description__rentEmpty"
                   }
@@ -434,8 +436,8 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   <div
                     className={
                       state.expensesIncluded !== 0 &&
-                      state.monthlyRent !== 0 &&
-                      state.expenses !== 0
+                        state.monthlyRent !== 0 &&
+                        state.expenses !== 0
                         ? "patrimonialItem__description__rent__numbers"
                         : "patrimonialItem__description__rentEmpty__numbers"
                     }
@@ -525,7 +527,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   )}
                 {(state?.featuredDrawings === undefined ||
                   !state?.featuredDrawings) &&
-                state.images.blueprint.length !== 0 ? (
+                  state.images.blueprint.length !== 0 ? (
                   <button onClick={toggleMap}>Ver plano</button>
                 ) : null}
                 {/* SI CAMBIA LA URL DE RESIDENTIALITEM HAY QUE CAMBIAR ESTE PATH TAMBIEN */}
@@ -609,7 +611,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   </div>
                 ) : null}
                 {state.communityExpenses.expensesValue !== 0 &&
-                state.communityExpenses.expensesShowOnWeb === true ? (
+                  state.communityExpenses.expensesShowOnWeb === true ? (
                   <div className="patrimonialItem__description__numbers__bed">
                     <p className="patrimonialItem__description__numbers__bed__data">
                       {state.communityExpenses.expensesValue}
@@ -618,9 +620,9 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                   </div>
                 ) : null}
                 {state.trashFee.trashFeeValue !== 0 &&
-                state.trashFee.trashFeeValue !== "" &&
-                state.trashFee.trashFeeValue !== undefined &&
-                state.trashFee.trashFeeShowOnWeb === true ? (
+                  state.trashFee.trashFeeValue !== "" &&
+                  state.trashFee.trashFeeValue !== undefined &&
+                  state.trashFee.trashFeeShowOnWeb === true ? (
                   <div className="patrimonialItem__description__numbers__bed">
                     <p className="patrimonialItem__description__numbers__bed__data">
                       {state.trashFee.trashFeeValue}
@@ -1025,7 +1027,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
             </div>
             <div className="patrimonialItem__description__filter"></div>
             <div className="patrimonialItem__description__locationMap">
-              <MapItem long={longitude} lati={latitude} />
+              <MapItem lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
@@ -1042,8 +1044,8 @@ export async function getServerSideProps(context) {
     const list = await getPatrimonialItem(id);
     //console.log('lista', list.length)
     const item = list[0];
-    console.log("lista", list);
-    console.log("objeto", item);
+    // console.log("lista", list);
+    // console.log("objeto", item);
     if (item !== null) {
       const buildingId = item._id;
       //console.log('_id',_id)
