@@ -1,34 +1,26 @@
-import React, {Component} from 'react';
-import { Map, GoogleApiWrapper, Circle } from 'google-maps-react';
-import googleKey from '../../keys/Keys.js'; 
+import React from "react";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 
-class MapItem extends Component {
-  render() {
-    return (
-      <div style={{height:'400px'}}>
-          <Map
-            google={this.props.google}
-            style={{height:'400px',width:'100%'}}
+function MapItem({ lat, lng }) {
+  const coordinates = { lat: lat, lng: lng };
+
+  const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_KEY;
+
+  return (
+    <>
+      {lat && lng != undefined && (
+        <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+          <GoogleMap
+            mapContainerStyle={{ height: "400px", width: "100%" }}
+            center={coordinates}
             zoom={15}
-            center={{lat:this.props.lati, lng:this.props.long}}
-            initialCenter={{lat:this.props.lati, lng:this.props.long}}
-            containerStyle={{height:'400px'}}
           >
-            <Circle
-              radius={400}
-              center={{lat:this.props.lati, lng:this.props.long}}
-              strokeColor='transparent'
-              strokeOpacity={0}
-              strokeWeight={5}
-              fillColor='#2B363D'
-              fillOpacity={0.3}
-            />
-          </Map>
-      </div>
-  )
-  }
-};
+            <MarkerF position={coordinates} />
+          </GoogleMap>
+        </LoadScript>
+      )}
+    </>
+  );
+}
 
-export default GoogleApiWrapper ({
-  apiKey:(googleKey.googleKey)
-})(MapItem)
+export default React.memo(MapItem);
