@@ -6,7 +6,6 @@ import Geocode from "react-geocode";
 import emailjs from "emailjs-com";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
-import googleKey from "../../keys/Keys.js";
 import {
   getConsultants,
   getResidentialItem,
@@ -48,7 +47,7 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(googleKey.googleKey);
+Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
 Geocode.setLanguage("es");
 Geocode.setRegion("es");
 Geocode.setLocationType("ROOFTOP");
@@ -98,7 +97,9 @@ export default function ResidentialItem({ list, currentConsultant }) {
   useEffect(() => {
     //list?.map(item => {
     Geocode.fromAddress(
-      `${state.adDirection.address.street}${state.adDirection.address.directionNumber}, ${state.adDirection.city}`
+      `${state.adDirection.address.street}
+      ${state.adDirection.address.directionNumber}, 
+      ${state.adDirection.city}`
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -1005,7 +1006,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
             </div>
             <div className="residentialItem__description__filter"></div>
             <div className="residentialItem__description__locationMap">
-              <MapItem long={longitude} lati={latitude} />
+              <MapItem lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
