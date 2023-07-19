@@ -6,7 +6,6 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import Geocode from "react-geocode";
 import emailjs from "emailjs-com";
-import googleKey from "../../keys/Keys.js";
 import useWindowSize from "../../hooks/useWindowsSize.js";
 import {
   getConsultants,
@@ -44,7 +43,7 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(googleKey.googleKey);
+Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
 Geocode.setLanguage("es");
 Geocode.setRegion("es");
 Geocode.setLocationType("ROOFTOP");
@@ -90,7 +89,9 @@ export default function PatrimonialItem({ list, currentConsultant }) {
 
   useEffect(() => {
     Geocode.fromAddress(
-      `${state.adDirection.address.street}${state.adDirection.address.directionNumber}, ${state.adDirection.city}`
+      `${state.adDirection.address.street} 
+      ${state.adDirection.address.directionNumber}, 
+      ${state.adDirection.city}`
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -98,7 +99,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
         setLongitude(lng + 0.0013);
       },
       (error) => {
-        console.error(error);
+        console.error("ERROR", error);
       }
     );
   }, [list, state]);
@@ -1025,7 +1026,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
             </div>
             <div className="patrimonialItem__description__filter"></div>
             <div className="patrimonialItem__description__locationMap">
-              <MapItem long={longitude} lati={latitude} />
+              <MapItem lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
@@ -1042,8 +1043,8 @@ export async function getServerSideProps(context) {
     const list = await getPatrimonialItem(id);
     //console.log('lista', list.length)
     const item = list[0];
-    console.log("lista", list);
-    console.log("objeto", item);
+    // console.log("lista", list);
+    // console.log("objeto", item);
     if (item !== null) {
       const buildingId = item._id;
       //console.log('_id',_id)
