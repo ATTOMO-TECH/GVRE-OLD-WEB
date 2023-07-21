@@ -18,10 +18,10 @@ export default function CatalogCard({ index, setCatalogNumber, cardData }) {
         className="catalogo__main__container__catalogs__item__image"
         width={size < 770 ? 300 : 505}
         height={size < 770 ? 300 : 505}
-        src={cardData.image}
+        src={cardData.portraidImage}
         alt=""
       />
-      {cardData.title === "" ? null : <h2>{cardData.title}</h2>}
+      {cardData.title === "" ? null : <h2>Catálogo {cardData.year}</h2>}
     </div>
   );
 }
