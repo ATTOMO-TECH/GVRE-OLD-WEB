@@ -1,11 +1,17 @@
 //PROD
-const baseUrlResidential = 'https://api.vamosaporello.com/inmuebles/';
-const baseUrlConsultants = 'https://www.gvrecrm.com/';
-const newBaseUrlResidential = 'https://api.vamosaporello.com/inmuebles/web/department=Residencial&showOnWeb=true';
-const newBaseUrlPatrimonial = 'https://api.vamosaporello.com/inmuebles/web/department=Patrimonio&showOnWeb=true';
-const newBaseUrlCosta =  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
-const newBaseUrlRustico = "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
-const newBaseUrlSingular = "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
+const baseUrlProduction = "https://api.vamosaporello.com/";
+const baseUrlResidential = "https://api.vamosaporello.com/inmuebles/";
+const baseUrlConsultants = "https://www.gvrecrm.com/";
+const newBaseUrlResidential =
+  "https://api.vamosaporello.com/inmuebles/web/department=Residencial&showOnWeb=true";
+const newBaseUrlPatrimonial =
+  "https://api.vamosaporello.com/inmuebles/web/department=Patrimonio&showOnWeb=true";
+const newBaseUrlCosta =
+  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
+const newBaseUrlRustico =
+  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
+const newBaseUrlSingular =
+  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
 
 //LOCAL
 //const baseUrlResidential = 'http://localhost:3500/inmuebles/';
@@ -22,104 +28,120 @@ const newBaseUrlSingular = "https://api.vamosaporello.com/inmuebles/web/departme
 // const newBaseUrlCosta       =   process.env.REACT_APP_NEW_BASE_URL_COSTA;
 
 const requestBaseParams = {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-        'Access-Control-Allow-Origin': '*'
-    }
-}
+  method: "GET",
+  credentials: "include",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
+};
 
 export const getResidential = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlResidential}&${filterParams.toString()}` : `${newBaseUrlResidential}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
+  /* console.log(filters) */
+  const filterParams = new URLSearchParams(filters);
+  const urlWithFilters = !!filterParams
+    ? `${newBaseUrlResidential}&${filterParams.toString()}`
+    : `${newBaseUrlResidential}`;
+  /* console.log(urlWithFilters) */
+  const newUrl = new URL(urlWithFilters);
+  /* console.log(newUrl) */
 
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
+  const response = await fetch(newUrl, requestBaseParams);
+  const adsInfo = await response.json();
+  /* console.log(adsInfo) */
+  return adsInfo;
+};
 
 export const getPatrimonial = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlPatrimonial}&${filterParams.toString()}` : `${newBaseUrlPatrimonial}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
+  /* console.log(filters) */
+  const filterParams = new URLSearchParams(filters);
+  const urlWithFilters = !!filterParams
+    ? `${newBaseUrlPatrimonial}&${filterParams.toString()}`
+    : `${newBaseUrlPatrimonial}`;
+  /* console.log(urlWithFilters) */
+  const newUrl = new URL(urlWithFilters);
+  /* console.log(newUrl) */
 
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
+  const response = await fetch(newUrl, requestBaseParams);
+  const adsInfo = await response.json();
+  /* console.log(adsInfo) */
+  return adsInfo;
+};
 
 export const getCosta = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlCosta}&${filterParams.toString()}` : `${newBaseUrlCosta}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
+  /* console.log(filters) */
+  const filterParams = new URLSearchParams(filters);
+  const urlWithFilters = !!filterParams
+    ? `${newBaseUrlCosta}&${filterParams.toString()}`
+    : `${newBaseUrlCosta}`;
+  /* console.log(urlWithFilters) */
+  const newUrl = new URL(urlWithFilters);
+  /* console.log(newUrl) */
 
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
+  const response = await fetch(newUrl, requestBaseParams);
+  const adsInfo = await response.json();
+  /* console.log(adsInfo) */
+  return adsInfo;
+};
 
 export const getRustico = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlRustico}&${filterParams.toString()}` : `${newBaseUrlRustico}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
+  /* console.log(filters) */
+  const filterParams = new URLSearchParams(filters);
+  const urlWithFilters = !!filterParams
+    ? `${newBaseUrlRustico}&${filterParams.toString()}`
+    : `${newBaseUrlRustico}`;
+  /* console.log(urlWithFilters) */
+  const newUrl = new URL(urlWithFilters);
+  /* console.log(newUrl) */
 
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
+  const response = await fetch(newUrl, requestBaseParams);
+  const adsInfo = await response.json();
+  /* console.log(adsInfo) */
+  return adsInfo;
+};
 
 export const getSingular = async (filters) => {
-    /* console.log(filters) */
-    const filterParams = new URLSearchParams(filters)
-    const urlWithFilters = !!filterParams ? `${newBaseUrlSingular}&${filterParams.toString()}` : `${newBaseUrlSingular}`;
-    /* console.log(urlWithFilters) */
-    const newUrl = new URL(urlWithFilters)
-    /* console.log(newUrl) */
+  /* console.log(filters) */
+  const filterParams = new URLSearchParams(filters);
+  const urlWithFilters = !!filterParams
+    ? `${newBaseUrlSingular}&${filterParams.toString()}`
+    : `${newBaseUrlSingular}`;
+  /* console.log(urlWithFilters) */
+  const newUrl = new URL(urlWithFilters);
+  /* console.log(newUrl) */
 
-    const response = await fetch(newUrl, requestBaseParams)
-    const adsInfo = await response.json()
-    /* console.log(adsInfo) */
-    return adsInfo
-}
-
+  const response = await fetch(newUrl, requestBaseParams);
+  const adsInfo = await response.json();
+  /* console.log(adsInfo) */
+  return adsInfo;
+};
 
 export const getResidentialItem = async (id) => {
-    // console.log(`${baseUrlResidential}${id}`)
-    const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams)
-    /* console.log(response) */
-    const adInfo = await response.json()
-    /* console.log(adInfo) */
-    return [adInfo]
-}
+  // console.log(`${baseUrlResidential}${id}`)
+  const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams);
+  /* console.log(response) */
+  const adInfo = await response.json();
+  /* console.log(adInfo) */
+  return [adInfo];
+};
 
 export const getPatrimonialItem = async (id) => {
-    const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams)
-    /* console.log(response) */
-    const adInfo = await response.json()
-    /* console.log(adInfo) */
-    return [adInfo]
-}
+  const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams);
+  /* console.log(response) */
+  const adInfo = await response.json();
+  /* console.log(adInfo) */
+  return [adInfo];
+};
 
 export const getConsultants = () => {
-    return fetch(`${baseUrlConsultants}consultants`, {
-        method: 'GET',
-        cors: true
-    }).then((response) => response.json())
-}
+  return fetch(`${baseUrlConsultants}consultants`, {
+    method: "GET",
+    cors: true,
+  }).then((response) => response.json());
+};
+
+export const getCatalogs = () => {
+  return fetch(`${baseUrlProduction}catalogs/all`, {
+    method: "GET",
+    cors: true,
+  }).then((response) => response.json());
+};
