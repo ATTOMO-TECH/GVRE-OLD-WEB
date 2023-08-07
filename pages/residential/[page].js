@@ -1118,6 +1118,18 @@ export default function Residential({
     }
   };
 
+  const handleOnKeyEnter = (e) => {
+    // Execute a function when the user presses a key on the keyboard
+    // If the user presses the "Enter" key on the keyboard
+    if (e.keyCode === 13) {
+      // Cancel the default action, if needed
+      e.preventDefault();
+      setFilter(false);
+      // Execute the filterResults function
+      filterResults();
+    }
+  };
+
   function navigateToNewPath(page, query) {
     const {
       tipo,
@@ -2057,7 +2069,11 @@ export default function Residential({
                   </div>
                   <div className="residential__filter__selectors__ref">
                     <h4>Búsqueda por referencia</h4>
-                    <input onChangeCapture={addRef} type="text" />
+                    <input
+                      onKeyDown={handleOnKeyEnter}
+                      onChangeCapture={addRef}
+                      type="text"
+                    />
                     <Image
                       width={17}
                       height={17}
