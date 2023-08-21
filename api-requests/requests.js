@@ -145,3 +145,23 @@ export const getCatalogs = () => {
     cors: true,
   }).then((response) => response.json());
 };
+
+export const sendInfoEmailFromActiveItemForm = async (form) => {
+  // console.log(form);
+  const response = await fetch(`http://localhost:3500/mails/webReservations`, {
+    method: "POST",
+    credentials: "include",
+    body: JSON.stringify(form),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+  if (response.status !== 200) {
+    throw new Error(`Error on send email ${response.status}`);
+  }
+  const data = await response.json();
+  return data;
+  // const { data } = response;
+};
