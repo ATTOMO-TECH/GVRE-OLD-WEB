@@ -148,7 +148,7 @@ export const getCatalogs = () => {
 
 export const sendInfoEmailFromActiveItemForm = async (form) => {
   // console.log(form);
-  const response = await fetch(`http://localhost:3500/mails/webReservations`, {
+  const response = await fetch(`${baseUrlProduction}mails/webReservations`, {
     method: "POST",
     credentials: "include",
     body: JSON.stringify(form),
