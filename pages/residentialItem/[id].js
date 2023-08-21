@@ -9,6 +9,7 @@ import * as yup from "yup";
 import {
   getConsultants,
   getResidentialItem,
+  sendInfoEmailFromActiveItemForm,
 } from "../../api-requests/requests.js";
 import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header/Header";
@@ -146,21 +147,40 @@ export default function ResidentialItem({ list, currentConsultant }) {
     referencia: yup.string(""),
   });
 
-  const sendEmail = (e) => {
-    emailjs
-      .sendForm("gmail", "template_zpo7p8a", form.current, "d0RpjhV6JfLsc5KLH")
-      .then(
-        (result) => {
-          setViewForm(!viewForm);
-          return result;
-        },
-        (error) => {
-          alert(
-            "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
-          );
-          return error;
-        }
+  const sendEmail = async (e) => {
+    const data = {
+      contactName: form.current.nombre.value,
+      contactSurname: form.current.apellidos.value,
+      contactEmail: form.current.email.value,
+      contactPhone: form.current.telefono.value,
+      contactMessage: form.current.mensaje.value,
+      activeReference: state.adReference,
+      consultantEmail: consultant.consultantEmail,
+      // consultantEmail: "ivan.hervas3@gmail.es",
+    };
+    const emailSend = await sendInfoEmailFromActiveItemForm(data);
+    // console.log(emailSend);
+    if (emailSend === "Mensaje enviado") {
+      setViewForm(!viewForm);
+    } else {
+      alert(
+        "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
       );
+    }
+    // emailjs
+    //   .sendForm("gmail", "template_zpo7p8a", form.current, "d0RpjhV6JfLsc5KLH")
+    //   .then(
+    //     (result) => {
+    //       setViewForm(!viewForm);
+    //       return result;
+    //     },
+    //     (error) => {
+    //       alert(
+    //         "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
+    //       );
+    //       return error;
+    //     }
+    //   );
   };
 
   const toggleForm = () => {
