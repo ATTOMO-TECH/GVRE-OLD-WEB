@@ -89,6 +89,12 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   }, [list, router]);
 
   useEffect(() => {
+    window.scroll({
+      top: 0,
+    });
+  }, []);
+
+  useEffect(() => {
     Geocode.fromAddress(
       `${state.adDirection.address.street} 
       ${state.adDirection.address.directionNumber}, 
@@ -104,12 +110,6 @@ export default function PatrimonialItem({ list, currentConsultant }) {
       }
     );
   }, [list, state]);
-
-  useEffect(() => {
-    window.scroll({
-      top: 0,
-    });
-  }, []);
 
   const toggleFullScreen = () => {
     setViewFullScreen(!viewFullScreen);
