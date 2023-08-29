@@ -96,6 +96,12 @@ export default function ResidentialItem({ list, currentConsultant }) {
   }, [list, router]);
 
   useEffect(() => {
+    window.scroll({
+      top: 0,
+    });
+  }, []);
+
+  useEffect(() => {
     //list?.map(item => {
     Geocode.fromAddress(
       `${state.adDirection.address.street}
@@ -114,12 +120,6 @@ export default function ResidentialItem({ list, currentConsultant }) {
     //return state
     //})
   }, [list, state]);
-
-  useEffect(() => {
-    window.scroll({
-      top: 0,
-    });
-  }, []);
 
   const toggleFullScreen = () => {
     setViewFullScreen(!viewFullScreen);
