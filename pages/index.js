@@ -6,7 +6,7 @@ import flechaAbajo from "./../assets/SVG/mobile/comun/flechaAbajo.svg";
 import flechaCategoriasWeb from "./../assets/SVG/web/comunes/flechaCategoriasWeb.svg";
 import routes from "./../config/routes.js";
 import Header from "./../components/HeaderHome/HeaderHome";
-import { getResidential } from "./../api-requests/requests";
+import { getResidential, getWebData } from "./../api-requests/requests";
 /*import { generalContext } from '../../../providers/generalProvider';*/
 //import { Link, generatePath, NavLink } from 'react-router-dom';
 import Link from "next/link";
@@ -30,8 +30,15 @@ export default function Home({ destacado }) {
   /*const [state, setState] = useContext(generalContext);*/
   //const [destacado, setDestacado] = useState([]);
   // const [test, setTest] = useState('');
-
-  useEffect(() => {}, []);
+  const [webData, setWebData] = useState({});
+  async function fetchGetWebData() {
+    const webData = await getWebData();
+    setWebData(webData[0]);
+    console.log(webData[0]);
+  }
+  useEffect(() => {
+    fetchGetWebData();
+  }, []);
 
   useEffect(() => {
     window.scroll({ top: 0 });
@@ -102,9 +109,9 @@ export default function Home({ destacado }) {
           <Header />
           <div id="top" className="home__top">
             <div className="home__top__text">
-              <h1 className="home__top__text__title">GV Real Estate</h1>
+              <h1 className="home__top__text__title">{webData?.mainTitle}</h1>
               <h2 className="home__top__text__content">
-                Expertos en gestión inmobiliaria de lujo
+                {webData?.mainSubtitle}
               </h2>
             </div>
             <div className="home__top__buttons">
@@ -204,19 +211,18 @@ export default function Home({ destacado }) {
             <div className="home__more__image"></div>
             <div className="home__more__text">
               <h3 className="home__more__text__title">
-                Interiorismo y arquitectos
+                {webData?.sections?.interiorims?.title}
               </h3>
               <p className="home__more__text__description">
-                Nuestra marca representa el compromiso con para trabajar con el
-                mejor equipo de expertos y brindarle un servicio a la altura de
-                sus expectativas.
+                {webData?.sections?.interiorims?.description}
               </p>
               <Link
                 href={`${routes.Contextual}#arquitectura`}
                 onClick={situate4}
                 className="home__more__text__link"
               >
-                Saber más{" "}
+                {webData?.sections?.interiorims?.buttonText}
+
                 <span className="longArrow">
                   <Image
                     width={30}
@@ -239,18 +245,17 @@ export default function Home({ destacado }) {
           <div className="home__moreB">
             <div className="home__moreB__image"></div>
             <div className="home__moreB__text">
-              <h3 className="home__moreB__text__title">Venda con nosotros</h3>
+              <h3 className="home__moreB__text__title">
+                {webData?.sections?.offices?.title}
+              </h3>
               <p className="home__moreB__text__description">
-                La experiencia del cliente comprador es nuestra prioridad, es
-                por ello que en GV nos centramos en ofrecer una búsqueda más
-                condicionada para que las ofertas estén perfectamente centradas
-                en sus necesidades.
+                {webData?.sections?.offices?.description}
               </p>
               <Link
                 href={`${routes.Contextual}#desarrollos`}
                 className="home__moreB__text__link"
               >
-                Saber más{" "}
+                {webData?.sections?.offices?.buttonText}
                 <span className="longArrow">
                   <Image
                     width={30}
@@ -273,18 +278,18 @@ export default function Home({ destacado }) {
           <div className="home__more">
             <div className="home__more__image2"></div>
             <div className="home__more__text">
-              <h3 className="home__more__text__title">Nuestras oficinas</h3>
+              <h3 className="home__more__text__title">
+                {webData?.sections?.sell?.title}
+              </h3>
               <p className="home__more__text__description">
-                Nuestra marca representa el compromiso con para trabajar con el
-                mejor equipo de expertos y brindarle un servicio a la altura de
-                sus expectativas.
+                {webData?.sections?.sell?.description}
               </p>
               <Link
                 href={routes.Contact}
                 onClick={situate2}
                 className="home__more__text__link"
               >
-                Saber más{" "}
+                {webData?.sections?.sell?.buttonText}
                 <span className="longArrow">
                   <Image
                     width={30}
@@ -400,7 +405,7 @@ export default function Home({ destacado }) {
                           height={300}
                           className="home__outstanding__position__images__image"
                           key={`${item._id}-${index}`}
-                          src={item.images.main.replaceAll(" ", "%20")}
+                          src={item.images.main.replace(" ", "%20")}
                           alt={item.title}
                           loading="lazy"
                         />
@@ -537,7 +542,7 @@ export default function Home({ destacado }) {
               </button>
             </div>
           </div>
-          <ContactIndex />
+          <ContactIndex webData={webData} />
         </div>
       </main>
     </>
