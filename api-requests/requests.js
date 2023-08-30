@@ -35,6 +35,23 @@ const requestBaseParams = {
   },
 };
 
+export const getWebData = async () => {
+  const response = await fetch(`${baseUrlProduction}web/home`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+  if (response.status !== 200) {
+    throw new Error(`Error on send email ${response.status}`);
+  }
+  const data = await response.json();
+  return data;
+};
+
 export const getResidential = async (filters) => {
   /* console.log(filters) */
   const filterParams = new URLSearchParams(filters);
