@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import ContactInfo from "../components/ContactInfo/ContactIndex";
 import desarrollos from "../assets/context/arquit.png";
@@ -9,9 +9,34 @@ import text from "../assets/context/file-text.svg";
 import search from "../assets/context/search.svg";
 import Image from "next/image";
 import useWindowSize from "../hooks/useWindowsSize";
+import { getWebData } from "../api-requests/requests";
 
 export default function Services() {
   const size = useWindowSize();
+  const [webData, setWebData] = useState({});
+  const [interiorims, setInteriorimsImage] = useState("");
+  const [development, setDevelopmentImage] = useState("");
+  const [developmentDescription, setDevelopmentDescription] = useState([]);
+  const [interiorismDescription, setInteriorimsDescription] = useState([]);
+
+  async function fetchGetWebData() {
+    const webData = await getWebData();
+    setWebData(webData[0]);
+    // console.log(webData[0]);
+    const interiorismArray =
+      webData[0].services.interiorims.description.split("\n");
+    // console.log(interiorismArray);
+    setInteriorimsDescription(interiorismArray);
+    const developmentArray =
+      webData[0].services.development.description.split("\n");
+    // console.log(developmentArray);
+    setDevelopmentDescription(developmentArray);
+    setInteriorimsImage(webData[0].services.interiorims.image);
+    setDevelopmentImage(webData[0].services.development.image);
+  }
+  useEffect(() => {
+    fetchGetWebData();
+  }, []);
 
   return (
     <div className="contextual">
@@ -132,54 +157,32 @@ export default function Services() {
         </div>
       </div>
       <div id="desarrollos" className="contextual__nuevos">
-        <h2>Nuevos desarrollos</h2>
-        <p>
-          Como arquitectos aprovechamos nuestro conocimiento del sector para
-          brindar asesoramiento para aprovechar oportunidades que puedan surgir
-          en el mercado, y que permiten llevar a cabo tanto nuevos desarollos
-          como rehabilitación de edificios existentes.{" "}
-        </p>
-        <p>
-          Es importante realizar una labor de valoración previa al inicio de
-          intervenciones de este tipo. Para ello, asesoramos en el análisis de
-          cada detalle desde es coste de la materia prima hasta el producto
-          final, pasando por los gastos de construcción.
-        </p>
+        <h2>{webData?.services?.development?.title}</h2>
+        {developmentDescription.map((dev, i) => (
+          <p key={i}>{dev}</p>
+        ))}
         <Image
           width={size < 770 ? 300 : size < 1350 ? 400 : 624}
           height={size < 770 ? 300 : size < 1350 ? 400 : 578}
-          src={desarrollos}
+          src={development}
           alt="imagen desarrollos"
         />
       </div>
       <div id="arquitectura" className="contextual__arquitectura">
         <div>
-          <h2>Arquitectura e interiorismo</h2>
-          <p>
-            El servicio de interiorismo que ofrecemos le asegura que su proyecto
-            obtenga los mejores resultados. En GV priorizamos la optimización
-            del espacio, el confort y la garatntía de satisfacción de nuestros
-            clientes.{" "}
-          </p>
-          <p>
-            Nuestro asesoramiento está enfocado a potencial el desarrollo de su
-            negocio. Nuestro equipo le ofrecerá propuestas de calidad y un
-            continuo control de costes de implantación.
-          </p>
-          <p>
-            La fiabilidad de nuestros servicios está avalada por numerosas
-            compañías nacionales que han confiado en nuestra experiencia y
-            profesionalidad.
-          </p>
+          <h2>{webData?.services?.interiorims?.title}</h2>
+          {interiorismDescription.map((dev, i) => (
+            <p key={i}>{dev}</p>
+          ))}
         </div>
         <Image
           width={890}
           height={655}
-          src={arquitectura}
+          src={interiorims}
           alt="imagen interior"
         />
       </div>
-      <ContactInfo />
+      <ContactInfo webData={webData} />
     </div>
   );
 }

@@ -23,6 +23,7 @@ import flechaCarrusel from "./../assets/SVG/web/comunes/homepageDestacados.svg";
 import supP from "./../assets/SVG/web/anuncios/anuncios_superficieP.svg";
 import parking from "./../assets/SVG/web/anuncios/anuncios_garaje.svg";
 import Image from "next/image";
+import setBackgroundImageToContainer from "../globalFunctions/functions";
 
 const inter = Inter({ subsets: ["latin"] });
 // Pagina inicial
@@ -31,10 +32,45 @@ export default function Home({ destacado }) {
   //const [destacado, setDestacado] = useState([]);
   // const [test, setTest] = useState('');
   const [webData, setWebData] = useState({});
+  const [costaImage, setCostaImage] = useState("");
+  const [rusticImage, setRusticImage] = useState("");
+  const [singularImage, setSingularImage] = useState("");
   async function fetchGetWebData() {
     const webData = await getWebData();
     setWebData(webData[0]);
     console.log(webData[0]);
+    setCostaImage(webData[0]?.otherCategoriesImages?.coast);
+    setRusticImage(webData[0]?.otherCategoriesImages?.rustic);
+    setSingularImage(webData[0]?.otherCategoriesImages?.singular);
+    setBackgroundImageToContainer(webData[0].portraidImage, ".home__top");
+    setBackgroundImageToContainer(
+      webData[0].categoriesImages.residential,
+      ".home__categories__container__option__residential"
+    );
+    setBackgroundImageToContainer(
+      webData[0].categoriesImages.patrimonial,
+      ".home__categories__container__option__patrimonial"
+    );
+    setBackgroundImageToContainer(
+      webData[0].categoriesImages.art,
+      ".home__categories__container__option__art"
+    );
+    setBackgroundImageToContainer(
+      webData[0].categoriesImages.catalog,
+      ".home__categories__container__option__catalog"
+    );
+    setBackgroundImageToContainer(
+      webData[0].sections.interiorims.image,
+      ".home__more__image"
+    );
+    setBackgroundImageToContainer(
+      webData[0].sections.offices.image,
+      ".home__moreB__image"
+    );
+    setBackgroundImageToContainer(
+      webData[0].sections.sell.image,
+      ".home__more__image2"
+    );
   }
   useEffect(() => {
     fetchGetWebData();
@@ -320,7 +356,7 @@ export default function Home({ destacado }) {
                   width={650}
                   height={405}
                   className="home__otherCategories__categories__item__image"
-                  src={costa}
+                  src={costaImage}
                   alt="categoría costa"
                 />
                 <div className="home__otherCategories__categories__item__link">
@@ -343,7 +379,7 @@ export default function Home({ destacado }) {
                   width={650}
                   height={405}
                   className="home__otherCategories__categories__item__image"
-                  src={rustico}
+                  src={rusticImage}
                   alt="categoría rustico"
                 />
                 <div className="home__otherCategories__categories__item__link">
@@ -366,7 +402,7 @@ export default function Home({ destacado }) {
                   width={650}
                   height={405}
                   className="home__otherCategories__categories__item__image"
-                  src={singular}
+                  src={singularImage}
                   alt="categoría singulares"
                 />
                 <div className="home__otherCategories__categories__item__link">
@@ -405,7 +441,7 @@ export default function Home({ destacado }) {
                           height={300}
                           className="home__outstanding__position__images__image"
                           key={`${item._id}-${index}`}
-                          src={item.images.main.replace(" ", "%20")}
+                          src={item.images.main.replaceAll(" ", "%20")}
                           alt={item.title}
                           loading="lazy"
                         />
