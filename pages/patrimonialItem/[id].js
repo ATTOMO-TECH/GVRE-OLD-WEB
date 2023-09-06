@@ -464,9 +464,11 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                     {state.expensesIncluded !== 0 ? (
                       <div>
                         <h4>
-                          {`${new Intl.NumberFormat("de-DE").format(
-                            Math.round(state.expensesIncluded)
-                          )}`}{" "}
+                          {new Intl.NumberFormat("de-DE").format(
+                            Math.round(
+                              Number(state.expensesIncluded.replace(/\./g, ""))
+                            )
+                          )}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/mes
                           </span>
