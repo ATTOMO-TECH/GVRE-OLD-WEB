@@ -461,12 +461,16 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                         : "patrimonialItem__description__rentEmpty__numbers"
                     }
                   >
-                    {state.expensesIncluded !== 0 ? (
+                    {state?.expensesIncluded !== 0 ? (
                       <div>
                         <h4>
                           {new Intl.NumberFormat("de-DE").format(
                             Math.round(
-                              Number(state.expensesIncluded.replace(/\./g, ""))
+                              Number(
+                                state?.expensesIncluded
+                                  .toString()
+                                  .replace(/\./g, "")
+                              )
                             )
                           )}{" "}
                           <span className="custom-rent-numbers-patrimonio">
