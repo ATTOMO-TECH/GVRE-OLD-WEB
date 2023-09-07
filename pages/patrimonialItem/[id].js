@@ -102,8 +102,8 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
-        setLatitude(lat + 0.0013);
-        setLongitude(lng + 0.0013);
+        setLatitude(lat + 0.006);
+        setLongitude(lng + 0.006);
       },
       (error) => {
         console.error("ERROR", error);
@@ -461,12 +461,18 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                         : "patrimonialItem__description__rentEmpty__numbers"
                     }
                   >
-                    {state.expensesIncluded !== 0 ? (
+                    {state?.expensesIncluded !== 0 ? (
                       <div>
                         <h4>
-                          {`${new Intl.NumberFormat("de-DE").format(
-                            Math.round(state.expensesIncluded)
-                          )}`}{" "}
+                          {new Intl.NumberFormat("de-DE").format(
+                            Math.round(
+                              Number(
+                                state?.expensesIncluded
+                                  .toString()
+                                  .replace(/\./g, "")
+                              )
+                            )
+                          )}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/mes
                           </span>
