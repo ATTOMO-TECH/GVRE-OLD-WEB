@@ -110,8 +110,8 @@ export default function ResidentialItem({ list, currentConsultant }) {
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
-        setLatitude(lat + 0.0013);
-        setLongitude(lng + 0.0013);
+        setLatitude(lat + 0.006);
+        setLongitude(lng + 0.006);
       },
       (error) => {
         console.error(error);
@@ -1044,7 +1044,7 @@ export async function getServerSideProps(context) {
     const list = await getResidentialItem(id);
     //console.log('lista', list.length)
     const item = list[0];
-    //console.log(item)
+    // console.log(item);
     const { _id } = item;
     //console.log('_id',_id)
     let currentConsultant = {};
