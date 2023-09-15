@@ -466,11 +466,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                         <h4>
                           {new Intl.NumberFormat("de-DE").format(
                             Math.round(
-                              Number(
-                                state?.expensesIncluded
-                                  .toString()
-                                  .replace(/\./g, "")
-                              )
+                              Number(state?.expensesIncluded.toString())
                             )
                           )}{" "}
                           <span className="custom-rent-numbers-patrimonio">
