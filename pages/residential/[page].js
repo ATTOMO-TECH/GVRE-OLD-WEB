@@ -184,12 +184,19 @@ export default function Residential({
               infiniteLoop={true}
               showStatus={false}
             >
+              {}
               <Image
                 width={400}
                 height={300}
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
                 loading="lazy"
+                style={
+                  item.images.main.includes("IMG_5772") && {
+                    transform: "rotate(90deg)",
+                    width: "100%",
+                  }
+                }
               />
               {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
@@ -345,6 +352,12 @@ export default function Residential({
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
                 loading="lazy"
+                style={
+                  item.images.main.includes("IMG_5772") && {
+                    transform: "rotate(90deg)",
+                    width: "100%",
+                  }
+                }
               />
               {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
