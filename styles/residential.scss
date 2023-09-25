@@ -396,8 +396,8 @@
                 img{
                     height: 300px;
                     max-width: 400px;
-                    image-orientation: none;
-                    transform: rotate(0deg);
+                    image-orientation: from-image;
+                
                 }
                 &__text{
                     position: relative;
@@ -488,8 +488,7 @@
                 img{
                     height: 450px;
                     max-width: 650px;
-                    image-orientation: none;
-                    transform: rotate(0deg);
+                    image-orientation: from-image;
                 }
                 &__text{
                     &__price{
