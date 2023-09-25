@@ -194,6 +194,7 @@ export default function Residential({
                 style={
                   item.images.main.includes("IMG_5772") && {
                     transform: "rotate(90deg)",
+                    width: "100%",
                   }
                 }
               />
@@ -354,6 +355,7 @@ export default function Residential({
                 style={
                   item.images.main.includes("IMG_5772") && {
                     transform: "rotate(90deg)",
+                    width: "100%",
                   }
                 }
               />
