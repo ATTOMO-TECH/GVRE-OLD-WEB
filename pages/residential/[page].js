@@ -164,6 +164,10 @@ export default function Residential({
   };
   const pageCount = pages;
 
+  const inLineStyles = {
+    transform: "rotate(90deg)",
+  };
+
   const getPostItems = orderedItems?.map((item) => {
     return item.department === "Residencial" && item.showOnWeb === true ? (
       <div
@@ -184,12 +188,16 @@ export default function Residential({
               infiniteLoop={true}
               showStatus={false}
             >
+              {}
               <Image
                 width={400}
                 height={300}
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
                 loading="lazy"
+                style={
+                  item.images.main.includes("IMG_5772") && { inLineStyles }
+                }
               />
               {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
@@ -345,6 +353,9 @@ export default function Residential({
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
                 loading="lazy"
+                style={
+                  item.images.main.includes("IMG_5772") && { inLineStyles }
+                }
               />
               {/*{item.images.others.map((image)=> (
                                 <Image key={image} src={image} alt={item.title} loading="lazy"/>
