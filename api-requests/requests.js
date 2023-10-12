@@ -1,7 +1,7 @@
 //PROD
 const baseUrlProduction = "https://gvrecrmback-new-production.up.railway.app/";
 const baseUrlResidential = "https://gvrecrmback-new-production.up.railway.app/inmuebles/";
-const baseUrlConsultants = "https://www.gvrecrm.com/";
+const baseUrlConsultants = "https://gvrecrmback-new-production.up.railway.app/";
 const newBaseUrlResidential =
   "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Residencial&showOnWeb=true";
 const newBaseUrlPatrimonial =
