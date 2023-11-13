@@ -1,17 +1,17 @@
 //PROD
-const baseUrlProduction = "https://api.vamosaporello.com/";
-const baseUrlResidential = "https://api.vamosaporello.com/inmuebles/";
-const baseUrlConsultants = "https://www.gvrecrm.com/";
+const baseUrlProduction = "https://gvrecrmback-new-production.up.railway.app/";
+const baseUrlResidential = "https://gvrecrmback-new-production.up.railway.app/inmuebles/";
+const baseUrlConsultants = "https://gvrecrmback-new-production.up.railway.app/";
 const newBaseUrlResidential =
-  "https://api.vamosaporello.com/inmuebles/web/department=Residencial&showOnWeb=true";
+  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Residencial&showOnWeb=true";
 const newBaseUrlPatrimonial =
-  "https://api.vamosaporello.com/inmuebles/web/department=Patrimonio&showOnWeb=true";
+  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Patrimonio&showOnWeb=true";
 const newBaseUrlCosta =
-  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
+  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
 const newBaseUrlRustico =
-  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
+  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
 const newBaseUrlSingular =
-  "https://api.vamosaporello.com/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
+  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
 
 //LOCAL
 //const baseUrlResidential = 'http://localhost:3500/inmuebles/';
