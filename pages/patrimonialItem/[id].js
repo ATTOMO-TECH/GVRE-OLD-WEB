@@ -1048,7 +1048,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
             </div>
             <div className="patrimonialItem__description__filter"></div>
             <div className="patrimonialItem__description__locationMap">
-              <MapItem lat={latitude} lng={longitude} errorMargin={120} />
+              <MapItem lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
