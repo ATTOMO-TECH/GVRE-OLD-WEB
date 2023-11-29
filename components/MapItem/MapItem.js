@@ -2,12 +2,14 @@ import React from "react";
 import {
   GoogleMap,
   LoadScript,
+  MarkerF,
   OverlayView,
   OverlayViewF,
 } from "@react-google-maps/api";
 
-function MapItem({ lat, lng, errorMargin }) {
+function MapItem({ lat, lng }) {
   const coordinates = { lat: lat, lng: lng };
+  const errorMargin = 120;
 
   const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_KEY;
 
@@ -50,6 +52,7 @@ function MapItem({ lat, lng, errorMargin }) {
                 }}
               />
             </OverlayViewF>
+            {/* <MarkerF position={coordinates} /> */}
           </GoogleMap>
         </LoadScript>
       )}
