@@ -1,17 +1,17 @@
 //PROD
-const baseUrlProduction = "https://gvrecrmback-new-production.up.railway.app/";
-const baseUrlResidential = "https://gvrecrmback-new-production.up.railway.app/inmuebles/";
-const baseUrlConsultants = "https://gvrecrmback-new-production.up.railway.app/";
+const baseUrlProduction = "http://localhost:3500/";
+const baseUrlResidential = "http://localhost:3500/inmuebles/";
+const baseUrlConsultants = "http://localhost:3500//";
 const newBaseUrlResidential =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Residencial&showOnWeb=true";
+  "http://localhost:3500/inmuebles/web/department=Residencial&showOnWeb=true";
 const newBaseUrlPatrimonial =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Patrimonio&showOnWeb=true";
+  "http://localhost:3500/inmuebles/web/department=Patrimonio&showOnWeb=true";
 const newBaseUrlCosta =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
+  "http://localhost:3500/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
 const newBaseUrlRustico =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
+  "http://localhost:3500/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
 const newBaseUrlSingular =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
+  "http://localhost:3500/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
 
 //LOCAL
 //const baseUrlResidential = 'http://localhost:3500/inmuebles/';
