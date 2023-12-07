@@ -464,14 +464,48 @@
     width: 4.8%;
     p {
       width: 120%;
-      bottom: -59px;
-      left: 20px;
+      bottom: -61px;
+      left: 17px;
     }
     img {
       width: 105%;
       bottom: -60px;
     }
   }
+  .lista {
+    bottom: 38%;
+    left: 75.8%;
+    width: 4.4%;
+    transform: rotate(1.1deg);
+    p {
+      width: 120%;
+      bottom: -50px;
+      left: 13px;
+    }
+    img {
+      width: 90%;
+      bottom: -60px;
+      height: 28px;
+    }
+  }
+  .goya {
+    bottom: 32.6%;
+    left: 75.8%;
+    width: 4.4%;
+    transform: rotate(1.3deg);
+    p {
+      width: 120%;
+      bottom: -55px;
+      left: 25px;
+    }
+    img {
+      width: 95%;
+      bottom: -60px;
+      height: 24px;
+     
+    }
+  }
+  
   .jero {
     bottom: 16%;
     left: 69.8%;
@@ -963,12 +997,46 @@
       width: 4.8%;
       p {
         width: 120%;
-        bottom: -78px;
-        left: 35px;
+        bottom: -82px;
+        left: 20px;
       }
       img {
         width: 105%;
         bottom: -71px;
+      }
+    }
+    .lista {
+      bottom: 34.5%;
+      left: 75.8%;
+      width: 4.4%;
+      transform: rotate(1.1deg);
+      p {
+        width: 120%;
+        bottom: -45px;
+        left: 20px;
+      }
+      img {
+        width: 90%;
+        bottom: -60px;
+        height: 35px;
+       
+      }
+    }
+    .goya {
+      bottom: 29.1%;
+      left: 75.6%;
+      width: 4.4%;
+      transform: rotate(1.3deg);
+      p {
+        width: 120%;
+        bottom: -50px;
+        left: 38px;
+      }
+      img {
+        width: 98%;
+        bottom: -60px;
+        height: 30px;
+       
       }
     }
     .jero {

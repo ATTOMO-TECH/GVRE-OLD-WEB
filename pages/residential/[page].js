@@ -349,7 +349,17 @@ export default function Residential({
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={
+                  item.images.main.replaceAll(" ", "%20")
+                  // .startsWith(
+                  //   "https://gvre-images.fra1.digitaloceanspaces.com/"
+                  // )
+                  // ? item.images.main.replaceAll(" ", "%20")
+                  // : `https://gvre-images.fra1.digitaloceanspaces.com/${item.images.main.replaceAll(
+                  //     " ",
+                  //     "%20"
+                  //   )}`
+                }
                 alt={item.title}
                 loading="lazy"
                 style={
