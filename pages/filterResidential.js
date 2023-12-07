@@ -32,6 +32,8 @@ import puer from "./../assets/maps/mapaR/barrios/puer.svg";
 import rosa from "./../assets/maps/mapaR/barrios/rosa.svg";
 import sala from "./../assets/maps/mapaR/barrios/sala.svg";
 import somo from "./../assets/maps/mapaR/barrios/somo.svg";
+import goya from "./../assets/maps/mapaR/barrios/goya.svg";
+import lista from "./../assets/maps/mapaR/barrios/lista.svg";
 import vald1 from "./../assets/maps/mapaR/barrios/vald1.svg";
 import vald2 from "./../assets/maps/mapaR/barrios/vald2.svg";
 import viso from "./../assets/maps/mapaR/barrios/viso.svg";
@@ -68,27 +70,38 @@ export default function FilterResidential() {
   const size = useWindowSize();
 
   const toggleActive = (e) => {
-    /* console.log(e.currentTarget.name) */
     if (e.currentTarget.className === e.currentTarget.id) {
       if (
         e.currentTarget.className === "nuev" ||
         e.currentTarget.className === "hisp"
       ) {
         selected.push(e.currentTarget.name);
-        /* console.log(selected); */
         document.getElementById("nuev").className = "nuev active";
         document.getElementById("hisp").className = "hisp active";
-        //hago una llamada al endpoint para obtener el precio máximo de la zona solo si
-        //saleOrRent.length === 1
+        // Realizar la llamada al endpoint solo si saleOrRent.length === 1
+      } else if (
+        e.currentTarget.className === "lista" ||
+        e.currentTarget.className === "goya"
+      ) {
+        selected.push(e.currentTarget.name);
+        document.getElementById("lista").className = "lista active";
+        document.getElementById("goya").className = "goya active";
+        // Realizar la llamada al endpoint solo si saleOrRent.length === 1
       } else {
         e.currentTarget.className = `${e.currentTarget.className} active`;
         selected.push(e.currentTarget.name);
-        /* console.log(selected) */
       }
     } else {
-      if (e.currentTarget.id === "nuev" || e.currentTarget.id === "hisp") {
+      if (
+        e.currentTarget.id === "nuev" ||
+        e.currentTarget.id === "hisp" ||
+        e.currentTarget.id === "lista" ||
+        e.currentTarget.id === "goya"
+      ) {
         document.getElementById("nuev").classList.remove("active");
         document.getElementById("hisp").classList.remove("active");
+        document.getElementById("lista").classList.remove("active");
+        document.getElementById("goya").classList.remove("active");
         const elementName = e.currentTarget.name;
         const newSelected = selected.filter((item) => item !== elementName);
         selected.splice(0, selected.length, ...newSelected);
@@ -99,12 +112,10 @@ export default function FilterResidential() {
         selected.splice(0, selected.length, ...newSelected);
       }
     }
-    if (selected.length !== 0) {
-      setSelectedActive(true);
-    } else {
-      setSelectedActive(false);
-    }
+
+    setSelectedActive(selected.length !== 0);
   };
+
   const selectSaleOrRent = (e) => {
     if (e.currentTarget.className === e.currentTarget.id) {
       e.currentTarget.className = `${e.currentTarget.className} activeButton`;
@@ -171,7 +182,6 @@ export default function FilterResidential() {
       activeFilters = { ...activeFilters, showOnWeb: itemPage[0] };
       /* console.log(itemPage) */
     }
-
     if (saleOrRent.length) {
       activeFilters = { ...activeFilters, adType: saleOrRent };
       /* console.log(saleOrRent) */
@@ -231,6 +241,7 @@ export default function FilterResidential() {
     // console.log(query)
     Router.push(`${routes.Residential}/${1}?${query}`);
   };
+
   useEffect(() => {
     if (
       selectedActive === true ||
@@ -278,7 +289,6 @@ export default function FilterResidential() {
       filterResults();
     }
   };
-
   return (
     <div className="filtroResidencial">
       <Header />
@@ -624,6 +634,34 @@ export default function FilterResidential() {
                 alt="componente mapa"
               />
               <p>Salamanca</p>
+            </button>
+            <button
+              onClick={toggleActive}
+              name="Goya - Lista"
+              id="lista"
+              className="lista"
+            >
+              <Image
+                height={size >= 1350 ? 80 : 70}
+                type="image"
+                src={lista}
+                alt="componente mapa"
+              />
+              <p>Lista</p>
+            </button>
+            <button
+              onClick={toggleActive}
+              name="Goya - Lista"
+              id="goya"
+              className="goya"
+            >
+              <Image
+                height={size >= 1350 ? 80 : 70}
+                type="image"
+                src={goya}
+                alt="componente mapa"
+              />
+              <p>Goya</p>
             </button>
             <button
               onClick={toggleActive}

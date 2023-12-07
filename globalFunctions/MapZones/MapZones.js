@@ -1,4 +1,4 @@
-import zones from './zones.json'
+import zones from "./zones.json";
 
 /*export const getZoneId = (zoneName) => {
     const filterZones = zones.filter(zoneObj => {
@@ -11,13 +11,13 @@ import zones from './zones.json'
 }*/
 
 export const getZoneId = (zoneName) => {
-    let filteredZones = []
-    zones.forEach(zoneObj => {
-        if (!zoneObj.zone === "Residencial" && !zoneObj.zone === "Patrimonio") {
-            if (zoneName.includes(zoneObj.zone)) filteredZones.push(zoneObj._id)
-        }
-        //Este else if devuelve tanto los inmuebles de patrimonio como los de residencial
-        else if (zoneName.includes(zoneObj.name)) filteredZones.push(zoneObj._id)
-    })
-    return filteredZones
-}
+  let filteredZones = [];
+  zones.forEach((zoneObj) => {
+    if (!zoneObj.zone === "Residencial" && !zoneObj.zone === "Patrimonio") {
+      if (zoneName.includes(zoneObj.zone)) filteredZones.push(zoneObj._id);
+    }
+    //Este else if devuelve tanto los inmuebles de patrimonio como los de residencial
+    else if (zoneName.includes(zoneObj.name)) filteredZones.push(zoneObj._id);
+  });
+  return filteredZones;
+};
