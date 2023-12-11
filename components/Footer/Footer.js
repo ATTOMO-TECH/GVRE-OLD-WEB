@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import footer_instagram from "./../../assets/SVG/mobile/comun/footer_instagram.svg";
 import footer_linkedin from "./../../assets/SVG/mobile/comun/footer_linkedin.svg";
 import logo_attomo from "./../../assets/SVG/web/comunes/logo-attomo.svg";
@@ -8,18 +8,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
-  useEffect(() => {
-    const handlePageShow = () => {
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener("pageshow", handlePageShow);
-
-    return () => {
-      window.removeEventListener("pageshow", handlePageShow);
-    };
-  }, []);
-
   return (
     <footer>
       <div className="footer">
