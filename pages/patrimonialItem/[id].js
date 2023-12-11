@@ -80,14 +80,15 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   };
 
   useEffect(() => {
-    if (router.pathname === "/patrimonialItem/[id]") {
+    const isIOS = /iPad|iPhone/.test(navigator.userAgent);
+    if (router.pathname === "/patrimonialItem/[id]" && isIOS) {
       // Función para desplazar la página al inicio
       const scrollPageToTop = () => {
         window.scrollTo(0, 0);
       };
 
       // Llama a la función para desplazar la página al inicio cuando el componente se monta
-      scrollPageToTop();
+      setTimeout(scrollPageToTop, 200);
     }
   }, [router.pathname]);
 
