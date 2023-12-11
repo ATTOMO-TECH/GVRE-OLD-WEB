@@ -1,5 +1,18 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import Footer from "../components/Footer/Footer";
+import { useEffect } from "react";
+
+const ScrollToTopOnLoad = () => {
+  useEffect(() => {
+    // Función para desplazar la página al inicio
+    const scrollPageToTop = () => {
+      window.scrollTo(0, 0);
+    };
+    scrollPageToTop();
+  }, []);
+
+  return null;
+};
 
 export default function Document() {
   return (
@@ -59,7 +72,8 @@ export default function Document() {
         <link
           href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,500;1,400&display=swap"
           rel="stylesheet"
-        ></link>
+        />
+
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="carousel.css" />
       </Head>
@@ -67,6 +81,7 @@ export default function Document() {
         <Main />
         <Footer />
         <NextScript />
+        <ScrollToTopOnLoad />
       </body>
     </Html>
   );
