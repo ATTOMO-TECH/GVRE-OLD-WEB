@@ -84,7 +84,6 @@ export default function ResidentialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
-
   //Redirección a la home si el inmueble está inactivo
   useEffect(() => {
     if (

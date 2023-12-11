@@ -6,19 +6,23 @@ import logo from "./../../assets/logo.svg";
 import routes from "./../../config/routes.js";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router.js";
 
 const Footer = () => {
+  const router = useRouter();
+
   useEffect(() => {
-    const handlePageShow = () => {
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener("pageshow", handlePageShow);
-
-    return () => {
-      window.removeEventListener("pageshow", handlePageShow);
-    };
-  }, []);
+    if (
+      router.pathname.includes("/residentialItem/") ||
+      router.pathname.includes("/patrimonialItem/")
+    ) {
+      // Función para desplazar la página al inicio
+      const scrollPageToTop = () => {
+        window.scrollTo(0, 0);
+      };
+      scrollPageToTop();
+    }
+  }, [router.pathname]);
 
   return (
     <footer>
