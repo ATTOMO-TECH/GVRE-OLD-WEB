@@ -1,18 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import Footer from "../components/Footer/Footer";
-import { useEffect } from "react";
-
-const ScrollToTopOnLoad = () => {
-  useEffect(() => {
-    // Función para desplazar la página al inicio
-    const scrollPageToTop = () => {
-      window.scrollTo(0, 0);
-    };
-    scrollPageToTop();
-  }, []);
-
-  return null;
-};
 
 export default function Document() {
   return (
@@ -81,7 +68,6 @@ export default function Document() {
         <Main />
         <Footer />
         <NextScript />
-        <ScrollToTopOnLoad />
       </body>
     </Html>
   );
