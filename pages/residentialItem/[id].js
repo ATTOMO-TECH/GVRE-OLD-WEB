@@ -84,16 +84,18 @@ export default function ResidentialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
-
   useEffect(() => {
-    if (router.pathname === "/residentialItem/[id]") {
+    const isIOS = /iPad|iPhone/.test(navigator.userAgent);
+    // Verifica si el pathname es '/residentialItem/[id]' y si es un dispositivo iOS
+    if (router.pathname === "/residentialItem/[id]" && isIOS) {
       // Función para desplazar la página al inicio
       const scrollPageToTop = () => {
         window.scrollTo(0, 0);
       };
 
-      // Llama a la función para desplazar la página al inicio cuando el componente se monta
-      scrollPageToTop();
+      // Llama a la función para desplazar la página al inicio después de un breve retraso
+      // Esto se hace para dar tiempo al navegador a realizar su propio desplazamiento inicial
+      setTimeout(scrollPageToTop, 200);
     }
   }, [router.pathname]);
 
