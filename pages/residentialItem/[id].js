@@ -58,14 +58,6 @@ export default function ResidentialItem({ list, currentConsultant }) {
   const [_client, setClient] = useState(false);
 
   useEffect(() => {
-    const scrollPageToTop = () => {
-      window.scrollTo(0, 0);
-    };
-
-    scrollPageToTop();
-  }, []);
-
-  useEffect(() => {
     setClient(true);
   }, []);
 
@@ -92,6 +84,18 @@ export default function ResidentialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
+
+  useEffect(() => {
+    if (router.pathname === "/residentialItem/[id]") {
+      // Función para desplazar la página al inicio
+      const scrollPageToTop = () => {
+        window.scrollTo(0, 0);
+      };
+
+      // Llama a la función para desplazar la página al inicio cuando el componente se monta
+      scrollPageToTop();
+    }
+  }, [router.pathname]);
 
   //Redirección a la home si el inmueble está inactivo
   useEffect(() => {
