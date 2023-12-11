@@ -64,7 +64,7 @@ export default function Document() {
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="carousel.css" />
       </Head>
-      <body>
+      <body onLoad="window.scrollTo(0, 0)">
         <Main />
         <Footer />
         <NextScript />
