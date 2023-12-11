@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import footer_instagram from "./../../assets/SVG/mobile/comun/footer_instagram.svg";
 import footer_linkedin from "./../../assets/SVG/mobile/comun/footer_linkedin.svg";
 import logo_attomo from "./../../assets/SVG/web/comunes/logo-attomo.svg";
@@ -6,24 +6,8 @@ import logo from "./../../assets/logo.svg";
 import routes from "./../../config/routes.js";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router.js";
 
 const Footer = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (
-      router.pathname.includes("/residentialItem/") ||
-      router.pathname.includes("/patrimonialItem/")
-    ) {
-      // Función para desplazar la página al inicio
-      const scrollPageToTop = () => {
-        window.scrollTo(0, 0);
-      };
-      scrollPageToTop();
-    }
-  }, [router.pathname]);
-
   return (
     <footer>
       <div className="footer">
