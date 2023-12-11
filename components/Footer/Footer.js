@@ -9,12 +9,16 @@ import Image from "next/image";
 
 const Footer = () => {
   useEffect(() => {
-    const scrollPageToTop = () => {
+    const handlePageShow = () => {
       window.scrollTo(0, 0);
     };
 
-    scrollPageToTop();
-  }, []); // El segundo
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, []);
 
   return (
     <footer>
