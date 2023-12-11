@@ -58,6 +58,14 @@ export default function ResidentialItem({ list, currentConsultant }) {
   const [_client, setClient] = useState(false);
 
   useEffect(() => {
+    const scrollPageToTop = () => {
+      window.scrollTo(0, 0);
+    };
+
+    scrollPageToTop();
+  }, []);
+
+  useEffect(() => {
     setClient(true);
   }, []);
 
