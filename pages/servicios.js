@@ -42,28 +42,16 @@ export default function Services() {
     <div className="contextual">
       <Header />
       <div className="contextual__comercializacion">
-        <h2>Comercialización</h2>
-        <p>
-          El sector residencial de lujo, GV Residencial, y el sector terciario,
-          GV Patrimonio, son nuestras dos ramas principales en las que nos
-          especializamos.{" "}
-        </p>
-        <p>
-          La filosofía de la empresa ha sido, y será siempre, que el cliente es
-          nuestro mejor socio. Nuestro foco de atención es ofrecer una buena
-          relación personal, contando con la mayor profesionalidad y
-          diferenciándonos en el sector a través de la oferta de servicios más
-          técnicos.
-        </p>
+        <h2>{webData?.services?.commercialization?.title}</h2>
+        <p>{webData?.services?.commercialization?.description1}</p>
+        <p>{webData?.services?.commercialization?.description2}</p>
         <div className="contextual__comercializacion__list">
           <div className="contextual__comercializacion__list__item">
             <p className="contextual__comercializacion__list__item__number">
               1
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              Acompañamos a nuestros clientes con un servicio de intermediación
-              y asesoramiento en el alquiler o compra/venta de sus inmuebles.
-              Asesoramos en todas las partes de la negociación.
+              {webData?.services?.commercialization?.sections[0]}
             </p>
           </div>
           <div className="contextual__comercializacion__list__item">
@@ -71,8 +59,7 @@ export default function Services() {
               2
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              Aseguramos la máxima transparencia y rigor en nuestras operaciones
-              gracias a nuestra experiencia en la gestión de activos de lujo.
+              {webData?.services?.commercialization?.sections[1]}
             </p>
           </div>
           <div className="contextual__comercializacion__list__item">
@@ -80,66 +67,48 @@ export default function Services() {
               3
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              Nos encargamos asimismo de la localización de oportunidads de
-              inversión inmobiliaria.
+              {webData?.services?.commercialization?.sections[2]}
             </p>
           </div>
         </div>
       </div>
       <div id="inversion" className="contextual__inversion">
-        <h2>Inversión</h2>
-        <p>
-          Con nuestra experiencia en activos inmobiliarios de primer nivel,
-          analizamos las diferentes oportunidades del mercado asesorando a los
-          inversores en la adquisición o venta de diferentes activos
-          inmobiliarios.
-        </p>
+        <h2>{webData?.services?.investment?.title}</h2>
+        <p>{webData?.services?.investment?.description}</p>
         <div className="contextual__inversion__list">
           <div className="contextual__inversion__list__item">
-            <p>Edificios en rentabilidad.</p>
-            <p>(mono-tenant y multi-tenant).</p>
+            <p>{webData?.services?.investment?.sections[0]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>Edificios sin inquilino.</p>
+            <p>{webData?.services?.investment?.sections[1]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>Locales comerciales.</p>
+            <p>{webData?.services?.investment?.sections[2]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>Oficinas para empresas.</p>
+            <p>{webData?.services?.investment?.sections[3]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>Suelos para su desarrollo.</p>
+            <p>{webData?.services?.investment?.sections[4]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>Private Equity Real Estate.</p>
+            <p>{webData?.services?.investment?.sections[5]}</p>
           </div>
         </div>
       </div>
       <div id="gestion" className="contextual__gestion">
-        <h2>Gestión patrimonial</h2>
+        <h2>{webData?.services?.assetManagement?.title}</h2>
         <div className="contextual__gestion__list">
           <div className="contextual__gestion__list__item">
-            <p>
-              Acompañamos a nuestros clientes con un servicio de intermediación
-              y asesoramiento en el alquiler o compra/venta de sus inmuebles.
-              Asesoramos en todas las partes de la negociación.
-            </p>
+            <p>{webData?.services?.assetManagement?.description1}</p>
             <Image width={83} height={83} src={clientes} alt="icono clientes" />
           </div>
           <div className="contextual__gestion__list__item">
-            <p>
-              Aseguramos la máxima transparencia y rigor en nuestras operaciones
-              gracias a nuestra experiencia en la gestión de activos de lujo.
-            </p>
+            <p>{webData?.services?.assetManagement?.description2}</p>
             <Image width={83} height={83} src={search} alt="icono lupa" />
           </div>
           <div className="contextual__gestion__list__item">
-            <p>
-              Acompañamos a nuestros clientes con un servicio de intermediación
-              y asesoramiento en el alquiler o compra/venta de sus inmuebles.
-              Asesoramos en todas las partes de la negociación.
-            </p>
+            <p>{webData?.services?.assetManagement?.description3}</p>
             <Image
               width={83}
               height={83}
@@ -148,10 +117,7 @@ export default function Services() {
             />
           </div>
           <div className="contextual__gestion__list__item">
-            <p>
-              Aseguramos la máxima transparencia y rigor en nuestras operaciones
-              gracias a nuestra experiencia en la gestión de activos de lujo.
-            </p>
+            <p>{webData?.services?.assetManagement?.description4}</p>
             <Image width={83} height={83} src={text} alt="icono texto" />
           </div>
         </div>
