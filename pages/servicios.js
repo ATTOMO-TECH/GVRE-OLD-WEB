@@ -51,7 +51,7 @@ export default function Services() {
               1
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              {webData?.services?.commercialization?.sections[0]}
+              {webData?.services?.commercialization?.commerSections[0]}
             </p>
           </div>
           <div className="contextual__comercializacion__list__item">
@@ -59,7 +59,7 @@ export default function Services() {
               2
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              {webData?.services?.commercialization?.sections[1]}
+              {webData?.services?.commercialization?.commerSections[1]}
             </p>
           </div>
           <div className="contextual__comercializacion__list__item">
@@ -67,32 +67,33 @@ export default function Services() {
               3
             </p>
             <p className="contextual__comercializacion__list__item__text">
-              {webData?.services?.commercialization?.sections[2]}
+              {webData?.services?.commercialization?.commerSections[2]}
             </p>
           </div>
         </div>
       </div>
+      {console.log(webData?.services?.investment)}
       <div id="inversion" className="contextual__inversion">
         <h2>{webData?.services?.investment?.title}</h2>
         <p>{webData?.services?.investment?.description}</p>
         <div className="contextual__inversion__list">
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[0]}</p>
+            <p>{webData?.services?.investment?.investmentSections[0]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[1]}</p>
+            <p>{webData?.services?.investment?.investmentSections[1]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[2]}</p>
+            <p>{webData?.services?.investment?.investmentSections[2]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[3]}</p>
+            <p>{webData?.services?.investment?.investmentSections[3]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[4]}</p>
+            <p>{webData?.services?.investment?.investmentSections[4]}</p>
           </div>
           <div className="contextual__inversion__list__item">
-            <p>{webData?.services?.investment?.sections[5]}</p>
+            <p>{webData?.services?.investment?.investmentSections[5]}</p>
           </div>
         </div>
       </div>
