@@ -17,7 +17,6 @@ export default function Contact() {
   async function fetchGetWebData() {
     const webData = await getWebData();
     setWebData(webData[0]);
-    console.log(webData[0]);
     setBackgroundImageToContainer(
       webData[0].talkWithUs.contactImage,
       ".contact__image"

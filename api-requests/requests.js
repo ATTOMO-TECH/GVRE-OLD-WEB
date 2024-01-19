@@ -1,33 +1,10 @@
-//PROD
-const baseUrlProduction = "https://gvrecrmback-new-production.up.railway.app/";
-const baseUrlResidential =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/";
-const baseUrlConsultants = "https://gvrecrmback-new-production.up.railway.app/";
-const newBaseUrlResidential =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Residencial&showOnWeb=true";
-const newBaseUrlPatrimonial =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Patrimonio&showOnWeb=true";
-const newBaseUrlCosta =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b";
-const newBaseUrlRustico =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4";
-const newBaseUrlSingular =
-  "https://gvrecrmback-new-production.up.railway.app/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711";
-
-//LOCAL
-// const baseUrlProduction = "http://localhost:3500/";
-// const baseUrlResidential = 'http://localhost:3500/inmuebles/';
-// const baseUrlConsultants = 'http://localhost:3500/';
-// const newBaseUrlResidential = 'http://localhost:3500/inmuebles/web/department=Residencial&showOnWeb=true';
-// const newBaseUrlPatrimonial = 'http://localhost:3500/inmuebles/web/department=Patrimonio&showOnWeb=true';
-
-// const baseUrlResidential    =   process.env.REACT_APP_BASE_URL_RESIDENTIAL;
-// const baseUrlConsultants    =   process.env.REACT_APP_BASE_URL_CONSULTANT;
-// const newBaseUrlResidential =   process.env.REACT_APP_NEW_BASE_URL_RESIDENTIAL;
-// const newBaseUrlPatrimonial =   process.env.REACT_APP_NEW_BASE_URL_PATRIMONIAL;
-// const newBaseUrlRustico     =   process.env.REACT_APP_NEW_BASE_URL_RUSTICO;
-// const newBaseUrlSingular    =   process.env.REACT_APP_NEW_BASE_URL_SINGULAR;
-// const newBaseUrlCosta       =   process.env.REACT_APP_NEW_BASE_URL_COSTA;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrlResidential = `${baseUrl}/inmuebles`;
+const newBaseUrlResidential = `${baseUrl}/inmuebles/web/department=Residencial&showOnWeb=true`;
+const newBaseUrlPatrimonial = `${baseUrl}/inmuebles/web/department=Patrimonio&showOnWeb=true`;
+const newBaseUrlRustico = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4`;
+const newBaseUrlSingular = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711`;
+const newBaseUrlCosta = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b"`;
 
 const requestBaseParams = {
   method: "GET",
@@ -38,7 +15,7 @@ const requestBaseParams = {
 };
 
 export const getWebData = async () => {
-  const response = await fetch(`${baseUrlProduction}web/home`, {
+  const response = await fetch(`${baseUrl}/web/home`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -136,7 +113,10 @@ export const getSingular = async (filters) => {
 
 export const getResidentialItem = async (id) => {
   // console.log(`${baseUrlResidential}${id}`)
-  const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams);
+  const response = await fetch(
+    `${baseUrlResidential}/${id}`,
+    requestBaseParams
+  );
   /* console.log(response) */
   const adInfo = await response.json();
   /* console.log(adInfo) */
@@ -144,30 +124,37 @@ export const getResidentialItem = async (id) => {
 };
 
 export const getPatrimonialItem = async (id) => {
-  const response = await fetch(`${baseUrlResidential}${id}`, requestBaseParams);
+  const response = await fetch(
+    `${baseUrlResidential}/${id}`,
+    requestBaseParams
+  );
   /* console.log(response) */
   const adInfo = await response.json();
   /* console.log(adInfo) */
   return [adInfo];
 };
 
-export const getConsultants = () => {
-  return fetch(`${baseUrlConsultants}consultants`, {
+export const getConsultants = async () => {
+  const response = await fetch(`${baseUrl}/consultants`, {
     method: "GET",
     cors: true,
-  }).then((response) => response.json());
+  });
+  const result = await response.json();
+  return result;
 };
 
-export const getCatalogs = () => {
-  return fetch(`${baseUrlProduction}catalogs/all`, {
+export const getCatalogs = async () => {
+  const response = await fetch(`${baseUrl}/catalogs/all`, {
     method: "GET",
     cors: true,
-  }).then((response) => response.json());
+  });
+  const result = await response.json();
+  return result;
 };
 
 export const sendInfoEmailFromActiveItemForm = async (form) => {
   // console.log(form);
-  const response = await fetch(`${baseUrlProduction}mails/webReservations`, {
+  const response = await fetch(`${baseUrl}/mails/webReservations`, {
     method: "POST",
     credentials: "include",
     body: JSON.stringify(form),

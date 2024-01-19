@@ -18,7 +18,7 @@ export default function Document() {
             manifest.json provides metadata used when your web app is installed on a
             user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
           --> */}
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        {/* <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> */}
 
         {/* <!-- PrimeReact --> */}
         <link
@@ -62,7 +62,7 @@ export default function Document() {
         />
 
         {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="carousel.css" />
+        {/* <link rel="stylesheet" href="carousel.css" /> */}
       </Head>
       <body>
         <Main />
