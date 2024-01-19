@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import ContactInfo from "../components/ContactInfo/ContactIndex";
-import desarrollos from "../assets/context/arquit.png";
-import arquitectura from "../assets/context/cabecera.jpg";
+// import desarrollos from "../assets/context/arquit.png";
+// import arquitectura from "../assets/context/cabecera.jpg";
 import clientes from "../assets/context/users.svg";
 import settings from "../assets/context/settings.svg";
 import text from "../assets/context/file-text.svg";
