@@ -37,7 +37,7 @@ export const getResidential = async (filters) => {
   const urlWithFilters = !!filterParams
     ? `${newBaseUrlResidential}&${filterParams.toString()}`
     : `${newBaseUrlResidential}`;
-  /* console.log(urlWithFilters) */
+  console.log(urlWithFilters);
   const newUrl = new URL(urlWithFilters);
   /* console.log(newUrl) */
 
