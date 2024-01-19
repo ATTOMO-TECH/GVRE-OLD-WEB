@@ -351,13 +351,16 @@ export default function Home({ destacado }) {
                 href={`${routes.Costa}/1&page=1`}
                 className="home__otherCategories__categories__item"
               >
-                <Image
-                  width={650}
-                  height={405}
-                  className="home__otherCategories__categories__item__image"
-                  src={costaImage}
-                  alt="categoría costa"
-                />
+                {costaImage && (
+                  <Image
+                    width={650}
+                    height={405}
+                    className="home__otherCategories__categories__item__image"
+                    src={costaImage}
+                    alt="categoría costa"
+                  />
+                )}
+
                 <div className="home__otherCategories__categories__item__link">
                   <p>GV Costa</p>
                   <span>
@@ -374,13 +377,16 @@ export default function Home({ destacado }) {
                 href={`${routes.Rustico}/1&page=1`}
                 className="home__otherCategories__categories__item"
               >
-                <Image
-                  width={650}
-                  height={405}
-                  className="home__otherCategories__categories__item__image"
-                  src={rusticImage}
-                  alt="categoría rustico"
-                />
+                {rusticImage && (
+                  <Image
+                    width={650}
+                    height={405}
+                    className="home__otherCategories__categories__item__image"
+                    src={rusticImage}
+                    alt="categoría rustico"
+                  />
+                )}
+
                 <div className="home__otherCategories__categories__item__link">
                   <p>GV Campos Rústicos</p>
                   <span>
@@ -397,13 +403,15 @@ export default function Home({ destacado }) {
                 href={`${routes.Singular}/1&page=1`}
                 className="home__otherCategories__categories__item"
               >
-                <Image
-                  width={650}
-                  height={405}
-                  className="home__otherCategories__categories__item__image"
-                  src={singularImage}
-                  alt="categoría singulares"
-                />
+                {singularImage && (
+                  <Image
+                    width={650}
+                    height={405}
+                    className="home__otherCategories__categories__item__image"
+                    src={singularImage}
+                    alt="categoría singulares"
+                  />
+                )}
                 <div className="home__otherCategories__categories__item__link">
                   <p>GV Activos singulares</p>
                   <span>
