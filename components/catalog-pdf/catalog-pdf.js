@@ -120,7 +120,7 @@ export default function CatalogPDF({
             alt=""
           />
         )}
-        <div id="documentPDF" className="container__pdf__data__viewer">
+        <div id="documentPDF" className="container__pdf__data__viewer ">
           <Document
             loading={<BeatLoader color="#fff" />}
             style={displayFullScren === true ? { width: "90%" } : {}}

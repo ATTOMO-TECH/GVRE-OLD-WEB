@@ -76,9 +76,6 @@ export default function Rustico({ orderedItems, pages, query }) {
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
               />
-              {/* {item.images.others.map((image)=> (
-                            <img key={item.title} src={image} alt={item.title}/>
-                        ))} */}
             </Carousel>
             <div>
               <div className="campoRustico__list__item__text">
@@ -216,9 +213,6 @@ export default function Rustico({ orderedItems, pages, query }) {
                 src={item.images.main.replaceAll(" ", "%20")}
                 alt={item.title}
               />
-              {/* {item.images.others.map((image)=> (
-                            <img key={item.title} src={image} alt={item.title}/>
-                        ))} */}
             </Carousel>
             {/* : <div className='spinnerBar'>  
                             <BarLoader color="#000000" width='80px' height='2px' className='barloader'/>
