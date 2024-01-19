@@ -1,0 +1,79 @@
+@import './styles/media.scss';
+
+.cookie-title {
+    font-family: "jost", sans-serif;
+    color: #333; 
+    font-size: 10px !important
+  }
+
+  .cookie-content {
+    font-family: "jost", sans-serif;
+    color: #555; 
+  }
+
+  div:where(.swal2-container) .swal2-html-container {
+    font-size: 15px !important;
+  }
+
+  .cookie-confirm-button {
+    font-family: "jost", sans-serif;
+    color: white;
+    font-size: 12px;
+    background-color: #2b363d;
+    padding: 10px;
+    margin-right: 10px;
+    border: 0;
+  }
+
+  .swal2-popup {
+    border-radius: 0;
+  }
+
+  .cookie-confirm-button:focus, .cookie-cancel-button:focus {
+    outline: none;
+  }
+
+
+  .cookie-confirm-button:hover {
+    font-family: "jost", sans-serif;
+    color: white;
+    font-size: 12px;
+    background-color: #242d33;
+    padding: 10px;
+    margin-right: 10px;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .cookie-cancel-button {
+    font-family: "jost", sans-serif;
+    background-color: #6e6e6e;
+    color: white;
+    font-size: 12px;
+    padding: 10px;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .cookie-cancel-button:hover {
+    font-family: "jost", sans-serif;
+    background-color: #626262;
+    color: white;
+    font-size: 12px;
+    padding: 10px;
+    border: 0;
+  }
+
+  .anchorCoockieSection:hover {
+    text-decoration: underline;
+    color: #2b363d;
+  }
+
+  .anchorCoockieSection:focus {
+    outline: none;
+  }
+
+  .anchorCoockieSection {
+    color: #2b363d;
+    font-weight: 500;
+  }
