@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "https://gvrecrmback-new-production.up.railway.app";
 const baseUrlResidential = `${baseUrl}/inmuebles`;
 const newBaseUrlResidential = `${baseUrl}/inmuebles/web/department=Residencial&showOnWeb=true`;
 const newBaseUrlPatrimonial = `${baseUrl}/inmuebles/web/department=Patrimonio&showOnWeb=true`;
@@ -37,7 +37,6 @@ export const getResidential = async (filters) => {
   const urlWithFilters = !!filterParams
     ? `${newBaseUrlResidential}&${filterParams.toString()}`
     : `${newBaseUrlResidential}`;
-  console.log(urlWithFilters);
   const newUrl = new URL(urlWithFilters);
   /* console.log(newUrl) */
 
