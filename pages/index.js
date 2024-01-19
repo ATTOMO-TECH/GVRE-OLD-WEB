@@ -38,7 +38,6 @@ export default function Home({ destacado }) {
   async function fetchGetWebData() {
     const webData = await getWebData();
     setWebData(webData[0]);
-    console.log(webData[0]);
     setCostaImage(webData[0]?.otherCategoriesImages?.coast);
     setRusticImage(webData[0]?.otherCategoriesImages?.rustic);
     setSingularImage(webData[0]?.otherCategoriesImages?.singular);
