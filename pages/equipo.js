@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getConsultants } from "../api-requests/requests";
 import ContactIndex from "../components/ContactInfo/ContactIndex";
 import Header from "../components/Header/Header";
 import gvreLogo from "./../assets/logogvre.png";
 
-export default function Team({ consultants }) {
+export default function Team() {
+  const [consultants, setConsultants] = useState(null);
+
   useEffect(() => {
     window.scroll({
       top: 0,
     });
   });
+
+  const fetchConsultantData = async () => {
+    const consultants = await getConsultants();
+    setConsultants(consultants);
+  };
+
+  useEffect(() => {
+    fetchConsultantData();
+  }, []);
 
   return (
     <div className="equipo">
@@ -25,7 +36,7 @@ export default function Team({ consultants }) {
         asesorarle siempre que lo necesite.
       </p>
       <div className="equipo__owners">
-        {consultants.map((consultant) =>
+        {consultants?.map((consultant) =>
           consultant.showOnWeb === "Yes" ? (
             <div key={consultant.fullName} className="equipo__owners__owner">
               <Image
@@ -51,11 +62,11 @@ export default function Team({ consultants }) {
   );
 }
 
-export async function getStaticProps() {
-  const consultants = await getConsultants();
-  return {
-    props: {
-      consultants,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const consultants = await getConsultants();
+//   return {
+//     props: {
+//       consultants,
+//     },
+//   };
+// }
