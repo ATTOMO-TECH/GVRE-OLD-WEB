@@ -136,7 +136,12 @@ export const getPatrimonialItem = async (id) => {
 export const getConsultants = async () => {
   const response = await fetch(`${baseUrl}/consultants`, {
     method: "GET",
-    cors: true,
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
   });
   const result = await response.json();
   return result;
@@ -145,7 +150,12 @@ export const getConsultants = async () => {
 export const getCatalogs = async () => {
   const response = await fetch(`${baseUrl}/catalogs/all`, {
     method: "GET",
-    cors: true,
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
   });
   const result = await response.json();
   return result;
