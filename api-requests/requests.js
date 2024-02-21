@@ -1,10 +1,10 @@
-const baseUrl = "https://gvrecrmback-new-production.up.railway.app";
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 const baseUrlResidential = `${baseUrl}/inmuebles`;
 const newBaseUrlResidential = `${baseUrl}/inmuebles/web/department=Residencial&showOnWeb=true`;
 const newBaseUrlPatrimonial = `${baseUrl}/inmuebles/web/department=Patrimonio&showOnWeb=true`;
 const newBaseUrlRustico = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4`;
 const newBaseUrlSingular = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711`;
-const newBaseUrlCosta = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b"`;
+const newBaseUrlCosta = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b`;
 
 const requestBaseParams = {
   method: "GET",
