@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import ContactInfo from "../components/ContactInfo/ContactIndex";
-// import desarrollos from "../assets/context/arquit.png";
-// import arquitectura from "../assets/context/cabecera.jpg";
 import clientes from "../assets/context/users.svg";
 import settings from "../assets/context/settings.svg";
 import text from "../assets/context/file-text.svg";
@@ -10,6 +8,8 @@ import search from "../assets/context/search.svg";
 import Image from "next/image";
 import useWindowSize from "../hooks/useWindowsSize";
 import { getWebData } from "../api-requests/requests";
+import { useRouter } from "next/router";
+import routes from "./../config/routes";
 
 export default function Services() {
   const size = useWindowSize();
@@ -37,6 +37,20 @@ export default function Services() {
   useEffect(() => {
     fetchGetWebData();
   }, []);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.asPath === `${routes.Contextual}#arquitectura`) {
+      // Espera a que la página termine de cargar
+      setTimeout(() => {
+        const element = document.getElementById("arquitectura");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 500);
+    }
+  }, [router.asPath]);
 
   return (
     <div className="contextual">
@@ -72,7 +86,6 @@ export default function Services() {
           </div>
         </div>
       </div>
-      {console.log(webData?.services?.investment)}
       <div id="inversion" className="contextual__inversion">
         <h2>{webData?.services?.investment?.title}</h2>
         <p>{webData?.services?.investment?.description}</p>

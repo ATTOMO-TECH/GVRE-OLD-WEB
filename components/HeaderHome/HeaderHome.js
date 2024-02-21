@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import menuHam from "./../../assets/SVG/mobile/comun/menuHam.svg";
 import Home_instagram from "./../../assets/SVG/mobile/comun/Home_instagram.svg";
 import home_linkedin from "./../../assets/SVG/mobile/comun/home_linkedin.svg";
