@@ -116,8 +116,8 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     ).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
-        setLatitude(lat + 0.006);
-        setLongitude(lng + 0.006);
+        setLatitude(lat);
+        setLongitude(lng);
       },
       (error) => {
         console.error("ERROR", error);
