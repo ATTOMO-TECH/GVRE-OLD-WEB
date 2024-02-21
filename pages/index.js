@@ -585,7 +585,7 @@ export default function Home({ destacado }) {
               </button>
             </div>
           </div>
-          <ContactIndex webData={webData} />
+          <ContactIndex />
         </div>
       </main>
     </>
