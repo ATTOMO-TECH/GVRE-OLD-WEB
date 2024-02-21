@@ -13,7 +13,7 @@ function MapItem({ lat, lng }) {
 
   const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_KEY;
 
-  const displacement = 0.002;
+  const displacement = 0.0019;
 
   const displacedCoordinates = {
     lat: coordinates.lat + displacement,
@@ -52,7 +52,7 @@ function MapItem({ lat, lng }) {
                 }}
               />
             </OverlayViewF>
-            {/* <MarkerF position={coordinates} /> */}
+            {/* <MarkerF position={displacedCoordinates} /> */}
           </GoogleMap>
         </LoadScript>
       )}
