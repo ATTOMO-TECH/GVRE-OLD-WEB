@@ -1,10 +1,22 @@
-import React from "react";
 import Link from "next/link";
 import logo from "./../../assets/logo.svg";
 import routes from "./../../config/routes";
 import Image from "next/image";
+import { getWebData } from "../../api-requests/requests";
+import { useEffect, useState } from "react";
 
-const ContactIndex = ({ webData }) => {
+const ContactIndex = () => {
+  const [webData, setWebData] = useState({});
+
+  const fetchWebData = async () => {
+    const data = await getWebData();
+    setWebData(data[0]);
+  };
+
+  useEffect(() => {
+    fetchWebData();
+  }, []);
+
   return (
     <div className="contactIndex">
       <h2 className="contactIndex__title">{webData?.talkWithUs?.titleHome}</h2>
