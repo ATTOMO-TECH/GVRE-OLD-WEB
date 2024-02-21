@@ -34,11 +34,10 @@ const Footer = () => {
         </div>
         <div className="footer__right">
           <Link href={routes.Contact} className="footer__right__text">
-            {" "}
             Contacto
           </Link>
           {/* <a target='blank' href='mailto:info@gvre.es'><Image width={} height={} src={footer_email} alt='email'/></a> */}
-          <a
+          <Link
             target="blank"
             href="https://instagram.com/gv_real_estate_?utm_medium=copy_link"
           >
@@ -48,8 +47,8 @@ const Footer = () => {
               src={footer_instagram}
               alt="instagram"
             />
-          </a>
-          <a
+          </Link>
+          <Link
             target="blank"
             href="https://www.linkedin.com/company/gv-real-estate/"
           >
@@ -59,7 +58,7 @@ const Footer = () => {
               src={footer_linkedin}
               alt="linkedin"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
