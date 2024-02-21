@@ -286,10 +286,7 @@ export default function Home({ destacado }) {
               <p className="home__moreB__text__description">
                 {webData?.sections?.offices?.description}
               </p>
-              <Link
-                href={`${routes.Contextual}#desarrollos`}
-                className="home__moreB__text__link"
-              >
+              <Link href={routes.Contact} className="home__moreB__text__link">
                 {webData?.sections?.offices?.buttonText}
                 <span className="longArrow">
                   <Image
