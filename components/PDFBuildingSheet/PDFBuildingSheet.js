@@ -14,7 +14,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant }) {
     family: "Jost",
     fonts: [
       {
-        src: "http://fonts.gstatic.com/s/jost/v15/92zPtBhPNqw79Ij1E865zBUv7myRJQVGPokMmuHL.ttf",
+        src: "https://fonts.gstatic.com/s/jost/v15/92zPtBhPNqw79Ij1E865zBUv7myRJQVGPokMmuHL.ttf",
       },
     ],
   });
