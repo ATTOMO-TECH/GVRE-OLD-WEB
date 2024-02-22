@@ -4,7 +4,7 @@ import Header from "../components/Header/Header";
 // import { catalogs } from "../constants/globalconstants";
 import CatalogCard from "../components/CatalogCard/catalog-card";
 import FullScreenPDF from "../components/CatalogModal/catalof-modal";
-import { getCatalogs } from "../api-requests/requests";
+import { getCatalogs, getMainImageCatalog } from "../api-requests/requests";
 
 const CatalogPDF = dynamic(
   () => import("../components/catalog-pdf/catalog-pdf"),
@@ -17,6 +17,7 @@ export default function Catalog() {
   const [displayFullScren, setDisplayFullScren] = useState(false);
   const [number, setNumber] = useState(1);
   const [catalogs, setCatalogs] = useState([]);
+  const [mainImageCatalog, setMainImageCatalog] = useState([]);
 
   async function fetchGetCatalogs() {
     const allCatalogs = await getCatalogs();
@@ -24,17 +25,32 @@ export default function Catalog() {
     const sortedCatalog = allCatalogs.sort(function sortCatalog(a, b) {
       return b.year - a.year;
     });
-    console.log(catalogs);
   }
+
+  const fetchMainImageCatalog = async () => {
+    const image = await getMainImageCatalog();
+    setMainImageCatalog(image);
+  };
 
   useEffect(() => {
     fetchGetCatalogs();
     window.scroll({ top: 0 });
   }, []);
 
+  useEffect(() => {
+    fetchMainImageCatalog();
+  }, []);
+
+  console.log(mainImageCatalog);
+
   return (
     <div className="catalogo__main__container">
-      <div className="catalogo__main__container__banner">
+      <div
+        className="catalogo__main__container__banner"
+        style={{
+          backgroundImage: `url(${mainImageCatalog[0]?.imgSection})`,
+        }}
+      >
         <div
           style={{
             height: "97px",
