@@ -123,7 +123,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant }) {
           />
         </View>
         <Image
-          style={{ width: "100%", height: "400px" }}
+          style={{ width: "100%", height: "320px" }}
           src={state.images.main}
         />
         <View
@@ -241,7 +241,7 @@ export function BuildingSheetPDF({ qrCode, state, consultant }) {
               padding: "5px",
               borderBottom: "solid",
               borderBottomColor: "#000000",
-              borderBottomWidth: "2px",
+              borderBottomWidth: "1px",
             }}
           >
             {state.department === "Patrimonio" &&
