@@ -19,7 +19,7 @@ export default function CatalogCard({ index, setCatalogNumber, cardData }) {
         width={size < 770 ? 300 : 505}
         height={size < 770 ? 300 : 505}
         src={cardData.portraidImage}
-        alt=""
+        alt={`Catálogo nº ${index}`}
       />
       {cardData.title === "" ? null : <h2>Catálogo {cardData.year}</h2>}
     </div>
