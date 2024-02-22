@@ -531,11 +531,11 @@
                 padding: 0;
             }
             &__carousel{
-                width: 80%;
-                height: 80%;
+                // height: 80%;
                 .carouselImages{
-                    height: 450px;
-                    max-width: 650px;
+                    height: 100vh;
+                    max-width: 100vw;
+                    object-fit: cover;
                 }
                 /* .carousel{
                     .carouselImages{
@@ -660,11 +660,11 @@
                 padding: 0;
             }
             &__carousel{
-                width: 80%;
-                height: 80%;
+                width: 100%;
+                height: 100%;
                 .carouselImages{
-                    height: 650px;
-                    max-width: 900px;
+                    height: 100%;
+                    width: 100%;
                 }
                 /* .carousel{
                     .carouselImages{
