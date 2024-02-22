@@ -161,6 +161,27 @@ export const getCatalogs = async () => {
   return result;
 };
 
+export const getMainImageCatalog = async () => {
+  try {
+    const request = await fetch(`${baseUrl}/catalogs/getImageCatalogSection`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    const data = await request.json();
+    if (!request.ok) {
+      throw new Error("Error getting catalog main image");
+    }
+    return data;
+  } catch (error) {
+    console.error("Unknown error getting image", error);
+  }
+};
+
 export const sendInfoEmailFromActiveItemForm = async (form) => {
   // console.log(form);
   const response = await fetch(`${baseUrl}/mails/webReservations`, {
