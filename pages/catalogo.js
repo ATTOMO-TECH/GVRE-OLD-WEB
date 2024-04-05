@@ -41,8 +41,6 @@ export default function Catalog() {
     fetchMainImageCatalog();
   }, []);
 
-  console.log(mainImageCatalog);
-
   return (
     <div className="catalogo__main__container">
       <div

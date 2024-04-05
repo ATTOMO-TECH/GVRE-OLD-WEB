@@ -1010,7 +1010,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
                           type="submit"
                           disabled={isSubmitting}
                         >
-                          Enviar{" "}
+                          Enviar
                           <span>
                             <Image
                               width={35}
