@@ -6,6 +6,7 @@
   width: 536px;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 30px;
   position: relative;
   img {
     position: absolute;
@@ -37,8 +38,9 @@
     z-index: 1;
   }
   .c1 {
-    bottom: 0;
-    width: 100%;
+    bottom: -26.3px  ;
+    left: -110px;
+    // width: 100%;
   }
   .c2 {
     bottom: 21.5%;
@@ -521,9 +523,12 @@
     }
   }
   .mora {
-    bottom: 99%;
-    left: 85.5%;
-    width: 16.8%;
+    // bottom: 99%;
+    // left: 85.5%;
+    // width: 16.8%;
+    bottom: 95%;
+    left: 84.7%;
+    width: 8%;
     p {
       width: 120%;
       bottom: -90px;
@@ -534,6 +539,50 @@
       bottom: -84px;
     }
   }
+  .urba1 {
+    top: -9%;
+    left: 94.5%;
+    width: 6%;
+    transform: rotate(10deg);
+    r
+    p {
+      width: 120%;
+      bottom: -110px;
+      left: 40px;
+    }
+    img {
+      width: 80%;
+      bottom: -94px;
+    }
+}
+.urba2 {
+  top: -18%;
+  left: 90%;
+  width: 6%;
+  p {
+    width: 120%;
+    bottom: -120px;
+    left: 40px;
+  }
+  img {
+    width: 65%;
+    bottom: -94px;
+  }
+}
+.urba3 {
+  top: -12%;
+  left: 89%;
+  width: 6%;
+  p {
+    width: 300%;
+    bottom: -60px;
+    right: 40px;
+  }
+  img {
+    width: 80%;
+    bottom: -94px;
+  }
+}
   .cond {
     bottom: 48%;
     left: 87.5%;
@@ -573,10 +622,13 @@
 .filterPosition {
   padding-bottom: 50px;
   &__mapContainer {
+    
     width: initial;
     overflow-x: scroll;
     //margin-bottom: 15px;
     padding-bottom: 25px;
+
+    
   }
 }
 .selectors {
@@ -810,6 +862,12 @@
     height: 600px;
     width: 820px;
     margin: 0px auto;
+    margin-top: 40px;
+    .c1 {
+      bottom: -39px  ;
+      left: -110px;
+      // width: 100%;
+    }
     .mocl {
       div {
         width: 110px;
@@ -1054,16 +1112,60 @@
       }
     }
     .mora {
-      bottom: 99%;
-      left: 85.5%;
-      width: 16.8%;
+      bottom: 95%;
+      left: 85.3%;
+      width: 12%;
       p {
         width: 120%;
-        bottom: -135px;
-        left: 30px;
+        bottom: -100px;
+        left: 40px;
       }
       img {
-        width: 105%;
+        width: 80%;
+        bottom: -94px;
+      }
+    }
+    .urba1 {
+        top: -4.5%;
+        left: 94%;
+        width: 6%;
+        transform: rotate(9deg);
+        r
+        p {
+          width: 120%;
+          bottom: -120px;
+          left: 40px;
+        }
+        img {
+          width: 80%;
+          bottom: -94px;
+        }
+    }
+    .urba2 {
+      top: -14%;
+      left: 90%;
+      width: 6%;
+      p {
+        width: 120%;
+        bottom: -120px;
+        left: 40px;
+      }
+      img {
+        width: 80%;
+        bottom: -94px;
+      }
+    }
+    .urba3 {
+      top: -7%;
+      left: 89%;
+      width: 6%;
+      p {
+        width: 170%;
+        bottom: -40px;
+        right: 70px;
+      }
+      img {
+        width: 80%;
         bottom: -94px;
       }
     }
@@ -1114,11 +1216,12 @@
   .filterPosition {
     display: flex;
     &__mapContainer {
-      width: 70%;
+      width: 60%;
       margin-top: 41px;
       margin-left: 36px;
       margin-bottom: 168px;
       overflow-x: initial;
+      
     }
   }
   .selectors {
@@ -1307,6 +1410,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 50vh;
     }
   }
   .selectors {
