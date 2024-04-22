@@ -95,7 +95,7 @@ export default function FilterResidential() {
         e.currentTarget.className === "urba2" ||
         e.currentTarget.className === "urba3"
       ) {
-        selected.push(e.currentTarget.name);
+        selected.push("Urbanizaciones A-1");
         document.getElementById("urba1").className = "urba1 active";
         document.getElementById("urba2").className = "urba2 active";
         document.getElementById("urba3").className = "urba3 active";
