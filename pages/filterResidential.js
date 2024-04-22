@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import carretera1 from "./../assets/maps/mapaR/carreteras/carretera1.svg";
+import carretera1 from "./../assets/maps/mapaR/carreteras/street.svg";
 import carretera2 from "./../assets/maps/mapaR/carreteras/carretera2.svg";
 import carretera3 from "./../assets/maps/mapaR/carreteras/carretera3.svg";
 import carretera4 from "./../assets/maps/mapaR/carreteras/carretera4.svg";
@@ -36,6 +36,9 @@ import goya from "./../assets/maps/mapaR/barrios/goya.svg";
 import lista from "./../assets/maps/mapaR/barrios/lista.svg";
 import vald1 from "./../assets/maps/mapaR/barrios/vald1.svg";
 import vald2 from "./../assets/maps/mapaR/barrios/vald2.svg";
+import UrbA1_1 from "./../assets/maps/mapaR/barrios/UrbA1-1.svg";
+import UrbA1_2 from "./../assets/maps/mapaR/barrios/UrbA1-2.svg";
+import UrbA1_3 from "./../assets/maps/mapaR/barrios/UrbA1-3.svg";
 import viso from "./../assets/maps/mapaR/barrios/viso.svg";
 import avion from "./../assets/maps/avion.svg";
 import boca from "./../assets/maps/boca.svg";
@@ -87,6 +90,15 @@ export default function FilterResidential() {
         document.getElementById("lista").className = "lista active";
         document.getElementById("goya").className = "goya active";
         // Realizar la llamada al endpoint solo si saleOrRent.length === 1
+      } else if (
+        e.currentTarget.className === "urba1" ||
+        e.currentTarget.className === "urba2" ||
+        e.currentTarget.className === "urba3"
+      ) {
+        selected.push(e.currentTarget.name);
+        document.getElementById("urba1").className = "urba1 active";
+        document.getElementById("urba2").className = "urba2 active";
+        document.getElementById("urba3").className = "urba3 active";
       } else {
         e.currentTarget.className = `${e.currentTarget.className} active`;
         selected.push(e.currentTarget.name);
@@ -96,12 +108,19 @@ export default function FilterResidential() {
         e.currentTarget.id === "nuev" ||
         e.currentTarget.id === "hisp" ||
         e.currentTarget.id === "lista" ||
-        e.currentTarget.id === "goya"
+        e.currentTarget.id === "goya" ||
+        e.currentTarget.id === "urba1" ||
+        e.currentTarget.id === "urba2" ||
+        e.currentTarget.id === "urba3"
       ) {
         document.getElementById("nuev").classList.remove("active");
         document.getElementById("hisp").classList.remove("active");
         document.getElementById("lista").classList.remove("active");
         document.getElementById("goya").classList.remove("active");
+        document.getElementById("urba1").classList.remove("active");
+        document.getElementById("urba2").classList.remove("active");
+        document.getElementById("urba3").classList.remove("active");
+
         const elementName = e.currentTarget.name;
         const newSelected = selected.filter((item) => item !== elementName);
         selected.splice(0, selected.length, ...newSelected);
@@ -300,8 +319,8 @@ export default function FilterResidential() {
         <div className="filterPosition__mapContainer">
           <div className="mapa">
             <Image
-              width={size >= 1350 ? 536 * 1.54 : 536 * 1.6}
-              height={size >= 1350 ? 392 * 1.53 : 353 * 1.1}
+              width={size >= 1350 ? 700 * 1.54 : 489 * 1.6}
+              height={size >= 1350 ? 600 * 1.53 : 540 * 1.1}
               className="c1"
               src={carretera1}
               alt="componente mapa"
@@ -686,6 +705,47 @@ export default function FilterResidential() {
               />
               <p>Moraleja</p>
             </button>
+            <button
+              onClick={toggleActive}
+              name="urba1"
+              id="urba1"
+              className="urba1"
+            >
+              <Image
+                height={size >= 1350 ? 80 : 70}
+                type="image"
+                src={UrbA1_1}
+                alt="componente mapa"
+              />
+            </button>
+            <button
+              onClick={toggleActive}
+              name="urba2"
+              id="urba2"
+              className="urba2"
+            >
+              <Image
+                height={size >= 1350 ? 80 : 70}
+                type="image"
+                src={UrbA1_2}
+                alt="componente mapa"
+              />
+            </button>
+            <button
+              onClick={toggleActive}
+              name="urba3"
+              id="urba3"
+              className="urba3"
+            >
+              <Image
+                height={size >= 1350 ? 80 : 70}
+                type="image"
+                src={UrbA1_3}
+                alt="componente mapa"
+              />
+              <p>Urbanizaciones A-1</p>
+            </button>
+
             <button
               onClick={toggleActive}
               name="Conde de Orgaz"
