@@ -222,7 +222,6 @@ export default function FilterResidential() {
       queryString.push(query);
     }
     if (selected.length > 0) {
-      console.log(selected);
       const selectedIds = getZoneId(selected);
       activeFilters = { ...activeFilters, zone: selectedIds };
       /* console.log(selectedIds) */
