@@ -255,6 +255,16 @@
       "__v": 0
     },
     {
+      "_id":"66264f223ac4e84ea1cffb53",
+      "zone": "Residencial",
+      "name": "Urbanizaciones A-1",
+      "id": "64",
+      "status": false,
+      "createdAt": "2024-04-22T11:50:58.120Z",
+      "updatedAt": "2024-04-22T11:50:58.120Z",
+      "__v": 0
+    },
+    {
       "_id": "61dfdd2e3e6cc4fe56c2982d",
       "zone": "Somosaguas",
       "name": "Somosaguas",
