@@ -2045,11 +2045,23 @@ export async function getServerSideProps(context) {
   if (zona !== undefined)
     queryFilters = { ...queryFilters, zone: zona.split("-") };
   if (exclusivooficinas !== undefined)
-    queryFilters = { ...queryFilters, garage: true };
+    queryFilters = {
+      ...queryFilters,
+      // garage: true,
+      exclusiveOfficeBuilding: true,
+    };
   if (clasico !== undefined)
-    queryFilters = { ...queryFilters, swimmingPool: true };
+    queryFilters = {
+      ...queryFilters,
+      // swimmingPool: true,
+      classicBuilding: true,
+    };
   if (coworking !== undefined)
-    queryFilters = { ...queryFilters, terrace: true };
+    queryFilters = {
+      ...queryFilters,
+      // terrace: true,
+      coworking: true,
+    };
   if (page !== undefined) queryFilters = { ...queryFilters, page: page };
   if (porfecha === "true") {
     queryFilters = { ...queryFilters, orderByDate: true };
