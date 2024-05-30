@@ -743,7 +743,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
                 <p>
                   {" "}
                   <Image width={20} height={20} src={check} alt="check" />{" "}
-                  Altura libre 2.5m
+                  Altura libre &gt; 2.5m
                 </p>
               ) : null}
               {state.quality.others.fullHoursSecurity === true ? (
