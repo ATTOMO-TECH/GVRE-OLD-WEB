@@ -716,6 +716,7 @@
                     height: 392px;
                     width: 536px;
                     position: relative;
+                    top: 13px;
                     img{
                         position: absolute;
                     }
@@ -745,8 +746,11 @@
                         z-index: 1;
                     }
                     .c1{
-                        bottom: 0;
-                        width: 100%;
+                        bottom: -65px;
+                        width: 110%;
+                        height: 170%;
+                        left: -10px;
+                        // transform: rotate(-1deg);;
                     }
                     .c2{
                         bottom:21.5%;
@@ -1082,13 +1086,47 @@
                         width: 4.8%;
                         p{
                             width: 120%;
-                            bottom: -39px;
-                            left: 27px;
+                            bottom: -62px;
+                            left: 15px;
                         }
                         img{
                             width: 105%;
                         }
                     }
+                    .lista {
+                        bottom: 37%;
+                        left: 75.8%;
+                        width: 4.4%;
+                        transform: rotate(1.1deg);
+                        p {
+                          width: 120%;
+                          bottom: -50px;
+                          left: 14px;
+                        }
+                        img {
+                          width: 70%;
+                          bottom: -60px;
+                          height: 35px;
+                         
+                        }
+                      }
+                      .goya {
+                        bottom: 33%;
+                        left: 75.8%;
+                        width: 4.4%;
+                        transform: rotate(1.3deg);
+                        p {
+                          width: 120%;
+                          bottom: -50px;
+                          left: 19px;
+                        }
+                        img {
+                          width: 70%;
+                          bottom: -60px;
+                          height: 30px;
+                         
+                        }
+                      }
                     .jero{
                         bottom:16%;
                         left: 69.8%;
@@ -1103,17 +1141,61 @@
                         }
                     }
                     .mora{
-                        bottom:99%;
-                        left: 85.5%;
+                        bottom:95%;
+                        left: 86%;
                         width: 16.8%;
                         p{
                             width: 120%;
-                            bottom: -86px;
+                            bottom: -65px;
                             left: 30px;
                         }
                         img{
-                            width: 105%;
+                            width: 50%;
                         }
+                    }
+                    .urba1 {
+                        top: -8%;
+                        left: 96%;
+                        width: 6%;
+                        transform: rotate(14deg);
+                        
+                        p {
+                          width: 120%;
+                          bottom: -120px;
+                          left: 40px;
+                        }
+                        img {
+                          width: 65%;
+                          bottom: -94px;
+                        }
+                    }
+                    .urba2 {
+                      top: -15.8%;
+                      left: 91.4%;
+                      width: 6%;
+                      p {
+                        width: 120%;
+                        bottom: -120px;
+                        left: 40px;
+                      }
+                      img {
+                        width: 56%;
+                        bottom: -94px;
+                      }
+                    }
+                    .urba3 {
+                      top: -11%;
+                      left: 90%;
+                      width: 6%;
+                      p {
+                        width: 260%;
+                        bottom: -60px;
+                        right: 50px;
+                      }
+                      img {
+                        width: 70%;
+                        bottom: -94px;
+                      }
                     }
                     .cond{
                         bottom:48%;
@@ -1415,8 +1497,11 @@
                         // width: 650px;
                         // margin: 0px auto;
                         .c1{
-                            bottom: 23px;
-                            width: 100%;
+                            bottom: -33px;
+                            width: 98%;
+                            height: 150%;
+                            left: 15px;
+                            transform: rotate(-1deg);;
                         }
                         .c2{
                             bottom: 99px;
@@ -1642,8 +1727,8 @@
                             width: 4.8%;
                             p{
                                 width: 120%;
-                                bottom: -20px;
-                                left: 6px;
+                                bottom: -40px;
+                                left: -2px;
                             }
                             img{
                                 width: 105%;
@@ -1651,6 +1736,40 @@
                                 left: -18px;
                             }
                         }
+                        .lista {
+                            bottom: 41%;
+                            left: 72%;
+                            width: 4.4%;
+                            transform: rotate(1.1deg);
+                            p {
+                              width: 120%;
+                              bottom: -50px;
+                              left: 14px;
+                            }
+                            img {
+                              width: 70%;
+                              bottom: -60px;
+                              height: 35px;
+                             
+                            }
+                          }
+                          .goya {
+                            bottom: 37.1%;
+                            left: 72%;
+                            width: 4.4%;
+                            transform: rotate(1.3deg);
+                            p {
+                              width: 120%;
+                              bottom: -50px;
+                              left: 19px;
+                            }
+                            img {
+                              width: 70%;
+                              bottom: -60px;
+                              height: 30px;
+                             
+                            }
+                          }
                         .jero{
                             bottom:16.5%;
                             left: 69.8%;
@@ -1766,19 +1885,63 @@
                             };
                         }
                         .mora{
-                            bottom:99%;
-                            left: 85.5%;
+                            bottom:98.6%;
+                            left: 85.7%;
                             width: 16.8%;
                             p{
                                 width: 120%;
-                                bottom: -94px;
-                                left: 30px;
+                                bottom: -90px;
+                                left: 5px;
                             }
                             img{
-                                width: 105%;
-                                bottom: -80px;
-                                left: -26px;
+                                width: 47%;
+                                bottom: -90px;
+                                left: -25px;
                             }
+                        }
+                        .urba1 {
+                            top: -4.2%;
+                            left: 88.4%;
+                            width: 6%;
+                            transform: rotate(4deg);
+                            
+                            p {
+                              width: 120%;
+                              bottom: -120px;
+                              left: 40px;
+                            }
+                            img {
+                              width: 65%;
+                              bottom: -94px;
+                            }
+                        }
+                        .urba2 {
+                          top: -11%;
+                          left: 85.4%;
+                          width: 6%;
+                          p {
+                            width: 120%;
+                            bottom: -120px;
+                            left: 40px;
+                          }
+                          img {
+                            width: 56%;
+                            bottom: -94px;
+                          }
+                        }
+                        .urba3 {
+                          top: -6%;
+                          left: 84%;
+                          width: 6%;
+                          p {
+                            width: 260%;
+                            bottom: -50px;
+                            right: 50px;
+                          }
+                          img {
+                            width: 70%;
+                            bottom: -94px;
+                          }
                         }
                     }
                 }

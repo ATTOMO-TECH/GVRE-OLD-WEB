@@ -12,7 +12,7 @@ import sup from "../../assets/SVG/mobile/anuncios/anuncios_spfcie.svg";
 import filterImg from "../../assets/SVG/mobile/comun/iconoFiltros.svg";
 import order from "../../assets/SVG/mobile/comun/flechaOrdenar.svg";
 import zoneMap from "../../assets/SVG/mobile/anuncios/anuncios_mapa.svg";
-import carretera1 from "../../assets/maps/mapaR/carreteras/carretera1.svg";
+import carretera1 from "../../assets/maps/mapaR/carreteras/street.svg";
 import carretera2 from "../../assets/maps/mapaR/carreteras/carretera2.svg";
 import carretera3 from "../../assets/maps/mapaR/carreteras/carretera3.svg";
 import carretera4 from "../../assets/maps/mapaR/carreteras/carretera4.svg";
@@ -45,8 +45,13 @@ import puer from "../../assets/maps/mapaR/barrios/puer.svg";
 import rosa from "../../assets/maps/mapaR/barrios/rosa.svg";
 import sala from "../../assets/maps/mapaR/barrios/sala.svg";
 import somo from "../../assets/maps/mapaR/barrios/somo.svg";
+import goya from "../../assets/maps/mapaR/barrios/goya.svg";
+import lista from "../../assets/maps/mapaR/barrios/lista.svg";
 import vald1 from "../../assets/maps/mapaR/barrios/vald1.svg";
 import vald2 from "../../assets/maps/mapaR/barrios/vald2.svg";
+import UrbA1_1 from "../../assets/maps/mapaR/barrios/UrbA1-1.svg";
+import UrbA1_2 from "../../assets/maps/mapaR/barrios/UrbA1-2.svg";
+import UrbA1_3 from "../../assets/maps/mapaR/barrios/UrbA1-3.svg";
 import viso from "../../assets/maps/mapaR/barrios/viso.svg";
 import { generalContext } from "../../providers/generalProvider";
 import { getResidential } from "../../api-requests/requests";
@@ -108,6 +113,9 @@ export default function Residential({
   const [selected, setSelected] = useState(
     localFilters?.includes("zone") ? JSON.parse(localFilters).zone : []
   );
+
+  console.log(localFilters);
+
   const [selectedActive, setSelectedActive] = useState(false);
   const [saleOrRent, setSaleOrRent] = useState(
     localFilters?.includes("adType") ? JSON.parse(localFilters).adType : []
@@ -767,19 +775,36 @@ export default function Residential({
   };
 
   const toggleActive = (e) => {
-    /* console.log('Zona seleccionada', e.currentTarget.name) */
-    if (e.currentTarget.className === e.currentTarget.id) {
-      if (
-        e.currentTarget.className === "nuev" ||
-        e.currentTarget.className === "hisp"
-      ) {
-        const idZoneSelected = getZoneId(e.currentTarget.name);
-        if (!selected?.includes(`${idZoneSelected}`)) {
+    const target = e.currentTarget;
+
+    if (target.className === target.id) {
+      // Handle when className is the same as the id
+      if (target.className === "nuev" || target.className === "hisp") {
+        const idZoneSelected = getZoneId(target.name);
+        if (!selected.includes(idZoneSelected.toString())) {
           idZoneSelected.forEach((idZone) => selected.push(idZone));
         }
-        /* console.log(selected); */
         document.getElementById("nuev").className = "nuev active";
         document.getElementById("hisp").className = "hisp active";
+      } else if (target.className === "lista" || target.className === "goya") {
+        const idZoneSelected = getZoneId(target.name);
+        if (!selected.includes(idZoneSelected.toString())) {
+          idZoneSelected.forEach((idZone) => selected.push(idZone));
+        }
+        document.getElementById("lista").className = "lista active";
+        document.getElementById("goya").className = "goya active";
+      } else if (
+        target.className === "urba1" ||
+        target.className === "urba2" ||
+        target.className === "urba3"
+      ) {
+        const idZoneSelected = getZoneId("Urbanizaciones A-1");
+        if (!selected.includes(idZoneSelected.toString())) {
+          idZoneSelected.forEach((idZone) => selected.push(idZone));
+        }
+        document.getElementById("urba1").className = "urba1 active";
+        document.getElementById("urba2").className = "urba2 active";
+        document.getElementById("urba3").className = "urba3 active";
       } else {
         e.currentTarget.className = `${e.currentTarget.className} active`;
         const idZoneSelected = getZoneId(e.currentTarget.name);
@@ -812,18 +837,31 @@ export default function Residential({
         });
       }
     } else {
-      if (e.currentTarget.id === "nuev" || e.currentTarget.id === "hisp") {
+      if (
+        target.id === "nuev" ||
+        target.id === "hisp" ||
+        target.id === "lista" ||
+        target.id === "goya" ||
+        target.id === "urba1" ||
+        target.id === "urba2" ||
+        target.id === "urba3"
+      ) {
         document.getElementById("nuev").classList.remove("active");
         document.getElementById("hisp").classList.remove("active");
-        const idZoneElement = getZoneId(e.currentTarget.name);
-        //Tengo que eliminar todos los id de la variable Selected que sean iguales a cada uno de los que hay en la variable idZoneElement
+        document.getElementById("urba1").classList.remove("active");
+        document.getElementById("urba2").classList.remove("active");
+        document.getElementById("urba3").classList.remove("active");
+        document.getElementById("lista").classList.remove("active");
+        document.getElementById("goya").classList.remove("active");
+
+        const idZoneElement = getZoneId(target.name);
         idZoneElement.forEach((idZone) => {
           const newSelected = selected.filter((item) => item !== idZone);
           selected.splice(0, selected.length, ...newSelected);
         });
       } else {
-        e.currentTarget.className = `${e.currentTarget.id}`;
-        const idZoneElement = getZoneId(e.currentTarget.name);
+        target.className = `${target.id}`;
+        const idZoneElement = getZoneId(target.name);
         idZoneElement.forEach((idZone) => {
           const newSelected = selected.filter((item) => item !== idZone);
           selected.splice(0, selected.length, ...newSelected);
@@ -832,12 +870,10 @@ export default function Residential({
 
       if (saleOrRent.length === 1) {
         setGetMaxPrices(true);
-        /* console.log(selected) */
         let activeFilters = {};
         activeFilters = { ...activeFilters, zone: selected };
         activeFilters = { ...activeFilters, adType: saleOrRent };
         getResidential(activeFilters).then((items) => {
-          /* console.log(items) */
           if (items.ads.length !== 0) {
             if (saleOrRent[0] === "Venta") {
               setMaxZonePrice(items.ads[0].sale.saleValue);
@@ -1794,6 +1830,48 @@ export default function Residential({
                     </button>
                     <button
                       onClick={!getMaxPrices ? toggleActive : null}
+                      name="Goya - Lista"
+                      id="lista"
+                      className={`lista${
+                        localFilters
+                          ?.toString()
+                          .includes("64ccd0d4688389aea7090a7b")
+                          ? " active"
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        width={size >= 1350 ? 29 : 27}
+                        height={size >= 1350 ? 45 : 51}
+                        type="image"
+                        src={lista}
+                        alt="componente mapa"
+                      />
+                      <p>Lista</p>
+                    </button>
+                    <button
+                      onClick={!getMaxPrices ? toggleActive : null}
+                      name="Goya - Lista"
+                      id="goya"
+                      className={`goya${
+                        localFilters
+                          ?.toString()
+                          .includes("64ccd0db688389aea7090a7d")
+                          ? " active"
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        width={size >= 1350 ? 29 : 27}
+                        height={size >= 1350 ? 45 : 51}
+                        type="image"
+                        src={goya}
+                        alt="componente mapa"
+                      />
+                      <p>Goya</p>
+                    </button>
+                    <button
+                      onClick={!getMaxPrices ? toggleActive : null}
                       name="Jeronimos"
                       id="jero"
                       className={`jero${
@@ -1831,6 +1909,64 @@ export default function Residential({
                         alt="componente mapa"
                       />
                       <p>Moraleja</p>
+                    </button>
+                    <button
+                      onClick={!getMaxPrices ? toggleActive : null}
+                      name="urba1"
+                      id="urba1"
+                      className={`urba1${
+                        localFilters
+                          ?.toString()
+                          .includes("66264f223ac4e84ea1cffb53")
+                          ? " active"
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        height={size >= 1350 ? 80 : 70}
+                        type="image"
+                        src={UrbA1_1}
+                        alt="componente mapa"
+                      />
+                    </button>
+                    <button
+                      onClick={!getMaxPrices ? toggleActive : null}
+                      name="urba2"
+                      id="urba2"
+                      className={`urba2${
+                        localFilters
+                          ?.toString()
+                          .includes("66264f223ac4e84ea1cffb53")
+                          ? " active"
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        height={size >= 1350 ? 80 : 70}
+                        type="image"
+                        src={UrbA1_2}
+                        alt="componente mapa"
+                      />
+                    </button>
+                    <button
+                      onClick={!getMaxPrices ? toggleActive : null}
+                      name="urba3"
+                      id="urba3"
+                      className={`urba3${
+                        localFilters
+                          ?.toString()
+                          .includes("66264f223ac4e84ea1cffb53")
+                          ? " active"
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        height={size >= 1350 ? 80 : 70}
+                        type="image"
+                        src={UrbA1_3}
+                        alt="componente mapa"
+                      />
+                      <p>Urbanizaciones A-1</p>
                     </button>
                     <button
                       onClick={!getMaxPrices ? toggleActive : null}
