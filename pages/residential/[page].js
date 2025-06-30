@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
-import Router, { useRouter } from "next/router";
+import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import routes from "../../config/routes";
 //import { Link, generatePath, NavLink } from 'react-router-dom';
 import { Carousel } from "react-responsive-carousel";
@@ -62,7 +62,7 @@ import ContactIndex from "../../components/ContactInfo/ContactIndex";
 import supP from "../../assets/SVG/web/anuncios/anuncios_superficieP.svg";
 import parking from "../../assets/SVG/web/anuncios/anuncios_garaje.svg";
 //import { Navigate, useNavigate } from 'react-router' //se puede sustituir por router.push('/residentialItem')
-import { BarLoader, ClipLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 import { getZoneId } from "../../globalFunctions/MapZones/MapZones";
 import { PricesSliders } from "../../styles/sliders-style";
@@ -86,6 +86,9 @@ export default function Residential({
     piscina,
     terraza,
     porfecha,
+    reformed,
+    toReform,
+    smokeOutlet,
     page,
   } = query;
   const arrPages = new Array(pages).fill(null);
@@ -98,6 +101,10 @@ export default function Residential({
   if (garaje !== undefined) URLwithoutPage.push(`garaje=${garaje}`);
   if (piscina !== undefined) URLwithoutPage.push(`piscina=${piscina}`);
   if (terraza !== undefined) URLwithoutPage.push(`terraza=${terraza}`);
+  if (reformed !== undefined) URLwithoutPage.push(`reformed=${reformed}`);
+  if (toReform !== undefined) URLwithoutPage.push(`toReform=${toReform}`);
+  if (smokeOutlet !== undefined)
+    URLwithoutPage.push(`smokeOutlet=${smokeOutlet}`);
   if (porfecha !== undefined) URLwithoutPage.push(`porfecha=${porfecha}`);
 
   const [, setOrderedItems] = useState([]);
@@ -105,16 +112,18 @@ export default function Residential({
   const [perPage] = useState(30);
   const [pageNumber, setPageNumber] = useState(0);
   const [pagElements, setPagElements] = useState();
+  const [reformedState, setReformedState] = useState(false); // Nuevo estado
+  const [toReformState, setToReformState] = useState(false); // Nuevo estado
+  const [smokeOutletState, setSmokeOutletState] = useState(false); // Nuevo estado
 
   let localFilters = "{}";
   if (typeof window !== "undefined") {
     localFilters = window.localStorage.getItem("residentialFilters");
   }
+
   const [selected, setSelected] = useState(
     localFilters?.includes("zone") ? JSON.parse(localFilters).zone : []
   );
-
-  console.log(localFilters);
 
   const [selectedActive, setSelectedActive] = useState(false);
   const [saleOrRent, setSaleOrRent] = useState(
@@ -556,8 +565,19 @@ export default function Residential({
       extrasLocal = [...extrasLocal, "swimmingPool"];
     if (localFilters?.includes("terrace"))
       extrasLocal = [...extrasLocal, "terrace"];
+
+    setReformedState(
+      localFilters?.includes("reformed") || query.reformed === "true"
+    );
+    setToReformState(
+      localFilters?.includes("toReform") || query.toReform === "true"
+    );
+    setSmokeOutletState(
+      localFilters?.includes("smokeOutlet") || query.smokeOutlet === "true"
+    );
+
     setExtras(extrasLocal);
-  }, [localFilters]);
+  }, [localFilters, query]);
 
   useEffect(() => {
     const localState = window.localStorage.getItem("storedState");
@@ -629,13 +649,24 @@ export default function Residential({
       selected.length === 0 &&
       saleOrRent.length === 0 &&
       typeHouse.length === 0 &&
-      extras.length === 0
+      extras.length === 0 &&
+      !reformedState && // <--- Añadido
+      !toReformState && // <--- Añadido
+      !smokeOutletState // <--- Añadido
     ) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
     }
-  }, [selected, saleOrRent, typeHouse, extras]);
+  }, [
+    selected,
+    saleOrRent,
+    typeHouse,
+    extras,
+    reformedState,
+    toReformState,
+    smokeOutletState,
+  ]);
 
   useEffect(() => {
     if (state2.length > 0) {
@@ -991,10 +1022,14 @@ export default function Residential({
     }
   };
 
+  // En Residential.js, función filterResults:
+
   const filterResults = () => {
     if (typeof window !== "undefined") {
       let activeFilters = {};
-      let queryFilter = {};
+      let queryFilters = {};
+
+      // --- LÓGICA EXISTENTE PARA FILTROS GENERALES (TIPO, INMUEBLE, REFERENCIA, ZONA) ---
       if (saleOrRent.length) {
         activeFilters = { ...activeFilters, adType: saleOrRent };
         const queryAdType = saleOrRent.join("-");
@@ -1005,37 +1040,55 @@ export default function Residential({
         const queryAdBuildingType = typeHouse.join("-");
         queryFilters = { ...queryFilters, tipodeinmueble: queryAdBuildingType };
       }
-      /*if (elementId.length === itemRef) {
-                activeFilters = { ...activeFilters, adReference: elementId }
-                console.log(elementId)
-            }*/
       if (elementId) {
         activeFilters = { ...activeFilters, adReference: elementId };
         queryFilters = { ...queryFilters, referencia: elementId };
       }
       if (selected.length > 0) {
-        /* const selectedIds = getZoneId(selected) */
         activeFilters = { ...activeFilters, zone: selected };
-        /* console.log(selectedIds) */
         const querySelected = selected.join("-");
         queryFilters = { ...queryFilters, zona: querySelected };
       }
+
+      // --- LÓGICA PARA GARAGE, PISCINA, TERRAZA (USANDO EL ARRAY 'extras') ---
+      // Este bloque se mantiene, pero 'extras' ahora solo contendrá estos 3
       if (extras.length) {
-        if (extras?.includes("garage")) {
+        // Si hay alguno de estos tres, los añadimos
+        if (extras.includes("garage")) {
           activeFilters = { ...activeFilters, garage: true };
           queryFilters = { ...queryFilters, garaje: true };
         }
-
-        if (extras?.includes("swimmingPool")) {
+        if (extras.includes("swimmingPool")) {
           activeFilters = { ...activeFilters, swimmingPool: true };
           queryFilters = { ...queryFilters, piscina: true };
         }
-
-        if (extras?.includes("terrace")) {
+        if (extras.includes("terrace")) {
           activeFilters = { ...activeFilters, terrace: true };
           queryFilters = { ...queryFilters, terraza: true };
         }
       }
+      // --- FIN LÓGICA GARAGE, PISCINA, TERRAZA ---
+
+      // --- LÓGICA **CORREGIDA** PARA REFORMED, TOREFORM, SMOKEOUTLET (USANDO ESTADOS INDIVIDUALES) ---
+      // ESTOS BLOQUES DEBEN ESTAR FUERA DE 'if (extras.length)'
+      if (reformedState) {
+        // Solo se añade si reformedState es true
+        activeFilters = { ...activeFilters, reformed: true };
+        queryFilters = { ...queryFilters, reformed: true };
+      }
+      if (toReformState) {
+        // Solo se añade si toReformState es true
+        activeFilters = { ...activeFilters, toReform: true };
+        queryFilters = { ...queryFilters, toReform: true };
+      }
+      if (smokeOutletState) {
+        // Solo se añade si smokeOutletState es true
+        activeFilters = { ...activeFilters, smokeOutlet: true };
+        queryFilters = { ...queryFilters, smokeOutlet: true };
+      }
+      // --- FIN LÓGICA CORREGIDA ---
+
+      // --- Lógica existente para rangos de precios y superficie ---
       if (saleOrRent.length === 1) {
         if (saleOrRent[0] === "Venta") {
           activeFilters = { ...activeFilters, maxSalePrice: price[1] };
@@ -1055,13 +1108,30 @@ export default function Residential({
         queryFilters = { ...queryFilters, superficiemin: surface[0] };
         queryFilters = { ...queryFilters, superficiemax: surface[1] };
       }
-      /* console.log(activeFilters) */
+
+      // Lógica para 'porfecha' (mantener como está, pero ajustando para localStorage)
+      if (porfecha === "true") {
+        // Si porfecha viene como string "true" del query
+        queryFilters = { ...queryFilters, porfecha: "true" }; // Asegura que sea string para URL
+        activeFilters = { ...activeFilters, orderByDate: true }; // Para localStorage
+      } else if (porfecha === "false" || porfecha === undefined) {
+        // Si es "false" o no está en el query
+        queryFilters = { ...queryFilters, porfecha: "false" };
+        activeFilters = { ...activeFilters, orderByDate: false };
+      }
+
+      // --- ACTUALIZACIÓN DE LOCALSTORAGE (CRÍTICO PARA QUE SE ELIMINEN) ---
+      // Para asegurar que los filtros se eliminan de localStorage si están inactivos.
+      // Los filtros de `extras` (garage, piscina, terraza) ya se gestionan por si solos al estar o no en el array.
+      if (!reformedState) delete activeFilters.reformed;
+      if (!toReformState) delete activeFilters.toReform;
+      if (!smokeOutletState) delete activeFilters.smokeOutlet;
+
       window.localStorage.setItem(
         "residentialFilters",
         JSON.stringify(activeFilters)
       );
-      if (porfecha !== undefined)
-        queryFilters = { ...queryFilters, porfecha: "false" };
+
       navigateToNewPath(1, queryFilters);
     }
   };
@@ -1085,22 +1155,44 @@ export default function Residential({
     }
   };
   const addExtra = (e) => {
-    if (e.currentTarget.className === e.currentTarget.id) {
-      e.currentTarget.className = `${e.currentTarget.className} activeButton`;
-      if (!extras?.includes(`${e.currentTarget.className}`)) {
-        extras.push(e.currentTarget.name);
+    const elementName = e.currentTarget.name; // Obtén el nombre directamente
+
+    // **ACTUALIZACIÓN CRUCIAL AQUÍ:**
+    // Manejo de 'garage', 'swimmingPool', 'terrace' (que van en el array 'extras')
+    if (
+      elementName === "garage" ||
+      elementName === "swimmingPool" ||
+      elementName === "terrace"
+    ) {
+      if (e.currentTarget.classList.contains("activeButton")) {
+        // Si ya está activo, desactívalo
+        e.currentTarget.classList.remove("activeButton"); // Quita la clase visual
+        setExtras((prevExtras) =>
+          prevExtras.filter((item) => item !== elementName)
+        ); // Actualización inmutable: filtra y establece nuevo array
+      } else {
+        // Si no está activo, actívalo
+        e.currentTarget.classList.add("activeButton"); // Añade la clase visual
+        setExtras((prevExtras) => [...prevExtras, elementName]); // Actualización inmutable: copia el array y añade
       }
-    } else {
-      e.currentTarget.className = `${e.currentTarget.id}`;
-      const elementName = e.currentTarget.name;
-      const newExtra = extras.filter((item) => item !== elementName);
-      extras.splice(0, extras.length, ...newExtra);
     }
-    if (extras.length !== 0) {
-      setExtrasActive(true);
-    } else {
-      setExtrasActive(false);
+    // Manejo de 'reformed', 'toReform', 'smokeOutlet' (usan estados individuales)
+    else if (elementName === "reformed") {
+      e.currentTarget.classList.toggle("activeButton"); // Alterna la clase visual
+      setReformedState((prev) => !prev); // Alterna el estado booleano
+    } else if (elementName === "toReform") {
+      e.currentTarget.classList.toggle("activeButton"); // Alterna la clase visual
+      setToReformState((prev) => !prev); // Alterna el estado booleano
+    } else if (elementName === "smokeOutlet") {
+      e.currentTarget.classList.toggle("activeButton"); // Alterna la clase visual
+      setSmokeOutletState((prev) => !prev); // Alterna el estado booleano
     }
+
+    // Ya no necesitas setExtrasActive directamente aquí,
+    // el useEffect de disableButton lo manejará con los nuevos estados.
+    // Simplemente asegúrate de que las clases CSS se apliquen correctamente.
+
+    // NO LLAMES A filterResults() AQUÍ, ya que quieres que se dispare al buscar.
   };
 
   const handlePriceInput = (e, data1) => {
@@ -1145,6 +1237,7 @@ export default function Residential({
       setTypeHouse([]);
       setExtras([]);
       setElementId("");
+      setParam("");
       setSelectedActive(false);
       setSaleOrRentActive(false);
       setTypeHouseActive(false);
@@ -1198,6 +1291,9 @@ export default function Residential({
       garaje,
       piscina,
       terraza,
+      reformed,
+      toReform,
+      smokeOutlet,
       porfecha,
       precioventamax,
       precioventamin,
@@ -1219,6 +1315,12 @@ export default function Residential({
       queryFilters = { ...queryFilters, piscina: true };
     if (terraza !== undefined)
       queryFilters = { ...queryFilters, terraza: true };
+    if (reformed !== undefined)
+      queryFilters = { ...queryFilters, reformed: true };
+    if (toReform !== undefined)
+      queryFilters = { ...queryFilters, toReform: true };
+    if (smokeOutlet !== undefined)
+      queryFilters = { ...queryFilters, smokeOutlet: true };
     if (porfecha === "true") queryFilters = { ...queryFilters, porfecha: true };
     if (porfecha === undefined || porfecha === "false")
       queryFilters = { ...queryFilters, porfecha: false };
@@ -2105,6 +2207,47 @@ export default function Residential({
                         Terraza
                       </button>
                     </div>
+                    <div
+                      className="residential__filter__selectors__extras__buttons"
+                      style={{ marginTop: "24px", marginBottom: "10px" }}
+                    >
+                      <button
+                        onClick={addExtra}
+                        name="reformed"
+                        id="reformed"
+                        className={`reformed${
+                          localFilters?.toString().includes("reformed")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        Reformado
+                      </button>
+                      <button
+                        onClick={addExtra}
+                        name="toReform"
+                        id="toReform"
+                        className={`toReform${
+                          localFilters?.toString().includes("toReform")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        A reformar
+                      </button>
+                      <button
+                        onClick={addExtra}
+                        name="smokeOutlet"
+                        id="smokeOutlet"
+                        className={`smokeOutlet${
+                          localFilters?.toString().includes("smokeOutlet")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        Salida de humos
+                      </button>
+                    </div>
                   </div>
                   <div className="residential__filter__selectors__sliders">
                     <p
@@ -2403,7 +2546,11 @@ export async function getServerSideProps(context) {
     precioalquilermin,
     superficiemin,
     superficiemax,
+    reformed,
+    toReform,
+    smokeOutlet,
   } = context.query;
+
   // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, porfecha, page )
   // console.log(typeof porfecha)
   if (tipo !== undefined)
@@ -2421,6 +2568,17 @@ export async function getServerSideProps(context) {
   if (piscina !== undefined)
     queryFilters = { ...queryFilters, swimmingPool: true };
   if (terraza !== undefined) queryFilters = { ...queryFilters, terrace: true };
+
+  if (reformed !== undefined) {
+    queryFilters = { ...queryFilters, reformed: true };
+  }
+  if (toReform !== undefined) {
+    queryFilters = { ...queryFilters, toReform: true };
+  }
+  if (smokeOutlet !== undefined) {
+    queryFilters = { ...queryFilters, smokeOutlet: true };
+  }
+
   if (page !== undefined) queryFilters = { ...queryFilters, page: page };
   if (porfecha === "true") {
     queryFilters = { ...queryFilters, orderByDate: true };

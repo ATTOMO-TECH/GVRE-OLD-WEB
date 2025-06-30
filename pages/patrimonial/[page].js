@@ -83,6 +83,9 @@ export default function Patrimonial({
     exclusivooficinas,
     clasico,
     coworking,
+    reformed,
+    toReform,
+    smokeOutlet,
     porfecha,
     page,
   } = query;
@@ -97,6 +100,10 @@ export default function Patrimonial({
     URLwithoutPage.push(`exclusivooficinas=${exclusivooficinas}`);
   if (clasico !== undefined) URLwithoutPage.push(`clasico=${clasico}`);
   if (coworking !== undefined) URLwithoutPage.push(`coworking=${coworking}`);
+  if (reformed !== undefined) URLwithoutPage.push(`reformed=${reformed}`);
+  if (toReform !== undefined) URLwithoutPage.push(`toReform=${toReform}`);
+  if (smokeOutlet !== undefined)
+    URLwithoutPage.push(`smokeOutlet=${smokeOutlet}`);
   if (porfecha !== undefined) URLwithoutPage.push(`porfecha=${porfecha}`);
 
   const [, setOrderedItems] = useState([]);
@@ -454,6 +461,12 @@ export default function Patrimonial({
       extrasLocal = [...extrasLocal, "classicBuilding"];
     if (localFilters?.includes("coworking"))
       extrasLocal = [...extrasLocal, "coworking"];
+    if (localFilters?.includes("reformed"))
+      extrasLocal = [...extrasLocal, "reformed"];
+    if (localFilters?.includes("toReform"))
+      extrasLocal = [...extrasLocal, "toReform"];
+    if (localFilters?.includes("smokeOutlet"))
+      extrasLocal = [...extrasLocal, "smokeOutlet"];
     setExtras(extrasLocal);
   }, [localFilters]);
 
@@ -880,6 +893,21 @@ export default function Patrimonial({
           activeFilters = { ...activeFilters, coworking: true };
           queryFilters = { ...queryFilters, coworking: true };
         }
+
+        if (extras.includes("reformed")) {
+          activeFilters = { ...activeFilters, reformed: true };
+          queryFilters = { ...queryFilters, reformed: true };
+        }
+
+        if (extras.includes("toReform")) {
+          activeFilters = { ...activeFilters, toReform: true };
+          queryFilters = { ...queryFilters, toReform: true };
+        }
+
+        if (extras.includes("smokeOutlet")) {
+          activeFilters = { ...activeFilters, smokeOutlet: true };
+          queryFilters = { ...queryFilters, smokeOutlet: true };
+        }
       }
       if (saleOrRent.length === 1) {
         if (saleOrRent[0] === "Venta") {
@@ -1038,6 +1066,9 @@ export default function Patrimonial({
       exclusivooficinas,
       clasico,
       coworking,
+      reformed,
+      toReform,
+      smokeOutlet,
       porfecha,
       precioventamax,
       precioventamin,
@@ -1060,6 +1091,12 @@ export default function Patrimonial({
       queryFilters = { ...queryFilters, clasico: true };
     if (coworking !== undefined)
       queryFilters = { ...queryFilters, coworking: true };
+    if (reformed !== undefined)
+      queryFilters = { ...queryFilters, reformed: true };
+    if (toReform !== undefined)
+      queryFilters = { ...queryFilters, toReform: true };
+    if (smokeOutlet !== undefined)
+      queryFilters = { ...queryFilters, smokeOutlet: true };
     if (porfecha === undefined || porfecha === "false")
       queryFilters = { ...queryFilters, porfecha: false };
     if (porfecha === "true") queryFilters = { ...queryFilters, porfecha: true };
@@ -1736,6 +1773,47 @@ export default function Patrimonial({
                         Coworking
                       </button>
                     </div>
+                    <div
+                      className="patrimonial__filter__selectors__tipo__buttons"
+                      style={{ marginTop: "24px", marginBottom: "10px" }}
+                    >
+                      <button
+                        onClick={addExtra}
+                        name="reformed"
+                        id="reformed"
+                        className={`reformed${
+                          localFilters?.toString().includes("reformed")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        Reformado
+                      </button>
+                      <button
+                        onClick={addExtra}
+                        name="toReform"
+                        id="toReform"
+                        className={`toReform${
+                          localFilters?.toString().includes("toReform")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        A reformar
+                      </button>
+                      <button
+                        onClick={addExtra}
+                        name="smokeOutlet"
+                        id="smokeOutlet"
+                        className={`smokeOutlet${
+                          localFilters?.toString().includes("smokeOutlet")
+                            ? " activeButton"
+                            : ""
+                        }`}
+                      >
+                        Salida de humos
+                      </button>
+                    </div>
                   </div>
                   <div className="patrimonial__filter__selectors__sliders">
                     <p
@@ -2022,6 +2100,9 @@ export async function getServerSideProps(context) {
     exclusivooficinas,
     clasico,
     coworking,
+    reformed,
+    toReform,
+    smokeOutlet,
     page,
     porfecha,
     precioventamax,
@@ -2062,6 +2143,12 @@ export async function getServerSideProps(context) {
       // terrace: true,
       coworking: true,
     };
+  if (reformed !== undefined)
+    queryFilters = { ...queryFilters, reformed: true };
+  if (toReform !== undefined)
+    queryFilters = { ...queryFilters, toReform: true };
+  if (smokeOutlet !== undefined)
+    queryFilters = { ...queryFilters, smokeOutlet: true };
   if (page !== undefined) queryFilters = { ...queryFilters, page: page };
   if (porfecha === "true") {
     queryFilters = { ...queryFilters, orderByDate: true };
