@@ -4,7 +4,6 @@ import { useRouter } from "next/router.js";
 import { Carousel } from "react-responsive-carousel";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
-import Geocode from "react-geocode";
 import emailjs from "emailjs-com";
 import useWindowSize from "../../hooks/useWindowsSize.js";
 import {
@@ -14,7 +13,6 @@ import {
 } from "../../api-requests/requests.js";
 import Image from "next/image.js";
 import Header from "../../components/Header/Header";
-import MapItem from "../../components/MapItem/MapItem";
 import DisplayVideo from "../../components/DisplayVideo/DisplayVideo";
 import fullScreen from "../../assets/SVG/mobile/comun/pantallaCompleta.svg";
 import closeFullScreen from "../../assets/SVG/mobile/comun/cerrarCompleta.svg";
@@ -44,12 +42,6 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
-Geocode.setLanguage("es");
-Geocode.setRegion("es");
-Geocode.setLocationType("ROOFTOP");
-Geocode.enableDebug();
-
 export default function PatrimonialItem({ list, currentConsultant }) {
   const [_client, setClient] = useState(false);
 
@@ -78,6 +70,20 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
+
+  const MapWithNoSSR = dynamic(
+    () => import("../../components/MapItem/MapItem.js"), // <-- Ajusta esta ruta
+    {
+      ssr: false, // <-- Esto es obligatorio
+      loading: () => (
+        <div
+          style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
+        >
+          <p>Cargando mapa...</p>
+        </div>
+      ),
+    }
+  );
 
   useEffect(() => {
     const isIOS = /iPad|iPhone/.test(navigator.userAgent);
@@ -109,20 +115,39 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   }, []);
 
   useEffect(() => {
-    Geocode.fromAddress(
-      `${state.adDirection.address.street} 
-      ${state.adDirection.address.directionNumber}, 
-      ${state.adDirection.city}`
-    ).then(
-      (response) => {
-        const { lat, lng } = response.results[0].geometry.location;
-        setLatitude(lat);
-        setLongitude(lng);
-      },
-      (error) => {
-        console.error("ERROR", error);
+    // Asegúrate de que 'state' exista antes de hacer la llamada
+    if (!state) return;
+
+    const getCoords = async () => {
+      // Construimos la dirección para la URL
+      const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
+
+      // URL de la API de Nominatim
+      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+        address
+      )}&format=json&limit=1`;
+
+      try {
+        // Hacemos la llamada fetch
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Si encontramos un resultado, establecemos las coordenadas
+        if (data && data.length > 0) {
+          setLatitude(parseFloat(data[0].lat));
+          setLongitude(parseFloat(data[0].lon)); // <-- Ojo: Nominatim devuelve 'lon' en lugar de 'lng'
+        } else {
+          console.error(
+            "No se encontraron coordenadas para la dirección:",
+            address
+          );
+        }
+      } catch (error) {
+        console.error("Error al contactar con Nominatim:", error);
       }
-    );
+    };
+
+    getCoords();
   }, [list, state]);
 
   const toggleFullScreen = () => {
@@ -1062,7 +1087,7 @@ export default function PatrimonialItem({ list, currentConsultant }) {
             </div>
             <div className="patrimonialItem__description__filter"></div>
             <div className="patrimonialItem__description__locationMap">
-              <MapItem lat={latitude} lng={longitude} />
+              <MapWithNoSSR lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>

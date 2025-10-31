@@ -1,4 +1,3 @@
-import Head from "next/head";
 import "./../styles/home.scss";
 import "../components/HeaderHome/headerHome.scss";
 import "../components/ContactInfo/contactIndex.scss";
@@ -37,6 +36,24 @@ import Cookies from "../hooks/cookies/cookies";
 import { useRouter } from "next/router";
 import route from "../config/routes";
 
+// --- AÑADIDO: Importa las fuentes desde next/font ---
+import { Inter, Jost } from "next/font/google";
+
+// --- AÑADIDO: Define tus fuentes ---
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter", // Variable CSS para usar en tu SCSS
+  display: "swap",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"], // Los pesos que usabas
+  style: ["normal", "italic"], // Los estilos que usabas
+  variable: "--font-jost", // Variable CSS para usar en tu SCSS
+  display: "swap",
+});
+
 const tagManagerArgs = {
   gtmId: "GTM-TZPVZRC",
 };
@@ -53,9 +70,11 @@ export default function App({ Component, pageProps }) {
     TagManager.initialize(tagManagerArgs);
   }, []);
   return (
-    <Provider>
-      {useRouter().pathname !== route.Politica && <Cookies />}
-      <Component {...pageProps} />
-    </Provider>
+    <main className={`${inter.variable} ${jost.variable}`}>
+      <Provider>
+        {useRouter().pathname !== route.Politica && <Cookies />}
+        <Component {...pageProps} />
+      </Provider>
+    </main>
   );
 }

@@ -706,7 +706,7 @@
           height: 25px;
           width: 100%;
           padding-left: 18px;
-          font-family: "Jost";
+          font-family: var(--font-jost), sans-serif;
           color: #b4b4b4;
           font-size: 16px;
           padding: 1rem;
@@ -1377,7 +1377,7 @@
             border-color: rgb(180, 180, 180);
             height: 46px;
             width: 96.5%;
-            font-family: "Jost";
+            font-family: var(--font-jost), sans-serif;
             color: #b4b4b4;
           }
           &__lupa {

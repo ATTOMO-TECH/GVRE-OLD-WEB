@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
 import dynamic from "next/dynamic";
-import Geocode from "react-geocode";
 //import { useNavigate } from 'react-router';
 import emailjs from "emailjs-com";
 import { Formik, Form, Field } from "formik";
@@ -13,7 +12,6 @@ import {
 } from "../../api-requests/requests.js";
 import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header/Header";
-import MapItem from "../../components/MapItem/MapItem";
 //import DrawingsPDF from '../../components/PdfDrawings/PdfDrawings';
 //import BuildingSheetPDF from '../../components/PDFBuildingSheet/PDFBuildingSheet';
 //import QRGenerator from '../../components/QRgenerator/QRgenerator';
@@ -48,12 +46,6 @@ const DownLoadBuildingDrawings = dynamic(
   }
 );
 
-Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_KEY);
-Geocode.setLanguage("es");
-Geocode.setRegion("es");
-Geocode.setLocationType("ROOFTOP");
-Geocode.enableDebug();
-
 export default function ResidentialItem({ list, currentConsultant }) {
   const [_client, setClient] = useState(false);
 
@@ -84,6 +76,20 @@ export default function ResidentialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
+
+  const MapWithNoSSR = dynamic(
+    () => import("../../components/MapItem/MapItem.js"), // <-- Ajusta esta ruta
+    {
+      ssr: false, // <-- Esto es obligatorio
+      loading: () => (
+        <div
+          style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
+        >
+          <p>Cargando mapa...</p>
+        </div>
+      ),
+    }
+  );
 
   useEffect(() => {
     const isIOS = /iPad|iPhone/.test(navigator.userAgent);
@@ -116,25 +122,42 @@ export default function ResidentialItem({ list, currentConsultant }) {
     });
   }, []);
 
+  // PEGA ESTE
   useEffect(() => {
-    //list?.map(item => {
-    Geocode.fromAddress(
-      `${state.adDirection.address.street}
-      ${state.adDirection.address.directionNumber}, 
-      ${state.adDirection.city}`
-    ).then(
-      (response) => {
-        const { lat, lng } = response.results[0].geometry.location;
-        setLatitude(lat);
-        setLongitude(lng);
-      },
-      (error) => {
-        console.error(error);
+    // Asegúrate de que 'state' exista antes de hacer la llamada
+    if (!state) return;
+
+    const getCoords = async () => {
+      // Construimos la dirección para la URL
+      const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
+
+      // URL de la API de Nominatim
+      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+        address
+      )}&format=json&limit=1`;
+
+      try {
+        // Hacemos la llamada fetch
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Si encontramos un resultado, establecemos las coordenadas
+        if (data && data.length > 0) {
+          setLatitude(parseFloat(data[0].lat));
+          setLongitude(parseFloat(data[0].lon)); // <-- Ojo: Nominatim devuelve 'lon' en lugar de 'lng'
+        } else {
+          console.error(
+            "No se encontraron coordenadas para la dirección:",
+            address
+          );
+        }
+      } catch (error) {
+        console.error("Error al contactar con Nominatim:", error);
       }
-    );
-    //return state
-    //})
-  }, [list, state]);
+    };
+
+    getCoords();
+  }, [list, state]); // Las dependencias siguen siendo las mismas
 
   const toggleFullScreen = () => {
     setViewFullScreen(!viewFullScreen);
@@ -1041,7 +1064,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
             </div>
             <div className="residentialItem__description__filter"></div>
             <div className="residentialItem__description__locationMap">
-              <MapItem lat={latitude} lng={longitude} />
+              <MapWithNoSSR lat={latitude} lng={longitude} />
             </div>
           </div>
         </div>
