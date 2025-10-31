@@ -106,3 +106,16 @@ a {
     color-scheme: dark;
   }
 }
+/* * Arreglo para las "costuras" (líneas de grid) 
+ * que aparecen en algunos mapas de Leaflet.
+*/
+.leaflet-tile {
+  /* Oculta los bordes problemáticos */
+  outline: 1px solid transparent; 
+  
+  /* * Fuerza un pequeño solapamiento (como las tejas) 
+   * para ocultar las costuras entre imágenes.
+  */
+  width: 256px !important;
+  height: 256px !important;
+}

@@ -1,4 +1,3 @@
-import { Inter } from "@next/font/google";
 import Head from "next/head";
 import React, { useEffect, /*useContext,*/ useState } from "react";
 import flechaEnviar from "./../assets/SVG/mobile/comun/flechaEnviar.svg";
@@ -25,7 +24,6 @@ import parking from "./../assets/SVG/web/anuncios/anuncios_garaje.svg";
 import Image from "next/image";
 import setBackgroundImageToContainer from "../globalFunctions/functions";
 
-const inter = Inter({ subsets: ["latin"] });
 // Pagina inicial
 export default function Home({ destacado }) {
   /*const [state, setState] = useContext(generalContext);*/
