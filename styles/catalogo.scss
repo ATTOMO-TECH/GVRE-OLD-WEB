@@ -21,11 +21,11 @@
   }
   &__text {
     padding: 2.5rem 4rem;
-    font-family: "Inter";
+    font-family: var(--font-inter), sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
     & p {
-      font-family: "Jost";
+      font-family: var(--font-jost), sans-serif;
       font-weight: 300;
       font-size: 0.9rem;
       margin: 1em 0px;
@@ -60,7 +60,7 @@
       & h2 {
         padding: 0.5rem 1rem;
         margin: 0rem 0rem 0.5rem 0px;
-        font-family: "Jost";
+        font-family: var(--font-jost), sans-serif;
         font-weight: bold;
         font-size: 1rem;
       }

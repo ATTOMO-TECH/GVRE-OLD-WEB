@@ -7,19 +7,19 @@
     margin-right: 24px;
     margin-bottom: 100px;
     & h1{
-        font-family: 'jost';
+        font-family: var(--font-jost), sans-serif;
         font-weight: 400px;
         font-size: 25px;
         padding-top: 40px; 
         margin: 0.67em 0px;
     }
     & h2{
-        font-family: 'jost';
+        font-family: var(--font-jost), sans-serif;
         font-weight: 400px;
         font-size: 20px;
     }
     & p{
-        font-family: 'jost';
+        font-family: var(--font-jost), sans-serif;
         font-weight: 400px;
         font-size: 14px;
         margin: 1em 0px;
@@ -29,7 +29,7 @@
         margin: 1em 0px;
     }
     & li{
-        font-family: 'jost';
+        font-family: var(--font-jost), sans-serif;
         font-weight: 400px;
         font-size: 14px;
     }
@@ -50,24 +50,24 @@
         margin-right: 96px;
         margin-bottom: 120px;
         & h1{
-            font-family: 'jost';
+            font-family: var(--font-jost), sans-serif;
             font-weight: 400px;
             font-size: 35px;
             padding-top: 50px;
         }
         & h2{
-            font-family: 'jost';
+            font-family: var(--font-jost), sans-serif;
             font-weight: 400px;
             font-size: 32px;
         }
         & p{
-            font-family: 'jost';
+            font-family: var(--font-jost), sans-serif;
             font-weight: 400px;
             font-size: 18px;
             line-height: 1.8;
         }
         & li{
-            font-family: 'jost';
+            font-family: var(--font-jost), sans-serif;
             font-weight: 400px;
             font-size: 18px;
         }

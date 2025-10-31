@@ -7,7 +7,6 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta
           name="description"
@@ -46,20 +45,6 @@ export default function Document() {
             work correctly both with client-side routing and a non-root public URL.
             Learn how to configure a non-root public URL by running `npm run build`.
           --> */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,500;1,400&display=swap"
-          rel="stylesheet"
-        />
 
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         {/* <link rel="stylesheet" href="carousel.css" /> */}

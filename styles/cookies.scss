@@ -1,13 +1,13 @@
 @import './styles/media.scss';
 
 .cookie-title {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     color: #333; 
     font-size: 10px !important
   }
 
   .cookie-content {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     color: #555; 
   }
 
@@ -16,7 +16,7 @@
   }
 
   .cookie-confirm-button {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     color: white;
     font-size: 12px;
     background-color: #2b363d;
@@ -35,7 +35,7 @@
 
 
   .cookie-confirm-button:hover {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     color: white;
     font-size: 12px;
     background-color: #242d33;
@@ -46,7 +46,7 @@
   }
 
   .cookie-cancel-button {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     background-color: #6e6e6e;
     color: white;
     font-size: 12px;
@@ -56,7 +56,7 @@
   }
 
   .cookie-cancel-button:hover {
-    font-family: "jost", sans-serif;
+    font-family: var(--font-jost), sans-serif;
     background-color: #626262;
     color: white;
     font-size: 12px;
