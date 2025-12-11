@@ -23,26 +23,33 @@ import metroIcon from "../../assets/SVG/mobile/comun/metro-icon.svg";
 
 const QRGenerator = dynamic(
   () => import("../../components/QRgenerator/QRgenerator"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 const DownLoadBuildingSheet = dynamic(
   () =>
     import("../../components/DownLoadBuildingSheet/DownLoadBuildingSheet.js"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
-
 const DownLoadBuildingDrawings = dynamic(
   () => import("../../components/DownloadDrawings/DownloadDrawings.js"),
+  { ssr: false }
+);
+const MapWithNoSSR = dynamic(
+  () => import("../../components/MapItem/MapItem.js"),
   {
     ssr: false,
+    loading: () => (
+      <div
+        style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
+      >
+        <p>Cargando mapa...</p>
+      </div>
+    ),
   }
 );
 
-export default function PatrimonialItem({ list, currentConsultant }) {
+// Añadimos seoData aqui tambien
+export default function PatrimonialItem({ list, currentConsultant, seoData }) {
   const [_client, setClient] = useState(false);
 
   useEffect(() => {
@@ -70,20 +77,6 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     e.preventDefault();
     router.back();
   };
-
-  const MapWithNoSSR = dynamic(
-    () => import("../../components/MapItem/MapItem.js"),
-    {
-      ssr: false,
-      loading: () => (
-        <div
-          style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
-        >
-          <p>Cargando mapa...</p>
-        </div>
-      ),
-    }
-  );
 
   useEffect(() => {
     const isIOS = /iPad|iPhone/.test(navigator.userAgent);
@@ -138,64 +131,6 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   const toggleMap = () => {
     setViewMap(!viewMap);
   };
-
-  // =====================================================================
-  // INICIO LÓGICA WHATSAPP / OPEN GRAPH (CORREGIDA)
-  // =====================================================================
-  const DOMAIN = "https://gvre.es";
-
-  // URL por defecto (pon aquí tu logo o imagen genérica)
-  let ogImage = `${DOMAIN}/favicon.ico`;
-  let ogTitle = "Grandes Viviendas - Patrimonio";
-  let ogDesc = "Oportunidad de inversión";
-  let preciosTexto = [];
-
-  if (state) {
-    // 1. TÍTULO
-    ogTitle = state.title || ogTitle;
-
-    // 2. PRECIOS (Detectar Venta y/o Alquiler)
-    if (
-      state.adType?.includes("Venta") &&
-      state.sale?.saleShowOnWeb &&
-      state.sale?.saleValue > 0
-    ) {
-      preciosTexto.push(
-        `${new Intl.NumberFormat("de-DE").format(state.sale.saleValue)} €`
-      );
-    }
-    if (
-      state.adType?.includes("Alquiler") &&
-      state.rent?.rentShowOnWeb &&
-      state.rent?.rentValue > 0
-    ) {
-      preciosTexto.push(
-        `${new Intl.NumberFormat("de-DE").format(state.rent.rentValue)} €/mes`
-      );
-    }
-
-    const precioFinal =
-      preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
-    ogDesc = `${precioFinal} - ${state.webSubtitle || ""}`;
-
-    // 3. IMAGEN BLINDADA (Aquí está la magia)
-    if (state.images?.main) {
-      // a. Quitamos espacios
-      const cleanImg = state.images.main.replaceAll(" ", "%20");
-
-      // b. Comprobamos si empieza por http (es absoluta) o no (es relativa)
-      if (cleanImg.startsWith("http")) {
-        // Caso A: Ya viene completa de la BD (https://bucket.aws...)
-        ogImage = cleanImg;
-      } else {
-        // Caso B: Viene relativa (/uploads/img.jpg) -> Le pegamos el dominio
-        // Verificamos si falta la barra '/' inicial
-        const separator = cleanImg.startsWith("/") ? "" : "/";
-        ogImage = `${DOMAIN}${separator}${cleanImg}`;
-      }
-    }
-  }
-  // =====================================================================
 
   const initialValues = {
     nombre: "",
@@ -262,6 +197,11 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     window.addEventListener("resize", setTextAreaRows);
   }, [textareaArr]);
 
+  // Usamos los datos SEO que vienen del servidor
+  const ogTitle = seoData?.title || "Grandes Viviendas - Patrimonio";
+  const ogDesc = seoData?.description || "Oportunidad de inversión";
+  const ogImage = seoData?.image || "https://gvre.es/favicon.ico";
+
   return (
     <div className="patrimonialItem">
       <Head>
@@ -269,14 +209,25 @@ export default function PatrimonialItem({ list, currentConsultant }) {
         <meta name="description" content={ogDesc} />
 
         {/* Open Graph / WhatsApp */}
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDesc} />
         <meta property="og:image" content={ogImage} />
-        <meta property="og:type" content="article" />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Fallback */}
+        <meta itemprop="name" content={ogTitle} />
+        <meta itemprop="description" content={ogDesc} />
+        <meta itemprop="image" content={ogImage} />
       </Head>
+
       {state?.images ? (
         <div>
           <Header />
+          {/* ... resto del JSX (Carousel, etc) ... */}
           {state?.featuredDrawings !== undefined &&
           state?.featuredDrawings !== false ? (
             <Carousel
@@ -1119,37 +1070,82 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     </div>
   );
 }
-export async function getServerSideProps(context) {
-  //console.log("context",context)
 
+// =========================================================
+// SERVIDOR - PATRIMONIAL
+// =========================================================
+export async function getServerSideProps(context) {
   if (context.query !== "carousel.css" && context.query !== undefined) {
     const { id } = context.query;
-    //console.log('query id',id)
     const list = await getPatrimonialItem(id);
-    //console.log('lista', list.length)
-    const item = list[0];
-    // console.log("lista", list);
-    // console.log("objeto", item);
+    const item = list && list.length > 0 ? list[0] : null;
+
     if (item !== null) {
-      const buildingId = item._id;
-      //console.log('_id',_id)
+      // 1. Consultor
       let currentConsultant = {};
-      if (buildingId === id) {
+      if (item._id === id) {
         const itemConsultants = await getConsultants();
         currentConsultant = itemConsultants.find(
           (consultant) => consultant._id === item.consultant
         );
       }
+
+      // 2. SEO LÓGICA
+      const DOMAIN = "https://gvre.es";
+      let seoTitle = item.title || "Grandes Viviendas - Patrimonio";
+      let seoDesc = "Oportunidad de inversión";
+      let seoImage = `${DOMAIN}/favicon.ico`;
+
+      // Precios
+      let preciosTexto = [];
+      if (
+        item.adType?.includes("Venta") &&
+        item.sale?.saleShowOnWeb &&
+        item.sale?.saleValue > 0
+      ) {
+        preciosTexto.push(
+          `${new Intl.NumberFormat("de-DE").format(item.sale.saleValue)} €`
+        );
+      }
+      if (
+        item.adType?.includes("Alquiler") &&
+        item.rent?.rentShowOnWeb &&
+        item.rent?.rentValue > 0
+      ) {
+        preciosTexto.push(
+          `${new Intl.NumberFormat("de-DE").format(item.rent.rentValue)} €/mes`
+        );
+      }
+      const precioFinal =
+        preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
+      const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
+      seoDesc = `${precioFinal} - ${subtitleClean}`;
+
+      // IMAGEN OPTIMIZADA
+      if (item.images?.main) {
+        const rawImage = item.images.main;
+        if (rawImage.startsWith("http")) {
+          const encodedUrl = encodeURIComponent(rawImage);
+          seoImage = `${DOMAIN}/_next/image?url=${encodedUrl}&w=1200&q=75`;
+        } else {
+          const separator = rawImage.startsWith("/") ? "" : "/";
+          seoImage = `${DOMAIN}${separator}${rawImage.replace(/\s/g, "%20")}`;
+        }
+      }
+
       return {
         props: {
           list,
           currentConsultant,
+          seoData: {
+            title: seoTitle,
+            description: seoDesc,
+            image: seoImage,
+          },
         },
       };
     }
   } else {
-    return {
-      props: {},
-    };
+    return { props: {} };
   }
 }
