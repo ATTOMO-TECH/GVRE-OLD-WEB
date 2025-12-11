@@ -272,8 +272,6 @@ export default function PatrimonialItem({ list, currentConsultant }) {
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDesc} />
         <meta property="og:image" content={ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="article" />
       </Head>
       {state?.images ? (
