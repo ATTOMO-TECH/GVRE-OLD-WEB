@@ -1,13 +1,11 @@
 import Head from "next/head";
-import React, { useEffect, /*useContext,*/ useState } from "react";
+import { useEffect, useState } from "react";
 import flechaEnviar from "./../assets/SVG/mobile/comun/flechaEnviar.svg";
 import flechaAbajo from "./../assets/SVG/mobile/comun/flechaAbajo.svg";
 import flechaCategoriasWeb from "./../assets/SVG/web/comunes/flechaCategoriasWeb.svg";
 import routes from "./../config/routes.js";
 import Header from "./../components/HeaderHome/HeaderHome";
 import { getResidential, getWebData } from "./../api-requests/requests";
-/*import { generalContext } from '../../../providers/generalProvider';*/
-//import { Link, generatePath, NavLink } from 'react-router-dom';
 import Link from "next/link";
 import banera from "./../assets/SVG/mobile/anuncios/anuncios_banos.svg";
 import habit from "./../assets/SVG/mobile/anuncios/anuncios_habitaciones.svg";
@@ -24,12 +22,8 @@ import parking from "./../assets/SVG/web/anuncios/anuncios_garaje.svg";
 import Image from "next/image";
 import setBackgroundImageToContainer from "../globalFunctions/functions";
 
-// Pagina inicial
-export default function Home({ destacado }) {
-  /*const [state, setState] = useContext(generalContext);*/
-  //const [destacado, setDestacado] = useState([]);
-  // const [test, setTest] = useState('');
-  const [webData, setWebData] = useState({});
+export default function Home({ destacado, webDataInitial }) {
+  const [webData, setWebData] = useState(webDataInitial || {});
   const [costaImage, setCostaImage] = useState("");
   const [rusticImage, setRusticImage] = useState("");
   const [singularImage, setSingularImage] = useState("");
@@ -131,11 +125,28 @@ export default function Home({ destacado }) {
     }
   };
 
+  const ogImage =
+    destacado && destacado.length > 0
+      ? destacado[0].images.main.replaceAll(" ", "%20")
+      : "";
+
   return (
     <>
       <Head>
-        <title>Grandes Viviendas - Luxury Real Estate</title>
+        <title>{webData?.mainTitle || "Grandes Viviendas"}</title>
+        <meta
+          name="description"
+          content={webData?.mainSubtitle || "Luxury Real Estate"}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta
+          property="og:title"
+          content={webData?.mainTitle || "Grandes Viviendas"}
+        />
+        <meta property="og:description" content={webData?.mainSubtitle} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
       </Head>
       <main>
         <div className="home">
@@ -438,6 +449,7 @@ export default function Home({ destacado }) {
                         <h2 className="home__outstanding__position__images__text__price">{`${new Intl.NumberFormat(
                           "de-DE"
                         ).format(item.sale.saleValue)} €`}</h2>
+
                         <Image
                           width={450}
                           height={300}
@@ -613,11 +625,19 @@ export default function Home({ destacado }) {
  * N request -> se ejecuta 1 vez en build time o para refrescar la página
  */
 export async function getStaticProps() {
+  // 1. Cargamos viviendas destacadas
   const { ads } = await getResidential({ featuredOnMain: true });
-  const destacado = ads;
+
+  // 2. IMPORTANTE: Cargamos los datos de la web AQUÍ, no en useEffect
+  // Esto hace que WhatsApp pueda leer el título y configuración
+  const webDataRaw = await getWebData();
+  const webDataInitial = webDataRaw[0] || {};
+
   return {
     props: {
-      destacado,
+      destacado: ads,
+      webDataInitial, // Pasamos esto al componente
     },
+    revalidate: 60, // Opcional: regenerar la página cada 60seg si hay cambios
   };
 }
