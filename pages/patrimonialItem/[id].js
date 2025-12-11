@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router.js";
 import { Carousel } from "react-responsive-carousel";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
-import emailjs from "emailjs-com";
 import useWindowSize from "../../hooks/useWindowsSize.js";
 import {
   getConsultants,
@@ -72,9 +72,9 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   };
 
   const MapWithNoSSR = dynamic(
-    () => import("../../components/MapItem/MapItem.js"), // <-- Ajusta esta ruta
+    () => import("../../components/MapItem/MapItem.js"),
     {
-      ssr: false, // <-- Esto es obligatorio
+      ssr: false,
       loading: () => (
         <div
           style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
@@ -88,17 +88,14 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   useEffect(() => {
     const isIOS = /iPad|iPhone/.test(navigator.userAgent);
     if (router.pathname === "/patrimonialItem/[id]" && isIOS) {
-      // Función para desplazar la página al inicio
       const scrollPageToTop = () => {
         window.scrollTo(0, 0);
       };
-
-      // Llama a la función para desplazar la página al inicio cuando el componente se monta
       setTimeout(scrollPageToTop, 200);
     }
   }, [router.pathname]);
 
-  //Redirección a la home si el inmueble está inactivo
+  // Redirección
   useEffect(() => {
     if (
       list[0].adStatus !== "Activo" ||
@@ -109,44 +106,29 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   }, [list, router]);
 
   useEffect(() => {
-    window.scroll({
-      top: 0,
-    });
+    window.scroll({ top: 0 });
   }, []);
 
   useEffect(() => {
-    // Asegúrate de que 'state' exista antes de hacer la llamada
     if (!state) return;
-
     const getCoords = async () => {
-      // Construimos la dirección para la URL
       const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
-
-      // URL de la API de Nominatim
       const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
         address
       )}&format=json&limit=1`;
-
       try {
-        // Hacemos la llamada fetch
         const response = await fetch(url);
         const data = await response.json();
-
-        // Si encontramos un resultado, establecemos las coordenadas
         if (data && data.length > 0) {
           setLatitude(parseFloat(data[0].lat));
-          setLongitude(parseFloat(data[0].lon)); // <-- Ojo: Nominatim devuelve 'lon' en lugar de 'lng'
+          setLongitude(parseFloat(data[0].lon));
         } else {
-          console.error(
-            "No se encontraron coordenadas para la dirección:",
-            address
-          );
+          console.error("No se encontraron coordenadas");
         }
       } catch (error) {
         console.error("Error al contactar con Nominatim:", error);
       }
     };
-
     getCoords();
   }, [list, state]);
 
@@ -156,6 +138,64 @@ export default function PatrimonialItem({ list, currentConsultant }) {
   const toggleMap = () => {
     setViewMap(!viewMap);
   };
+
+  // =====================================================================
+  // INICIO LÓGICA WHATSAPP / OPEN GRAPH (CORREGIDA)
+  // =====================================================================
+  const DOMAIN = "https://gvre.es";
+
+  // URL por defecto (pon aquí tu logo o imagen genérica)
+  let ogImage = `${DOMAIN}/favicon.ico`;
+  let ogTitle = "Grandes Viviendas - Patrimonio";
+  let ogDesc = "Oportunidad de inversión";
+  let preciosTexto = [];
+
+  if (state) {
+    // 1. TÍTULO
+    ogTitle = state.title || ogTitle;
+
+    // 2. PRECIOS (Detectar Venta y/o Alquiler)
+    if (
+      state.adType?.includes("Venta") &&
+      state.sale?.saleShowOnWeb &&
+      state.sale?.saleValue > 0
+    ) {
+      preciosTexto.push(
+        `${new Intl.NumberFormat("de-DE").format(state.sale.saleValue)} €`
+      );
+    }
+    if (
+      state.adType?.includes("Alquiler") &&
+      state.rent?.rentShowOnWeb &&
+      state.rent?.rentValue > 0
+    ) {
+      preciosTexto.push(
+        `${new Intl.NumberFormat("de-DE").format(state.rent.rentValue)} €/mes`
+      );
+    }
+
+    const precioFinal =
+      preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
+    ogDesc = `${precioFinal} - ${state.webSubtitle || ""}`;
+
+    // 3. IMAGEN BLINDADA (Aquí está la magia)
+    if (state.images?.main) {
+      // a. Quitamos espacios
+      const cleanImg = state.images.main.replaceAll(" ", "%20");
+
+      // b. Comprobamos si empieza por http (es absoluta) o no (es relativa)
+      if (cleanImg.startsWith("http")) {
+        // Caso A: Ya viene completa de la BD (https://bucket.aws...)
+        ogImage = cleanImg;
+      } else {
+        // Caso B: Viene relativa (/uploads/img.jpg) -> Le pegamos el dominio
+        // Verificamos si falta la barra '/' inicial
+        const separator = cleanImg.startsWith("/") ? "" : "/";
+        ogImage = `${DOMAIN}${separator}${cleanImg}`;
+      }
+    }
+  }
+  // =====================================================================
 
   const initialValues = {
     nombre: "",
@@ -185,31 +225,13 @@ export default function PatrimonialItem({ list, currentConsultant }) {
       contactMessage: form.current.mensaje.value,
       activeReference: state.adReference,
       consultantEmail: consultant.consultantEmail,
-      // consultantEmail: "ivan.hervas3@gmail.com",
     };
     const emailSend = await sendInfoEmailFromActiveItemForm(data);
-    // console.log(emailSend);
     if (emailSend === "Mensaje enviado") {
       setViewForm(!viewForm);
     } else {
-      alert(
-        "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
-      );
+      alert("El email no se ha podido enviar correctamente.");
     }
-    // emailjs
-    //   .sendForm("gmail", "template_zpo7p8a", form.current, "d0RpjhV6JfLsc5KLH")
-    //   .then(
-    //     (result) => {
-    //       setViewForm(!viewForm);
-    //       return result;
-    //     },
-    //     (error) => {
-    //       alert(
-    //         "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
-    //       );
-    //       return error;
-    //     }
-    //   );
   };
 
   const toggleForm = () => {
@@ -218,13 +240,10 @@ export default function PatrimonialItem({ list, currentConsultant }) {
 
   useEffect(() => {
     const textarea1 = document.getElementsByTagName("textarea");
-    //console.log(textarea)
     const textareaArr1 = Array.from(textarea1);
-    //console.log(textareaArr1)
     if (textareaArr1 !== undefined) {
       setTextareaArr(textareaArr1);
       textareaArr1?.forEach((elemento) => {
-        //console.log('elemento:',elemento)
         elemento.style.height = `${elemento.scrollHeight}px`;
       });
     }
@@ -234,15 +253,10 @@ export default function PatrimonialItem({ list, currentConsultant }) {
     const setTextAreaRows = () => {
       let scrollHeight = 0;
       textareaArr.forEach((elemento) => {
-        //setTextAreaHeight(elemento.scrollHeight);
-        //console.log('elemento:',elemento.scrollHeight);
-        //console.log('elemento:',elemento.scrollHeight);
-        //console.log('elemento:',textAreaHeight);
         if (elemento.scrollHeight > scrollHeight) {
           scrollHeight = elemento.scrollHeight;
         }
       });
-      //console.log(Math.ceil(scrollHeight/20))
       return Math.ceil(scrollHeight / 20);
     };
     window.addEventListener("resize", setTextAreaRows);
@@ -250,6 +264,18 @@ export default function PatrimonialItem({ list, currentConsultant }) {
 
   return (
     <div className="patrimonialItem">
+      <Head>
+        <title>{ogTitle}</title>
+        <meta name="description" content={ogDesc} />
+
+        {/* Open Graph / WhatsApp */}
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDesc} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="article" />
+      </Head>
       {state?.images ? (
         <div>
           <Header />
