@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
 import dynamic from "next/dynamic";
+import Head from "next/head"; // <--- 1. IMPORTANTE: Importamos Head
 //import { useNavigate } from 'react-router';
 import emailjs from "emailjs-com";
 import { Formik, Form, Field } from "formik";
@@ -78,9 +79,9 @@ export default function ResidentialItem({ list, currentConsultant }) {
   };
 
   const MapWithNoSSR = dynamic(
-    () => import("../../components/MapItem/MapItem.js"), // <-- Ajusta esta ruta
+    () => import("../../components/MapItem/MapItem.js"),
     {
-      ssr: false, // <-- Esto es obligatorio
+      ssr: false,
       loading: () => (
         <div
           style={{ height: "400px", width: "100%", backgroundColor: "#e0e0e0" }}
@@ -93,15 +94,10 @@ export default function ResidentialItem({ list, currentConsultant }) {
 
   useEffect(() => {
     const isIOS = /iPad|iPhone/.test(navigator.userAgent);
-    // Verifica si el pathname es '/residentialItem/[id]' y si es un dispositivo iOS
     if (router.pathname === "/residentialItem/[id]" && isIOS) {
-      // Función para desplazar la página al inicio
       const scrollPageToTop = () => {
         window.scrollTo(0, 0);
       };
-
-      // Llama a la función para desplazar la página al inicio después de un breve retraso
-      // Esto se hace para dar tiempo al navegador a realizar su propio desplazamiento inicial
       setTimeout(scrollPageToTop, 200);
     }
   }, [router.pathname]);
@@ -122,29 +118,22 @@ export default function ResidentialItem({ list, currentConsultant }) {
     });
   }, []);
 
-  // PEGA ESTE
   useEffect(() => {
-    // Asegúrate de que 'state' exista antes de hacer la llamada
     if (!state) return;
 
     const getCoords = async () => {
-      // Construimos la dirección para la URL
       const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
-
-      // URL de la API de Nominatim
       const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
         address
       )}&format=json&limit=1`;
 
       try {
-        // Hacemos la llamada fetch
         const response = await fetch(url);
         const data = await response.json();
 
-        // Si encontramos un resultado, establecemos las coordenadas
         if (data && data.length > 0) {
           setLatitude(parseFloat(data[0].lat));
-          setLongitude(parseFloat(data[0].lon)); // <-- Ojo: Nominatim devuelve 'lon' en lugar de 'lng'
+          setLongitude(parseFloat(data[0].lon));
         } else {
           console.error(
             "No se encontraron coordenadas para la dirección:",
@@ -157,7 +146,7 @@ export default function ResidentialItem({ list, currentConsultant }) {
     };
 
     getCoords();
-  }, [list, state]); // Las dependencias siguen siendo las mismas
+  }, [list, state]);
 
   const toggleFullScreen = () => {
     setViewFullScreen(!viewFullScreen);
@@ -165,6 +154,58 @@ export default function ResidentialItem({ list, currentConsultant }) {
   const toggleMap = () => {
     setViewMap(!viewMap);
   };
+
+  // =====================================================================
+  // INICIO LÓGICA WHATSAPP / OPEN GRAPH (Igual que en Patrimonial)
+  // =====================================================================
+  const DOMAIN = "https://gvre.es"; // Asegúrate de que este es tu dominio
+
+  // Valores por defecto
+  let ogImage = `${DOMAIN}/favicon.ico`;
+  let ogTitle = "Grandes Viviendas - Residencial";
+  let ogDesc = "Propiedad exclusiva";
+  let preciosTexto = [];
+
+  if (state) {
+    // 1. TÍTULO
+    ogTitle = state.title || ogTitle;
+
+    // 2. PRECIOS (Detectar Venta y/o Alquiler)
+    if (
+      state.adType?.includes("Venta") &&
+      state.sale?.saleShowOnWeb &&
+      state.sale?.saleValue > 0
+    ) {
+      preciosTexto.push(
+        `${new Intl.NumberFormat("de-DE").format(state.sale.saleValue)} €`
+      );
+    }
+    if (
+      state.adType?.includes("Alquiler") &&
+      state.rent?.rentShowOnWeb &&
+      state.rent?.rentValue > 0
+    ) {
+      preciosTexto.push(
+        `${new Intl.NumberFormat("de-DE").format(state.rent.rentValue)} €/mes`
+      );
+    }
+
+    const precioFinal =
+      preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
+    ogDesc = `${precioFinal} - ${state.webSubtitle || ""}`;
+
+    // 3. IMAGEN BLINDADA
+    if (state.images?.main) {
+      const cleanImg = state.images.main.replaceAll(" ", "%20");
+      if (cleanImg.startsWith("http")) {
+        ogImage = cleanImg;
+      } else {
+        const separator = cleanImg.startsWith("/") ? "" : "/";
+        ogImage = `${DOMAIN}${separator}${cleanImg}`;
+      }
+    }
+  }
+  // =====================================================================
 
   const initialValues = {
     nombre: "",
@@ -194,10 +235,8 @@ export default function ResidentialItem({ list, currentConsultant }) {
       contactMessage: form.current.mensaje.value,
       activeReference: state.adReference,
       consultantEmail: consultant.consultantEmail,
-      // consultantEmail: "ivan.hervas3@gmail.es",
     };
     const emailSend = await sendInfoEmailFromActiveItemForm(data);
-    // console.log(emailSend);
     if (emailSend === "Mensaje enviado") {
       setViewForm(!viewForm);
     } else {
@@ -205,20 +244,6 @@ export default function ResidentialItem({ list, currentConsultant }) {
         "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
       );
     }
-    // emailjs
-    //   .sendForm("gmail", "template_zpo7p8a", form.current, "d0RpjhV6JfLsc5KLH")
-    //   .then(
-    //     (result) => {
-    //       setViewForm(!viewForm);
-    //       return result;
-    //     },
-    //     (error) => {
-    //       alert(
-    //         "El email no se ha podido enviar correctamente, intentelo de nuevo más tarde, disculpe las molestias."
-    //       );
-    //       return error;
-    //     }
-    //   );
   };
 
   const toggleForm = () => {
@@ -227,13 +252,10 @@ export default function ResidentialItem({ list, currentConsultant }) {
 
   useEffect(() => {
     const textarea1 = document.getElementsByTagName("textarea");
-    //console.log(textarea)
     const textareaArr1 = Array.from(textarea1);
-    //console.log(textareaArr1)
     if (textareaArr1 !== undefined) {
       setTextareaArr(textareaArr1);
       textareaArr1?.forEach((elemento) => {
-        //console.log('elemento:',elemento)
         elemento.style.height = `${elemento.scrollHeight}px`;
       });
     }
@@ -243,32 +265,31 @@ export default function ResidentialItem({ list, currentConsultant }) {
     const setTextAreaRows = () => {
       let scrollHeight = 0;
       textareaArr.forEach((elemento) => {
-        //setTextAreaHeight(elemento.scrollHeight);
-        //console.log('elemento:',elemento.scrollHeight);
-        //console.log('elemento:',elemento.scrollHeight);
-        //console.log('elemento:',textAreaHeight);
         if (elemento.scrollHeight > scrollHeight) {
           scrollHeight = elemento.scrollHeight;
         }
       });
-      //console.log(Math.ceil(scrollHeight/20))
       return Math.ceil(scrollHeight / 20);
     };
     window.addEventListener("resize", setTextAreaRows);
   }, [textareaArr]);
 
-  // let dataURL = ""
-  // useEffect(()=>{},[])
-  // if (typeof window !== 'undefined') {
-  //     const data = document.getElementById("qrCode");
-  //     console.log(data)
-  //     if(data !== null){
-  //          dataURL = data.toDataURL()
-  //     }
-  // }
-
   return (
     <div className="residentialItem">
+      {/* 4. AÑADIMOS HEAD AQUÍ */}
+      <Head>
+        <title>{ogTitle}</title>
+        <meta name="description" content={ogDesc} />
+
+        {/* Open Graph / WhatsApp */}
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDesc} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="article" />
+      </Head>
+
       {state?.images ? (
         <div>
           <Header />
@@ -1082,24 +1103,32 @@ export async function getServerSideProps(context) {
     const list = await getResidentialItem(id);
     //console.log('lista', list.length)
     const item = list[0];
-    // console.log(item);
-    const { _id } = item;
-    //console.log('_id',_id)
-    let currentConsultant = {};
-    if (_id === id) {
-      const itemConsultants = await getConsultants();
-      currentConsultant = itemConsultants.find(
-        (consultant) => consultant._id === item.consultant
-      );
-    }
 
-    //const list = items[0]
-    return {
-      props: {
-        list,
-        currentConsultant,
-      },
-    };
+    // 5. CORRECCIÓN IMPORTANTE: Si la URL es mala, item puede ser undefined
+    if (item) {
+      const { _id } = item;
+      //console.log('_id',_id)
+      let currentConsultant = {};
+      if (_id === id) {
+        const itemConsultants = await getConsultants();
+        currentConsultant = itemConsultants.find(
+          (consultant) => consultant._id === item.consultant
+        );
+      }
+
+      //const list = items[0]
+      return {
+        props: {
+          list,
+          currentConsultant,
+        },
+      };
+    } else {
+      // Si no hay item, devolvemos props vacías (o podrías redirigir a 404)
+      return {
+        props: {},
+      };
+    }
   } else {
     return {
       props: {},
