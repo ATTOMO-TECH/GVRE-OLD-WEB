@@ -448,7 +448,7 @@ export default function Home({ destacado, webDataInitial }) {
                       <div>
                         <h2 className="home__outstanding__position__images__text__price">{`${new Intl.NumberFormat(
                           "de-DE"
-                        ).format(item.sale.saleValue)} €`}</h2>
+                        ).format(Math.ceil(item.sale.saleValue))} €`}</h2>
 
                         <Image
                           width={450}
