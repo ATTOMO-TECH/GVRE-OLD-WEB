@@ -263,10 +263,6 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
             </div>
           )}
 
-          {/* ... resto del JSX se mantiene igual ... */}
-          {/* He resumido esta parte para que sea fácil de copiar, 
-              pero aquí iría el resto del renderizado (FullScreen, Descriptions, etc) 
-              que ya tenías bien */}
           {viewFullScreen === true ? (
             <div className="residentialItem__fullScreen">
               <button
@@ -373,6 +369,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                   alt="full screen"
                 />
               </button>
+              {/* CABECERA: PRECIOS REDONDEADOS */}
               {state.adType.length === 1 ? (
                 <h2 className="residentialItem__description__principal__price">
                   {state.adType.map((type) =>
@@ -380,13 +377,13 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     state.sale.saleShowOnWeb === true &&
                     state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.sale.saleValue
+                          Math.ceil(state.sale.saleValue) // Redondeo al alza
                         )} €`
                       : type === "Alquiler" &&
                         state.rent.rentShowOnWeb === true &&
                         state.rent.rentValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.rent.rentValue
+                          Math.ceil(state.rent.rentValue) // Redondeo al alza
                         )} € mes`
                       : null
                   )}
@@ -395,12 +392,12 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                 <h2 className="residentialItem__description__principal__prices">
                   {state.sale.saleShowOnWeb && state.sale.saleValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      state.sale.saleValue
+                      Math.ceil(state.sale.saleValue) // Redondeo al alza
                     )} €`}</p>
                   ) : null}
                   {state.rent.rentShowOnWeb && state.rent.rentValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      state.rent.rentValue
+                      Math.ceil(state.rent.rentValue) // Redondeo al alza
                     )} € mes`}</p>
                   ) : null}
                 </h2>
@@ -434,10 +431,11 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                         : "residentialItem__description__rentEmpty__numbers"
                     }
                   >
+                    {/* DESGLOSE ALQUILER: PRECIOS REDONDEADOS */}
                     {state.expensesIncluded !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          state.expensesIncluded
+                          Math.ceil(state.expensesIncluded) // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Renta €/m<sup>2</sup>/mes
@@ -448,7 +446,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     {state.monthlyRent !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          state.monthlyRent
+                          Math.ceil(state.monthlyRent) // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Renta €/m<sup>2</sup>
@@ -458,7 +456,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     {state.expenses !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          state.expenses
+                          Math.ceil(state.expenses) // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Gastos €/m<sup>2</sup>/mes
@@ -1002,7 +1000,10 @@ export async function getServerSideProps(context) {
         item.sale?.saleValue > 0
       ) {
         preciosTexto.push(
-          `${new Intl.NumberFormat("de-DE").format(item.sale.saleValue)} €`
+          // SEO REDONDEADO
+          `${new Intl.NumberFormat("de-DE").format(
+            Math.ceil(item.sale.saleValue)
+          )} €`
         );
       }
       if (
@@ -1011,7 +1012,10 @@ export async function getServerSideProps(context) {
         item.rent?.rentValue > 0
       ) {
         preciosTexto.push(
-          `${new Intl.NumberFormat("de-DE").format(item.rent.rentValue)} €/mes`
+          // SEO REDONDEADO
+          `${new Intl.NumberFormat("de-DE").format(
+            Math.ceil(item.rent.rentValue)
+          )} €/mes`
         );
       }
       const precioFinal =
