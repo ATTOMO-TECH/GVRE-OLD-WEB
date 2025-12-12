@@ -219,13 +219,13 @@ export default function Patrimonial({
                       item.sale.saleShowOnWeb === true &&
                       item.sale.saleValue !== 0
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            Math.ceil(item.sale.saleValue)
                           )} €`
                         : type === "Alquiler" &&
                           item.rent.rentShowOnWeb === true &&
                           item.rent.rentValue !== 0
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
+                            Math.ceil(item.rent.rentValue)
                           )} € mes`
                         : null
                     )}
@@ -234,12 +234,12 @@ export default function Patrimonial({
                   <h2 className="patrimonial__list__item__text__prices">
                     {item.sale.saleShowOnWeb && item.sale.saleValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        Math.ceil(item.sale.saleValue)
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb && item.rent.rentValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        Math.ceil(item.rent.rentValue)
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -345,11 +345,11 @@ export default function Patrimonial({
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            Math.ceil(item.sale.saleValue)
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
+                            Math.ceil(item.rent.rentValue)
                           )} € mes`
                         : null
                     )}
@@ -358,12 +358,12 @@ export default function Patrimonial({
                   <h2 className="patrimonial__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        Math.ceil(item.sale.saleValue)
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        Math.ceil(item.rent.rentValue)
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -1850,11 +1850,11 @@ export default function Patrimonial({
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  value
+                                  Math.ceil(value)
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  value
+                                  Math.ceil(value)
                                 )} €/mes`
                         }
                       />
@@ -1876,11 +1876,11 @@ export default function Patrimonial({
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  value
+                                  Math.ceil(value)
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  value
+                                  Math.ceil(value)
                                 )} €/mes`
                         }
                       />

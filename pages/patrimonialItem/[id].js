@@ -419,13 +419,13 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     state.sale.saleShowOnWeb === true &&
                     state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.sale.saleValue
+                          Math.ceil(state.sale.saleValue) // Redondeo al alza aquí
                         )} €`
                       : type === "Alquiler" &&
                         state.rent.rentShowOnWeb === true &&
                         state.rent.rentValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          state.rent.rentValue
+                          Math.ceil(state.rent.rentValue) // Redondeo al alza aquí
                         )} € mes`
                       : null
                   )}
@@ -434,12 +434,12 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                 <h2 className="patrimonialItem__description__principal__prices">
                   {state.sale.saleShowOnWeb && state.sale.saleValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      state.sale.saleValue
+                      Math.ceil(state.sale.saleValue) // Redondeo al alza aquí
                     )} €`}</p>
                   ) : null}
                   {state.rent.rentShowOnWeb && state.rent.rentValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      state.rent.rentValue
+                      Math.ceil(state.rent.rentValue) // Redondeo al alza aquí
                     )} € mes`}</p>
                   ) : null}
                 </h2>
@@ -495,7 +495,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                       <div>
                         <h4>
                           {`${new Intl.NumberFormat("de-DE").format(
-                            state.monthlyRent
+                            Math.ceil(state.monthlyRent) // <--- Agregado Math.ceil
                           )}`}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/m<sup>2</sup>/mes
@@ -509,7 +509,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                       <div>
                         <h4>
                           {`${new Intl.NumberFormat("de-DE").format(
-                            state.expenses
+                            Math.ceil(state.expenses)
                           )}`}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/m<sup>2</sup>/mes
@@ -1104,7 +1104,9 @@ export async function getServerSideProps(context) {
         item.sale?.saleValue > 0
       ) {
         preciosTexto.push(
-          `${new Intl.NumberFormat("de-DE").format(item.sale.saleValue)} €`
+          `${new Intl.NumberFormat("de-DE").format(
+            Math.ceil(item.sale.saleValue)
+          )} €`
         );
       }
       if (
@@ -1113,7 +1115,9 @@ export async function getServerSideProps(context) {
         item.rent?.rentValue > 0
       ) {
         preciosTexto.push(
-          `${new Intl.NumberFormat("de-DE").format(item.rent.rentValue)} €/mes`
+          `${new Intl.NumberFormat("de-DE").format(
+            Math.ceil(item.rent.rentValue)
+          )} €/mes`
         );
       }
       const precioFinal =
