@@ -1024,7 +1024,8 @@ export async function getServerSideProps(context) {
 
       // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        const rawImage = item.images.main;
+        // CORRECCIÓN 1: Aquí añadimos el replaceAll para que los espacios no rompan la URL
+        const rawImage = item.images.main.replaceAll(" ", "%20");
         let fullImageUrl = "";
 
         // a) Normalizamos la URL (si viene de DigitalOcean es absoluta, si es local es relativa)
@@ -1039,9 +1040,10 @@ export async function getServerSideProps(context) {
         const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
 
         // c) Generamos la URL segura para WhatsApp (JPG, <300KB, 1200x630)
+        // CORRECCIÓN 2: Cambiamos q=80 a q=79 para forzar nueva caché
         seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
           cleanUrl
-        )}&w=1200&h=630&fit=cover&output=jpg&q=80`;
+        )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
       }
 
       return {
