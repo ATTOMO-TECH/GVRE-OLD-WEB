@@ -1090,11 +1090,9 @@ export async function getServerSideProps(context) {
         );
       }
 
-      // 2. SEO LÓGICA
+      // 2. SEO LÓGICA (Títulos y descripciones)
       const DOMAIN = "https://gvre.es";
       let seoTitle = item.title || "Grandes Viviendas - Patrimonio";
-      let seoDesc = "Oportunidad de inversión";
-      let seoImage = `${DOMAIN}/favicon.ico`;
 
       // Precios
       let preciosTexto = [];
@@ -1123,18 +1121,39 @@ export async function getServerSideProps(context) {
       const precioFinal =
         preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
       const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
-      seoDesc = `${precioFinal} - ${subtitleClean}`;
+      let seoDesc = `${precioFinal} - ${subtitleClean}`;
 
-      // IMAGEN OPTIMIZADA
+      // Imagen por defecto (fallback)
+      let seoImage = `${DOMAIN}/favicon.ico`;
+
+      // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
         const rawImage = item.images.main;
+        let fullImageUrl = "";
+
+        // a) Normalizamos la URL de DigitalOcean o local
         if (rawImage.startsWith("http")) {
-          const encodedUrl = encodeURIComponent(rawImage);
-          seoImage = `${DOMAIN}/_next/image?url=${encodedUrl}&w=1200&q=75`;
+          // Es una URL absoluta (ej: https://mi-bucket.fra1.digitaloceanspaces.com/img.jpg)
+          fullImageUrl = rawImage;
         } else {
+          // Es relativa
           const separator = rawImage.startsWith("/") ? "" : "/";
-          seoImage = `${DOMAIN}${separator}${rawImage.replace(/\s/g, "%20")}`;
+          fullImageUrl = `${DOMAIN}${separator}${rawImage}`;
         }
+
+        // b) Limpiamos el protocolo para pasarlo al proxy
+        // (wsrv.nl prefiere la url sin https:// al inicio en el parámetro, aunque con él también suele funcionar)
+        const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
+
+        // c) Generamos la URL del proxy
+        // - url: tu imagen en DigitalOcean
+        // - w=1200 & h=630: Estándar Open Graph
+        // - fit=cover: Recorta inteligentemente si las proporciones no cuadran
+        // - output=jpg: Asegura formato compatible con WhatsApp
+        // - q=80: Comprime para bajar de los 300KB
+        seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
+          cleanUrl
+        )}&w=1200&h=630&fit=cover&output=jpg&q=80`;
       }
 
       return {

@@ -968,7 +968,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
 }
 
 // =========================================================
-// AQUÍ ESTÁ LA MAGIA DEL SERVIDOR: getServerSideProps
+// SERVIDOR - RESIDENCIAL
 // =========================================================
 export async function getServerSideProps(context) {
   if (context.query !== "carousel.css" && context.query !== undefined) {
@@ -986,11 +986,9 @@ export async function getServerSideProps(context) {
         );
       }
 
-      // 2. LOGICA SEO (Esto lo hacemos aqui para que WhatsApp reciba la URL optimizada)
+      // 2. LOGICA SEO
       const DOMAIN = "https://gvre.es";
       let seoTitle = item.title || "Grandes Viviendas";
-      let seoDesc = "Oportunidad de inversión";
-      let seoImage = `${DOMAIN}/favicon.ico`;
 
       // Precios para la descripción
       let preciosTexto = [];
@@ -1000,7 +998,6 @@ export async function getServerSideProps(context) {
         item.sale?.saleValue > 0
       ) {
         preciosTexto.push(
-          // SEO REDONDEADO
           `${new Intl.NumberFormat("de-DE").format(
             Math.ceil(item.sale.saleValue)
           )} €`
@@ -1012,7 +1009,6 @@ export async function getServerSideProps(context) {
         item.rent?.rentValue > 0
       ) {
         preciosTexto.push(
-          // SEO REDONDEADO
           `${new Intl.NumberFormat("de-DE").format(
             Math.ceil(item.rent.rentValue)
           )} €/mes`
@@ -1021,19 +1017,31 @@ export async function getServerSideProps(context) {
       const precioFinal =
         preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
       const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
-      seoDesc = `${precioFinal} - ${subtitleClean}`;
+      let seoDesc = `${precioFinal} - ${subtitleClean}`;
 
-      // IMAGEN: Usamos el optimizador de Next.js para bajar el peso
+      // Imagen por defecto
+      let seoImage = `${DOMAIN}/favicon.ico`;
+
+      // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
         const rawImage = item.images.main;
+        let fullImageUrl = "";
+
+        // a) Normalizamos la URL (si viene de DigitalOcean es absoluta, si es local es relativa)
         if (rawImage.startsWith("http")) {
-          // Codificamos URL y creamos el enlace al optimizador
-          const encodedUrl = encodeURIComponent(rawImage);
-          seoImage = `${DOMAIN}/_next/image?url=${encodedUrl}&w=1200&q=75`;
+          fullImageUrl = rawImage;
         } else {
           const separator = rawImage.startsWith("/") ? "" : "/";
-          seoImage = `${DOMAIN}${separator}${rawImage.replace(/\s/g, "%20")}`;
+          fullImageUrl = `${DOMAIN}${separator}${rawImage}`;
         }
+
+        // b) Limpiamos el protocolo para pasarlo al proxy
+        const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
+
+        // c) Generamos la URL segura para WhatsApp (JPG, <300KB, 1200x630)
+        seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
+          cleanUrl
+        )}&w=1200&h=630&fit=cover&output=jpg&q=80`;
       }
 
       return {
