@@ -1128,32 +1128,26 @@ export async function getServerSideProps(context) {
 
       // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        const rawImage = item.images.main;
+        // CORRECCIÓN 1: Aquí añadimos el replaceAll para que los espacios no rompan la URL
+        const rawImage = item.images.main.replaceAll(" ", "%20");
         let fullImageUrl = "";
 
-        // a) Normalizamos la URL de DigitalOcean o local
+        // a) Normalizamos la URL (si viene de DigitalOcean es absoluta, si es local es relativa)
         if (rawImage.startsWith("http")) {
-          // Es una URL absoluta (ej: https://mi-bucket.fra1.digitaloceanspaces.com/img.jpg)
           fullImageUrl = rawImage;
         } else {
-          // Es relativa
           const separator = rawImage.startsWith("/") ? "" : "/";
           fullImageUrl = `${DOMAIN}${separator}${rawImage}`;
         }
 
         // b) Limpiamos el protocolo para pasarlo al proxy
-        // (wsrv.nl prefiere la url sin https:// al inicio en el parámetro, aunque con él también suele funcionar)
         const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
 
-        // c) Generamos la URL del proxy
-        // - url: tu imagen en DigitalOcean
-        // - w=1200 & h=630: Estándar Open Graph
-        // - fit=cover: Recorta inteligentemente si las proporciones no cuadran
-        // - output=jpg: Asegura formato compatible con WhatsApp
-        // - q=80: Comprime para bajar de los 300KB
+        // c) Generamos la URL segura para WhatsApp (JPG, <300KB, 1200x630)
+        // CORRECCIÓN 2: Cambiamos q=80 a q=79 para forzar nueva caché
         seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
           cleanUrl
-        )}&w=1200&h=630&fit=cover&output=jpg&q=80`;
+        )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
       }
 
       return {
