@@ -990,7 +990,7 @@ export async function getServerSideProps(context) {
       const DOMAIN = "https://gvre.es";
       let seoTitle = item.title || "Grandes Viviendas";
 
-      // Precios para la descripción
+      // --- PRECIOS ---
       let preciosTexto = [];
       if (
         item.adType?.includes("Venta") &&
@@ -1016,19 +1016,57 @@ export async function getServerSideProps(context) {
       }
       const precioFinal =
         preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
+
       const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
-      let seoDesc = `${precioFinal} - ${subtitleClean}`;
+
+      // --- NUEVA LÓGICA: SUPERFICIES ---
+      let superficiesArr = [];
+
+      // Superficie Construida (buildSurface)
+      if (item.buildSurface && item.buildSurface > 0) {
+        superficiesArr.push(`${item.buildSurface} m² constr.`);
+      }
+
+      // Superficie Parcela (plotSurface)
+      if (item.plotSurface && item.plotSurface > 0) {
+        superficiesArr.push(`${item.plotSurface} m² parcela`);
+      }
+
+      // Unimos las superficies con una barra vertical si existen
+      const superficiesTexto =
+        superficiesArr.length > 0 ? ` | ${superficiesArr.join(" | ")}` : "";
+
+      // --- NUEVA LÓGICA: DESCRIPCIÓN WEB ---
+      let descripcionWeb = "";
+      if (item.description && item.description.web) {
+        // Limpiamos comillas dobles y saltos de línea excesivos para que no rompan el meta tag
+        const cleanText = item.description.web
+          .replace(/"/g, "'") // Reemplaza comillas dobles por simples
+          .replace(/\s+/g, " ") // Elimina dobles espacios y saltos de línea
+          .trim();
+
+        if (cleanText.length > 0) {
+          descripcionWeb = ` - ${cleanText}`;
+        }
+      }
+
+      // --- CONSTRUCCIÓN FINAL DE LA DESCRIPCIÓN ---
+      // Estructura: Precio - Subtitulo | Superficies - Descripción
+      let seoDesc = `${precioFinal} - ${subtitleClean}${superficiesTexto}${descripcionWeb}`;
+
+      // Opcional: Recortar si es demasiado largo para evitar problemas en algunas redes sociales (aprox 300 chars es seguro)
+      if (seoDesc.length > 320) {
+        seoDesc = seoDesc.substring(0, 317) + "...";
+      }
 
       // Imagen por defecto
       let seoImage = `${DOMAIN}/favicon.ico`;
 
       // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        // CORRECCIÓN 1: Aquí añadimos el replaceAll para que los espacios no rompan la URL
         const rawImage = item.images.main.replaceAll(" ", "%20");
         let fullImageUrl = "";
 
-        // a) Normalizamos la URL (si viene de DigitalOcean es absoluta, si es local es relativa)
         if (rawImage.startsWith("http")) {
           fullImageUrl = rawImage;
         } else {
@@ -1036,11 +1074,9 @@ export async function getServerSideProps(context) {
           fullImageUrl = `${DOMAIN}${separator}${rawImage}`;
         }
 
-        // b) Limpiamos el protocolo para pasarlo al proxy
         const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
 
-        // c) Generamos la URL segura para WhatsApp (JPG, <300KB, 1200x630)
-        // CORRECCIÓN 2: Cambiamos q=80 a q=79 para forzar nueva caché
+        // WSrv con q=79 para refrescar caché si es necesario
         seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
           cleanUrl
         )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
