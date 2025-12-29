@@ -343,7 +343,6 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                 ))}
                 {state.featuredDrawings && state.images.blueprint.length !== 0
                   ? state.images.blueprint.map((image) => {
-                      //console.log('ruta:', image)
                       return (
                         <Image
                           width={1486}
@@ -1090,11 +1089,9 @@ export async function getServerSideProps(context) {
         );
       }
 
-      // 2. SEO LÓGICA
+      // 2. SEO LÓGICA (Títulos y descripciones)
       const DOMAIN = "https://gvre.es";
       let seoTitle = item.title || "Grandes Viviendas - Patrimonio";
-      let seoDesc = "Oportunidad de inversión";
-      let seoImage = `${DOMAIN}/favicon.ico`;
 
       // Precios
       let preciosTexto = [];
@@ -1122,19 +1119,69 @@ export async function getServerSideProps(context) {
       }
       const precioFinal =
         preciosTexto.length > 0 ? preciosTexto.join(" | ") : "Consultar";
-      const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
-      seoDesc = `${precioFinal} - ${subtitleClean}`;
 
-      // IMAGEN OPTIMIZADA
+      const subtitleClean = (item.webSubtitle || "").replace(/"/g, "'");
+
+      // --- NUEVA LÓGICA: SUPERFICIES ---
+      let superficiesArr = [];
+
+      // Superficie Construida (buildSurface)
+      if (item.buildSurface && item.buildSurface > 0) {
+        superficiesArr.push(`${item.buildSurface} m² constr.`);
+      }
+
+      // Superficie Parcela (plotSurface)
+      if (item.plotSurface && item.plotSurface > 0) {
+        superficiesArr.push(`${item.plotSurface} m² parcela`);
+      }
+
+      // Unimos las superficies con una barra vertical si existen
+      const superficiesTexto =
+        superficiesArr.length > 0 ? ` | ${superficiesArr.join(" | ")}` : "";
+
+      // --- NUEVA LÓGICA: DESCRIPCIÓN WEB ---
+      let descripcionWeb = "";
+      if (item.description && item.description.web) {
+        // Limpiamos comillas dobles y saltos de línea (importante para tu JSON)
+        const cleanText = item.description.web
+          .replace(/"/g, "'") // Reemplaza comillas dobles
+          .replace(/\s+/g, " ") // Convierte todos los \n y espacios múltiples en un solo espacio
+          .trim();
+
+        if (cleanText.length > 0) {
+          descripcionWeb = ` - ${cleanText}`;
+        }
+      }
+
+      // --- CONSTRUCCIÓN FINAL ---
+      let seoDesc = `${precioFinal} - ${subtitleClean}${superficiesTexto}${descripcionWeb}`;
+
+      // Recortar si es muy largo
+      if (seoDesc.length > 320) {
+        seoDesc = seoDesc.substring(0, 317) + "...";
+      }
+
+      // Imagen por defecto (fallback)
+      let seoImage = `${DOMAIN}/favicon.ico`;
+
+      // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        const rawImage = item.images.main;
+        const rawImage = item.images.main.replaceAll(" ", "%20");
+        let fullImageUrl = "";
+
         if (rawImage.startsWith("http")) {
-          const encodedUrl = encodeURIComponent(rawImage);
-          seoImage = `${DOMAIN}/_next/image?url=${encodedUrl}&w=1200&q=75`;
+          fullImageUrl = rawImage;
         } else {
           const separator = rawImage.startsWith("/") ? "" : "/";
-          seoImage = `${DOMAIN}${separator}${rawImage.replace(/\s/g, "%20")}`;
+          fullImageUrl = `${DOMAIN}${separator}${rawImage}`;
         }
+
+        const cleanUrl = fullImageUrl.replace(/^https?:\/\//, "");
+
+        // WSrv con q=79
+        seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
+          cleanUrl
+        )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
       }
 
       return {
