@@ -122,18 +122,18 @@ export default function Residential({
   }
 
   const [selected, setSelected] = useState(
-    localFilters?.includes("zone") ? JSON.parse(localFilters).zone : []
+    localFilters?.includes("zone") ? JSON.parse(localFilters).zone : [],
   );
 
   const [selectedActive, setSelectedActive] = useState(false);
   const [saleOrRent, setSaleOrRent] = useState(
-    localFilters?.includes("adType") ? JSON.parse(localFilters).adType : []
+    localFilters?.includes("adType") ? JSON.parse(localFilters).adType : [],
   );
   const [saleOrRentActive, setSaleOrRentActive] = useState(false);
   const [typeHouse, setTypeHouse] = useState(
     localFilters?.includes("adBuildingType")
       ? JSON.parse(localFilters).adBuildingType
-      : []
+      : [],
   );
   const [typeHouseActive, setTypeHouseActive] = useState(false);
   const [extras, setExtras] = useState([]);
@@ -226,25 +226,25 @@ export default function Residential({
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.sale.saleValue)
+                            Math.ceil(item.sale.saleValue),
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.rent.rentValue)
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              Math.ceil(item.rent.rentValue),
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="residential__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.sale.saleValue)
+                        Math.ceil(item.sale.saleValue),
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.rent.rentValue)
+                        Math.ceil(item.rent.rentValue),
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -408,27 +408,27 @@ export default function Residential({
                       item.sale.saleShowOnWeb === true &&
                       item.sale.saleValue !== 0
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.sale.saleValue)
+                            Math.ceil(item.sale.saleValue),
                           )} €`
                         : type === "Alquiler" &&
-                          item.rent.rentShowOnWeb === true &&
-                          item.rent.rentValue !== 0
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.rent.rentValue)
-                          )} € mes`
-                        : null
+                            item.rent.rentShowOnWeb === true &&
+                            item.rent.rentValue !== 0
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              Math.ceil(item.rent.rentValue),
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="residential__list__item__text__prices">
                     {item.sale.saleShowOnWeb && item.sale.saleValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.sale.saleValue)
+                        Math.ceil(item.sale.saleValue),
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb && item.rent.rentValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.rent.rentValue)
+                        Math.ceil(item.rent.rentValue),
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -547,12 +547,12 @@ export default function Residential({
       state.map((item) =>
         item.department === "Residencial" && item.showOnWeb === true
           ? reducedState.push(item)
-          : null
+          : null,
       );
       if (typeof window !== "undefined")
         window.localStorage.setItem(
           "storedState",
-          JSON.stringify(reducedState)
+          JSON.stringify(reducedState),
         );
     }
   }, [state]);
@@ -567,13 +567,13 @@ export default function Residential({
       extrasLocal = [...extrasLocal, "terrace"];
 
     setReformedState(
-      localFilters?.includes("reformed") || query.reformed === "true"
+      localFilters?.includes("reformed") || query.reformed === "true",
     );
     setToReformState(
-      localFilters?.includes("toReform") || query.toReform === "true"
+      localFilters?.includes("toReform") || query.toReform === "true",
     );
     setSmokeOutletState(
-      localFilters?.includes("smokeOutlet") || query.smokeOutlet === "true"
+      localFilters?.includes("smokeOutlet") || query.smokeOutlet === "true",
     );
 
     setExtras(extrasLocal);
@@ -604,7 +604,7 @@ export default function Residential({
             }
           >
             <a href={`/residential/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       } else {
         elements.push(
@@ -617,7 +617,7 @@ export default function Residential({
             }
           >
             <a href={`/residential/${i + 1}?page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       }
     }
@@ -756,7 +756,7 @@ export default function Residential({
 
   useEffect(() => {
     const localPosition = JSON.parse(
-      window.localStorage.getItem("storedPosition2")
+      window.localStorage.getItem("storedPosition2"),
     );
     if (localPosition !== 0 && localPosition !== null) {
       window.scroll({
@@ -771,12 +771,12 @@ export default function Residential({
     setIsLoading(false);
     if (typeof window !== "undefined") {
       let activeFilters = JSON.parse(
-        window.localStorage.getItem("residentialFilters")
+        window.localStorage.getItem("residentialFilters"),
       );
       activeFilters = { ...activeFilters, orderByDate: false };
       window.localStorage.setItem(
         "residentialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
       let newquery = query;
       newquery.porfecha = "false";
@@ -788,12 +788,12 @@ export default function Residential({
     if (typeof window !== "undefined") {
       setIsLoading(false);
       let activeFilters = JSON.parse(
-        window.localStorage.getItem("residentialFilters")
+        window.localStorage.getItem("residentialFilters"),
       );
       activeFilters = { ...activeFilters, orderByDate: true };
       window.localStorage.setItem(
         "residentialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
       /* console.log(activeFilters) */
       // console.log(tipo, tipodeinmueble, referencia, zona, garaje, piscina, terraza, page)
@@ -807,122 +807,123 @@ export default function Residential({
 
   const toggleActive = (e) => {
     const target = e.currentTarget;
+    const id = target.id;
+    const name = target.name;
 
-    if (target.className === target.id) {
-      // Handle when className is the same as the id
-      if (target.className === "nuev" || target.className === "hisp") {
-        const idZoneSelected = getZoneId(target.name);
-        if (!selected.includes(idZoneSelected.toString())) {
-          idZoneSelected.forEach((idZone) => selected.push(idZone));
-        }
+    // Nuevos IDs que conforman el grupo Urbanizaciones A-1
+    const URB_A1_IDS = [
+      "69b6243929f4cc9c2ccb1b02", // Santo Domingo
+      "69b6243929f4cc9c2ccb1b01", // Ciudalcampo
+      "69b6243929f4cc9c2ccb1b00", // Fuente del Fresno
+    ];
+
+    // 1. LÓGICA DE ACTIVACIÓN (Cuando se hace click y no tiene la clase 'active')
+    if (target.className === id) {
+      if (id === "nuev" || id === "hisp") {
+        const idZoneSelected = getZoneId(name);
+        idZoneSelected.forEach((idZone) => {
+          if (!selected.includes(idZone.toString())) selected.push(idZone);
+        });
         document.getElementById("nuev").className = "nuev active";
         document.getElementById("hisp").className = "hisp active";
-      } else if (target.className === "lista" || target.className === "goya") {
-        const idZoneSelected = getZoneId(target.name);
-        if (!selected.includes(idZoneSelected.toString())) {
-          idZoneSelected.forEach((idZone) => selected.push(idZone));
-        }
+      } else if (id === "lista" || id === "goya") {
+        const idZoneSelected = getZoneId(name);
+        idZoneSelected.forEach((idZone) => {
+          if (!selected.includes(idZone.toString())) selected.push(idZone);
+        });
         document.getElementById("lista").className = "lista active";
         document.getElementById("goya").className = "goya active";
-      } else if (
-        target.className === "urba1" ||
-        target.className === "urba2" ||
-        target.className === "urba3"
-      ) {
-        const idZoneSelected = getZoneId("Urbanizaciones A-1");
-        if (!selected.includes(idZoneSelected.toString())) {
-          idZoneSelected.forEach((idZone) => selected.push(idZone));
-        }
+      }
+      // --- CAMBIO PARA URBANIZACIONES A-1 ---
+      else if (id === "urba1" || id === "urba2" || id === "urba3") {
+        URB_A1_IDS.forEach((urbId) => {
+          if (!selected.includes(urbId)) {
+            selected.push(urbId);
+          }
+        });
         document.getElementById("urba1").className = "urba1 active";
         document.getElementById("urba2").className = "urba2 active";
         document.getElementById("urba3").className = "urba3 active";
-      } else {
-        e.currentTarget.className = `${e.currentTarget.className} active`;
-        const idZoneSelected = getZoneId(e.currentTarget.name);
-
-        if (!selected?.includes(`${idZoneSelected[0]}`)) {
-          idZoneSelected.forEach((idZone) => selected.push(idZone));
-        }
-        /* console.log(selected) */
       }
-      /* console.log('array de zonas', selected) */
-      /* console.log(selected) */
-      let activeFilters = {};
-      activeFilters = { ...activeFilters, zone: selected };
-      activeFilters = { ...activeFilters, adType: saleOrRent };
-      /* console.log(activeFilters) */
-      if (saleOrRent.length === 1) {
-        setGetMaxPrices(true);
-        getResidential(activeFilters).then((items) => {
-          /* console.log(items) */
-          if (items.ads.length !== 0) {
-            if (saleOrRent[0] === "Venta") {
-              setMaxZonePrice(items.ads[0].sale.saleValue);
-            } else {
-              setMaxZonePrice(items.ads[0].rent.rentValue);
-            }
-          } else {
-            setMaxZonePrice(0);
-          }
-          setGetMaxPrices(false);
+      // --- FIN CAMBIO ---
+      else {
+        target.className = `${id} active`;
+        const idZoneSelected = getZoneId(name);
+        idZoneSelected.forEach((idZone) => {
+          if (!selected.includes(idZone.toString())) selected.push(idZone);
         });
       }
-    } else {
+    }
+
+    // 2. LÓGICA DE DESACTIVACIÓN (Cuando ya tiene la clase 'active')
+    else {
       if (
-        target.id === "nuev" ||
-        target.id === "hisp" ||
-        target.id === "lista" ||
-        target.id === "goya" ||
-        target.id === "urba1" ||
-        target.id === "urba2" ||
-        target.id === "urba3"
+        id === "nuev" ||
+        id === "hisp" ||
+        id === "lista" ||
+        id === "goya" ||
+        id === "urba1" ||
+        id === "urba2" ||
+        id === "urba3"
       ) {
-        document.getElementById("nuev").classList.remove("active");
-        document.getElementById("hisp").classList.remove("active");
-        document.getElementById("urba1").classList.remove("active");
-        document.getElementById("urba2").classList.remove("active");
-        document.getElementById("urba3").classList.remove("active");
-        document.getElementById("lista").classList.remove("active");
-        document.getElementById("goya").classList.remove("active");
-
-        const idZoneElement = getZoneId(target.name);
-        idZoneElement.forEach((idZone) => {
-          const newSelected = selected.filter((item) => item !== idZone);
+        // Caso especial grupos
+        if (id === "urba1" || id === "urba2" || id === "urba3") {
+          // Quitamos los 3 IDs de A-1
+          const newSelected = selected.filter(
+            (item) => !URB_A1_IDS.includes(item.toString()),
+          );
           selected.splice(0, selected.length, ...newSelected);
-        });
+
+          document.getElementById("urba1").classList.remove("active");
+          document.getElementById("urba2").classList.remove("active");
+          document.getElementById("urba3").classList.remove("active");
+        } else if (id === "nuev" || id === "hisp") {
+          const idZoneElement = getZoneId(name);
+          const newSelected = selected.filter(
+            (item) => !idZoneElement.includes(item),
+          );
+          selected.splice(0, selected.length, ...newSelected);
+          document.getElementById("nuev").classList.remove("active");
+          document.getElementById("hisp").classList.remove("active");
+        } else {
+          const idZoneElement = getZoneId(name);
+          const newSelected = selected.filter(
+            (item) => !idZoneElement.includes(item),
+          );
+          selected.splice(0, selected.length, ...newSelected);
+          document.getElementById("lista").classList.remove("active");
+          document.getElementById("goya").classList.remove("active");
+        }
       } else {
-        target.className = `${target.id}`;
-        const idZoneElement = getZoneId(target.name);
-        idZoneElement.forEach((idZone) => {
-          const newSelected = selected.filter((item) => item !== idZone);
-          selected.splice(0, selected.length, ...newSelected);
-        });
+        // Caso individual normal
+        target.className = id;
+        const idZoneElement = getZoneId(name);
+        const newSelected = selected.filter(
+          (item) => !idZoneElement.includes(item),
+        );
+        selected.splice(0, selected.length, ...newSelected);
       }
+    }
 
-      if (saleOrRent.length === 1) {
-        setGetMaxPrices(true);
-        let activeFilters = {};
-        activeFilters = { ...activeFilters, zone: selected };
-        activeFilters = { ...activeFilters, adType: saleOrRent };
-        getResidential(activeFilters).then((items) => {
-          if (items.ads.length !== 0) {
-            if (saleOrRent[0] === "Venta") {
-              setMaxZonePrice(items.ads[0].sale.saleValue);
-            } else {
-              setMaxZonePrice(items.ads[0].rent.rentValue);
-            }
-          } else {
-            setMaxZonePrice(0);
-          }
-          setGetMaxPrices(false);
-        });
-      }
+    // 3. ACTUALIZACIÓN DE PRECIOS MÁXIMOS (Lógica común)
+    if (saleOrRent.length === 1) {
+      setGetMaxPrices(true);
+      let activeFilters = { zone: selected, adType: saleOrRent };
+      getResidential(activeFilters).then((items) => {
+        if (items.ads && items.ads.length !== 0) {
+          setMaxZonePrice(
+            saleOrRent[0] === "Venta"
+              ? items.ads[0].sale.saleValue
+              : items.ads[0].rent.rentValue,
+          );
+        } else {
+          setMaxZonePrice(0);
+        }
+        setGetMaxPrices(false);
+      });
     }
-    if (selected.length !== 0) {
-      setSelectedActive(true);
-    } else {
-      setSelectedActive(false);
-    }
+
+    setSelectedActive(selected.length !== 0);
   };
 
   const selectSaleOrRent = (e) => {
@@ -1129,7 +1130,7 @@ export default function Residential({
 
       window.localStorage.setItem(
         "residentialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
 
       navigateToNewPath(1, queryFilters);
@@ -1168,7 +1169,7 @@ export default function Residential({
         // Si ya está activo, desactívalo
         e.currentTarget.classList.remove("activeButton"); // Quita la clase visual
         setExtras((prevExtras) =>
-          prevExtras.filter((item) => item !== elementName)
+          prevExtras.filter((item) => item !== elementName),
         ); // Actualización inmutable: filtra y establece nuevo array
       } else {
         // Si no está activo, actívalo
@@ -1252,7 +1253,7 @@ export default function Residential({
       if (collectionButtons.length !== 0) {
         //hacer un forEach para eliminar las clases
         collectionButtonsArr.forEach((element) =>
-          element.classList.remove("activeButton")
+          element.classList.remove("activeButton"),
         );
       }
       /* console.log(collectionButtons); */
@@ -1263,7 +1264,7 @@ export default function Residential({
       if (toggleButtons.length !== 0) {
         //hacer un forEach para eliminar las clases
         toggleButtonsArr.forEach((element) =>
-          element.classList.remove("active")
+          element.classList.remove("active"),
         );
       }
       /* console.log(toggleButtons); */
@@ -1618,7 +1619,7 @@ export default function Residential({
                       className={`somo${
                         localFilters
                           ?.toString()
-                          .includes("61dfdd2e3e6cc4fe56c2982d")
+                          .includes("69b62da229f4cc9c2ccb6bce")
                           ? " active"
                           : ""
                       }`}
@@ -1712,7 +1713,7 @@ export default function Residential({
                       className={`puer${
                         localFilters
                           ?.toString()
-                          .includes("61dfdd4b3e6cc4fe56c29837")
+                          .includes("69b6a90f89796f4d00939acc")
                           ? " active"
                           : ""
                       }`}
@@ -2276,19 +2277,19 @@ export default function Residential({
                               ? maxZonePrice
                               : 20000000
                             : maxZonePrice !== 0
-                            ? maxZonePrice
-                            : 30000
+                              ? maxZonePrice
+                              : 30000
                         }
                         step={saleOrRent[0] === "Venta" ? 500000 : 1000}
                         valueLabelFormat={
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €/mes`
                         }
                       />
@@ -2310,11 +2311,11 @@ export default function Residential({
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €/mes`
                         }
                       />

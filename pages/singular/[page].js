@@ -67,7 +67,7 @@ export default function Singular({ orderedItems, pages, query }) {
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={decodeURI(item.images.main).trim()}
                 alt={item.title}
               />
               {/* {item.images.others.map((image)=> (
@@ -81,25 +81,25 @@ export default function Singular({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="singular__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -166,7 +166,7 @@ export default function Singular({ orderedItems, pages, query }) {
                   {item.quality.bedrooms !== 0 ? (
                     <li>
                       <span>
-                        <mage
+                        <Image
                           width={18}
                           height={12}
                           src={habit}
@@ -179,7 +179,7 @@ export default function Singular({ orderedItems, pages, query }) {
                   {item.adReference !== 0 ? (
                     <li>
                       <span>
-                        <mage
+                        <Image
                           width={13}
                           height={12}
                           src={refer}
@@ -207,7 +207,7 @@ export default function Singular({ orderedItems, pages, query }) {
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={decodeURI(item.images.main).trim()}
                 alt={item.title}
               />
             </Carousel>
@@ -227,25 +227,25 @@ export default function Singular({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="singular__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -349,12 +349,12 @@ export default function Singular({ orderedItems, pages, query }) {
     if (state.length >= 1) {
       let reducedState = [];
       state.map((item) =>
-        item.showOnWeb === true ? reducedState.push(item) : null
+        item.showOnWeb === true ? reducedState.push(item) : null,
       );
       if (typeof window !== "undefined")
         window.localStorage.setItem(
           "storedState",
-          JSON.stringify(reducedState)
+          JSON.stringify(reducedState),
         );
     }
   }, [state]);
@@ -392,7 +392,7 @@ export default function Singular({ orderedItems, pages, query }) {
               }
             >
               <a href={`/singular/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a>
-            </li>
+            </li>,
           );
         } else {
           elements.push(
@@ -405,7 +405,7 @@ export default function Singular({ orderedItems, pages, query }) {
               }
             >
               <a href={`/singular/${i + 1}?page=${i + 1}`}>{i + 1}</a>
-            </li>
+            </li>,
           );
         }
       }
@@ -629,7 +629,10 @@ export default function Singular({ orderedItems, pages, query }) {
                 Lamentablemente no existen anuncios bajo sus criterios de
                 búsqueda
               </h2>
-              <Link className="singular__empty__button" to={routes.Home}>
+              <Link
+                className="singular__empty__button"
+                href={routes.Home || "/"}
+              >
                 Volver a la home
               </Link>
             </div>
