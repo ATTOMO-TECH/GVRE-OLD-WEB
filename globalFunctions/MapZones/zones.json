@@ -1,626 +1,656 @@
 [
-    {
-      "_id": "61dfdc5f3e6cc4fe56c297ff",
-      "zone": "Residencial",
-      "name": "La Florida",
-      "id": "1",
-      "status": false,
-      "createdAt": "2022-01-13T08:01:35.503Z",
-      "updatedAt": "2022-01-13T08:01:35.503Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc733e6cc4fe56c29801",
-      "zone": "Residencial",
-      "name": "Aravaca",
-      "id": "2",
-      "status": false,
-      "createdAt": "2022-01-13T08:01:55.376Z",
-      "updatedAt": "2022-01-13T08:01:55.376Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc7b3e6cc4fe56c29803",
-      "zone": "Residencial",
-      "name": "Valdemarin",
-      "id": "3",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:03.863Z",
-      "updatedAt": "2022-01-13T08:02:03.863Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc843e6cc4fe56c29805",
-      "zone": "Residencial",
-      "name": "Montealina",
-      "id": "4",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:12.104Z",
-      "updatedAt": "2022-01-13T08:02:12.104Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc8b3e6cc4fe56c29807",
-      "zone": "Residencial",
-      "name": "Monteclaro",
-      "id": "5",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:19.922Z",
-      "updatedAt": "2022-01-13T08:02:19.922Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc953e6cc4fe56c29809",
-      "zone": "Residencial",
-      "name": "Prado Largo",
-      "id": "6",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:29.293Z",
-      "updatedAt": "2022-01-13T08:02:29.293Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdc9f3e6cc4fe56c2980b",
-      "zone": "Residencial",
-      "name": "Las Encinas",
-      "id": "7",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:39.194Z",
-      "updatedAt": "2022-01-13T08:02:39.194Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdca93e6cc4fe56c2980d",
-      "zone": "Residencial",
-      "name": "Alamo de Bulanas",
-      "id": "8",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:49.977Z",
-      "updatedAt": "2022-01-13T08:02:49.977Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcb13e6cc4fe56c2980f",
-      "zone": "Residencial",
-      "name": "Mirasierra",
-      "id": "9",
-      "status": false,
-      "createdAt": "2022-01-13T08:02:57.840Z",
-      "updatedAt": "2022-01-13T08:02:57.840Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcc23e6cc4fe56c29811",
-      "zone": "Residencial",
-      "name": "El Viso",
-      "id": "10",
-      "status": false,
-      "createdAt": "2022-01-13T08:03:14.012Z",
-      "updatedAt": "2022-01-13T08:03:14.012Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdccd3e6cc4fe56c29813",
-      "zone": "Residencial",
-      "name": "Jeronimos",
-      "id": "11",
-      "status": false,
-      "createdAt": "2022-01-13T08:03:25.287Z",
-      "updatedAt": "2022-01-13T08:03:25.287Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcd63e6cc4fe56c29815",
-      "zone": "Residencial",
-      "name": "Almagro",
-      "id": "12",
-      "status": false,
-      "createdAt": "2022-01-13T08:03:34.760Z",
-      "updatedAt": "2022-01-13T08:03:34.760Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcde3e6cc4fe56c29817",
-      "zone": "Residencial",
-      "name": "Conde de Orgaz",
-      "id": "13",
-      "status": false,
-      "createdAt": "2022-01-13T08:03:42.287Z",
-      "updatedAt": "2022-01-13T08:03:42.287Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdce53e6cc4fe56c29819",
-      "zone": "Residencial",
-      "name": "La Finca",
-      "id": "14",
-      "status": false,
-      "createdAt": "2022-01-13T08:03:49.317Z",
-      "updatedAt": "2022-01-13T08:03:49.317Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcf13e6cc4fe56c2981b",
-      "zone": "Residencial",
-      "name": "Rosales",
-      "id": "15",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:01.377Z",
-      "updatedAt": "2022-01-13T08:04:01.377Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdcfc3e6cc4fe56c2981d",
-      "zone": "Residencial",
-      "name": "Justicia",
-      "id": "16",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:12.747Z",
-      "updatedAt": "2022-01-13T08:04:12.747Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd043e6cc4fe56c2981f",
-      "zone": "Residencial",
-      "name": "Cortes",
-      "id": "17",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:20.186Z",
-      "updatedAt": "2022-01-13T08:04:20.186Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd0b3e6cc4fe56c29821",
-      "zone": "Residencial",
-      "name": "Palacio",
-      "id": "18",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:27.244Z",
-      "updatedAt": "2022-01-13T08:04:27.244Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd113e6cc4fe56c29823",
-      "zone": "Barrio Salamanca",
-      "name": "Barrio Salamanca",
-      "id": "19",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:33.321Z",
-      "updatedAt": "2022-01-13T08:04:33.321Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd163e6cc4fe56c29825",
-      "zone": "Barrio Salamanca",
-      "name": "Barrio Salamanca",
-      "id": "20",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:38.928Z",
-      "updatedAt": "2022-01-13T08:04:38.928Z",
-      "__v": 0
-    },
-    {
-      "_id": "64ccd0d4688389aea7090a7b",
-      "zone": "Goya - Lista",
-      "name": "Goya - Lista",
-      "district": "Goya",
-      "id": "62",
-      "status": false,
-      "createdAt": "2023-08-04T10:20:04.312Z",
-      "updatedAt": "2023-08-04T10:20:04.312Z",
-      "__v": 0
-    },
-    {
-      "_id": "64ccd0db688389aea7090a7d",
-      "zone": "Goya - Lista",
-      "name": "Goya - Lista",
-      "district": "Lista",
-      "id": "63",
-      "status": false,
-      "createdAt": "2023-08-04T10:20:11.169Z",
-      "updatedAt": "2023-08-04T10:20:11.169Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd1d3e6cc4fe56c29827",
-      "zone": "La Moraleja",
-      "name": "La Moraleja",
-      "district": "La Moraleja",
-      "id": "21",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:45.096Z",
-      "updatedAt": "2022-01-13T08:04:45.096Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd223e6cc4fe56c29829",
-      "zone": "La Moraleja",
-      "name": "La Moraleja",
-      "district": "El Encinar",
-      "id": "22",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:50.672Z",
-      "updatedAt": "2022-01-13T08:04:50.672Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd283e6cc4fe56c2982b",
-      "zone": "La Moraleja",
-      "name": "La Moraleja",
-      "district": "El Soto",
-      "id": "23",
-      "status": false,
-      "createdAt": "2022-01-13T08:04:56.138Z",
-      "updatedAt": "2022-01-13T08:04:56.138Z",
-      "__v": 0
-    },
-    {
-      "_id":"66264f223ac4e84ea1cffb53",
-      "zone": "Residencial",
-      "name": "Urbanizaciones A-1",
-      "id": "64",
-      "status": false,
-      "createdAt": "2024-04-22T11:50:58.120Z",
-      "updatedAt": "2024-04-22T11:50:58.120Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd2e3e6cc4fe56c2982d",
-      "zone": "Somosaguas",
-      "name": "Somosaguas",
-      "district": "Somosaguas A",
-      "id": "24",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:02.086Z",
-      "updatedAt": "2022-01-13T08:05:02.086Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd333e6cc4fe56c2982f",
-      "zone": "Somosaguas",
-      "name": "Somosaguas",
-      "district": "Somosaguas Norte",
-      "id": "25",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:07.130Z",
-      "updatedAt": "2022-01-13T08:05:07.130Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd383e6cc4fe56c29831",
-      "zone": "Nueva España - Hispanoamerica",
-      "name": "Nueva España - Hispanoamerica",
-      "district": "Nueva España",
-      "id": "26",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:12.343Z",
-      "updatedAt": "2022-01-13T08:05:12.343Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd3f3e6cc4fe56c29833",
-      "zone": "Nueva España - Hispanoamerica",
-      "name": "Nueva España - Hispanoamerica",
-      "district": "Ciudad Jardín",
-      "id": "27",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:19.236Z",
-      "updatedAt": "2022-01-13T08:05:19.236Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd463e6cc4fe56c29835",
-      "zone": "Nueva España - Hispanoamerica",
-      "name": "Nueva España - Hispanoamerica",
-      "district": "Hispanoamerica",
-      "id": "28",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:26.043Z",
-      "updatedAt": "2022-01-13T08:05:26.043Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd4b3e6cc4fe56c29837",
-      "zone": "Puerta de Hierro",
-      "name": "Puerta de Hierro",
-      "district": "Colonia Puerta de Hierro?",
-      "id": "29",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:31.366Z",
-      "updatedAt": "2022-01-13T08:05:31.366Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd513e6cc4fe56c29839",
-      "zone": "Puerta de Hierro",
-      "name": "Puerta de Hierro",
-      "district": "Zona Puerta de Hierro?",
-      "id": "30",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:37.257Z",
-      "updatedAt": "2022-01-13T08:05:37.257Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd563e6cc4fe56c2983b",
-      "zone": "Colonia Fuentelarreyna",
-      "name": "Colonia Fuentelarreyna",
-      "district": "Colonia Fuentelarreyna",
-      "id": "31",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:42.049Z",
-      "updatedAt": "2022-01-13T08:05:42.049Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd5b3e6cc4fe56c2983d",
-      "zone": "Colonia Fuentelarreyna",
-      "name": "Colonia Fuentelarreyna",
-      "district": "Peñagrande",
-      "id": "32",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:47.617Z",
-      "updatedAt": "2022-01-13T08:05:47.617Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd623e6cc4fe56c2983f",
-      "zone": "Patrimonial",
-      "name": "Mendez Alvaro",
-      "id": "33",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:54.345Z",
-      "updatedAt": "2022-01-13T08:05:54.345Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd673e6cc4fe56c29841",
-      "zone": "Patrimonial",
-      "name": "Jeronimos",
-      "id": "34",
-      "status": false,
-      "createdAt": "2022-01-13T08:05:59.454Z",
-      "updatedAt": "2022-01-13T08:05:59.454Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd6d3e6cc4fe56c29843",
-      "zone": "Patrimonial",
-      "name": "Centro",
-      "id": "35",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:05.197Z",
-      "updatedAt": "2022-01-13T08:06:05.197Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd733e6cc4fe56c29845",
-      "zone": "Patrimonial",
-      "name": "Salamanca",
-      "id": "36",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:11.189Z",
-      "updatedAt": "2022-01-13T08:06:11.189Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd783e6cc4fe56c29847",
-      "zone": "Patrimonial",
-      "name": "Almagro",
-      "id": "37",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:16.507Z",
-      "updatedAt": "2022-01-13T08:06:16.507Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd7e3e6cc4fe56c29849",
-      "zone": "Patrimonial",
-      "name": "Chamberi",
-      "id": "38",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:22.255Z",
-      "updatedAt": "2022-01-13T08:06:22.255Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd833e6cc4fe56c2984b",
-      "zone": "Patrimonial",
-      "name": "El Viso",
-      "id": "39",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:27.822Z",
-      "updatedAt": "2022-01-13T08:06:27.822Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd883e6cc4fe56c2984d",
-      "zone": "Patrimonial",
-      "name": "Azca",
-      "id": "40",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:32.642Z",
-      "updatedAt": "2022-01-13T08:06:32.642Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd933e6cc4fe56c2984f",
-      "zone": "Patrimonial",
-      "name": "Cuzco",
-      "id": "41",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:43.931Z",
-      "updatedAt": "2022-01-13T08:06:43.931Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd983e6cc4fe56c29851",
-      "zone": "Patrimonial",
-      "name": "Chamartin",
-      "id": "42",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:48.518Z",
-      "updatedAt": "2022-01-13T08:06:48.518Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdd9d3e6cc4fe56c29853",
-      "zone": "Patrimonial",
-      "name": "CTBA (Cuatro torres business area)",
-      "id": "43",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:53.311Z",
-      "updatedAt": "2022-01-13T08:06:53.311Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdda23e6cc4fe56c29855",
-      "zone": "Patrimonial",
-      "name": "Las Tablas - San Chinarro",
-      "id": "44",
-      "status": false,
-      "createdAt": "2022-01-13T08:06:58.976Z",
-      "updatedAt": "2022-01-13T08:06:58.976Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdda73e6cc4fe56c29857",
-      "zone": "Patrimonial",
-      "name": "Campos de las Naciones",
-      "id": "45",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:03.756Z",
-      "updatedAt": "2022-01-13T08:07:03.756Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddac3e6cc4fe56c29859",
-      "zone": "Patrimonial",
-      "name": "Arroyo de la Vega",
-      "id": "46",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:08.655Z",
-      "updatedAt": "2022-01-13T08:07:08.655Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddb23e6cc4fe56c2985b",
-      "zone": "Patrimonial",
-      "name": "Av. America",
-      "id": "47",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:14.694Z",
-      "updatedAt": "2022-01-13T08:07:14.694Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddb73e6cc4fe56c2985d",
-      "zone": "Patrimonial",
-      "name": "Josefa Valcarcel",
-      "id": "48",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:19.945Z",
-      "updatedAt": "2022-01-13T08:07:19.945Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddbc3e6cc4fe56c2985f",
-      "zone": "Patrimonial",
-      "name": "Arturo Soria",
-      "id": "49",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:24.680Z",
-      "updatedAt": "2022-01-13T08:07:24.680Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddc13e6cc4fe56c29861",
-      "zone": "Patrimonial",
-      "name": "Julian Camarillo",
-      "id": "50",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:29.520Z",
-      "updatedAt": "2022-01-13T08:07:29.520Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddc53e6cc4fe56c29863",
-      "zone": "Patrimonial",
-      "name": "Valdemarin",
-      "id": "51",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:33.745Z",
-      "updatedAt": "2022-01-13T08:07:33.745Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddcb3e6cc4fe56c29865",
-      "zone": "Patrimonial",
-      "name": "El Plantio",
-      "id": "52",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:39.017Z",
-      "updatedAt": "2022-01-13T08:07:39.017Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddcf3e6cc4fe56c29867",
-      "zone": "Patrimonial",
-      "name": "Pozuelo",
-      "id": "53",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:43.872Z",
-      "updatedAt": "2022-01-13T08:07:43.872Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddd53e6cc4fe56c29869",
-      "zone": "Patrimonial",
-      "name": "PE La Finca",
-      "id": "54",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:49.117Z",
-      "updatedAt": "2022-01-13T08:07:49.117Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfddda3e6cc4fe56c2986b",
-      "zone": "Patrimonial",
-      "name": "Ciudad de la Imagen",
-      "id": "55",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:54.153Z",
-      "updatedAt": "2022-01-13T08:07:54.153Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdddf3e6cc4fe56c2986d",
-      "zone": "Patrimonial",
-      "name": "Madrid Secundario",
-      "id": "56",
-      "status": false,
-      "createdAt": "2022-01-13T08:07:59.198Z",
-      "updatedAt": "2022-01-13T08:07:59.198Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdde43e6cc4fe56c2986f",
-      "zone": "Patrimonial",
-      "name": "Otros",
-      "id": "57",
-      "status": false,
-      "createdAt": "2022-01-13T08:08:04.739Z",
-      "updatedAt": "2022-01-13T08:08:04.739Z",
-      "__v": 0
-    },
-    {
-      "_id": "61dfdde73e6cc4fe56c29871",
-      "zone": "Patrimonial",
-      "name": "Periferia",
-      "id": "58",
-      "status": false,
-      "createdAt": "2022-01-13T08:08:07.135Z",
-      "updatedAt": "2022-01-13T08:08:07.135Z",
-      "__v": 0
-    }
-  ]
+  {
+    "_id": "61dfdc5f3e6cc4fe56c297ff",
+    "zone": "Residencial",
+    "name": "La Florida",
+    "id": "1",
+    "status": false,
+    "createdAt": "2022-01-13T08:01:35.503Z",
+    "updatedAt": "2022-01-13T08:01:35.503Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc733e6cc4fe56c29801",
+    "zone": "Residencial",
+    "name": "Aravaca",
+    "id": "2",
+    "status": false,
+    "createdAt": "2022-01-13T08:01:55.376Z",
+    "updatedAt": "2022-01-13T08:01:55.376Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc7b3e6cc4fe56c29803",
+    "zone": "Residencial",
+    "name": "Valdemarin",
+    "id": "3",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:03.863Z",
+    "updatedAt": "2022-01-13T08:02:03.863Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc843e6cc4fe56c29805",
+    "zone": "Residencial",
+    "name": "Montealina",
+    "id": "4",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:12.104Z",
+    "updatedAt": "2022-01-13T08:02:12.104Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc8b3e6cc4fe56c29807",
+    "zone": "Residencial",
+    "name": "Monteclaro",
+    "id": "5",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:19.922Z",
+    "updatedAt": "2022-01-13T08:02:19.922Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc953e6cc4fe56c29809",
+    "zone": "Residencial",
+    "name": "Prado Largo",
+    "id": "6",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:29.293Z",
+    "updatedAt": "2022-01-13T08:02:29.293Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdc9f3e6cc4fe56c2980b",
+    "zone": "Residencial",
+    "name": "Las Encinas",
+    "id": "7",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:39.194Z",
+    "updatedAt": "2022-01-13T08:02:39.194Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdca93e6cc4fe56c2980d",
+    "zone": "Residencial",
+    "name": "Alamo de Bulanas",
+    "id": "8",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:49.977Z",
+    "updatedAt": "2022-01-13T08:02:49.977Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcb13e6cc4fe56c2980f",
+    "zone": "Residencial",
+    "name": "Mirasierra",
+    "id": "9",
+    "status": false,
+    "createdAt": "2022-01-13T08:02:57.840Z",
+    "updatedAt": "2022-01-13T08:02:57.840Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcc23e6cc4fe56c29811",
+    "zone": "Residencial",
+    "name": "El Viso",
+    "id": "10",
+    "status": false,
+    "createdAt": "2022-01-13T08:03:14.012Z",
+    "updatedAt": "2022-01-13T08:03:14.012Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdccd3e6cc4fe56c29813",
+    "zone": "Residencial",
+    "name": "Jeronimos",
+    "id": "11",
+    "status": false,
+    "createdAt": "2022-01-13T08:03:25.287Z",
+    "updatedAt": "2022-01-13T08:03:25.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcd63e6cc4fe56c29815",
+    "zone": "Residencial",
+    "name": "Almagro",
+    "id": "12",
+    "status": false,
+    "createdAt": "2022-01-13T08:03:34.760Z",
+    "updatedAt": "2022-01-13T08:03:34.760Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcde3e6cc4fe56c29817",
+    "zone": "Residencial",
+    "name": "Conde de Orgaz",
+    "id": "13",
+    "status": false,
+    "createdAt": "2022-01-13T08:03:42.287Z",
+    "updatedAt": "2022-01-13T08:03:42.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdce53e6cc4fe56c29819",
+    "zone": "Residencial",
+    "name": "La Finca",
+    "id": "14",
+    "status": false,
+    "createdAt": "2022-01-13T08:03:49.317Z",
+    "updatedAt": "2022-01-13T08:03:49.317Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcf13e6cc4fe56c2981b",
+    "zone": "Residencial",
+    "name": "Rosales",
+    "id": "15",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:01.377Z",
+    "updatedAt": "2022-01-13T08:04:01.377Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdcfc3e6cc4fe56c2981d",
+    "zone": "Residencial",
+    "name": "Justicia",
+    "id": "16",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:12.747Z",
+    "updatedAt": "2022-01-13T08:04:12.747Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd043e6cc4fe56c2981f",
+    "zone": "Residencial",
+    "name": "Cortes",
+    "id": "17",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:20.186Z",
+    "updatedAt": "2022-01-13T08:04:20.186Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd0b3e6cc4fe56c29821",
+    "zone": "Residencial",
+    "name": "Palacio",
+    "id": "18",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:27.244Z",
+    "updatedAt": "2022-01-13T08:04:27.244Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd113e6cc4fe56c29823",
+    "zone": "Barrio Salamanca",
+    "name": "Barrio Salamanca",
+    "id": "19",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:33.321Z",
+    "updatedAt": "2022-01-13T08:04:33.321Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd163e6cc4fe56c29825",
+    "zone": "Barrio Salamanca",
+    "name": "Barrio Salamanca",
+    "id": "20",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:38.928Z",
+    "updatedAt": "2022-01-13T08:04:38.928Z",
+    "__v": 0
+  },
+  {
+    "_id": "64ccd0d4688389aea7090a7b",
+    "zone": "Goya - Lista",
+    "name": "Goya - Lista",
+    "district": "Goya",
+    "id": "62",
+    "status": false,
+    "createdAt": "2023-08-04T10:20:04.312Z",
+    "updatedAt": "2023-08-04T10:20:04.312Z",
+    "__v": 0
+  },
+  {
+    "_id": "64ccd0db688389aea7090a7d",
+    "zone": "Goya - Lista",
+    "name": "Goya - Lista",
+    "district": "Lista",
+    "id": "63",
+    "status": false,
+    "createdAt": "2023-08-04T10:20:11.169Z",
+    "updatedAt": "2023-08-04T10:20:11.169Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd1d3e6cc4fe56c29827",
+    "zone": "La Moraleja",
+    "name": "La Moraleja",
+    "district": "La Moraleja",
+    "id": "21",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:45.096Z",
+    "updatedAt": "2022-01-13T08:04:45.096Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd223e6cc4fe56c29829",
+    "zone": "La Moraleja",
+    "name": "La Moraleja",
+    "district": "El Encinar",
+    "id": "22",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:50.672Z",
+    "updatedAt": "2022-01-13T08:04:50.672Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd283e6cc4fe56c2982b",
+    "zone": "La Moraleja",
+    "name": "La Moraleja",
+    "district": "El Soto",
+    "id": "23",
+    "status": false,
+    "createdAt": "2022-01-13T08:04:56.138Z",
+    "updatedAt": "2022-01-13T08:04:56.138Z",
+    "__v": 0
+  },
+  {
+    "_id": "66264f223ac4e84ea1cffb53",
+    "zone": "Residencial",
+    "name": "Urbanizaciones A-1",
+    "id": "64",
+    "status": false,
+    "createdAt": "2024-04-22T11:50:58.120Z",
+    "updatedAt": "2024-04-22T11:50:58.120Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b6243929f4cc9c2ccb1b02",
+    "zone": "Residencial",
+    "name": "Santo Domingo",
+    "id": "87",
+    "status": false,
+    "createdAt": "2026-03-15T03:15:05.886Z",
+    "updatedAt": "2026-03-15T03:15:05.886Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b6243929f4cc9c2ccb1b01",
+    "zone": "Residencial",
+    "name": "Ciudalcampo",
+    "id": "86",
+    "status": false,
+    "createdAt": "2026-03-15T03:15:05.886Z",
+    "updatedAt": "2026-03-15T03:15:05.886Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b6243929f4cc9c2ccb1b00",
+    "zone": "Residencial",
+    "name": "Fuente del Fresno",
+    "id": "85",
+    "status": false,
+    "createdAt": "2026-03-15T03:15:05.886Z",
+    "updatedAt": "2026-03-15T03:15:05.886Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b62da229f4cc9c2ccb6bce",
+    "zone": "Residencial",
+    "subzone": "",
+    "name": "Somosaguas",
+    "id": "151",
+    "status": false,
+    "__v": 0,
+    "createdAt": "2026-03-15T03:55:14.796Z",
+    "updatedAt": "2026-03-15T03:55:14.796Z"
+  },
+  {
+    "_id": "61dfdd383e6cc4fe56c29831",
+    "zone": "Nueva España - Hispanoamerica",
+    "name": "Nueva España - Hispanoamerica",
+    "district": "Nueva España",
+    "id": "26",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:12.343Z",
+    "updatedAt": "2022-01-13T08:05:12.343Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd3f3e6cc4fe56c29833",
+    "zone": "Nueva España - Hispanoamerica",
+    "name": "Nueva España - Hispanoamerica",
+    "district": "Ciudad Jardín",
+    "id": "27",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:19.236Z",
+    "updatedAt": "2022-01-13T08:05:19.236Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd463e6cc4fe56c29835",
+    "zone": "Nueva España - Hispanoamerica",
+    "name": "Nueva España - Hispanoamerica",
+    "district": "Hispanoamerica",
+    "id": "28",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:26.043Z",
+    "updatedAt": "2022-01-13T08:05:26.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd4b3e6cc4fe56c29837",
+    "zone": "Puerta de Hierro",
+    "name": "Puerta de Hierro",
+    "district": "Colonia Puerta de Hierro?",
+    "id": "29",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:31.366Z",
+    "updatedAt": "2022-01-13T08:05:31.366Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd513e6cc4fe56c29839",
+    "zone": "Puerta de Hierro",
+    "name": "Puerta de Hierro",
+    "district": "Zona Puerta de Hierro?",
+    "id": "30",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:37.257Z",
+    "updatedAt": "2022-01-13T08:05:37.257Z",
+    "__v": 0
+  },
+  {
+    "_id": "69b6a90f89796f4d00939acc",
+    "zone": "Residencial",
+    "subzone": "",
+    "name": "Puerta de Hierro",
+    "id": "152",
+    "status": false,
+    "__v": 0,
+    "createdAt": "2026-03-15T12:41:51.110Z",
+    "updatedAt": "2026-03-15T12:41:51.110Z"
+  },
+  {
+    "_id": "61dfdd563e6cc4fe56c2983b",
+    "zone": "Colonia Fuentelarreyna",
+    "name": "Colonia Fuentelarreyna",
+    "district": "Colonia Fuentelarreyna",
+    "id": "31",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:42.049Z",
+    "updatedAt": "2022-01-13T08:05:42.049Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd5b3e6cc4fe56c2983d",
+    "zone": "Colonia Fuentelarreyna",
+    "name": "Colonia Fuentelarreyna",
+    "district": "Peñagrande",
+    "id": "32",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:47.617Z",
+    "updatedAt": "2022-01-13T08:05:47.617Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd623e6cc4fe56c2983f",
+    "zone": "Patrimonial",
+    "name": "Mendez Alvaro",
+    "id": "33",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:54.345Z",
+    "updatedAt": "2022-01-13T08:05:54.345Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd673e6cc4fe56c29841",
+    "zone": "Patrimonial",
+    "name": "Jeronimos",
+    "id": "34",
+    "status": false,
+    "createdAt": "2022-01-13T08:05:59.454Z",
+    "updatedAt": "2022-01-13T08:05:59.454Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd6d3e6cc4fe56c29843",
+    "zone": "Patrimonial",
+    "name": "Centro",
+    "id": "35",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:05.197Z",
+    "updatedAt": "2022-01-13T08:06:05.197Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd733e6cc4fe56c29845",
+    "zone": "Patrimonial",
+    "name": "Salamanca",
+    "id": "36",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:11.189Z",
+    "updatedAt": "2022-01-13T08:06:11.189Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd783e6cc4fe56c29847",
+    "zone": "Patrimonial",
+    "name": "Almagro",
+    "id": "37",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:16.507Z",
+    "updatedAt": "2022-01-13T08:06:16.507Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd7e3e6cc4fe56c29849",
+    "zone": "Patrimonial",
+    "name": "Chamberi",
+    "id": "38",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:22.255Z",
+    "updatedAt": "2022-01-13T08:06:22.255Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd833e6cc4fe56c2984b",
+    "zone": "Patrimonial",
+    "name": "El Viso",
+    "id": "39",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:27.822Z",
+    "updatedAt": "2022-01-13T08:06:27.822Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd883e6cc4fe56c2984d",
+    "zone": "Patrimonial",
+    "name": "Azca",
+    "id": "40",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:32.642Z",
+    "updatedAt": "2022-01-13T08:06:32.642Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd933e6cc4fe56c2984f",
+    "zone": "Patrimonial",
+    "name": "Cuzco",
+    "id": "41",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:43.931Z",
+    "updatedAt": "2022-01-13T08:06:43.931Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd983e6cc4fe56c29851",
+    "zone": "Patrimonial",
+    "name": "Chamartin",
+    "id": "42",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:48.518Z",
+    "updatedAt": "2022-01-13T08:06:48.518Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdd9d3e6cc4fe56c29853",
+    "zone": "Patrimonial",
+    "name": "CTBA (Cuatro torres business area)",
+    "id": "43",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:53.311Z",
+    "updatedAt": "2022-01-13T08:06:53.311Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdda23e6cc4fe56c29855",
+    "zone": "Patrimonial",
+    "name": "Las Tablas - San Chinarro",
+    "id": "44",
+    "status": false,
+    "createdAt": "2022-01-13T08:06:58.976Z",
+    "updatedAt": "2022-01-13T08:06:58.976Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdda73e6cc4fe56c29857",
+    "zone": "Patrimonial",
+    "name": "Campos de las Naciones",
+    "id": "45",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:03.756Z",
+    "updatedAt": "2022-01-13T08:07:03.756Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddac3e6cc4fe56c29859",
+    "zone": "Patrimonial",
+    "name": "Arroyo de la Vega",
+    "id": "46",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:08.655Z",
+    "updatedAt": "2022-01-13T08:07:08.655Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddb23e6cc4fe56c2985b",
+    "zone": "Patrimonial",
+    "name": "Av. America",
+    "id": "47",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:14.694Z",
+    "updatedAt": "2022-01-13T08:07:14.694Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddb73e6cc4fe56c2985d",
+    "zone": "Patrimonial",
+    "name": "Josefa Valcarcel",
+    "id": "48",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:19.945Z",
+    "updatedAt": "2022-01-13T08:07:19.945Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddbc3e6cc4fe56c2985f",
+    "zone": "Patrimonial",
+    "name": "Arturo Soria",
+    "id": "49",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:24.680Z",
+    "updatedAt": "2022-01-13T08:07:24.680Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddc13e6cc4fe56c29861",
+    "zone": "Patrimonial",
+    "name": "Julian Camarillo",
+    "id": "50",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:29.520Z",
+    "updatedAt": "2022-01-13T08:07:29.520Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddc53e6cc4fe56c29863",
+    "zone": "Patrimonial",
+    "name": "Valdemarin",
+    "id": "51",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:33.745Z",
+    "updatedAt": "2022-01-13T08:07:33.745Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddcb3e6cc4fe56c29865",
+    "zone": "Patrimonial",
+    "name": "El Plantio",
+    "id": "52",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:39.017Z",
+    "updatedAt": "2022-01-13T08:07:39.017Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddcf3e6cc4fe56c29867",
+    "zone": "Patrimonial",
+    "name": "Pozuelo",
+    "id": "53",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:43.872Z",
+    "updatedAt": "2022-01-13T08:07:43.872Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddd53e6cc4fe56c29869",
+    "zone": "Patrimonial",
+    "name": "PE La Finca",
+    "id": "54",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:49.117Z",
+    "updatedAt": "2022-01-13T08:07:49.117Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfddda3e6cc4fe56c2986b",
+    "zone": "Patrimonial",
+    "name": "Ciudad de la Imagen",
+    "id": "55",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:54.153Z",
+    "updatedAt": "2022-01-13T08:07:54.153Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdddf3e6cc4fe56c2986d",
+    "zone": "Patrimonial",
+    "name": "Madrid Secundario",
+    "id": "56",
+    "status": false,
+    "createdAt": "2022-01-13T08:07:59.198Z",
+    "updatedAt": "2022-01-13T08:07:59.198Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdde43e6cc4fe56c2986f",
+    "zone": "Patrimonial",
+    "name": "Otros",
+    "id": "57",
+    "status": false,
+    "createdAt": "2022-01-13T08:08:04.739Z",
+    "updatedAt": "2022-01-13T08:08:04.739Z",
+    "__v": 0
+  },
+  {
+    "_id": "61dfdde73e6cc4fe56c29871",
+    "zone": "Patrimonial",
+    "name": "Periferia",
+    "id": "58",
+    "status": false,
+    "createdAt": "2022-01-13T08:08:07.135Z",
+    "updatedAt": "2022-01-13T08:08:07.135Z",
+    "__v": 0
+  }
+]

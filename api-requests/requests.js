@@ -1,10 +1,11 @@
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+const unifiedDept = encodeURIComponent("Campos Rústicos & Activos Singulares");
 const baseUrlResidential = `${baseUrl}/inmuebles`;
 const newBaseUrlResidential = `${baseUrl}/inmuebles/web/department=Residencial&showOnWeb=true`;
 const newBaseUrlPatrimonial = `${baseUrl}/inmuebles/web/department=Patrimonio&showOnWeb=true`;
-const newBaseUrlRustico = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a961ce64d2932b53366f4`;
-const newBaseUrlSingular = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a965fe64d2932b5336711`;
-const newBaseUrlCosta = `${baseUrl}/inmuebles/web/department=Otros&showOnWeb=true&zone=636a969ee64d2932b533674b`;
+const newBaseUrlRustico = `${baseUrl}/inmuebles/web/department=${unifiedDept}&showOnWeb=true`;
+const newBaseUrlSingular = `${baseUrl}/inmuebles/web/department=${unifiedDept}&showOnWeb=true`;
+const newBaseUrlCosta = `${baseUrl}/inmuebles/web/department=Costa&showOnWeb=true`;
 
 const requestBaseParams = {
   method: "GET",
@@ -114,7 +115,7 @@ export const getResidentialItem = async (id) => {
   // console.log(`${baseUrlResidential}${id}`)
   const response = await fetch(
     `${baseUrlResidential}/${id}`,
-    requestBaseParams
+    requestBaseParams,
   );
   /* console.log(response) */
   const adInfo = await response.json();
@@ -125,7 +126,7 @@ export const getResidentialItem = async (id) => {
 export const getPatrimonialItem = async (id) => {
   const response = await fetch(
     `${baseUrlResidential}/${id}`,
-    requestBaseParams
+    requestBaseParams,
   );
   /* console.log(response) */
   const adInfo = await response.json();

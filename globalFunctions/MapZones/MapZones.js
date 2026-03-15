@@ -11,13 +11,28 @@ import zones from "./zones.json";
 }*/
 
 export const getZoneId = (zoneName) => {
+  // 1. Aseguramos que zoneName sea siempre un array para poder usar .includes()
+  const searchList = Array.isArray(zoneName) ? zoneName : [zoneName];
+
   let filteredZones = [];
+
   zones.forEach((zoneObj) => {
-    if (!zoneObj.zone === "Residencial" && !zoneObj.zone === "Patrimonio") {
-      if (zoneName.includes(zoneObj.zone)) filteredZones.push(zoneObj._id);
+    // Comprobamos si lo que buscamos coincide con:
+    // - El ID (Caso Urbanizaciones A-1 donde ya mandamos IDs)
+    // - El Nombre (Caso "Aravaca", "La Florida", etc)
+    // - El campo zone (Para filtros por departamento si fuera necesario)
+    const isMatch =
+      searchList.includes(zoneObj._id) ||
+      searchList.includes(zoneObj.name) ||
+      searchList.includes(zoneObj.zone);
+
+    if (isMatch) {
+      // Evitamos duplicar IDs en el array final
+      if (!filteredZones.includes(zoneObj._id)) {
+        filteredZones.push(zoneObj._id);
+      }
     }
-    //Este else if devuelve tanto los inmuebles de patrimonio como los de residencial
-    else if (zoneName.includes(zoneObj.name)) filteredZones.push(zoneObj._id);
   });
+
   return filteredZones;
 };
