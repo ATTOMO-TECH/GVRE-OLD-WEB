@@ -17,6 +17,7 @@ import sup from "../../assets/SVG/mobile/anuncios/anuncios_spfcie.svg";
 import order from "../../assets/SVG/mobile/comun/flechaOrdenar.svg";
 import supP from "../../assets/SVG/web/anuncios/anuncios_superficieP.svg";
 import mayor from "../../assets/SVG/web/comunes/mayor.svg";
+import { cleanImageURL } from "../../constants/globalconstants";
 
 export default function Rustico({ orderedItems, pages, query }) {
   //campo rustico:     _id_PREP:   "6368f6f92bf0bfd02dec4ea5"
@@ -49,6 +50,7 @@ export default function Rustico({ orderedItems, pages, query }) {
       }
     }
   };
+
   const pageCount = pages;
   const getPostItems = orderedItems?.map((item) => {
     return item.showOnWeb === true ? (
@@ -84,25 +86,25 @@ export default function Rustico({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="campoRustico__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -230,25 +232,25 @@ export default function Rustico({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="campoRustico__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -352,12 +354,12 @@ export default function Rustico({ orderedItems, pages, query }) {
     if (state.length >= 1) {
       let reducedState = [];
       state.map((item) =>
-        item.showOnWeb === true ? reducedState.push(item) : null
+        item.showOnWeb === true ? reducedState.push(item) : null,
       );
       if (typeof window !== "undefined")
         window.localStorage.setItem(
           "storedState",
-          JSON.stringify(reducedState)
+          JSON.stringify(reducedState),
         );
     }
   }, [state]);
@@ -394,7 +396,7 @@ export default function Rustico({ orderedItems, pages, query }) {
             }
           >
             <a href={`/rustico/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       } else {
         elements.push(
@@ -407,7 +409,7 @@ export default function Rustico({ orderedItems, pages, query }) {
             }
           >
             <a href={`/rustico/${i + 1}?page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       }
     }
@@ -629,7 +631,10 @@ export default function Rustico({ orderedItems, pages, query }) {
                 Lamentablemente no existen anuncios bajo sus criterios de
                 búsqueda
               </h2>
-              <Link className="campoRustico__empty__button" to={routes.Home}>
+              <Link
+                className="campoRustico__empty__button"
+                href={routes.Home || "/"}
+              >
                 Volver a la home
               </Link>
             </div>

@@ -74,25 +74,25 @@ export default function Costa({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="costa__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -218,25 +218,25 @@ export default function Costa({ orderedItems, pages, query }) {
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            item.sale.saleValue
+                            item.sale.saleValue,
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            item.rent.rentValue
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              item.rent.rentValue,
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="costa__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.sale.saleValue
+                        item.sale.saleValue,
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        item.rent.rentValue
+                        item.rent.rentValue,
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -339,12 +339,12 @@ export default function Costa({ orderedItems, pages, query }) {
       let reducedState = [];
       /* console.log(state) */
       state.map((item) =>
-        item.showOnWeb === true ? reducedState.push(item) : null
+        item.showOnWeb === true ? reducedState.push(item) : null,
       );
       if (typeof window !== "undefined")
         window.localStorage.setItem(
           "storedState",
-          JSON.stringify(reducedState)
+          JSON.stringify(reducedState),
         );
     }
   }, [state]);
@@ -381,7 +381,7 @@ export default function Costa({ orderedItems, pages, query }) {
             }
           >
             <a href={`/costa/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       } else {
         elements.push(
@@ -394,7 +394,7 @@ export default function Costa({ orderedItems, pages, query }) {
             }
           >
             <a href={`/costa/${i + 1}?page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       }
     }
@@ -617,7 +617,7 @@ export default function Costa({ orderedItems, pages, query }) {
                 Lamentablemente no existen anuncios bajo sus criterios de
                 búsqueda
               </h2>
-              <Link className="costa__empty__button" to={routes.Home}>
+              <Link className="costa__empty__button" href={routes.Home || "/"}>
                 Volver a la home
               </Link>
             </div>

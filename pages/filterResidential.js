@@ -73,61 +73,86 @@ export default function FilterResidential() {
   const size = useWindowSize();
 
   const toggleActive = (e) => {
-    if (e.currentTarget.className === e.currentTarget.id) {
-      if (
-        e.currentTarget.className === "nuev" ||
-        e.currentTarget.className === "hisp"
-      ) {
-        selected.push(e.currentTarget.name);
+    const target = e.currentTarget;
+    const id = target.id;
+    const name = target.name;
+
+    // Definimos los 3 IDs que conforman ahora el grupo A-1
+    const URB_A1_IDS = [
+      "69b6243929f4cc9c2ccb1b02", // Santo Domingo
+      "69b6243929f4cc9c2ccb1b01", // Ciudalcampo
+      "69b6243929f4cc9c2ccb1b00", // Fuente del Fresno
+    ];
+
+    // 1. LÓGICA PARA ACTIVAR (Cuando no tiene la clase 'active')
+    if (target.className === id) {
+      if (id === "nuev" || id === "hisp") {
+        selected.push(name);
         document.getElementById("nuev").className = "nuev active";
         document.getElementById("hisp").className = "hisp active";
-        // Realizar la llamada al endpoint solo si saleOrRent.length === 1
-      } else if (
-        e.currentTarget.className === "lista" ||
-        e.currentTarget.className === "goya"
-      ) {
-        selected.push(e.currentTarget.name);
+      } else if (id === "lista" || id === "goya") {
+        selected.push(name);
         document.getElementById("lista").className = "lista active";
         document.getElementById("goya").className = "goya active";
-        // Realizar la llamada al endpoint solo si saleOrRent.length === 1
-      } else if (
-        e.currentTarget.className === "urba1" ||
-        e.currentTarget.className === "urba2" ||
-        e.currentTarget.className === "urba3"
-      ) {
-        selected.push("Urbanizaciones A-1");
+      }
+      // --- CAMBIO PARA URBANIZACIONES A-1 ---
+      else if (id === "urba1" || id === "urba2" || id === "urba3") {
+        // Añadimos los 3 IDs al array selected (evitando duplicados)
+        URB_A1_IDS.forEach((urbId) => {
+          if (!selected.includes(urbId)) selected.push(urbId);
+        });
         document.getElementById("urba1").className = "urba1 active";
         document.getElementById("urba2").className = "urba2 active";
         document.getElementById("urba3").className = "urba3 active";
-      } else {
-        e.currentTarget.className = `${e.currentTarget.className} active`;
-        selected.push(e.currentTarget.name);
       }
-    } else {
+      // --- FIN CAMBIO ---
+      else {
+        target.className = `${id} active`;
+        selected.push(name);
+      }
+    }
+    // 2. LÓGICA PARA DESACTIVAR (Cuando ya tiene la clase 'active')
+    else {
       if (
-        e.currentTarget.id === "nuev" ||
-        e.currentTarget.id === "hisp" ||
-        e.currentTarget.id === "lista" ||
-        e.currentTarget.id === "goya" ||
-        e.currentTarget.id === "urba1" ||
-        e.currentTarget.id === "urba2" ||
-        e.currentTarget.id === "urba3"
+        id === "nuev" ||
+        id === "hisp" ||
+        id === "lista" ||
+        id === "goya" ||
+        id === "urba1" ||
+        id === "urba2" ||
+        id === "urba3"
       ) {
-        document.getElementById("nuev").classList.remove("active");
-        document.getElementById("hisp").classList.remove("active");
-        document.getElementById("lista").classList.remove("active");
-        document.getElementById("goya").classList.remove("active");
-        document.getElementById("urba1").classList.remove("active");
-        document.getElementById("urba2").classList.remove("active");
-        document.getElementById("urba3").classList.remove("active");
+        // Caso especial A-1: Quitamos los 3 IDs de golpe
+        if (id === "urba1" || id === "urba2" || id === "urba3") {
+          const newSelected = selected.filter(
+            (item) => !URB_A1_IDS.includes(item),
+          );
+          selected.splice(0, selected.length, ...newSelected);
 
-        const elementName = e.currentTarget.name;
-        const newSelected = selected.filter((item) => item !== elementName);
-        selected.splice(0, selected.length, ...newSelected);
+          document.getElementById("urba1").classList.remove("active");
+          document.getElementById("urba2").classList.remove("active");
+          document.getElementById("urba3").classList.remove("active");
+        } else {
+          // Lógica anterior para otros grupos
+          const groupName =
+            id === "nuev" || id === "hisp"
+              ? "Nueva España - Hispanoamerica"
+              : "Goya - Lista";
+          const newSelected = selected.filter((item) => item !== groupName);
+          selected.splice(0, selected.length, ...newSelected);
+
+          if (id === "nuev" || id === "hisp") {
+            document.getElementById("nuev").classList.remove("active");
+            document.getElementById("hisp").classList.remove("active");
+          } else {
+            document.getElementById("lista").classList.remove("active");
+            document.getElementById("goya").classList.remove("active");
+          }
+        }
       } else {
-        e.currentTarget.className = `${e.currentTarget.id}`;
-        const elementName = e.currentTarget.name;
-        const newSelected = selected.filter((item) => item !== elementName);
+        // Desactivar zona individual normal
+        target.className = id;
+        const newSelected = selected.filter((item) => item !== name);
         selected.splice(0, selected.length, ...newSelected);
       }
     }
@@ -252,7 +277,7 @@ export default function FilterResidential() {
     /* console.log(activeFilters) */
     window.localStorage.setItem(
       "residentialFilters",
-      JSON.stringify(activeFilters)
+      JSON.stringify(activeFilters),
     );
     const queryPage = `page=1`;
     queryString.push(queryPage);
