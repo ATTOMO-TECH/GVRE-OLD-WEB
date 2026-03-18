@@ -36,31 +36,31 @@ export default function Home({ destacado, webDataInitial }) {
     setBackgroundImageToContainer(webData[0].portraidImage, ".home__top");
     setBackgroundImageToContainer(
       webData[0].categoriesImages.residential,
-      ".home__categories__container__option__residential"
+      ".home__categories__container__option__residential",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.patrimonial,
-      ".home__categories__container__option__patrimonial"
+      ".home__categories__container__option__patrimonial",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.art,
-      ".home__categories__container__option__art"
+      ".home__categories__container__option__art",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.catalog,
-      ".home__categories__container__option__catalog"
+      ".home__categories__container__option__catalog",
     );
     setBackgroundImageToContainer(
       webData[0].sections.interiorims.image,
-      ".home__more__image"
+      ".home__more__image",
     );
     setBackgroundImageToContainer(
       webData[0].sections.offices.image,
-      ".home__moreB__image"
+      ".home__moreB__image",
     );
     setBackgroundImageToContainer(
       webData[0].sections.sell.image,
-      ".home__more__image2"
+      ".home__more__image2",
     );
   }
   useEffect(() => {
@@ -447,7 +447,7 @@ export default function Home({ destacado, webDataInitial }) {
                       </p>
                       <div>
                         <h2 className="home__outstanding__position__images__text__price">{`${new Intl.NumberFormat(
-                          "de-DE"
+                          "de-DE",
                         ).format(Math.ceil(item.sale.saleValue))} €`}</h2>
 
                         <Image
@@ -625,19 +625,39 @@ export default function Home({ destacado, webDataInitial }) {
  * N request -> se ejecuta 1 vez en build time o para refrescar la página
  */
 export async function getStaticProps() {
-  // 1. Cargamos viviendas destacadas
-  const { ads } = await getResidential({ featuredOnMain: true });
+  try {
+    // 1. Cargamos viviendas destacadas
+    // También envolvemos esto en try/catch por si el backend falla aquí
+    let ads = [];
+    try {
+      const residentialData = await getResidential({ featuredOnMain: true });
+      ads = residentialData.ads || [];
+    } catch (e) {
+      console.warn("No se pudieron cargar los anuncios destacados", e);
+    }
 
-  // 2. IMPORTANTE: Cargamos los datos de la web AQUÍ, no en useEffect
-  // Esto hace que WhatsApp pueda leer el título y configuración
-  const webDataRaw = await getWebData();
-  const webDataInitial = webDataRaw[0] || {};
+    // 2. Cargamos los datos de la web
+    const webDataRaw = await getWebData();
 
-  return {
-    props: {
-      destacado: ads,
-      webDataInitial, // Pasamos esto al componente
-    },
-    revalidate: 60, // Opcional: regenerar la página cada 60seg si hay cambios
-  };
+    // Si webDataRaw es null (por el 404), usamos un objeto vacío para no romper nada
+    const webDataInitial =
+      webDataRaw && webDataRaw.length > 0 ? webDataRaw[0] : {};
+
+    return {
+      props: {
+        destacado: ads,
+        webDataInitial,
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error("Error global en getStaticProps:", error);
+    return {
+      props: {
+        destacado: [],
+        webDataInitial: {},
+      },
+      revalidate: 60,
+    };
+  }
 }

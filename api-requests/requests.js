@@ -27,7 +27,7 @@ export const getWebData = async () => {
     });
 
     if (response.status !== 200) {
-      console.warn(
+      console.log(
         `Alerta: El backend respondió con ${response.status} en /web/home`,
       );
       return null; // Devolvemos null en lugar de romper el programa
