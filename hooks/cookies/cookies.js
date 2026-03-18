@@ -11,7 +11,7 @@ export default function Cookies() {
     cookies.set("acceptedCookiesGVRE", "true");
     setAcceptedCookies(true);
     setOpenModal(false);
-  }
+  };
   const coockieText = `
           <p>
           En GVRE utilizamos cookies propias y de terceros para mejorar tu experiencia en el site. Para más información consulta nuestra
