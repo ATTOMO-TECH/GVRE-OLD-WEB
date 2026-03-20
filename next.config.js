@@ -17,6 +17,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "prod-gvre-new-bucket.fra1.digitaloceanspaces.com",
       },
+      {
+        protocol: "https",
+        hostname: "prod-gvre-new-bucket.fra1.cdn.digitaloceanspaces.com",
+      },
     ],
   },
   sassOptions: {
