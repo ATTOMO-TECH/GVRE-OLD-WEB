@@ -42,11 +42,7 @@ export default function Team() {
               <Image
                 width={250}
                 height={170}
-                src={
-                  consultant.avatar
-                    ? consultant.avatar.replaceAll(" ", "%20")
-                    : gvreLogo
-                }
+                src={consultant.avatar ? consultant.avatar : gvreLogo}
                 alt={consultant.fullName}
               />
               <h3>{consultant.fullName}</h3>
@@ -54,7 +50,7 @@ export default function Team() {
                 <h4>{consultant.consultantEmail}</h4>
               </a>
             </div>
-          ) : null
+          ) : null,
         )}
       </div>
       <ContactIndex />

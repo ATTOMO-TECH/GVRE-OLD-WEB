@@ -36,31 +36,31 @@ export default function Home({ destacado, webDataInitial }) {
     setBackgroundImageToContainer(webData[0].portraidImage, ".home__top");
     setBackgroundImageToContainer(
       webData[0].categoriesImages.residential,
-      ".home__categories__container__option__residential"
+      ".home__categories__container__option__residential",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.patrimonial,
-      ".home__categories__container__option__patrimonial"
+      ".home__categories__container__option__patrimonial",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.art,
-      ".home__categories__container__option__art"
+      ".home__categories__container__option__art",
     );
     setBackgroundImageToContainer(
       webData[0].categoriesImages.catalog,
-      ".home__categories__container__option__catalog"
+      ".home__categories__container__option__catalog",
     );
     setBackgroundImageToContainer(
       webData[0].sections.interiorims.image,
-      ".home__more__image"
+      ".home__more__image",
     );
     setBackgroundImageToContainer(
       webData[0].sections.offices.image,
-      ".home__moreB__image"
+      ".home__moreB__image",
     );
     setBackgroundImageToContainer(
       webData[0].sections.sell.image,
-      ".home__more__image2"
+      ".home__more__image2",
     );
   }
   useEffect(() => {
@@ -126,9 +126,7 @@ export default function Home({ destacado, webDataInitial }) {
   };
 
   const ogImage =
-    destacado && destacado.length > 0
-      ? destacado[0].images.main.replaceAll(" ", "%20")
-      : "";
+    destacado && destacado.length > 0 ? destacado[0].images.main : "";
 
   return (
     <>
@@ -447,7 +445,7 @@ export default function Home({ destacado, webDataInitial }) {
                       </p>
                       <div>
                         <h2 className="home__outstanding__position__images__text__price">{`${new Intl.NumberFormat(
-                          "de-DE"
+                          "de-DE",
                         ).format(Math.ceil(item.sale.saleValue))} €`}</h2>
 
                         <Image
@@ -455,7 +453,7 @@ export default function Home({ destacado, webDataInitial }) {
                           height={300}
                           className="home__outstanding__position__images__image"
                           key={`${item._id}-${index}`}
-                          src={item.images.main.replaceAll(" ", "%20")}
+                          src={item.images.main}
                           alt={item.title}
                           loading="lazy"
                         />

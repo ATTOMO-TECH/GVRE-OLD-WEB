@@ -4,7 +4,20 @@ const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["gvre-images.fra1.digitaloceanspaces.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fra1.digitaloceanspaces.com",
+      },
+      {
+        protocol: "https",
+        hostname: "gvre-images.fra1.digitaloceanspaces.com",
+      },
+      {
+        protocol: "https",
+        hostname: "prod-gvre-new-bucket.fra1.digitaloceanspaces.com",
+      },
+    ],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

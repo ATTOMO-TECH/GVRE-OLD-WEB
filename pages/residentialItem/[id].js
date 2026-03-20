@@ -23,16 +23,16 @@ import useWindowSize from "../../hooks/useWindowsSize.js";
 
 const QRGenerator = dynamic(
   () => import("../../components/QRgenerator/QRgenerator"),
-  { ssr: false }
+  { ssr: false },
 );
 const DownLoadBuildingSheet = dynamic(
   () =>
     import("../../components/DownLoadBuildingSheet/DownLoadBuildingSheet.js"),
-  { ssr: false }
+  { ssr: false },
 );
 const DownLoadBuildingDrawings = dynamic(
   () => import("../../components/DownloadDrawings/DownloadDrawings.js"),
-  { ssr: false }
+  { ssr: false },
 );
 const MapWithNoSSR = dynamic(
   () => import("../../components/MapItem/MapItem.js"),
@@ -45,7 +45,7 @@ const MapWithNoSSR = dynamic(
         <p>Cargando mapa...</p>
       </div>
     ),
-  }
+  },
 );
 
 // AÑADIMOS seoData A LOS PROPS
@@ -107,7 +107,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
     const getCoords = async () => {
       const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
       const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-        address
+        address,
       )}&format=json&limit=1`;
       try {
         const response = await fetch(url);
@@ -241,7 +241,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                 width={1486}
                 height={862}
                 className="residentialItem__carousel__images custom-objetc-fit"
-                src={state.images.main.replaceAll(" ", "%20")}
+                src={state.images.main}
                 alt={state.title}
                 loading="lazy"
               />
@@ -251,7 +251,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                   height={862}
                   className="residentialItem__carousel__images custom-objetc-fit"
                   key={state._id}
-                  src={image.replaceAll(" ", "%20")}
+                  src={image}
                   alt={state.title}
                   loading="lazy"
                 />
@@ -289,7 +289,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                   width={1486}
                   height={862}
                   className="carouselImages"
-                  src={state.images.main.replaceAll(" ", "%20")}
+                  src={state.images.main}
                   alt={state.title}
                   loading="lazy"
                 />
@@ -299,7 +299,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     height={862}
                     className="carouselImages"
                     key={state._id}
-                    src={image.replaceAll(" ", "%20")}
+                    src={image}
                     alt={state.title}
                     loading="lazy"
                   />
@@ -312,7 +312,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                           height={862}
                           className="carouselImages"
                           key={image}
-                          src={image.replaceAll(" ", "%20")}
+                          src={image}
                           alt={state.title}
                         />
                       );
@@ -350,7 +350,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                       height={862}
                       className="carouselImages custom-map-size"
                       key={image}
-                      src={image.replaceAll(" ", "%20")}
+                      src={image}
                       alt={state.title}
                     />
                   );
@@ -377,27 +377,27 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     state.sale.saleShowOnWeb === true &&
                     state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.sale.saleValue) // Redondeo al alza
+                          Math.ceil(state.sale.saleValue), // Redondeo al alza
                         )} €`
                       : type === "Alquiler" &&
-                        state.rent.rentShowOnWeb === true &&
-                        state.rent.rentValue !== 0
-                      ? `${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.rent.rentValue) // Redondeo al alza
-                        )} € mes`
-                      : null
+                          state.rent.rentShowOnWeb === true &&
+                          state.rent.rentValue !== 0
+                        ? `${new Intl.NumberFormat("de-DE").format(
+                            Math.ceil(state.rent.rentValue), // Redondeo al alza
+                          )} € mes`
+                        : null,
                   )}
                 </h2>
               ) : (
                 <h2 className="residentialItem__description__principal__prices">
                   {state.sale.saleShowOnWeb && state.sale.saleValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      Math.ceil(state.sale.saleValue) // Redondeo al alza
+                      Math.ceil(state.sale.saleValue), // Redondeo al alza
                     )} €`}</p>
                   ) : null}
                   {state.rent.rentShowOnWeb && state.rent.rentValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      Math.ceil(state.rent.rentValue) // Redondeo al alza
+                      Math.ceil(state.rent.rentValue), // Redondeo al alza
                     )} € mes`}</p>
                   ) : null}
                 </h2>
@@ -435,7 +435,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     {state.expensesIncluded !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.expensesIncluded) // Redondeo al alza
+                          Math.ceil(state.expensesIncluded), // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Renta €/m<sup>2</sup>/mes
@@ -446,7 +446,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     {state.monthlyRent !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.monthlyRent) // Redondeo al alza
+                          Math.ceil(state.monthlyRent), // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Renta €/m<sup>2</sup>
@@ -456,7 +456,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     {state.expenses !== 0 ? (
                       <div>
                         <h4>{`${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.expenses) // Redondeo al alza
+                          Math.ceil(state.expenses), // Redondeo al alza
                         )}`}</h4>
                         <p>
                           Gastos €/m<sup>2</sup>/mes
@@ -465,14 +465,14 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     ) : null}
                   </div>
                 </div>
-              ) : null
+              ) : null,
             )}
             {state.description.web !== "" ? (
               <div className="residentialItem__description__web">
                 {state.images.media && state.images.media !== "" ? (
                   <DisplayVideo
                     videoUrl={state.images.media}
-                    portraitImage={state.images.main.replaceAll(" ", "%20")}
+                    portraitImage={state.images.main}
                   />
                 ) : null}
 
@@ -834,7 +834,7 @@ export default function ResidentialItem({ list, currentConsultant, seoData }) {
                     <Image
                       width={size < 768 ? 558 : size < 1350 ? 345 : 200}
                       height={size < 768 ? 240 : size < 1350 ? 232 : 140}
-                      src={consultant.avatar.replaceAll(" ", "%20")}
+                      src={consultant.avatar}
                       alt={consultant.fullName}
                     />
                     <p>{consultant.fullName}</p>
@@ -982,7 +982,7 @@ export async function getServerSideProps(context) {
       if (item._id === id) {
         const itemConsultants = await getConsultants();
         currentConsultant = itemConsultants.find(
-          (consultant) => consultant._id === item.consultant
+          (consultant) => consultant._id === item.consultant,
         );
       }
 
@@ -999,8 +999,8 @@ export async function getServerSideProps(context) {
       ) {
         preciosTexto.push(
           `${new Intl.NumberFormat("de-DE").format(
-            Math.ceil(item.sale.saleValue)
-          )} €`
+            Math.ceil(item.sale.saleValue),
+          )} €`,
         );
       }
       if (
@@ -1010,8 +1010,8 @@ export async function getServerSideProps(context) {
       ) {
         preciosTexto.push(
           `${new Intl.NumberFormat("de-DE").format(
-            Math.ceil(item.rent.rentValue)
-          )} €/mes`
+            Math.ceil(item.rent.rentValue),
+          )} €/mes`,
         );
       }
       const precioFinal =
@@ -1064,7 +1064,7 @@ export async function getServerSideProps(context) {
 
       // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        const rawImage = item.images.main.replaceAll(" ", "%20");
+        const rawImage = item.images.main;
         let fullImageUrl = "";
 
         if (rawImage.startsWith("http")) {
@@ -1078,7 +1078,7 @@ export async function getServerSideProps(context) {
 
         // WSrv con q=79 para refrescar caché si es necesario
         seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
-          cleanUrl
+          cleanUrl,
         )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
       }
 

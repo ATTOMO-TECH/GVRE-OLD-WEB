@@ -23,16 +23,16 @@ import metroIcon from "../../assets/SVG/mobile/comun/metro-icon.svg";
 
 const QRGenerator = dynamic(
   () => import("../../components/QRgenerator/QRgenerator"),
-  { ssr: false }
+  { ssr: false },
 );
 const DownLoadBuildingSheet = dynamic(
   () =>
     import("../../components/DownLoadBuildingSheet/DownLoadBuildingSheet.js"),
-  { ssr: false }
+  { ssr: false },
 );
 const DownLoadBuildingDrawings = dynamic(
   () => import("../../components/DownloadDrawings/DownloadDrawings.js"),
-  { ssr: false }
+  { ssr: false },
 );
 const MapWithNoSSR = dynamic(
   () => import("../../components/MapItem/MapItem.js"),
@@ -45,7 +45,7 @@ const MapWithNoSSR = dynamic(
         <p>Cargando mapa...</p>
       </div>
     ),
-  }
+  },
 );
 
 // Añadimos seoData aqui tambien
@@ -107,7 +107,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
     const getCoords = async () => {
       const address = `${state.adDirection.address.street} ${state.adDirection.address.directionNumber}, ${state.adDirection.city}`;
       const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-        address
+        address,
       )}&format=json&limit=1`;
       try {
         const response = await fetch(url);
@@ -243,7 +243,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                 width={1486}
                 height={862}
                 className="patrimonialItem__carousel__images custom-objetc-fit"
-                src={state.images.main.replaceAll(" ", "%20")}
+                src={state.images.main}
                 alt={state.title}
                 loading="lazy"
               />
@@ -253,7 +253,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                   height={862}
                   className="patrimonialItem__carousel__images custom-objetc-fit"
                   key={state._id}
-                  src={image.replaceAll(" ", "%20")}
+                  src={image}
                   alt={state.title}
                   loading="lazy"
                 />
@@ -264,7 +264,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                   height={862}
                   className="patrimonialItem__carousel__images custom-objetc-fit"
                   key={image}
-                  src={image.replaceAll(" ", "%20")}
+                  src={image}
                   alt={state.title}
                 />
               ))}
@@ -283,7 +283,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                 width={1486}
                 height={862}
                 className="patrimonialItem__carousel__images custom-objetc-fit"
-                src={state.images.main.replaceAll(" ", "%20")}
+                src={state.images.main}
                 alt={state.title}
                 loading="lazy"
               />
@@ -293,7 +293,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                   height={862}
                   className="patrimonialItem__carousel__images custom-objetc-fit"
                   key={state._id}
-                  src={image.replaceAll(" ", "%20")}
+                  src={image}
                   alt={state.title}
                   loading="lazy"
                 />
@@ -326,7 +326,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                   width={1486}
                   height={862}
                   className="carouselImages"
-                  src={state.images.main.replaceAll(" ", "%20")}
+                  src={state.images.main}
                   alt={state.title}
                   loading="lazy"
                 />
@@ -336,7 +336,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     height={862}
                     className="carouselImages"
                     key={state._id}
-                    src={image.replaceAll(" ", "%20")}
+                    src={image}
                     alt={state.title}
                     loading="lazy"
                   />
@@ -349,7 +349,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                           height={862}
                           className="carouselImages"
                           key={image}
-                          src={image.replaceAll(" ", "%20")}
+                          src={image}
                           alt={state.title}
                         />
                       );
@@ -386,7 +386,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     height={862}
                     className="carouselImages custom-map-size"
                     key={image}
-                    src={image.replaceAll(" ", "%20")}
+                    src={image}
                     alt={state.title}
                   />
                 ))}
@@ -418,27 +418,27 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     state.sale.saleShowOnWeb === true &&
                     state.sale.saleValue !== 0
                       ? `${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.sale.saleValue) // Redondeo al alza aquí
+                          Math.ceil(state.sale.saleValue), // Redondeo al alza aquí
                         )} €`
                       : type === "Alquiler" &&
-                        state.rent.rentShowOnWeb === true &&
-                        state.rent.rentValue !== 0
-                      ? `${new Intl.NumberFormat("de-DE").format(
-                          Math.ceil(state.rent.rentValue) // Redondeo al alza aquí
-                        )} € mes`
-                      : null
+                          state.rent.rentShowOnWeb === true &&
+                          state.rent.rentValue !== 0
+                        ? `${new Intl.NumberFormat("de-DE").format(
+                            Math.ceil(state.rent.rentValue), // Redondeo al alza aquí
+                          )} € mes`
+                        : null,
                   )}
                 </h2>
               ) : (
                 <h2 className="patrimonialItem__description__principal__prices">
                   {state.sale.saleShowOnWeb && state.sale.saleValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      Math.ceil(state.sale.saleValue) // Redondeo al alza aquí
+                      Math.ceil(state.sale.saleValue), // Redondeo al alza aquí
                     )} €`}</p>
                   ) : null}
                   {state.rent.rentShowOnWeb && state.rent.rentValue !== 0 ? (
                     <p>{`${new Intl.NumberFormat("de-DE").format(
-                      Math.ceil(state.rent.rentValue) // Redondeo al alza aquí
+                      Math.ceil(state.rent.rentValue), // Redondeo al alza aquí
                     )} € mes`}</p>
                   ) : null}
                 </h2>
@@ -479,8 +479,8 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                         <h4>
                           {new Intl.NumberFormat("de-DE").format(
                             Math.round(
-                              Number(state?.expensesIncluded.toString())
-                            )
+                              Number(state?.expensesIncluded.toString()),
+                            ),
                           )}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/mes
@@ -494,7 +494,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                       <div>
                         <h4>
                           {`${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(state.monthlyRent) // <--- Agregado Math.ceil
+                            Math.ceil(state.monthlyRent), // <--- Agregado Math.ceil
                           )}`}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/m<sup>2</sup>/mes
@@ -508,7 +508,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                       <div>
                         <h4>
                           {`${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(state.expenses)
+                            Math.ceil(state.expenses),
                           )}`}{" "}
                           <span className="custom-rent-numbers-patrimonio">
                             €/m<sup>2</sup>/mes
@@ -520,14 +520,14 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     ) : null}
                   </div>
                 </div>
-              ) : null
+              ) : null,
             )}
             {state.description.web !== "" ? (
               <div className="patrimonialItem__description__web">
                 {state.images.media && state.images.media !== "" ? (
                   <DisplayVideo
                     videoUrl={state.images.media}
-                    portraitImage={state.images.main.replaceAll(" ", "%20")}
+                    portraitImage={state.images.main}
                   />
                 ) : null}
 
@@ -937,7 +937,7 @@ export default function PatrimonialItem({ list, currentConsultant, seoData }) {
                     <Image
                       width={size < 768 ? 558 : size < 1350 ? 345 : 200}
                       height={size < 768 ? 240 : size < 1350 ? 232 : 140}
-                      src={consultant.avatar.replaceAll(" ", "%20")}
+                      src={consultant.avatar}
                       alt={consultant.fullName}
                     />
                     <p>{consultant.fullName}</p>
@@ -1085,7 +1085,7 @@ export async function getServerSideProps(context) {
       if (item._id === id) {
         const itemConsultants = await getConsultants();
         currentConsultant = itemConsultants.find(
-          (consultant) => consultant._id === item.consultant
+          (consultant) => consultant._id === item.consultant,
         );
       }
 
@@ -1102,8 +1102,8 @@ export async function getServerSideProps(context) {
       ) {
         preciosTexto.push(
           `${new Intl.NumberFormat("de-DE").format(
-            Math.ceil(item.sale.saleValue)
-          )} €`
+            Math.ceil(item.sale.saleValue),
+          )} €`,
         );
       }
       if (
@@ -1113,8 +1113,8 @@ export async function getServerSideProps(context) {
       ) {
         preciosTexto.push(
           `${new Intl.NumberFormat("de-DE").format(
-            Math.ceil(item.rent.rentValue)
-          )} €/mes`
+            Math.ceil(item.rent.rentValue),
+          )} €/mes`,
         );
       }
       const precioFinal =
@@ -1166,7 +1166,7 @@ export async function getServerSideProps(context) {
 
       // 3. IMAGEN OPTIMIZADA (DigitalOcean -> Proxy -> WhatsApp)
       if (item.images?.main) {
-        const rawImage = item.images.main.replaceAll(" ", "%20");
+        const rawImage = item.images.main;
         let fullImageUrl = "";
 
         if (rawImage.startsWith("http")) {
@@ -1180,7 +1180,7 @@ export async function getServerSideProps(context) {
 
         // WSrv con q=79
         seoImage = `https://wsrv.nl/?url=${encodeURIComponent(
-          cleanUrl
+          cleanUrl,
         )}&w=1200&h=630&fit=cover&output=jpg&q=79`;
       }
 
