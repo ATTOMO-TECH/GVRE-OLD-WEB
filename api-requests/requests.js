@@ -16,20 +16,29 @@ const requestBaseParams = {
 };
 
 export const getWebData = async () => {
-  const response = await fetch(`${baseUrl}/web/home`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  });
-  if (response.status !== 200) {
-    throw new Error(`Error on send email ${response.status}`);
+  try {
+    const response = await fetch(`${baseUrl}/web/home`, {
+      method: "GET",
+      // credentials: "include", // Nota: Esto a veces falla en el build de servidor (Node), puedes comentarlo si da problemas.
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status !== 200) {
+      console.log(
+        `Alerta: El backend respondió con ${response.status} en /web/home`,
+      );
+      return null; // Devolvemos null en lugar de romper el programa
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error de conexión con el Backend:", error);
+    return null;
   }
-  const data = await response.json();
-  return data;
 };
 
 export const getResidential = async (filters) => {
