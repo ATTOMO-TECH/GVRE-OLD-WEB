@@ -118,17 +118,17 @@ export default function Patrimonial({
   }
 
   const [selected, setSelected] = useState(
-    localFilters?.includes("zone") ? JSON.parse(localFilters).zone : []
+    localFilters?.includes("zone") ? JSON.parse(localFilters).zone : [],
   );
   const [selectedActive, setSelectedActive] = useState(false);
   const [saleOrRent, setSaleOrRent] = useState(
-    localFilters?.includes("adType") ? JSON.parse(localFilters).adType : []
+    localFilters?.includes("adType") ? JSON.parse(localFilters).adType : [],
   );
   const [saleOrRentActive, setSaleOrRentActive] = useState(false);
   const [typeHouse, setTypeHouse] = useState(
     localFilters?.includes("adBuildingType")
       ? JSON.parse(localFilters).adBuildingType
-      : []
+      : [],
   );
   const [typeHouseActive, setTypeHouseActive] = useState(false);
   const [extras, setExtras] = useState([]);
@@ -202,7 +202,7 @@ export default function Patrimonial({
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={item.images.main}
                 alt={item.title}
                 loading="lazy"
               />
@@ -219,27 +219,27 @@ export default function Patrimonial({
                       item.sale.saleShowOnWeb === true &&
                       item.sale.saleValue !== 0
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.sale.saleValue)
+                            Math.ceil(item.sale.saleValue),
                           )} €`
                         : type === "Alquiler" &&
-                          item.rent.rentShowOnWeb === true &&
-                          item.rent.rentValue !== 0
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.rent.rentValue)
-                          )} € mes`
-                        : null
+                            item.rent.rentShowOnWeb === true &&
+                            item.rent.rentValue !== 0
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              Math.ceil(item.rent.rentValue),
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="patrimonial__list__item__text__prices">
                     {item.sale.saleShowOnWeb && item.sale.saleValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.sale.saleValue)
+                        Math.ceil(item.sale.saleValue),
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb && item.rent.rentValue !== 0 ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.rent.rentValue)
+                        Math.ceil(item.rent.rentValue),
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -321,7 +321,7 @@ export default function Patrimonial({
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={item.images.main}
                 alt={item.title}
                 loading="lazy"
               />
@@ -345,25 +345,25 @@ export default function Patrimonial({
                     {item.adType.map((type) =>
                       type === "Venta" && item.sale.saleShowOnWeb
                         ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.sale.saleValue)
+                            Math.ceil(item.sale.saleValue),
                           )} €`
                         : type === "Alquiler" && item.rent.rentShowOnWeb
-                        ? `${new Intl.NumberFormat("de-DE").format(
-                            Math.ceil(item.rent.rentValue)
-                          )} € mes`
-                        : null
+                          ? `${new Intl.NumberFormat("de-DE").format(
+                              Math.ceil(item.rent.rentValue),
+                            )} € mes`
+                          : null,
                     )}
                   </h2>
                 ) : (
                   <h2 className="patrimonial__list__item__text__prices">
                     {item.sale.saleShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.sale.saleValue)
+                        Math.ceil(item.sale.saleValue),
                       )} €`}</p>
                     ) : null}
                     {item.rent.rentShowOnWeb ? (
                       <p>{`${new Intl.NumberFormat("de-DE").format(
-                        Math.ceil(item.rent.rentValue)
+                        Math.ceil(item.rent.rentValue),
                       )} € mes`}</p>
                     ) : null}
                   </h2>
@@ -443,12 +443,12 @@ export default function Patrimonial({
       state.map((item) =>
         item.department === "Patrimonio" && item.showOnWeb === true
           ? reducedState.push(item)
-          : null
+          : null,
       );
       if (typeof window !== "undefined")
         window.localStorage.setItem(
           "storedState",
-          JSON.stringify(reducedState)
+          JSON.stringify(reducedState),
         );
     }
   }, [state]);
@@ -495,7 +495,7 @@ export default function Patrimonial({
             }
           >
             <a href={`/patrimonial/${i + 1}?${URL}&page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       } else {
         elements.push(
@@ -508,7 +508,7 @@ export default function Patrimonial({
             }
           >
             <a href={`/patrimonial/${i + 1}?page=${i + 1}`}>{i + 1}</a>
-          </li>
+          </li>,
         );
       }
     }
@@ -638,7 +638,7 @@ export default function Patrimonial({
 
   useEffect(() => {
     const localPosition = JSON.parse(
-      window.localStorage.getItem("storedPosition2")
+      window.localStorage.getItem("storedPosition2"),
     );
     if (localPosition !== 0 && localPosition !== null) {
       window.scroll({
@@ -653,12 +653,12 @@ export default function Patrimonial({
     setIsLoading(false);
     if (typeof window !== "undefined") {
       let activeFilters = JSON.parse(
-        window.localStorage.getItem("patrimonialFilters")
+        window.localStorage.getItem("patrimonialFilters"),
       );
       activeFilters = { ...activeFilters, orderByDate: false };
       window.localStorage.setItem(
         "patrimonialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
       let newquery = query;
       newquery.porfecha = "false";
@@ -671,12 +671,12 @@ export default function Patrimonial({
     if (typeof window !== "undefined") {
       setIsLoading(false);
       let activeFilters = JSON.parse(
-        window.localStorage.getItem("patrimonialFilters")
+        window.localStorage.getItem("patrimonialFilters"),
       );
       activeFilters = { ...activeFilters, orderByDate: true };
       window.localStorage.setItem(
         "patrimonialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
       /* console.log(activeFilters); */
       // console.log(tipo, tipodeinmueble, referencia, zona, exclusivooficinas, clasico, coworking, page)
@@ -931,7 +931,7 @@ export default function Patrimonial({
       /* console.log(activeFilters) */
       window.localStorage.setItem(
         "patrimonialFilters",
-        JSON.stringify(activeFilters)
+        JSON.stringify(activeFilters),
       );
       if (porfecha !== undefined)
         queryFilters = { ...queryFilters, porfecha: "false" };
@@ -1028,7 +1028,7 @@ export default function Patrimonial({
       if (collectionButtons.length !== 0) {
         //hacer un forEach para eliminar las clases
         collectionButtonsArr.forEach((element) =>
-          element.classList.remove("activeButton")
+          element.classList.remove("activeButton"),
         );
       }
       /* console.log(collectionButtons); */
@@ -1039,7 +1039,7 @@ export default function Patrimonial({
       if (toggleButtons.length !== 0) {
         //hacer un forEach para eliminar las clases
         toggleButtonsArr.forEach((element) =>
-          element.classList.remove("active")
+          element.classList.remove("active"),
         );
       }
       /* console.log(toggleButtons); */
@@ -1842,19 +1842,19 @@ export default function Patrimonial({
                               ? maxZonePrice
                               : 50000000
                             : maxZonePrice !== 0
-                            ? maxZonePrice
-                            : 300000
+                              ? maxZonePrice
+                              : 300000
                         }
                         step={saleOrRent[0] === "Venta" ? 500000 : 1000}
                         valueLabelFormat={
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €/mes`
                         }
                       />
@@ -1876,11 +1876,11 @@ export default function Patrimonial({
                           saleOrRent[0] === "Venta"
                             ? (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €`
                             : (value) =>
                                 `${new Intl.NumberFormat("de-DE").format(
-                                  Math.ceil(value)
+                                  Math.ceil(value),
                                 )} €/mes`
                         }
                       />

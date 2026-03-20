@@ -126,9 +126,7 @@ export default function Home({ destacado, webDataInitial }) {
   };
 
   const ogImage =
-    destacado && destacado.length > 0
-      ? destacado[0].images.main.replaceAll(" ", "%20")
-      : "";
+    destacado && destacado.length > 0 ? destacado[0].images.main : "";
 
   return (
     <>
@@ -455,7 +453,7 @@ export default function Home({ destacado, webDataInitial }) {
                           height={300}
                           className="home__outstanding__position__images__image"
                           key={`${item._id}-${index}`}
-                          src={item.images.main.replaceAll(" ", "%20")}
+                          src={item.images.main}
                           alt={item.title}
                           loading="lazy"
                         />

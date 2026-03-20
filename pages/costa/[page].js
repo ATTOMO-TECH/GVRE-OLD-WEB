@@ -63,7 +63,7 @@ export default function Costa({ orderedItems, pages, query }) {
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={item.images.main}
                 alt={item.title}
               />
             </Carousel>
@@ -198,7 +198,7 @@ export default function Costa({ orderedItems, pages, query }) {
               <Image
                 width={400}
                 height={300}
-                src={item.images.main.replaceAll(" ", "%20")}
+                src={item.images.main}
                 alt={item.title}
               />
             </Carousel>
